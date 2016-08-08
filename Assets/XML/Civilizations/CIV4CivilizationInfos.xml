@@ -950,7 +950,7 @@
 					<BuildingType>NONE</BuildingType>
 				</Building>
 				<Building>
-					<BuildingClassType>BUILDINGCLASS_OPERA_HOUSE</BuildingClassType>
+					<BuildingClassType>BUILDINGCLASS_NATIONAL_THEATRE</BuildingClassType>
 					<BuildingType>NONE</BuildingType>
 				</Building>
 				<Building>
@@ -962,10 +962,6 @@
 					<BuildingType>NONE</BuildingType>
 				</Building>
 				<Building>
-					<BuildingClassType>BUILDINGCLASS_OLYMPIC_PARK</BuildingClassType>
-					<BuildingType>NONE</BuildingType>
-				</Building>
-				<Building>
 					<BuildingClassType>BUILDINGCLASS_NATIONAL_GALLERY</BuildingClassType>
 					<BuildingType>NONE</BuildingType>
 				</Building>
@@ -974,7 +970,7 @@
 					<BuildingType>NONE</BuildingType>
 				</Building>
 				<Building>
-					<BuildingClassType>BUILDINGCLASS_INTERPOL</BuildingClassType>
+					<BuildingClassType>BUILDINGCLASS_SECRET_SERVICE</BuildingClassType>
 					<BuildingType>NONE</BuildingType>
 				</Building>
 				<Building>
@@ -4717,7 +4713,7 @@
 					<BuildingType>NONE</BuildingType>
 				</Building>
 				<Building>
-					<BuildingClassType>BUILDINGCLASS_OPERA_HOUSE</BuildingClassType>
+					<BuildingClassType>BUILDINGCLASS_NATIONAL_THEATRE</BuildingClassType>
 					<BuildingType>NONE</BuildingType>
 				</Building>
 				<Building>
@@ -4729,10 +4725,6 @@
 					<BuildingType>NONE</BuildingType>
 				</Building>
 				<Building>
-					<BuildingClassType>BUILDINGCLASS_OLYMPIC_PARK</BuildingClassType>
-					<BuildingType>NONE</BuildingType>
-				</Building>
-				<Building>
 					<BuildingClassType>BUILDINGCLASS_NATIONAL_GALLERY</BuildingClassType>
 					<BuildingType>NONE</BuildingType>
 				</Building>
@@ -4741,7 +4733,7 @@
 					<BuildingType>NONE</BuildingType>
 				</Building>
 				<Building>
-					<BuildingClassType>BUILDINGCLASS_INTERPOL</BuildingClassType>
+					<BuildingClassType>BUILDINGCLASS_SECRET_SERVICE</BuildingClassType>
 					<BuildingType>NONE</BuildingType>
 				</Building>
 				<Building>
@@ -5690,7 +5682,7 @@
 					<BuildingType>NONE</BuildingType>
 				</Building>
 				<Building>
-					<BuildingClassType>BUILDINGCLASS_OPERA_HOUSE</BuildingClassType>
+					<BuildingClassType>BUILDINGCLASS_NATIONAL_THEATRE</BuildingClassType>
 					<BuildingType>NONE</BuildingType>
 				</Building>
 				<Building>
@@ -5702,10 +5694,6 @@
 					<BuildingType>NONE</BuildingType>
 				</Building>
 				<Building>
-					<BuildingClassType>BUILDINGCLASS_OLYMPIC_PARK</BuildingClassType>
-					<BuildingType>NONE</BuildingType>
-				</Building>
-				<Building>
 					<BuildingClassType>BUILDINGCLASS_NATIONAL_GALLERY</BuildingClassType>
 					<BuildingType>NONE</BuildingType>
 				</Building>
@@ -5714,7 +5702,7 @@
 					<BuildingType>NONE</BuildingType>
 				</Building>
 				<Building>
-					<BuildingClassType>BUILDINGCLASS_INTERPOL</BuildingClassType>
+					<BuildingClassType>BUILDINGCLASS_SECRET_SERVICE</BuildingClassType>
 					<BuildingType>NONE</BuildingType>
 				</Building>
 				<Building>
@@ -5927,7 +5915,7 @@
 					<BuildingType>NONE</BuildingType>
 				</Building>
 				<Building>
-					<BuildingClassType>BUILDINGCLASS_OPERA_HOUSE</BuildingClassType>
+					<BuildingClassType>BUILDINGCLASS_NATIONAL_THEATRE</BuildingClassType>
 					<BuildingType>NONE</BuildingType>
 				</Building>
 				<Building>
@@ -5939,10 +5927,6 @@
 					<BuildingType>NONE</BuildingType>
 				</Building>
 				<Building>
-					<BuildingClassType>BUILDINGCLASS_OLYMPIC_PARK</BuildingClassType>
-					<BuildingType>NONE</BuildingType>
-				</Building>
-				<Building>
 					<BuildingClassType>BUILDINGCLASS_NATIONAL_GALLERY</BuildingClassType>
 					<BuildingType>NONE</BuildingType>
 				</Building>
@@ -5951,7 +5935,7 @@
 					<BuildingType>NONE</BuildingType>
 				</Building>
 				<Building>
-					<BuildingClassType>BUILDINGCLASS_INTERPOL</BuildingClassType>
+					<BuildingClassType>BUILDINGCLASS_SECRET_SERVICE</BuildingClassType>
 					<BuildingType>NONE</BuildingType>
 				</Building>
 				<Building>
@@ -6140,7 +6124,7 @@
 					<BuildingType>NONE</BuildingType>
 				</Building>
 				<Building>
-					<BuildingClassType>BUILDINGCLASS_OPERA_HOUSE</BuildingClassType>
+					<BuildingClassType>BUILDINGCLASS_NATIONAL_THEATRE</BuildingClassType>
 					<BuildingType>NONE</BuildingType>
 				</Building>
 				<Building>
@@ -6152,19 +6136,11 @@
 					<BuildingType>NONE</BuildingType>
 				</Building>
 				<Building>
-					<BuildingClassType>BUILDINGCLASS_OLYMPIC_PARK</BuildingClassType>
-					<BuildingType>NONE</BuildingType>
-				</Building>
-				<Building>
-					<BuildingClassType>BUILDINGCLASS_NATIONAL_GALLERY</BuildingClassType>
-					<BuildingType>NONE</BuildingType>
-				</Building>
-				<Building>
 					<BuildingClassType>BUILDINGCLASS_IRONWORKS</BuildingClassType>
 					<BuildingType>NONE</BuildingType>
 				</Building>
 				<Building>
-					<BuildingClassType>BUILDINGCLASS_INTERPOL</BuildingClassType>
+					<BuildingClassType>BUILDINGCLASS_SECRET_SERVICE</BuildingClassType>
 					<BuildingType>NONE</BuildingType>
 				</Building>
 				<Building>
@@ -6500,7 +6476,7 @@
 					<BuildingType>NONE</BuildingType>
 				</Building>
 				<Building>
-					<BuildingClassType>BUILDINGCLASS_OPERA_HOUSE</BuildingClassType>
+					<BuildingClassType>BUILDINGCLASS_NATIONAL_THEATRE</BuildingClassType>
 					<BuildingType>NONE</BuildingType>
 				</Building>
 				<Building>
@@ -6512,10 +6488,6 @@
 					<BuildingType>NONE</BuildingType>
 				</Building>
 				<Building>
-					<BuildingClassType>BUILDINGCLASS_OLYMPIC_PARK</BuildingClassType>
-					<BuildingType>NONE</BuildingType>
-				</Building>
-				<Building>
 					<BuildingClassType>BUILDINGCLASS_NATIONAL_GALLERY</BuildingClassType>
 					<BuildingType>NONE</BuildingType>
 				</Building>
@@ -6524,7 +6496,7 @@
 					<BuildingType>NONE</BuildingType>
 				</Building>
 				<Building>
-					<BuildingClassType>BUILDINGCLASS_INTERPOL</BuildingClassType>
+					<BuildingClassType>BUILDINGCLASS_SECRET_SERVICE</BuildingClassType>
 					<BuildingType>NONE</BuildingType>
 				</Building>
 				<Building>
