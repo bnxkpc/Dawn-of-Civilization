@@ -97,15 +97,6 @@ class CvRFCEventHandler:
 	def onGameStart(self, argsList):
 		'Called at the start of the game'
 		
-		for i in range(iNumBuildings):
-			print "%i -> %s" % (i, gc.getBuildingInfo(i).getText())
-			
-		for i in range(gc.getNumUnitInfos()):
-			print "%i -> %s" % (i, gc.getUnitInfo(i).getText())
-			
-		for i in range(gc.getNumTechInfos()):
-			print "%i -> %s" % (i, gc.getTechInfo(i).getText())
-		
 		sd.setup() # edead
 		self.rnf.setup()
 		self.rel.setup()
