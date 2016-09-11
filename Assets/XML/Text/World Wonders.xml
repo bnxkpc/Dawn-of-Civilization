@@ -710,8 +710,8 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_GREAT_SPHINX_HELP</Tag>
-		<English>[ICON_BULLET]Great prophets can create great works like great artists.</English>
-		<German>[ICON_BULLET]Gro&#223;e Propheten k&#246;nnen gro&#223;e Kunstwerke erstellen, genau wie gro&#223;e K&#252;nstler.</German>
+		<English>[ICON_BULLET]Wonders can be produced using food</English>
+		<German>[ICON_BULLET]Wunder können mithilfe von Nahrung errichtet werden</German>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_GREAT_SPHINX_STRATEGY</Tag>
@@ -811,8 +811,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_TOPKAPI_PALACE_HELP</Tag>
-		<English>[ICON_BULLET]Additional Foreign Culture is Converted on City Conquest</English>
-		<German>[ICON_BULLET]Bei der Eroberung gegnerischer St&#228;dte wird zus&#228;tzliche Kultur konvertiert</German>
+		<English>[ICON_BULLET]Extra initial production in conquered cities</English>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_TOPKAPI_PALACE_STRATEGY</Tag>
@@ -892,7 +891,15 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_HANGING_GARDENS_HELP</Tag>
-		<English>[ICON_BULLET]No [ICON_UNHEALTH] from Flood Plains</English>
+		<English>[ICON_BULLET]No [ICON_UNHEALTHY] from Flood Plains</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUILDING_BRANDENBURG_GATE_HELP</Tag>
+		<English>[ICON_BULLET]Great general threshold is reset when one of your generals dies in battle</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUILDING_PORCELAIN_TOWER_HELP</Tag>
+		<English>[ICON_BULLET]No open borders required for trade</English>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_BUILDING_</Tag>
