@@ -56,7 +56,7 @@
 			</Buildings>
 			<Units>
 				<Unit>
-					<UnitClassType>UNITCLASS_RIFLEMAN</UnitClassType>
+					<UnitClassType>UNITCLASS_MUSKETMAN</UnitClassType>
 					<UnitType>UNIT_AMERICAN_MINUTEMAN</UnitType>
 				</Unit>
 			</Units>
@@ -234,7 +234,7 @@
 			</Buildings>
 			<Units>
 				<Unit>
-					<UnitClassType>UNITCLASS_CAVALRY</UnitClassType>
+					<UnitClassType>UNITCLASS_DRAGOON</UnitClassType>
 					<UnitType>UNIT_ARGENTINE_GRENADIER_CAVALRY</UnitType>
 				</Unit>
 			</Units>
@@ -1448,7 +1448,7 @@
 			</Buildings>
 			<Units>
 				<Unit>
-					<UnitClassType>UNITCLASS_RIFLEMAN</UnitClassType>
+					<UnitClassType>UNITCLASS_MUSKETMAN</UnitClassType>
 					<UnitType>UNIT_ENGLISH_REDCOAT</UnitType>
 				</Unit>
 			</Units>
@@ -1564,7 +1564,7 @@
 			</Buildings>
 			<Units>
 				<Unit>
-					<UnitClassType>UNITCLASS_MUSKETMAN</UnitClassType>
+					<UnitClassType>UNITCLASS_ARQUEBUSIER</UnitClassType>
 					<UnitType>UNIT_ETHIOPIAN_ASKARI</UnitType>
 				</Unit>
 				<Unit>
@@ -2499,7 +2499,7 @@
 			</Buildings>
 			<Units>
 				<Unit>
-					<UnitClassType>UNITCLASS_MUSKETMAN</UnitClassType>
+					<UnitClassType>UNITCLASS_ARQUEBUSIER</UnitClassType>
 					<UnitType>UNIT_IRANIAN_QIZILBASH</UnitType>
 				</Unit>
 			</Units>
@@ -2695,7 +2695,7 @@
 			</Buildings>
 			<Units>
 				<Unit>
-					<UnitClassType>UNITCLASS_FOOTMAN</UnitClassType>
+					<UnitClassType>UNITCLASS_HEAVY_SWORDSMAN</UnitClassType>
 					<UnitType>UNIT_JAPANESE_SAMURAI</UnitType>
 				</Unit>
 			</Units>
@@ -2903,7 +2903,7 @@
 			</Buildings>
 			<Units>
 				<Unit>
-					<UnitClassType>UNITCLASS_FOOTMAN</UnitClassType>
+					<UnitClassType>UNITCLASS_HEAVY_SWORDSMAN</UnitClassType>
 					<UnitType>UNIT_CONGOLESE_POMBOS</UnitType>
 				</Unit>
 				<Unit>
@@ -3944,7 +3944,7 @@
 			</Buildings>
 			<Units>
 				<Unit>
-					<UnitClassType>UNITCLASS_MUSKETMAN</UnitClassType>
+					<UnitClassType>UNITCLASS_ARQUEBUSIER</UnitClassType>
 					<UnitType>UNIT_OTTOMAN_JANISSARY</UnitType>
 				</Unit>
 			</Units>
@@ -4598,7 +4598,7 @@
 			</Buildings>
 			<Units>
 				<Unit>
-					<UnitClassType>UNITCLASS_CAVALRY</UnitClassType>
+					<UnitClassType>UNITCLASS_DRAGOON</UnitClassType>
 					<UnitType>UNIT_RUSSIAN_COSSACK</UnitType>
 				</Unit>
 			</Units>
@@ -5431,7 +5431,7 @@
 			</Buildings>
 			<Units>
 				<Unit>
-					<UnitClassType>UNITCLASS_FOOTMAN</UnitClassType>
+					<UnitClassType>UNITCLASS_HEAVY_SWORDSMAN</UnitClassType>
 					<UnitType>UNIT_VIKING_HUSCARL</UnitType>
 				</Unit>
 			</Units>
