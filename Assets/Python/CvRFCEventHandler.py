@@ -97,6 +97,12 @@ class CvRFCEventHandler:
 	def onGameStart(self, argsList):
 		'Called at the start of the game'
 		
+		iNumImprovements = gc.getNumImprovementInfos()
+		print "iNumImprovements: %d" % (iNumImprovements,)
+		
+		for i in range(iNumImprovements):
+			print "%d -> %s" % (i, gc.getImprovementInfo(i).getText())
+		
 		sd.setup() # edead
 		self.rnf.setup()
 		self.rel.setup()
