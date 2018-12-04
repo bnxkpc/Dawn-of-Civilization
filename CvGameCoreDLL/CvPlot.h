@@ -168,6 +168,7 @@ public:
 	DllExport bool isCity(bool bCheckImprovement = false, TeamTypes eForTeam = NO_TEAM) const;																																		// Exposed to Python
 	bool isFriendlyCity(const CvUnit& kUnit, bool bCheckImprovement) const;																												// Exposed to Python
 	bool isEnemyCity(const CvUnit& kUnit) const;																													// Exposed to Python
+	bool isAlliedCity(const CvUnit& kUnit, bool bCheckImprovement) const; // Leoreth
 
 	bool isOccupation() const;																																				// Exposed to Python
 	bool isBeingWorked() const;																															// Exposed to Python
@@ -216,7 +217,7 @@ public:
 #endif
 	bool at(int iX, int iY) const;																																		// Exposed to Python
 // BUG - Lat/Long Coordinates - start
-	int calculateMinutes(int iPlotIndex, int iPlotCount, bool bWrap, int iDegreeMin, int iDegreeMax) const;
+	int calculateMinutes(int iPlotIndex, int iPlotCount, bool bWrap, int iDegreeMin, int iDegreeMax, int iZero) const;
 	int getLongitudeMinutes() const;																																		// Exposed to Python
 	int getLatitudeMinutes() const;																																		// Exposed to Python
 // BUG - Lat/Long Coordinates - end

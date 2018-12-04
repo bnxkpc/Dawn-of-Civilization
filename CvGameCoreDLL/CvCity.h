@@ -140,8 +140,8 @@ public:
 	int getConscriptPopulation() const;																// Exposed to Python
 	int conscriptMinCityPopulation() const;																			// Exposed to Python
 	int flatConscriptAngerLength() const;																				// Exposed to Python
-	bool canConscript() const;																				// Exposed to Python
-	void conscript();																											// Exposed to Python
+	bool canConscript(bool bForce = false) const;																				// Exposed to Python
+	void conscript(bool bForce = false);																											// Exposed to Python
 
 	int getBonusHealth(BonusTypes eBonus) const;																// Exposed to Python - getBonusHealth
 	int getBonusHappiness(BonusTypes eBonus) const;															// Exposed to Python - getBonusHappiness
@@ -189,7 +189,7 @@ public:
 	int getVassalHappiness() const;																		// Exposed to Python
 	int getVassalUnhappiness() const;																		// Exposed to Python
 	int unhappyLevel(int iExtra = 0) const;																	// Exposed to Python 
-	int happyLevel() const;																				// Exposed to Python				
+	int happyLevel(bool bSpecial = true) const;																				// Exposed to Python				
 	int angryPopulation(int iExtra = 0) const;										// Exposed to Python
 
 	int visiblePopulation() const;
@@ -201,7 +201,7 @@ public:
 	int unhealthyPopulation(bool bNoAngry = false, int iExtra = 0) const;	// Exposed to Python
 	int totalGoodBuildingHealth() const;																		// Exposed to Python
 	int totalBadBuildingHealth() const;														// Exposed to Python
-	int goodHealth() const;																				// Exposed to Python
+	int goodHealth(bool bSpecial = true) const;																				// Exposed to Python
 	int badHealth(bool bNoAngry = false, int iExtra = 0) const;		// Exposed to Python
 	int healthRate(bool bNoAngry = false, int iExtra = 0) const;	// Exposed to Python
 	int foodConsumption(bool bNoAngry = false, int iExtra = 0) const;				// Exposed to Python
@@ -941,6 +941,8 @@ public:
 	void setNumRealBuilding(BuildingTypes eIndex, int iNewValue);		// Exposed to Python
 	void setNumRealBuildingTimed(BuildingTypes eIndex, int iNewValue, bool bFirst, PlayerTypes eOriginalOwner, int iOriginalTime);
 
+	bool isHasBuildingEffect(BuildingTypes eBuilding) const; // Leoreth
+
 	bool isValidBuildingLocation(BuildingTypes eIndex) const;
 
 	int getNumFreeBuilding(BuildingTypes eIndex) const;															// Exposed to Python
@@ -1005,14 +1007,17 @@ public:
 
 	int getBuildingYieldChange(BuildingClassTypes eBuildingClass, YieldTypes eYield) const;           // Exposed to Python
 	void setBuildingYieldChange(BuildingClassTypes eBuildingClass, YieldTypes eYield, int iChange);          // Exposed to Python
-	void changeBuildingYieldChange(BuildingClassTypes eBuildingClass, YieldTypes eYield, int iChange);
+	void changeBuildingYieldChange(BuildingClassTypes eBuildingClass, YieldTypes eYield, int iChange);			// Exposed to Python
 	int getBuildingCommerceChange(BuildingClassTypes eBuildingClass, CommerceTypes eCommerce) const;           // Exposed to Python
 	void setBuildingCommerceChange(BuildingClassTypes eBuildingClass, CommerceTypes eCommerce, int iChange);          // Exposed to Python
-	void changeBuildingCommerceChange(BuildingClassTypes eBuildingClass, CommerceTypes eCommerce, int iChange);
+	void changeBuildingCommerceChange(BuildingClassTypes eBuildingClass, CommerceTypes eCommerce, int iChange);			// Exposed to Python
 	int getBuildingHappyChange(BuildingClassTypes eBuildingClass) const;           // Exposed to Python
 	void setBuildingHappyChange(BuildingClassTypes eBuildingClass, int iChange);          // Exposed to Python
 	int getBuildingHealthChange(BuildingClassTypes eBuildingClass) const;           // Exposed to Python
 	void setBuildingHealthChange(BuildingClassTypes eBuildingClass, int iChange);          // Exposed to Python
+	int getBuildingGreatPeopleRateChange(BuildingClassTypes eBuildingClass) const; // Leoreth
+	void setBuildingGreatPeopleRateChange(BuildingClassTypes eBuildingClass, int iChange); // Leoreth
+	void changeBuildingGreatPeopleRateChange(BuildingClassTypes eBuildingClass, int iChange); // Leoreth
 
 	void updateBuildingYieldChange(BuildingClassTypes eBuildingType, YieldTypes eYield, int iChange);
 	void changeReligionYieldChange(ReligionTypes eReligion, YieldTypes eYield, int iChange);
@@ -1096,6 +1101,23 @@ public:
 
 	bool hasBonusEffect(BonusTypes eBonus) const;
 	void processBonusEffect(BonusTypes eBonus, int iChange);
+
+	int getStabilityPopulation() const;
+	void setStabilityPopulation(int iNewValue);
+
+	int getBuildingUnhealthModifier() const;
+	void setBuildingUnhealthModifier(int iNewValue);
+	void changeBuildingUnhealthModifier(int iChange);
+
+	int getCorporationUnhealthModifier() const;
+	void setCorporationUnhealthModifier(int iNewValue);
+	void changeCorporationUnhealthModifier(int iChange);
+
+	int countNoGlobalEffectsFreeSpecialists() const;
+	int countSatellites() const;
+	bool canSatelliteJoin() const;
+
+	int getSpecialistGreatPeopleRateChange(SpecialistTypes eSpecialist) const;
 
 	DllExport int getMusicScriptId() const;
 	DllExport int getSoundscapeScriptId() const;
@@ -1277,6 +1299,11 @@ protected:
 
 	int m_iCultureRank;
 
+	int m_iStabilityPopulation;
+
+	int m_iBuildingUnhealthModifier;
+	int m_iCorporationUnhealthModifier;
+
 	bool m_bNeverLost;
 	bool m_bBombarded;
 	bool m_bDrafted;
@@ -1391,6 +1418,7 @@ protected:
 	std::vector<BuildingCommerceChange> m_aBuildingCommerceChange;
 	BuildingChangeArray m_aBuildingHappyChange;
 	BuildingChangeArray m_aBuildingHealthChange;
+	BuildingChangeArray m_aBuildingGreatPeopleRateChange;
 
 	// CACHE: cache frequently used values
 	mutable int	m_iPopulationRank;

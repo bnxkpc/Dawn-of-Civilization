@@ -636,9 +636,9 @@ BeginPlayer
 	StateReligion=RELIGION_CATHOLICISM
 	CivicOption=CIVICOPTION_GOVERNMENT, Civic=CIVIC_MONARCHY
 	CivicOption=CIVICOPTION_LEGITIMACY, Civic=CIVIC_CENTRALISM
-	CivicOption=CIVICOPTION_SOCIETY, Civic=CIVIC_INDIVIDUALISM
+	CivicOption=CIVICOPTION_SOCIETY, Civic=CIVIC_MANORIALISM
 	CivicOption=CIVICOPTION_ECONOMY, Civic=CIVIC_REGULATED_TRADE
-	CivicOption=CIVICOPTION_RELIGION, Civic=CIVIC_TOLERANCE
+	CivicOption=CIVICOPTION_RELIGION, Civic=CIVIC_CLERGY
 	CivicOption=CIVICOPTION_TERRITORY, Civic=CIVIC_CONQUEST
 	Handicap=HANDICAP_REGENT
 EndPlayer
@@ -745,8 +745,10 @@ EndPlayer
 BeginMap
 	grid width=124
 	grid height=68
-	top latitude=90
-	bottom latitude=-90
+	prime meridian=53
+	equator=26
+	top latitude=75
+	bottom latitude=-75
 	wrap X=1
 	wrap Y=0
 	world size=WORLDSIZE_HUGE
@@ -18228,6 +18230,7 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=47,y=42
+	BonusType=BONUS_FISH
 	TerrainType=TERRAIN_COAST
 	PlotType=3
 EndPlot
@@ -18575,7 +18578,6 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=48,y=42
-	BonusType=BONUS_FISH
 	TerrainType=TERRAIN_COAST
 	PlotType=3
 EndPlot
@@ -23167,7 +23169,7 @@ BeginPlot
 		BuildingType=BUILDING_CATHOLIC_TEMPLE
 		BuildingType=BUILDING_CATHOLIC_MONASTERY
 		BuildingType=BUILDING_CATHOLIC_SHRINE
-		BuildingType=BUILDING_COLOSSEUM
+		BuildingType=BUILDING_FLAVIAN_AMPHITHEATRE
 		ReligionType=RELIGION_JUDAISM
 		ReligionType=RELIGION_CATHOLICISM
 		HolyCityReligionType=RELIGION_CATHOLICISM
@@ -31963,6 +31965,7 @@ BeginPlot
 		BuildingType=BUILDING_PHARMACY
 		BuildingType=BUILDING_ZOROASTRIAN_TEMPLE
 		BuildingType=BUILDING_ZOROASTRIAN_SHRINE
+		BuildingType=BUILDING_GONDESHAPUR
 		ReligionType=RELIGION_ZOROASTRIANISM
 		HolyCityReligionType=RELIGION_ZOROASTRIANISM
 		Player46Culture=10, (Independent2)
@@ -32747,6 +32750,7 @@ BeginPlot
 		BuildingType=BUILDING_GRANARY
 		BuildingType=BUILDING_MARKET
 		BuildingType=BUILDING_PHARMACY
+		BuildingType=BUILDING_SALSAL_BUDDHA
 		Player46Culture=10, (Independent)
 	EndCity
 EndPlot
@@ -35196,6 +35200,7 @@ BeginPlot
 		BuildingType=BUILDING_PHARMACY
 		BuildingType=BUILDING_HINDU_TEMPLE
 		BuildingType=BUILDING_HINDU_MONASTERY
+		BuildingType=BUILDING_IRON_PILLAR
 		ReligionType=RELIGION_HINDUISM
 		Player45Culture=100, (Independent)
 	EndCity
@@ -36850,6 +36855,7 @@ BeginPlot
 		BuildingType=BUILDING_BUDDHIST_CATHEDRAL
 		BuildingType=BUILDING_BUDDHIST_MONASTERY
 		BuildingType=BUILDING_BUDDHIST_SHRINE
+		BuildingType=BUILDING_NALANDA
 		ReligionType=RELIGION_HINDUISM
 		HolyCityReligionType=RELIGION_HINDUISM
 		ReligionType=RELIGION_BUDDHISM

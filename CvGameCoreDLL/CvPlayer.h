@@ -376,14 +376,16 @@ public:
 	void createGreatPeople(UnitTypes eGreatPersonUnit, bool bIncrementThreshold, bool bIncrementExperience, int iX, int iY);
 
 	int getGreatPeopleCreated() const;																																		// Exposed to Python
-	void incrementGreatPeopleCreated();
+	void incrementGreatPeopleCreated(bool bUpdate = true);
+	void changeGreatPeopleCreated(int iChange, bool bUpdate = true);
 
 	int getGreatGeneralsCreated() const;																																		// Exposed to Python
-	void incrementGreatGeneralsCreated();
+	void incrementGreatGeneralsCreated(bool bUpdate = true);
 	void decrementGreatGeneralsCreated();
+	void changeGreatGeneralsCreated(int iChange, bool bUpdate = true);
 
 	int getGreatSpiesCreated() const;
-	void incrementGreatSpiesCreated();
+	void incrementGreatSpiesCreated(bool bUpdate = true);
 
 	void resetGreatPeopleCreated();
 
@@ -1239,6 +1241,14 @@ public:
 	int getModifier(ModifierTypes eModifier) const;
 	void setModifier(ModifierTypes eModifier, int iNewValue);
 
+	// Leoreth
+	int getTechPreference(TechTypes eTech) const;
+	void setTechPreference(TechTypes eTech, int iNewValue);
+
+	// Leoreth
+	int getBuildingPreference(BuildingTypes eBuilding) const;
+	void setBuildingPreference(BuildingTypes eBuilding, int iNewValue);
+
 	int getBirthYear() const;
 	int getBirthTurn() const;
 	void setBirthYear(int iNewValue);
@@ -1318,6 +1328,11 @@ public:
 
 	void updateCultureRanks() const;
 	void updateCultureRanks(CvPlotGroup* pPlotGroup) const;
+
+	bool isSpecialUnitValid(SpecialUnitTypes eSpecialUnit) const;
+	void makeSpecialUnitValid(SpecialUnitTypes eSpecialUnit);
+
+	int getSatelliteExtraCommerce(CommerceTypes eCommerce) const;
 
 	bool m_bTurnPlayed;
 
@@ -1526,6 +1541,7 @@ protected:
 
 	int* m_aiStabilityParameters;
 	int* m_aiModifiers;
+	int* m_paiTechPreferences;
 
 	int* m_aiReligionYieldChange;
 
@@ -1560,7 +1576,12 @@ protected:
 	bool* m_pabResearchingTech;
 	bool* m_pabLoyalMember;
 
+	bool* m_pabSpecialUnitValid; // Leoreth
+
 	std::vector<EventTriggerTypes> m_triggersFired;
+
+	// Leoreth
+	std::map<BuildingTypes, int> m_buildingPreference;
 
 	CivicTypes* m_paeCivics;
 

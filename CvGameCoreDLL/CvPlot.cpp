@@ -1219,7 +1219,7 @@ void CvPlot::verifyUnitValidPlot()
 						{
 							if (isVisibleEnemyUnit(pLoopUnit))
 							{
-								if (!(pLoopUnit->isInvisible(getTeam(), false)))
+								if (!(pLoopUnit->isInvisible(getTeam(), false)) && (pLoopUnit->getInvisibleType() == NO_INVISIBLE || !pLoopUnit->isRivalTerritory()))
 								{
 									if (!pLoopUnit->jumpToNearestValidPlot())
 									{
@@ -3904,6 +3904,35 @@ bool CvPlot::isFriendlyCity(const CvUnit& kUnit, bool bCheckImprovement) const
 }
 
 
+// Leoreth
+bool CvPlot::isAlliedCity(const CvUnit& kUnit, bool bCheckImprovement) const
+{
+	if (!isFriendlyCity(kUnit, bCheckImprovement))
+	{
+		return false;
+	}
+
+	TeamTypes eTeam = GET_PLAYER(kUnit.getCombatOwner(getTeam(), this)).getTeam();
+
+	if (getTeam() == eTeam)
+	{
+		return true;
+	}
+
+	if (GET_TEAM(getTeam()).isVassal(eTeam))
+	{
+		return true;
+	}
+
+	if (GET_TEAM(eTeam).isDefensivePact(getTeam()))
+	{
+		return true;
+	}
+
+	return false;
+}
+
+
 bool CvPlot::isEnemyCity(const CvUnit& kUnit) const
 {
 	CvCity* pCity = getPlotCity();
@@ -4181,7 +4210,7 @@ bool CvPlot::isTradeNetwork(TeamTypes eTeam) const
 {
 	FAssertMsg(eTeam != NO_TEAM, "eTeam is not assigned a valid value");
 
-	if (atWar(eTeam, getTeam()))
+	if (atWar(eTeam, getTeam()) && !GET_PLAYER(GET_TEAM(eTeam).getLeaderID()).isHasBuildingEffect((BuildingTypes)SALSAL_BUDDHA) && (getOwner() == NO_PLAYER || !GET_PLAYER(getOwner()).isHasBuildingEffect((BuildingTypes)SALSAL_BUDDHA)))
 	{
 		return false;
 	}
@@ -4212,7 +4241,7 @@ bool CvPlot::isTradeNetworkConnected(const CvPlot* pPlot, TeamTypes eTeam) const
 {
 	FAssertMsg(eTeam != NO_TEAM, "eTeam is not assigned a valid value");
 
-	if (atWar(eTeam, getTeam()) || atWar(eTeam, pPlot->getTeam()))
+	if ((atWar(eTeam, getTeam()) || atWar(eTeam, pPlot->getTeam())) && !GET_PLAYER(GET_TEAM(eTeam).getLeaderID()).isHasBuildingEffect((BuildingTypes)SALSAL_BUDDHA) && (getOwner() == NO_PLAYER || !GET_PLAYER(getOwner()).isHasBuildingEffect((BuildingTypes)SALSAL_BUDDHA)))
 	{
 		return false;
 	}
@@ -4376,13 +4405,22 @@ bool CvPlot::at(int iX, int iY) const
 #define MIN_LONGITUDE		-180
 #define MAX_LONGITUDE		180
 
-int CvPlot::calculateMinutes(int iPlotIndex, int iPlotCount, bool bWrap, int iDegreeMin, int iDegreeMax) const
+int CvPlot::calculateMinutes(int iPlotIndex, int iPlotCount, bool bWrap, int iDegreeMin, int iDegreeMax, int iZero) const
 {
 	if (!bWrap)
 	{
 		iPlotCount--;
+
+		if (iZero > 0)
+		{
+			return (iPlotIndex - iZero) * (iPlotIndex < iZero ? abs(iDegreeMin) : abs(iDegreeMax)) * MINUTES_PER_DEGREE / (iPlotIndex < iZero ? iZero : iPlotCount - iZero);
+		}
 	}
-	return iPlotIndex * (iDegreeMax - iDegreeMin) * MINUTES_PER_DEGREE / iPlotCount + iDegreeMin * MINUTES_PER_DEGREE;
+
+	int iOffset = iPlotCount / 2 - iZero;
+	int iAdjustedIndex = (iPlotIndex + iOffset) % iPlotCount;
+
+	return iAdjustedIndex * (iDegreeMax - iDegreeMin) * MINUTES_PER_DEGREE / iPlotCount + iDegreeMin * MINUTES_PER_DEGREE;
 }
 
 int CvPlot::getLongitudeMinutes() const
@@ -4390,17 +4428,17 @@ int CvPlot::getLongitudeMinutes() const
 	if (GC.getMapINLINE().isWrapXINLINE())
 	{
 		// normal and toroidal
-		return calculateMinutes(getX_INLINE(), GC.getMapINLINE().getGridWidthINLINE(), true, MIN_LONGITUDE, MAX_LONGITUDE);
+		return calculateMinutes(getX_INLINE(), GC.getMapINLINE().getGridWidthINLINE(), true, MIN_LONGITUDE, MAX_LONGITUDE, GC.getMapINLINE().getPrimeMeridian());
 	}
 	else if (!GC.getMapINLINE().isWrapYINLINE())
 	{
 		// flat
-		return calculateMinutes(getX_INLINE(), GC.getMapINLINE().getGridWidthINLINE(), false, MIN_LONGITUDE, MAX_LONGITUDE);
+		return calculateMinutes(getX_INLINE(), GC.getMapINLINE().getGridWidthINLINE(), false, MIN_LONGITUDE, MAX_LONGITUDE, GC.getMapINLINE().getPrimeMeridian());
 	}
 	else
 	{
 		// tilted axis
-		return calculateMinutes(getY_INLINE(), GC.getMapINLINE().getGridHeightINLINE(), true, MIN_LONGITUDE, MAX_LONGITUDE);
+		return calculateMinutes(getY_INLINE(), GC.getMapINLINE().getGridHeightINLINE(), true, MIN_LONGITUDE, MAX_LONGITUDE, GC.getMapINLINE().getPrimeMeridian());
 	}
 }
 
@@ -4409,17 +4447,17 @@ int CvPlot::getLatitudeMinutes() const
 	if (GC.getMapINLINE().isWrapXINLINE())
 	{
 		// normal and toroidal
-		return calculateMinutes(getY_INLINE(), GC.getMapINLINE().getGridHeightINLINE(), GC.getMapINLINE().isWrapYINLINE(), GC.getMapINLINE().getBottomLatitude(), GC.getMapINLINE().getTopLatitude());
+		return calculateMinutes(getY_INLINE(), GC.getMapINLINE().getGridHeightINLINE(), GC.getMapINLINE().isWrapYINLINE(), GC.getMapINLINE().getBottomLatitude(), GC.getMapINLINE().getTopLatitude(), GC.getMapINLINE().getEquator());
 	}
 	else if (!GC.getMapINLINE().isWrapYINLINE())
 	{
 		// flat
-		return calculateMinutes(getY_INLINE(), GC.getMapINLINE().getGridHeightINLINE(), false, GC.getMapINLINE().getBottomLatitude(), GC.getMapINLINE().getTopLatitude());
+		return calculateMinutes(getY_INLINE(), GC.getMapINLINE().getGridHeightINLINE(), false, GC.getMapINLINE().getBottomLatitude(), GC.getMapINLINE().getTopLatitude(), GC.getMapINLINE().getEquator());
 	}
 	else
 	{
 		// tilted axis
-		return calculateMinutes(getX_INLINE(), GC.getMapINLINE().getGridWidthINLINE(), false, GC.getMapINLINE().getBottomLatitude(), GC.getMapINLINE().getTopLatitude());
+		return calculateMinutes(getX_INLINE(), GC.getMapINLINE().getGridWidthINLINE(), false, GC.getMapINLINE().getBottomLatitude(), GC.getMapINLINE().getTopLatitude(), GC.getMapINLINE().getEquator());
 	}
 }
 
@@ -6687,7 +6725,16 @@ int CvPlot::calculateNatureYield(YieldTypes eYield, TeamTypes eTeam, bool bIgnor
 	if (isPeak())
 	{
 		if (eTeam == INCA)
-			return 0 + GC.getYieldInfo(eYield).getLakeChange() + GC.getYieldInfo(eYield).getLakeChange() + GC.getYieldInfo(eYield).getHillsChange() + GC.getYieldInfo(eYield).getLakeChange();
+		{
+			if (eYield == YIELD_FOOD) 
+			{
+				return 2;
+			}
+			if (eYield == YIELD_PRODUCTION)
+			{
+				return 1;
+			}
+		}
 		else
 			return 0;
 	}
@@ -6794,6 +6841,13 @@ int CvPlot::calculateImprovementYieldChange(ImprovementTypes eImprovement, Yield
 	if (isHills())
 	{
 		iYield += GC.getImprovementInfo(eImprovement).getHillsYieldChange(eYield);
+	}
+
+	// Leoreth
+	int iCoastalYieldChange = GC.getImprovementInfo(eImprovement).getCoastalYieldChange(eYield);
+	if (iCoastalYieldChange != 0 && isCoastalLand())
+	{
+		iYield += iCoastalYieldChange;
 	}
 
 	if ((bOptimal) ? true : isIrrigationAvailable())
@@ -6908,6 +6962,26 @@ int CvPlot::calculateYield(YieldTypes eYield, bool bDisplay) const
 	}
 
 	iYield = calculateNatureYield(eYield, ((ePlayer != NO_PLAYER) ? GET_PLAYER(ePlayer).getTeam() : NO_TEAM));
+	
+	// Leoreth + Merijn: Burj Khalifa effect
+	if (ePlayer != NO_PLAYER)
+	{
+		if (getTerrainType() == TERRAIN_DESERT)
+		{
+			if (eYield == YIELD_FOOD || eYield == YIELD_COMMERCE)
+			{
+				pWorkingCity = getWorkingCity();
+				
+				if (pWorkingCity != NULL)
+				{
+					if (pWorkingCity->isHasBuildingEffect((BuildingTypes)BURJ_KHALIFA))
+					{
+						iYield = std::max(2, iYield);;
+					}
+				}
+			}
+		}
+	}
 
 	if (eImprovement != NO_IMPROVEMENT)
 	{
@@ -7047,13 +7121,39 @@ int CvPlot::calculateYield(YieldTypes eYield, bool bDisplay) const
 			}
 		}
 
+		// Leoreth: Temple of Kukulkan effect
+		if (getFeatureType() == FEATURE_RAINFOREST && eYield == YIELD_FOOD)
+		{
+			pWorkingCity = getWorkingCity();
+			
+			if (pWorkingCity != NULL)
+			{
+				if (pWorkingCity->isHasBuildingEffect((BuildingTypes)TEMPLE_OF_KUKULKAN))
+				{
+					if (!bDisplay || pWorkingCity->isRevealed(GC.getGameINLINE().getActiveTeam(), false))
+					{
+						iYield += 1;
+					}
+				}
+			}
+		}
+
+		// Leoreth: University of Sankore effect
+		if (GET_PLAYER(ePlayer).isHasBuildingEffect((BuildingTypes)UNIVERSITY_OF_SANKORE))
+		{
+			if (getTerrainType() == TERRAIN_DESERT && eYield == YIELD_COMMERCE)
+			{
+				iYield += 1;
+			}
+		}
+
 		//Rhye - start UP (not shown in debug mode)
 		if (ePlayer == MALI)
 		{
 			//if (getYield((YieldTypes)2) == 1)
-			if (!isWater())
+			if (!isWater() && eYield == YIELD_COMMERCE)
 			{
-				iYield += GC.getBonusInfo((BonusTypes)21).getYieldChange(eYield); //+1 commerce, same as fur
+				iYield += 1;
 			}
 		}
 		//Rhye - end UP
@@ -7061,9 +7161,9 @@ int CvPlot::calculateYield(YieldTypes eYield, bool bDisplay) const
 		// Leoreth: Tamil UP
 		if (ePlayer == TAMILS)
 		{
-			if (isWater())
+			if (isWater() && eYield == YIELD_COMMERCE)
 			{
-				iYield += GC.getBonusInfo((BonusTypes)21).getYieldChange(eYield);
+				iYield += 1;
 			}
 		}
 

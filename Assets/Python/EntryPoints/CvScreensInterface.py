@@ -58,6 +58,8 @@ from RFCUtils import utils
 import Victory as vic
 import CityNameManager as cnm
 import Congresses as cong
+import RiseAndFall as rnf
+
 gc = CyGlobalContext()
 
 def getStabilityLevel(argsList):
@@ -231,8 +233,9 @@ def showEraMovie(argsList):
 	
 spaceShip = CvSpaceShipScreen.CvSpaceShipScreen()
 def showSpaceShip(argsList):
-	if (-1 != CyGame().getActivePlayer()):
-		spaceShip.interfaceScreen(argsList[0])
+	showVictoryScreen(argsList)
+	#if (-1 != CyGame().getActivePlayer()):
+	#	spaceShip.interfaceScreen(argsList[0])
 	
 replayScreen = CvReplayScreen.CvReplayScreen(REPLAY_SCREEN)
 def showReplay(argsList):
@@ -1210,6 +1213,11 @@ def applyBriberyEvent(argsList):
 	
 def applyBriberyResultEvent(argsList):
 	data.currentCongress.applyBriberyResultEvent()
+	
+### Rise And Fall
+
+def applyNewCivSwitchEvent(argsList):
+	rnf.applyNewCivSwitchEvent(argsList)
 
 
 #######################################################################################

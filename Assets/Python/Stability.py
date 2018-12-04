@@ -44,9 +44,6 @@ tEraCorePopulationModifiers = (
 )
 
 def checkTurn(iGameTurn):
-	if data.bNoAIStability:
-		return
-	
 	for iPlayer in range(iNumPlayers):
 		if data.players[iPlayer].iTurnsToCollapse == 0:
 			data.players[iPlayer].iTurnsToCollapse = -1
@@ -117,9 +114,6 @@ def onCityAcquired(city, iOwner, iPlayer):
 		checkBarbarianCollapse(iOwner)
 		
 def onCityRazed(iPlayer, city):
-	if data.bNoAIStability:
-		return
-	
 	iOwner = city.getOwner()
 	
 	if iOwner == iBarbarian: return
@@ -138,17 +132,11 @@ def onTechAcquired(iPlayer, iTech):
 	checkStability(iPlayer)
 	
 def onVassalState(iMaster, iVassal):
-	if data.bNoAIStability:
-		return
-		
 	checkStability(iMaster, True)
 	
 	balanceStability(iVassal, iStabilityShaky)
 	
 def onChangeWar(bWar, iTeam, iOtherTeam):
-	if data.bNoAIStability:
-		return
-	
 	if iTeam < iNumPlayers and iOtherTeam < iNumPlayers:
 		checkStability(iTeam, not bWar)
 		checkStability(iOtherTeam, not bWar)
@@ -176,16 +164,10 @@ def onGreatPersonBorn(iPlayer):
 	checkStability(iPlayer, True)
 	
 def onCombatResult(iWinningPlayer, iLosingPlayer, iLostPower):
-	if data.bNoAIStability:
-		return
-	
 	if iWinningPlayer == iBarbarian and iLosingPlayer < iNumPlayers:
 		data.players[iLosingPlayer].iBarbarianLosses += 1
 	
 def onCivSpawn(iPlayer):
-	if data.bNoAIStability:
-		return
-	
 	for iOlderNeighbor in lOlderNeighbours[iPlayer]:
 		if gc.getPlayer(iOlderNeighbor).isAlive() and getStabilityLevel(iOlderNeighbor) > iStabilityShaky:
 			decrementStability(iOlderNeighbor)
@@ -213,10 +195,6 @@ def isImmune(iPlayer):
 	pPlayer = gc.getPlayer(iPlayer)
 	iGameTurn = gc.getGame().getGameTurn()
 	
-	# immune if stability disabled
-	if data.bNoAIStability:
-		return True
-	
 	# must not be dead
 	if not pPlayer.isAlive() or pPlayer.getNumCities() == 0:
 		return True
@@ -235,10 +213,6 @@ def isImmune(iPlayer):
 		
 	# immune right after resurrection
 	if iGameTurn - pPlayer.getLatestRebellionTurn() < utils.getTurns(10):
-		return True
-		
-	# human player immunity if option is enabled
-	if iPlayer == utils.getHumanID() and data.bNoHumanStability:
 		return True
 		
 	return False
@@ -317,9 +291,6 @@ def determineStabilityLevel(iCurrentLevel, iStability, bFall = False):
 	return iCurrentLevel
 
 def checkStability(iPlayer, bPositive = False, iMaster = -1):
-	if data.bNoAIStability:
-		return
-	
 	pPlayer = gc.getPlayer(iPlayer)
 	iGameTurn = gc.getGame().getGameTurn()
 	
@@ -385,6 +356,8 @@ def secedeCities(iPlayer, lCities, bRazeMinorCities = False):
 	lPossibleMinors = getPossibleMinors(iPlayer)
 	dPossibleResurrections = {}
 	
+	bComplete = len(lCities) == gc.getPlayer(iPlayer).getNumCities()
+	
 	utils.clearPlague(iPlayer)
 	
 	# if smaller cities are supposed to be destroyed, do that first
@@ -446,10 +419,10 @@ def secedeCities(iPlayer, lCities, bRazeMinorCities = False):
 		# claim based on original owner
 		if iClaim == -1:
 			iOriginalOwner = city.getOriginalOwner()
-			if cityPlot.getSettlerValue(iOriginalOwner) >= 90 and gc.getPlayer(iOriginalOwner).isAlive() and iOriginalOwner != iPlayer and utils.getHumanID() != iOriginalOwner:
+			if cityPlot.getSettlerValue(iOriginalOwner) >= 90 and not cityPlot.isCore(iPlayer) and gc.getPlayer(iOriginalOwner).isAlive() and iOriginalOwner != iPlayer and utils.getHumanID() != iOriginalOwner:
 				if iOriginalOwner < iNumPlayers and iGameTurnYear < tFall[iOriginalOwner]:
 					# cities lost too long ago don't return
-					if city.getGameTurnPlayerLost(iOriginalOwner) >= gc.getGame().getGameTurn() - utils.getTurns(50):
+					if city.getGameTurnPlayerLost(iOriginalOwner) >= gc.getGame().getGameTurn() - utils.getTurns(25):
 						iClaim = iOriginalOwner
 						utils.debugTextPopup('Secede ' + gc.getPlayer(iPlayer).getCivilizationAdjective(0) + ' ' + city.getName() + ' to ' + gc.getPlayer(iClaim).getCivilizationShortDescription(0) + '.\nReason: original owner.')
 				
@@ -530,6 +503,11 @@ def secedeCities(iPlayer, lCities, bRazeMinorCities = False):
 		utils.relocateUnitsToCore(iPlayer, lRelocatedUnits)
 	else:
 		utils.killUnits(lRelocatedUnits)
+		
+	# notify for partial secessions
+	if not bComplete:
+		if gc.getPlayer(utils.getHumanID()).canContact(iPlayer):
+			CyInterface().addMessage(utils.getHumanID(), False, iDuration, localText.getText("TXT_KEY_STABILITY_CITIES_SECEDED", (gc.getPlayer(iPlayer).getCivilizationDescription(0), len(lCededCities))), "", 0, "", ColorTypes(iWhite), -1, -1, True, True)
 		
 	# execute possible resurrections
 	# might need a more sophisticated approach to also catch minors and other unstable civs in their respawn area
@@ -711,8 +689,11 @@ def calculateStability(iPlayer):
 		
 		# Expansion
 		if plot.isCore(iPlayer):
-			iCorePopulation += iCorePopulationModifier * iPopulation / 100
-			if bSingleCoreCity and iCurrentEra > iAncient: iCorePopulation += iCorePopulationModifier * iPopulation / 100
+			iStabilityPopulation = iCorePopulationModifier * iPopulation / 100
+			if bSingleCoreCity and iCurrentEra > iAncient: iStabilityPopulation += iCorePopulationModifier * iPopulation / 100
+			
+			iCorePopulation += iStabilityPopulation
+			city.setStabilityPopulation(iStabilityPopulation)
 		else:
 			iOwnCulture = plot.getCulture(iPlayer)
 			
@@ -758,7 +739,10 @@ def calculateStability(iPlayer):
 			# cap
 			if iModifier < -1: iModifier = -1
 			
-			iPeripheryPopulation += (100 + iModifier * 50) * iPopulation / 100
+			iStabilityPopulation = (100 + iModifier * 50) * iPopulation / 100
+			
+			iPeripheryPopulation += iStabilityPopulation
+			city.setStabilityPopulation(-iStabilityPopulation)
 			
 		# Recent conquests
 		if bHistorical and iGameTurn - city.getGameTurnAcquired() <= utils.getTurns(20):
@@ -911,6 +895,9 @@ def calculateStability(iPlayer):
 		if iCurrentEra <= iClassical: iCivicEraTechStability += 2
 		elif iCurrentEra >= iIndustrial: iCivicEraTechStability -= 5
 		
+	if iCivicTerritory == iIsolationism:
+		if iCurrentEra >= iIndustrial: iCivicEraTechStability -= (iCurrentEra - iRenaissance) * 3
+		
 	if tPlayer.isHasTech(iRepresentation):
 		if iCivicGovernment not in [iRepublic, iDemocracy] and iCivicLegitimacy not in [iIdeology, iConstitution]: iCivicEraTechStability -= 5
 		
@@ -940,6 +927,9 @@ def calculateStability(iPlayer):
 		
 	elif iStateReligion == iBuddhism:
 		if iCivicReligion == iMonasticism: iCivicEraTechStability += 2
+		
+	elif iStateReligion == iConfucianism:
+		if iCivicTerritory == iIsolationism: iCivicEraTechStability += 3
 		
 	if utils.getHumanID() != iPlayer and iCivicEraTechStability < 0: iCivicEraTechStability /= 2
 	
@@ -1228,6 +1218,7 @@ def getCivicStability(iPlayer, lCivics):
 	if iIsolationism in civics:
 		if civics.any(iMerchantTrade, iFreeEnterprise): iStability -= 4
 		if civics.any(iRegulatedTrade, iCentralPlanning): iStability += 3
+		if iMeritocracy in civics: iStability += 3
 		
 	return iStability
 	
@@ -1260,7 +1251,7 @@ def calculateTrendScore(lTrend):
 	return 0
 	
 def calculateSumScore(lScores, iThreshold = 1):
-	lThresholdScores = [sign(iScore) for iScore in lScores if iScore >= iThreshold]
+	lThresholdScores = [sign(iScore) for iScore in lScores if abs(iScore) >= iThreshold]
 	iSum = sum(lThresholdScores)
 	iCap = len(lScores) / 2
 	

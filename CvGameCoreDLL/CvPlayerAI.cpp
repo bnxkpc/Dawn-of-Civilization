@@ -1544,6 +1544,7 @@ DomainTypes CvPlayerAI::AI_unitAIDomainType(UnitAITypes eUnitAI) const
 	case UNITAI_DEFENSE_AIR:
 	case UNITAI_CARRIER_AIR:
 	case UNITAI_MISSILE_AIR:
+	case UNITAI_SATELLITE:
 		return DOMAIN_AIR;
 		break;
 
@@ -3502,7 +3503,6 @@ TechTypes CvPlayerAI::AI_bestTech(int iMaxPathLength, bool bIgnoreCost, bool bAs
 	int iTempValue;
 	int iBuildValue;
 	int iBonusValue;
-	int iMilitaryValue;
 	int iI, iJ, iK, iL;
 
 	pCapitalCity = getCapitalCity();
@@ -3838,6 +3838,7 @@ TechTypes CvPlayerAI::AI_bestTech(int iMaxPathLength, bool bIgnoreCost, bool bAs
 												iTempValue += (kImprovement.getRiverSideYieldChange(iK) * 100);
 												iTempValue += (kImprovement.getHillsYieldChange(iK) * 100);
 												iTempValue += (kImprovement.getIrrigatedYieldChange(iK) * 150);
+												iTempValue += (kImprovement.getCoastalYieldChange(iK) * 50); // Leoreth
 
 												// land food yield is more valueble
 												if (iK == YIELD_FOOD && !kImprovement.isWater())
@@ -4033,393 +4034,15 @@ TechTypes CvPlayerAI::AI_bestTech(int iMaxPathLength, bool bIgnoreCost, bool bAs
 									{
 										if (isTechRequiredForUnit(((TechTypes)iI), eLoopUnit))
 										{
-											CvUnitInfo& kLoopUnit = GC.getUnitInfo(eLoopUnit);
-											iValue += 200;
-											int iUnitValue = 0;
-											int iNavalValue = 0;
-
-											if ((GC.getUnitClassInfo((UnitClassTypes)iJ).getDefaultUnitIndex()) != (GC.getCivilizationInfo(getCivilizationType()).getCivilizationUnits(iJ)))
-                                            {
-                                                //UU
-                                                iUnitValue += 600;
-                                            }
-
-											if (kLoopUnit.getPrereqAndTech() == iI)
-											{
-												iMilitaryValue = 0;
-
-												switch (kLoopUnit.getDefaultUnitAIType())
-												{
-												case UNITAI_UNKNOWN:
-												case UNITAI_ANIMAL:
-													break;
-
-												case UNITAI_SETTLE:
-													iUnitValue += 1200;
-													break;
-
-												case UNITAI_WORKER:
-													iUnitValue += 800;
-													break;
-
-												case UNITAI_ATTACK:
-													iMilitaryValue += ((bWarPlan) ? 600 : 300);
-													iMilitaryValue += (AI_isDoStrategy(AI_STRATEGY_DAGGER ) ? 800 : 0);
-													iUnitValue += 100;
-													break;
-
-												case UNITAI_ATTACK_CITY:
-													iMilitaryValue += ((bWarPlan) ? 800 : 400);
-													iMilitaryValue += (AI_isDoStrategy(AI_STRATEGY_DAGGER ) ? 800 : 0);
-													if (kLoopUnit.getBombardRate() > 0)
-													{
-														iMilitaryValue += 200;
-
-														if (AI_calculateTotalBombard(DOMAIN_LAND) == 0)
-														{
-															iMilitaryValue += 800;
-															if (AI_isDoStrategy(AI_STRATEGY_DAGGER))
-															{
-																iMilitaryValue += 1000;
-															}
-														}
-													}
-													iUnitValue += 100;
-													break;
-
-												case UNITAI_COLLATERAL:
-													iMilitaryValue += ((bWarPlan) ? 600 : 300);
-													iMilitaryValue += (AI_isDoStrategy(AI_STRATEGY_DAGGER ) ? 500 : 0);
-													break;
-
-												case UNITAI_PILLAGE:
-													iMilitaryValue += ((bWarPlan) ? 200 : 100);
-													break;
-
-												case UNITAI_RESERVE:
-													iMilitaryValue += ((bWarPlan) ? 200 : 100);
-													break;
-
-												case UNITAI_COUNTER:
-													iMilitaryValue += ((bWarPlan) ? 600 : 300);
-													iMilitaryValue += (AI_isDoStrategy(AI_STRATEGY_DAGGER ) ? 600 : 0);
-													break;
-
-												case UNITAI_PARADROP:
-													iMilitaryValue += ((bWarPlan) ? 600 : 300);
-													break;
-
-												case UNITAI_CITY_DEFENSE:
-													iMilitaryValue += ((bWarPlan) ? 800 : 400);
-													iMilitaryValue += ((!bCapitalAlone) ? 400 : 200);
-													iUnitValue += ((iHasMetCount > 0) ? 800 : 200);
-													break;
-
-												case UNITAI_CITY_COUNTER:
-													iMilitaryValue += ((bWarPlan) ? 800 : 400);
-													break;
-
-												case UNITAI_CITY_SPECIAL:
-													iMilitaryValue += ((bWarPlan) ? 800 : 400);
-													break;
-
-												case UNITAI_EXPLORE:
-													iUnitValue += ((bCapitalAlone) ? 100 : 200);
-													break;
-
-												case UNITAI_MISSIONARY:
-												case UNITAI_PERSECUTOR:
-													iUnitValue += ((getStateReligion() != NO_RELIGION) ? 600 : 300);
-													break;
-
-												case UNITAI_PROPHET:
-												case UNITAI_ARTIST:
-												case UNITAI_SCIENTIST:
-												case UNITAI_GENERAL:
-												case UNITAI_MERCHANT:
-												case UNITAI_ENGINEER:
-												case UNITAI_STATESMAN:
-													break;
-
-												case UNITAI_SPY:
-													iMilitaryValue += ((bWarPlan) ? 100 : 50);
-													break;
-
-												case UNITAI_ICBM:
-													iMilitaryValue += ((bWarPlan) ? 200 : 100);
-													break;
-
-												case UNITAI_WORKER_SEA:
-													if (iCoastalCities > 0)
-													{
-														// note, workboat improvements are already counted in the improvement section above
-													}
-													break;
-
-												case UNITAI_ATTACK_SEA:
-													if (iCoastalCities > 0)
-													{
-														iMilitaryValue += ((bWarPlan) ? 200 : 100);
-													}
-													iNavalValue += 100;
-													break;
-
-												case UNITAI_RESERVE_SEA:
-													if (iCoastalCities > 0)
-													{
-														iMilitaryValue += ((bWarPlan) ? 100 : 50);
-													}
-													iNavalValue += 100;
-													break;
-
-												case UNITAI_ESCORT_SEA:
-													if (iCoastalCities > 0)
-													{
-														iMilitaryValue += ((bWarPlan) ? 100 : 50);
-													}
-													iNavalValue += 100;
-													break;
-
-												case UNITAI_EXPLORE_SEA:
-													if (iCoastalCities > 0)
-													{
-														iUnitValue += ((bCapitalAlone) ? 1800 : 600);
-													}
-													break;
-
-												case UNITAI_ASSAULT_SEA:
-													if (iCoastalCities > 0)
-													{
-														iMilitaryValue += ((bWarPlan || bCapitalAlone) ? 400 : 200);
-													}
-													iNavalValue += 200;
-													break;
-
-												case UNITAI_SETTLER_SEA:
-													if (iCoastalCities > 0)
-													{
-														iUnitValue += ((bWarPlan || bCapitalAlone) ? 100 : 200);
-													}
-													iNavalValue += 200;
-													break;
-
-												case UNITAI_MISSIONARY_SEA:
-													if (iCoastalCities > 0)
-													{
-														iUnitValue += 100;
-													}
-													break;
-
-												case UNITAI_SPY_SEA:
-													if (iCoastalCities > 0)
-													{
-														iMilitaryValue += 100;
-													}
-													break;
-
-												case UNITAI_CARRIER_SEA:
-													if (iCoastalCities > 0)
-													{
-														iMilitaryValue += ((bWarPlan) ? 100 : 50);
-													}
-													break;
-
-												case UNITAI_MISSILE_CARRIER_SEA:
-													if (iCoastalCities > 0)
-													{
-														iMilitaryValue += ((bWarPlan) ? 100 : 50);
-													}
-													break;
-
-												case UNITAI_PIRATE_SEA:
-													if (iCoastalCities > 0)
-													{
-														iMilitaryValue += 100;
-													}
-													iNavalValue += 100;
-													break;
-
-												case UNITAI_ATTACK_AIR:
-													iMilitaryValue += ((bWarPlan) ? 1200 : 800);
-													break;
-
-												case UNITAI_DEFENSE_AIR:
-													iMilitaryValue += ((bWarPlan) ? 1200 : 800);
-													break;
-
-												case UNITAI_CARRIER_AIR:
-													if (iCoastalCities > 0)
-													{
-														iMilitaryValue += ((bWarPlan) ? 200 : 100);
-													}
-													iNavalValue += 400;
-													break;
-
-												case UNITAI_MISSILE_AIR:
-													iMilitaryValue += ((bWarPlan) ? 200 : 100);
-													break;
-
-												default:
-													FAssert(false);
-													break;
-												}
-
-												if (iHasMetCount == 0)
-												{
-													iMilitaryValue /= 2;
-												}
-
-												if (bCapitalAlone)
-												{
-													iMilitaryValue *= 2;
-													iMilitaryValue /= 3;
-												}
-
-												if (kLoopUnit.getUnitAIType(UNITAI_ASSAULT_SEA))
-												{
-													int iAssaultValue = 0;
-													UnitTypes eExistingUnit;
-													if (AI_bestAreaUnitAIValue(UNITAI_ASSAULT_SEA, NULL, &eExistingUnit) == 0)
-													{
-														iAssaultValue += 1000;
-													}
-													else
-													{
-														iAssaultValue += 100 * std::max(0, AI_unitImpassableCount(eLoopUnit) - AI_unitImpassableCount(eExistingUnit));
-														if (iAssaultValue > 0)
-														{
-															iAssaultValue += 200;
-														}
-														int iNewCapacity = kLoopUnit.getMoves() * kLoopUnit.getCargoSpace();
-														int iOldCapacity = GC.getUnitInfo(eExistingUnit).getMoves() * GC.getUnitInfo(eExistingUnit).getCargoSpace();
-/************************************************************************************************/
-/* UNOFFICIAL_PATCH                       09/28/09                       Afforess & jdog5000    */
-/*                                                                                              */
-/* Bugfix                                                                                       */
-/************************************************************************************************/
-/* original bts code
-														iAssaultValue += (800 * (iNewCapacity - iOldCapacity)) / iOldCapacity;
-*/
-														iAssaultValue += (800 * (iNewCapacity - iOldCapacity)) / std::max(1, iOldCapacity);
-/************************************************************************************************/
-/* UNOFFICIAL_PATCH                        END                                                  */
-/************************************************************************************************/
-													}
-
-													if (iAssaultValue > 0)
-													{
-														int iLoop;
-														CvArea* pLoopArea;
-														bool bIsAnyAssault = false;
-														for(pLoopArea = GC.getMapINLINE().firstArea(&iLoop); pLoopArea != NULL; pLoopArea = GC.getMapINLINE().nextArea(&iLoop))
-														{
-															if (AI_isPrimaryArea(pLoopArea))
-															{
-																if (pLoopArea->getAreaAIType(getTeam()) == AREAAI_ASSAULT)
-																{
-																	bIsAnyAssault = true;
-																	break;
-																}
-															}
-														}
-														if (bIsAnyAssault)
-														{
-															iNavalValue += iAssaultValue;
-														}
-														else
-														{
-															iNavalValue += iAssaultValue / 6;
-														}
-													}
-												}
-
-												if (iNavalValue > 0)
-												{
-													if (getCapitalCity() != NULL)
-													{
-														iNavalValue *= 2 * (getNumCities() - getCapitalCity()->area()->getCitiesPerPlayer(getID()));
-														iNavalValue /= getNumCities();
-
-														iUnitValue += iNavalValue;
-													}
-												}
-
-												iUnitValue += iMilitaryValue;
-
-												if (AI_totalUnitAIs((UnitAITypes)(kLoopUnit.getDefaultUnitAIType())) == 0)
-												{
-													// do not give bonus to seagoing units if they are worthless
-													if (iUnitValue > 0)
-													{
-														iUnitValue *= 2;
-													}
-
-													if (kLoopUnit.getDefaultUnitAIType() == UNITAI_EXPLORE)
-													{
-														if (pCapitalCity != NULL)
-														{
-															iUnitValue += (AI_neededExplorers(pCapitalCity->area()) * 400);
-														}
-													}
-
-													if (kLoopUnit.getDefaultUnitAIType() == UNITAI_EXPLORE_SEA)
-													{
-														iUnitValue += 400;
-														iUnitValue += ((GC.getGameINLINE().countCivTeamsAlive() - iHasMetCount) * 200);
-													}
-												}
-												//Rhye - limit this to seafaring civs?
-												//Early Expansion by sea
-												if (kLoopUnit.getUnitAIType(UNITAI_SETTLER_SEA))
-												{
-													if (AI_totalUnitAIs(UNITAI_SETTLER_SEA) == 0)
-													{
-														if (getCapitalCity() != NULL)
-														{
-															CvArea* pWaterArea = getCapitalCity()->waterArea();
-															if (pWaterArea != NULL)
-															{
-																int iBestAreaValue = 0;
-																int iBestOtherValue = 0;
-																AI_getNumAreaCitySites(getCapitalCity()->getArea(), iBestAreaValue);
-																AI_getNumAdjacentAreaCitySites(pWaterArea->getID(), getCapitalCity()->getArea(), iBestOtherValue);
-
-																if (iBestAreaValue == 0)
-																{
-																	iUnitValue += 2000;
-																}
-																else if (iBestAreaValue < iBestOtherValue)
-																{
-																	iUnitValue += 1000;
-																}
-																else if (iBestOtherValue > 0)
-																{
-																	iUnitValue += 500;
-																}
-															}
-														}
-													}
-												}
-
-												if (iPathLength <= 1)
-												{
-													if (getTotalPopulation() > 5)
-													{
-														if (isWorldUnitClass((UnitClassTypes)iJ))
-														{
-															if (!(GC.getGameINLINE().isUnitClassMaxedOut((UnitClassTypes)iJ)))
-															{
-																bEnablesUnitWonder = true;
-																}
-															}
-														}
-													}
-
-												iValue += iUnitValue;
-												}
-											}
+											iValue += AI_getUnitEnabledValue(eLoopUnit, (TechTypes)iI, pCapitalCity, iHasMetCount, iCoastalCities, bWarPlan, bCapitalAlone);
 										}
 									}
+
+									if (!bEnablesUnitWonder && AI_enablesUnitWonder((UnitClassTypes)iJ, iPathLength))
+									{
+										bEnablesUnitWonder = true;
+									}
+								}
 									
 								if (bEnablesUnitWonder)
 								{
@@ -4933,15 +4556,12 @@ TechTypes CvPlayerAI::AI_bestTech(int iMaxPathLength, bool bIgnoreCost, bool bAs
 									iValue /= ((iCVValue < 100) ? 400 : 100);
 								}
 
-								//Rhye - start switch
 								if (iI == CONSTRUCTION || iI == ENGINEERING)
+								{
 									iValue *= 2;
-								/*if (iI == FISSION) {
-									iValue *= 4;
-									iValue /= 3;
-								}*/
+								}
 
-								if (iI == GUILDS /*|| iI == MILITARY_TRADITION*/) {
+								if (iI == GUILDS) {
 									iValue *= 3;
 									iValue /= 2;
 								}
@@ -4952,421 +4572,30 @@ TechTypes CvPlayerAI::AI_bestTech(int iMaxPathLength, bool bIgnoreCost, bool bAs
 								}
 
 								if (getCurrentEra() < GC.getTechInfo((TechTypes)iI).getEra()) { //otherwise they tend to beeline
-									/*iValue *= 4;
-									iValue /= 5;*/
 									iValue *= 3;
 									iValue /= 4;
 								}
 
-								switch (getID())
+								// Leoreth: tech preference defined in Python
+								int iPreference = getTechPreference((TechTypes)iI);
+
+								if (iPreference > 0)
 								{
-								case EGYPT:
-									if (iI == MASONRY)
-										iValue *= 3;
-									if (iI == DIVINATION || iI == PHILOSOPHY || iI == PRIESTHOOD)
-										iValue *= 2;
-									if (iI == ALLOYS)
-										iValue /= 2;
-									if (iI == BLOOMERY)
-										iValue /= 5;
-									break;
-								case CHINA:
-									if (iI == DIVINATION || iI == SAILING)
-										iValue /= 2;
-									if (iI == AESTHETICS || iI == CONTRACT)
-										iValue *= 4;
-									if (iI == WRITING && (!(GET_PLAYER((PlayerTypes)BABYLONIA).isHuman()) || GET_TEAM((TeamTypes)BABYLONIA).isHasTech((TechTypes)WRITING)))
-										iValue *= 4;	// fair conditions for the Babylonian UHV, otherwise even more luck dependent
-									if (iI == GUNPOWDER || iI == PAPER || iI == PRINTING || iI == COMPASS)
-										iValue *= 2;
-									if (iI == FIREARMS)
-										iValue /= 5;
-									if (iI == CIVIL_SERVICE) {
-										iValue *= 3;
-										iValue /= 2;
-									}
-									if (iI == CONSTRUCTION)
-										iValue *= 2;
-									if (iI == COMPANIES)
-										iValue /= 4;
-									if (iI == EXPLORATION || iI == OPTICS || iI == GEOGRAPHY || iI == THEOLOGY || iI == FINANCE || iI == EDUCATION || iI == LOGISTICS || iI == COMBINED_ARMS)
-										iValue /= 4;
-									if (iI == CIVIL_LIBERTIES || iI == HUMANITIES || iI == ACADEMIA)
-										iValue /= 10;
-									break;
-								case BABYLONIA:
-									if (iI == PRIESTHOOD && !GC.getGame().isReligionFounded((ReligionTypes)BUDDHISM))
-										iValue /= 5;
-									if (iI == WRITING || iI == CONTRACT || iI == CALENDAR)
-										iValue *= 3;
-									if (iI == MASONRY || iI == PROPERTY || iI == DIVINATION || iI == CONSTRUCTION)
-										iValue *= 2;
-									if (iI == MATHEMATICS || iI == ALLOYS || iI == BLOOMERY || iI == STEEL)
-										iValue /= 3;
-									break;
-								case HARAPPA:
-									if (iI == MASONRY || iI == PASTORALISM || iI == POTTERY)
-										iValue *= 2;
-									if (iI == MYTHOLOGY || iI == DIVINATION || iI == CEREMONY)
-										iValue /= 5;
-								case GREECE:
-									if (iI == THEOLOGY)
-									{
-										iValue *= 2;
-										iValue /= 3;
-									}
-									if (iI == CEMENT)
-										iValue *= 2;
-									if (iI == WRITING || iI == PHILOSOPHY || iI == AESTHETICS || iI == DIVINATION || iI == PHILOSOPHY || iI == LITERATURE || iI == MEDICINE)
-										iValue *= 3;
-									if (iI == SAILING || iI == SHIPBUILDING || iI == NAVIGATION)
-										iValue *= 4;
-									if (iI == ARITHMETICS || iI == MATHEMATICS)
-										iValue *= 2;
-									if (iI == CALENDAR)
-										iValue /= 3;
-									if (iI == MACHINERY || iI == PAPER || iI == PRINTING)
-										iValue /= 2;
-									//1800 - end
-									break;
-								case INDIA:
-									if (iI == PHILOSOPHY)
-										iValue *= 5;
-									if (iI == CEREMONY || iI == PRIESTHOOD)
-										iValue *= 20;
-									if (iI == ENGINEERING || iI == THEOLOGY || iI == CIVIL_SERVICE)
-										iValue /= 2;
-									break;
-								case PHOENICIA:
-									if (iI == COMPASS)
-										iValue *= 2;
-									if (iI == RIDING || iI == CURRENCY)
-										iValue *= 3;
-									break;
-								case POLYNESIA:
-									if (iI == COMPASS || iI == DIVINATION || iI == MASONRY)
-										iValue *= 2;
-									if (iI == ALLOYS || iI == BLOOMERY)
-										iValue /= 3;
-									break;
-								case PERSIA:
-									if (iI == THEOLOGY)
-										iValue /= 4;
-									if (iI == FISSION)
-									{
-										iValue *= 4;
-										iValue /= 3;
-									}
-									break;
-								case ROME:
-                                    if (iI == CALENDAR)
-                                        iValue /= 2;
-                                    if (iI == THEOLOGY)
-                                        iValue *= 3;
-                                    if (iI == CURRENCY || iI == LAW || iI == POLITICS)
-                                        iValue *= 2;
-                                    if (iI == CONSTRUCTION || iI == ENGINEERING)
-									{
-                                        iValue *= 3;
-                                        iValue /= 2;
-                                    }
-									break;
-								case TAMILS:
-									if (iI == CEMENT || iI == COMPASS || iI == CALENDAR)
-										iValue *= 2;
-									if (iI == SCIENTIFIC_METHOD || iI == ACADEMIA || iI == REPLACEABLE_PARTS)
-										iValue /= 2;
-									break;
-								case ETHIOPIA:
-									/*if (iI == MONOTHEISM)
-										iValue *= 2;
-									if (iI == THEOLOGY)
-										iValue *= 2;*/
-									break;
-                                case KOREA:
-                                    if (iI == OPTICS)
-                                        iValue /= 4;
-                                    if (iI == EXPLORATION || iI == REPLACEABLE_PARTS || iI == SCIENTIFIC_METHOD)
-                                        iValue /= 4;
-                                    if (iI == PRINTING || iI == GUNPOWDER)
-                                        iValue *= 3;
-								case MAYA:
-									if (iI == CALENDAR)
-										iValue *= 4;
-									if (iI == AESTHETICS)
-										iValue *= 3;
-									break;
-                                case BYZANTIUM:
-                                    if (iI == OPTICS || iI == FIREARMS || iI == EXPLORATION)
-                                        iValue /= 2;
-									else if (iI == FINANCE)
-										iValue /= 5;
-                                    break;
-								case JAPAN:
-									if (iI == FIREARMS)
-										iValue /= 3;
-									if (iI == MACHINERY || iI == GUILDS)
-										iValue /= 2;
-									if (iI == OPTICS || iI == EXPLORATION)
-										iValue /= 4;
-									if (iI == GEOGRAPHY || iI == REPLACEABLE_PARTS || iI == SCIENTIFIC_METHOD)
-										iValue /= 2;
-									if (iI == FEUDALISM || iI == FORTIFICATION)
-										iValue *= 4;
-									if (iI == ROBOTICS)
-										iValue *= 4;
-									break;
-								case VIKINGS:
-									if (iI == MACHINERY || iI == CIVIL_SERVICE)
-										iValue *= 3;
-									if (iI == COMPASS || iI == COMBINED_ARMS)
-										iValue *= 2;
-									break;
-								case ARABIA:
-									/*if (iI == FISSION) {
-										iValue *= 4;
-										iValue /= 3;
-									}*/
-									if (iI == SCHOLARSHIP || iI == ALCHEMY)
-										iValue *= 3;
-									else if (iI == FINANCE || iI == FIREARMS || iI == COMPANIES)
-									    iValue /= 5;
-									else if (iI == PAPER)
-										iValue /= 2;
-									break;
-								case TIBET:
-									if (iI == PHILOSOPHY)
-										iValue *= 3;
-									if (iI == ENGINEERING || iI == PAPER || iI == THEOLOGY || iI == DOCTRINE)
-										iValue *= 2;
-									break;
-								case INDONESIA:
-									if (iI == AESTHETICS || iI == ARTISANRY)
-										iValue *= 3;
-									else if (iI == EXPLORATION)
-										iValue /= 2;
-									break;
-								case MOORS:
-									if (iI == EXPLORATION || iI == GUILDS)
-										iValue /= 4;
-									if (iI == CIVIL_SERVICE)
-										iValue *= 2;
-								case SPAIN:
-									if (iI == CARTOGRAPHY || iI == EXPLORATION || iI == COMPASS)
-										iValue *= 10;
-									if (iI == PATRONAGE)
-										iValue *= 5;
-									if (iI == FIREARMS || iI == REPLACEABLE_PARTS)
-										iValue *= 3;
-									if (iI == GUILDS || iI == GUNPOWDER || iI == CHEMISTRY)
-									{
-										iValue *= 3;
-										iValue /= 2;
-									}
-									break;
-								case FRANCE:
-									if (iI == EXPLORATION || iI == GEOGRAPHY || iI == LOGISTICS || iI == PATRONAGE || iI == MEASUREMENT || iI == ACADEMIA)
-										iValue *= 2;
-									if (iI == EDUCATION || iI == FEUDALISM || iI == CHEMISTRY || iI == SOCIOLOGY)
-									{
-										iValue *= 3;
-										iValue /= 2;
-									}
-									if (iI == FISSION)
-									{
-										iValue *= 5;
-										iValue /= 4;
-									}
-									if (iI == REPLACEABLE_PARTS)
-										iValue *= 3;
-									break;
-								case KHMER:
-									if (iI == PHILOSOPHY || iI == SAILING || iI == CALENDAR || iI == CIVIL_SERVICE)
-										iValue *= 3;
-									if (iI == CURRENCY || iI == EXPLORATION)
-										iValue /= 3;
-									if (iI == AESTHETICS)
-										iValue *= 2;
-									break;
-								case ENGLAND:
-									if (iI == EXPLORATION || iI == GEOGRAPHY)
-										iValue *= 4;
-									if (iI == REPLACEABLE_PARTS || iI == LOGISTICS)
-										iValue *= 3;
-									if (iI == EDUCATION || iI == GUILDS || iI == CHEMISTRY)
-									{
-										iValue *= 3;
-										iValue /= 2;
-									}
-									if (iI == CIVIL_LIBERTIES)
-										iValue *= 2;
-									break;
-								case HOLY_ROME:
-									if (iI == ACADEMIA || iI == PRINTING)
-										iValue *= 5;
-									if (iI == EDUCATION || iI == GUILDS || iI == OPTICS)
-									{
-										iValue *= 3;
-										iValue /= 2;
-									}
-									if (iI == REPLACEABLE_PARTS)
-										iValue *= 2;
-									if (iI == FISSION)
-									{
-										iValue *= 5;
-										iValue /= 4;
-									}
-									break;
-								case RUSSIA:
-									if (iI == MACROECONOMICS)
-										iValue *= 3;
-									if (iI == COMBINED_ARMS || iI == REPLACEABLE_PARTS)
-										iValue *= 3;
-									if (iI == HERITAGE || iI == PATRONAGE || iI == URBAN_PLANNING)
-									{
-										iValue *= 3;
-										iValue /= 2;
-									}
-									if (iI == PHILOSOPHY || iI == PRINTING || iI == CIVIL_LIBERTIES || iI == SOCIAL_CONTRACT || iI == REPRESENTATION)
-										iValue /= 2;
-									if (iI == FISSION) {
-										iValue *= 5;
-										iValue /= 4;
-									}
-									break;
-								case MALI:
-									if (iI == EDUCATION)
-										iValue *= 3;
-									break;
-								case TURKEY:
-									if (iI == GUNPOWDER || iI == FIREARMS || iI == COMBINED_ARMS)
-										iValue *= 3;
-									if (iI == JUDICIARY)
-										iValue *= 2;
-									break;
-								case MUGHALS:
-									if (iI == REPLACEABLE_PARTS || iI == SCIENTIFIC_METHOD || iI == COMBINED_ARMS || iI == EXPLORATION)
-										iValue /= 3;
-									if (iI == HUMANITIES)
-										iValue *= 3;
-									if (iI == PHILOSOPHY || iI == EDUCATION || iI == PAPER || iI == PATRONAGE)
-										iValue *= 2;
-									if (iI == ENGINEERING)
-									{
-										iValue *= 3;
-										iValue /= 2;
-									}
-									break;
-								case POLAND:
-									if (iI == SOCIAL_CONTRACT || iI == OPTICS)
-										iValue *= 2;
-									if (iI == COMBINED_ARMS || iI == CIVIL_LIBERTIES)
-										iValue *= 3;
-								case PORTUGAL:
-									if (iI == REPLACEABLE_PARTS)
-										iValue *= 2;
-									if (iI == COMPANIES || iI == PATRONAGE)
-										iValue *= 5;
-									if (iI == CARTOGRAPHY || iI == EXPLORATION || iI == OPTICS || iI == COMPASS)
-										iValue *= 10;
-									break;
-								case INCA:
-									if (iI == CONSTRUCTION || iI == CALENDAR)
-										iValue *= 4;
-									if (iI == FEUDALISM)
-										iValue /= 4;
-									if (iI == MACHINERY || iI == GUNPOWDER || iI == GUILDS)
-										iValue /= 2;
-									break;
-								case ITALY:
-                                    if (iI == RADIO || iI == PSYCHOLOGY || iI == FINANCE || iI == OPTICS || iI == PATRONAGE || iI == REPLACEABLE_PARTS || iI == HUMANITIES || iI == ACADEMIA)
-                                        iValue *= 2;
-                                    if (iI == FISSION)
-									{
-                                        iValue *= 5;
-                                        iValue /= 4;
-                                    }
-									break;
-								case MONGOLIA:
-									if (iI == PAPER)
-									{
-										iValue *= 3;
-										iValue /= 2;
-									}
-									if (iI == FIREARMS || iI == COMBINED_ARMS)
-										iValue /= 4;
-									break;
-								case AZTECS:
-									if (iI == CONSTRUCTION)
-										iValue *= 4;
-									if (iI == LITERATURE)
-										iValue *= 2;
-									if (iI == FEUDALISM)
-										iValue /= 4;
-									if (iI == MACHINERY || iI == GUNPOWDER || iI == GUILDS)
-										iValue /= 2;
-									break;
-								case THAILAND:
-									if (iI == CARTOGRAPHY || iI == EXPLORATION)
-										iValue /= 5;
-									break;
-								case NETHERLANDS:
-									if (iI == EXPLORATION || iI == OPTICS || iI == GEOGRAPHY || iI == REPLACEABLE_PARTS || iI == LOGISTICS || iI == ECONOMICS || iI == CIVIL_LIBERTIES || iI == HUMANITIES || iI == ACADEMIA)
-										iValue *= 2;
-									if (iI == CHEMISTRY)
-									{
-										iValue *= 3;
-										iValue /= 2;
-									}
-									break;
-								case GERMANY:
-									if (iI == ENGINE || iI == INFRASTRUCTURE || iI == CHEMISTRY || iI == ASSEMBLY_LINE || iI == PSYCHOLOGY || iI == SOCIOLOGY)
-										iValue *= 2;
-									if (iI == FISSION)
-									{
-										iValue *= 5;
-										iValue /= 4;
-									}
-									break;
-								case AMERICA:
-									if (iI == FISSION)
-									{
-										iValue *= 5;
-										iValue /= 4;
-									}
-									if (iI == ECONOMICS || iI == ASSEMBLY_LINE)
-										iValue *= 2;
-									if (iI == RAILROAD || iI == REPRESENTATION)
-										iValue *= 3;
-									break;
-								case ARGENTINA:
-									if (iI == TELEVISION || iI == ELECTRICITY || iI == PSYCHOLOGY)
-										iValue *= 2;
-									if (iI == REFRIGERATION)
-										iValue *= 3;
-								case BRAZIL:
-									if (iI == RADIO || iI == SYNTHETICS || iI == ELECTRICITY || iI == ENGINE)
-										iValue *= 2;
-									break;
-								default:
-									break;
+									iValue *= iPreference;
+									iValue /= 10;
 								}
-								//Rhye - end
 
-								/*if (getID() != INDIA)
+								if (iPreference < 0)
 								{
-									if (iI == MEDITATION && !GC.getGame().isReligionFounded((ReligionTypes)HINDUISM))
-										iValue /= 3;
-									if (iI == PRIESTHOOD && !GC.getGame().isReligionFounded((ReligionTypes)BUDDHISM))
-										iValue /= 4;
-								}*/
+									iValue *= 10;
+									iValue /= iPreference;
+								}
 
-								// Leoreth: don't research Theology before player Ethiopia is even alive
-								if (GC.getGameINLINE().getActivePlayer() == ETHIOPIA && GC.getGameINLINE().getGameTurnYear() < getBirthYear())
+								if (getID() == CHINA && iI == WRITING)
 								{
-									if (iI == THEOLOGY)
+									if (!(GET_PLAYER((PlayerTypes)BABYLONIA).isHuman()) || GET_TEAM((TeamTypes)BABYLONIA).isHasTech((TechTypes)WRITING))
 									{
-										iValue /= 10;
+										iValue *= 4;
 									}
 								}
 
@@ -7660,7 +6889,7 @@ bool CvPlayerAI::AI_counterPropose(PlayerTypes ePlayer, const CLinkList<TradeDat
 						{
 							if (getNumTradeableBonuses((BonusTypes)(pNode->m_data.m_iData)) > 1)
 							{
-								iWeight += GET_PLAYER(ePlayer).AI_relativeBonusTradeVal(((BonusTypes)(pNode->m_data.m_iData)), getID(), 1);
+								iWeight += AI_relativeBonusTradeVal(((BonusTypes)(pNode->m_data.m_iData)), ePlayer, 1);
 								pabBonusDeal[pNode->m_data.m_iData] = true;
 							}
 						}
@@ -7884,7 +7113,8 @@ int CvPlayerAI::AI_bonusHealthVal(BonusTypes eBonus, int iChange) const
 // Leoreth
 int CvPlayerAI::AI_bonusEffectVal(BonusTypes eBonus, int iChange) const
 {
-	int iValue = 0;
+	int iHappinessValue = 0;
+	int iHealthValue = 0;
 
 	int iCurrentAffectedCities = getNumAvailableBonuses(eBonus) * GC.getBonusInfo(eBonus).getAffectedCities();
 	int iAffectedCitiesChange = iChange * GC.getBonusInfo(eBonus).getAffectedCities();
@@ -7907,17 +7137,27 @@ int CvPlayerAI::AI_bonusEffectVal(BonusTypes eBonus, int iChange) const
 		{
 			if (sgn(iChange) * (pCity->happyLevel() - pCity->unhappyLevel()) < 0)
 			{
-				iValue += iHappiness * iModifier;
+				iHappinessValue += iHappiness * iModifier;
 			}
 
 			if (sgn(iChange) * (pCity->goodHealth() - pCity->badHealth()) < 0)
 			{
-				iValue += iHealth * iModifier;
+				iHealthValue += iHealth * iModifier;
 			}
 		}
 	}
 
-	return iValue;
+	if (abs(iHappinessValue) < 50 && GC.getBonusInfo(eBonus).getHappiness() > 0)
+	{
+		iHappinessValue = sgn(iChange) * 50;
+	}
+
+	if (abs(iHealthValue) < 50 && GC.getBonusInfo(eBonus).getHealth() > 0)
+	{
+		iHealthValue = sgn(iChange) * 50;
+	}
+
+	return iHappinessValue + iHealthValue;
 }
 
 //Value sans corporation
@@ -8522,7 +7762,7 @@ DenialTypes CvPlayerAI::AI_cityTrade(CvCity* pCity, PlayerTypes ePlayer) const
 		return DENIAL_NO_GAIN;
 	}
 
-	if (isHuman() && (pCity->getNumActiveBuilding((BuildingTypes)(NUM_BUILDINGS_PLAGUE-1)) > 0))
+	if (isHuman() && (pCity->getNumActiveBuilding((BuildingTypes)(BUILDING_PLAGUE)) > 0))
 	{
 		return DENIAL_NO_GAIN;
 	}
@@ -9431,6 +8671,16 @@ int CvPlayerAI::AI_unitValue(UnitTypes eUnit, UnitAITypes eUnitAI, CvArea* pArea
 				}
 			}
 
+		case UNITAI_SATELLITE:
+			for (iI = 0; iI < GC.getNumSpecialistInfos(); iI++)
+			{
+				if (GC.getSpecialistInfo((SpecialistTypes)iI).isSatellite() && GC.getUnitInfo(eUnit).getGreatPeoples(iI))
+				{
+					bValid = true;
+					break;
+				}
+			}
+
 		default:
 			FAssert(false);
 			break;
@@ -9848,6 +9098,22 @@ int CvPlayerAI::AI_unitValue(UnitTypes eUnit, UnitAITypes eUnitAI, CvArea* pArea
 		iValue += 40 * (5 - AI_getReligiousTolerance());
 		iValue += (isNoNonStateReligionSpread() ? 80 : 0);
 		break;
+
+	case UNITAI_SATELLITE:
+		iValue += 200;
+		if (GET_TEAM(getTeam()).canSatelliteAttack()) iValue += 100;
+		if (GET_TEAM(getTeam()).canSatelliteIntercept() && GC.getGameINLINE().isNukesValid()) iValue += 100;
+
+		if (getSatelliteExtraCommerce(COMMERCE_RESEARCH)) iValue += 100;
+		if (getSatelliteExtraCommerce(COMMERCE_CULTURE)) iValue + 50;
+
+		for (iI = 0; iI < GC.getNumSpecialistInfos(); iI++)
+		{
+			if (GC.getUnitInfo(eUnit).getGreatPeoples(iI) && getSpecialistExtraYield((SpecialistTypes)iI, YIELD_PRODUCTION))
+			{
+				iValue += 50;
+			}
+		}
 
 	default:
 		FAssert(false);
@@ -11336,6 +10602,38 @@ int CvPlayerAI::AI_civicValue(CivicTypes eCivic) const
 	if (kCivic.isSlavery())
 	{
 		iValue += AI_neededWorkers() * iWarmongerPercent / 15;
+	}
+
+	// Leoreth: enabled wonders with civic prereq
+	for (iI = 0; iI < GC.getNumBuildingInfos(); iI++)
+	{
+		CvBuildingInfo& kBuilding = GC.getBuildingInfo((BuildingTypes)iI);
+		if (kBuilding.getPrereqCivic() == eCivic)
+		{
+			if (!GET_TEAM(getTeam()).isObsoleteBuilding((BuildingTypes)iI))
+			{
+				if (isWorldWonderClass((BuildingClassTypes)kBuilding.getBuildingClassType()) && !GC.getGame().isBuildingClassMaxedOut((BuildingClassTypes)kBuilding.getBuildingClassType()))
+				{
+					bool bPrereqTech = GET_TEAM(getTeam()).isHasTech((TechTypes)kBuilding.getPrereqAndTech());
+					if (bPrereqTech)
+					{
+						for (iJ = 0; iJ < GC.getNUM_BUILDING_AND_TECH_PREREQS(); iJ++)
+						{
+							TechTypes ePrereqTech = (TechTypes)kBuilding.getPrereqAndTechs(iJ);
+							if (ePrereqTech != NO_TECH && !GET_TEAM(getTeam()).isHasTech(ePrereqTech))
+							{
+								bPrereqTech = false;
+							}
+						}
+
+						if (bPrereqTech)
+						{
+							iValue += 100;
+						}
+					}
+				}
+			}
+		}
 	}
 
 	// Leoreth: trade slaves and use in colonies
@@ -19812,4 +19110,424 @@ int CvPlayerAI::AI_getPersecutionValue(ReligionTypes eReligion) const
 	if (getStateReligion() == eReligion) return 0;
 
 	return persecutionValue[getStateReligion()][eReligion] - AI_getReligiousTolerance();
+}
+
+// Leoreth
+int CvPlayerAI::AI_getUnitEnabledValue(UnitTypes eUnit) const
+{
+	TechTypes eTech = (TechTypes)GC.getUnitInfo(eUnit).getPrereqAndTech();
+	CvCity* pCapitalCity = getCapitalCity();
+	
+	int iHasMetCount = GET_TEAM(getTeam()).getHasMetCivCount(true);
+	int iCoastalCities = countNumCoastalCities();
+	bool bWarPlan = (GET_TEAM(getTeam()).getAnyWarPlanCount(true) > 0);
+
+	return AI_getUnitEnabledValue(eUnit, eTech, pCapitalCity, iHasMetCount, iCoastalCities, bWarPlan, false);
+}
+
+// Leoreth
+int CvPlayerAI::AI_getUnitEnabledValue(UnitTypes eUnit, 
+	TechTypes eTech, 
+	CvCity* pCapitalCity, 
+	int iHasMetCount, 
+	int iCoastalCities, 
+	bool bWarPlan, 
+	bool bCapitalAlone) const
+{
+	CvUnitInfo& kUnit = GC.getUnitInfo(eUnit);
+	int iValue = 0;
+
+	iValue += 200;
+	int iUnitValue = 0;
+	int iNavalValue = 0;
+
+	if ((GC.getUnitClassInfo((UnitClassTypes)kUnit.getUnitClassType()).getDefaultUnitIndex()) != (GC.getCivilizationInfo(getCivilizationType()).getCivilizationUnits(kUnit.getUnitClassType())))
+    {
+        //UU
+        iUnitValue += 600;
+    }
+
+	if (kUnit.getPrereqAndTech() == eTech)
+	{
+		int iMilitaryValue = 0;
+
+		switch (kUnit.getDefaultUnitAIType())
+		{
+		case UNITAI_UNKNOWN:
+		case UNITAI_ANIMAL:
+			break;
+
+		case UNITAI_SETTLE:
+			iUnitValue += 1200;
+			break;
+
+		case UNITAI_WORKER:
+			iUnitValue += 800;
+			break;
+
+		case UNITAI_ATTACK:
+			iMilitaryValue += ((bWarPlan) ? 600 : 300);
+			iMilitaryValue += (AI_isDoStrategy(AI_STRATEGY_DAGGER ) ? 800 : 0);
+			iUnitValue += 100;
+			break;
+
+		case UNITAI_ATTACK_CITY:
+			iMilitaryValue += ((bWarPlan) ? 800 : 400);
+			iMilitaryValue += (AI_isDoStrategy(AI_STRATEGY_DAGGER ) ? 800 : 0);
+			if (kUnit.getBombardRate() > 0)
+			{
+				iMilitaryValue += 200;
+
+				if (AI_calculateTotalBombard(DOMAIN_LAND) == 0)
+				{
+					iMilitaryValue += 800;
+					if (AI_isDoStrategy(AI_STRATEGY_DAGGER))
+					{
+						iMilitaryValue += 1000;
+					}
+				}
+			}
+			iUnitValue += 100;
+			break;
+
+		case UNITAI_COLLATERAL:
+			iMilitaryValue += ((bWarPlan) ? 600 : 300);
+			iMilitaryValue += (AI_isDoStrategy(AI_STRATEGY_DAGGER ) ? 500 : 0);
+			break;
+
+		case UNITAI_PILLAGE:
+			iMilitaryValue += ((bWarPlan) ? 200 : 100);
+			break;
+
+		case UNITAI_RESERVE:
+			iMilitaryValue += ((bWarPlan) ? 200 : 100);
+			break;
+
+		case UNITAI_COUNTER:
+			iMilitaryValue += ((bWarPlan) ? 600 : 300);
+			iMilitaryValue += (AI_isDoStrategy(AI_STRATEGY_DAGGER ) ? 600 : 0);
+			break;
+
+		case UNITAI_PARADROP:
+			iMilitaryValue += ((bWarPlan) ? 600 : 300);
+			break;
+
+		case UNITAI_CITY_DEFENSE:
+			iMilitaryValue += ((bWarPlan) ? 800 : 400);
+			iMilitaryValue += ((!bCapitalAlone) ? 400 : 200);
+			iUnitValue += ((iHasMetCount > 0) ? 800 : 200);
+			break;
+
+		case UNITAI_CITY_COUNTER:
+			iMilitaryValue += ((bWarPlan) ? 800 : 400);
+			break;
+
+		case UNITAI_CITY_SPECIAL:
+			iMilitaryValue += ((bWarPlan) ? 800 : 400);
+			break;
+
+		case UNITAI_EXPLORE:
+			iUnitValue += ((bCapitalAlone) ? 100 : 200);
+			break;
+
+		case UNITAI_MISSIONARY:
+		case UNITAI_PERSECUTOR:
+			iUnitValue += ((getStateReligion() != NO_RELIGION) ? 600 : 300);
+			break;
+
+		case UNITAI_PROPHET:
+		case UNITAI_ARTIST:
+		case UNITAI_SCIENTIST:
+		case UNITAI_GENERAL:
+		case UNITAI_MERCHANT:
+		case UNITAI_ENGINEER:
+		case UNITAI_STATESMAN:
+			break;
+
+		case UNITAI_SPY:
+			iMilitaryValue += ((bWarPlan) ? 100 : 50);
+			break;
+
+		case UNITAI_ICBM:
+			iMilitaryValue += ((bWarPlan) ? 200 : 100);
+			break;
+
+		case UNITAI_WORKER_SEA:
+			if (iCoastalCities > 0)
+			{
+				// note, workboat improvements are already counted in the improvement section above
+			}
+			break;
+
+		case UNITAI_ATTACK_SEA:
+			if (iCoastalCities > 0)
+			{
+				iMilitaryValue += ((bWarPlan) ? 200 : 100);
+			}
+			iNavalValue += 100;
+			break;
+
+		case UNITAI_RESERVE_SEA:
+			if (iCoastalCities > 0)
+			{
+				iMilitaryValue += ((bWarPlan) ? 100 : 50);
+			}
+			iNavalValue += 100;
+			break;
+
+		case UNITAI_ESCORT_SEA:
+			if (iCoastalCities > 0)
+			{
+				iMilitaryValue += ((bWarPlan) ? 100 : 50);
+			}
+			iNavalValue += 100;
+			break;
+
+		case UNITAI_EXPLORE_SEA:
+			if (iCoastalCities > 0)
+			{
+				iUnitValue += ((bCapitalAlone) ? 1800 : 600);
+			}
+			break;
+
+		case UNITAI_ASSAULT_SEA:
+			if (iCoastalCities > 0)
+			{
+				iMilitaryValue += ((bWarPlan || bCapitalAlone) ? 400 : 200);
+			}
+			iNavalValue += 200;
+			break;
+
+		case UNITAI_SETTLER_SEA:
+			if (iCoastalCities > 0)
+			{
+				iUnitValue += ((bWarPlan || bCapitalAlone) ? 100 : 200);
+			}
+			iNavalValue += 200;
+			break;
+
+		case UNITAI_MISSIONARY_SEA:
+			if (iCoastalCities > 0)
+			{
+				iUnitValue += 100;
+			}
+			break;
+
+		case UNITAI_SPY_SEA:
+			if (iCoastalCities > 0)
+			{
+				iMilitaryValue += 100;
+			}
+			break;
+
+		case UNITAI_CARRIER_SEA:
+			if (iCoastalCities > 0)
+			{
+				iMilitaryValue += ((bWarPlan) ? 100 : 50);
+			}
+			break;
+
+		case UNITAI_MISSILE_CARRIER_SEA:
+			if (iCoastalCities > 0)
+			{
+				iMilitaryValue += ((bWarPlan) ? 100 : 50);
+			}
+			break;
+
+		case UNITAI_PIRATE_SEA:
+			if (iCoastalCities > 0)
+			{
+				iMilitaryValue += 100;
+			}
+			iNavalValue += 100;
+			break;
+
+		case UNITAI_ATTACK_AIR:
+			iMilitaryValue += ((bWarPlan) ? 1200 : 800);
+			break;
+
+		case UNITAI_DEFENSE_AIR:
+			iMilitaryValue += ((bWarPlan) ? 1200 : 800);
+			break;
+
+		case UNITAI_CARRIER_AIR:
+			if (iCoastalCities > 0)
+			{
+				iMilitaryValue += ((bWarPlan) ? 200 : 100);
+			}
+			iNavalValue += 400;
+			break;
+
+		case UNITAI_MISSILE_AIR:
+			iMilitaryValue += ((bWarPlan) ? 200 : 100);
+			break;
+
+		case UNITAI_SATELLITE:
+			iValue += 400;
+
+		default:
+			FAssert(false);
+			break;
+		}
+
+		if (iHasMetCount == 0)
+		{
+			iMilitaryValue /= 2;
+		}
+
+		if (bCapitalAlone)
+		{
+			iMilitaryValue *= 2;
+			iMilitaryValue /= 3;
+		}
+
+		if (kUnit.getUnitAIType(UNITAI_ASSAULT_SEA))
+		{
+			int iAssaultValue = 0;
+			UnitTypes eExistingUnit;
+			if (AI_bestAreaUnitAIValue(UNITAI_ASSAULT_SEA, NULL, &eExistingUnit) == 0)
+			{
+				iAssaultValue += 1000;
+			}
+			else
+			{
+				iAssaultValue += 100 * std::max(0, AI_unitImpassableCount(eUnit) - AI_unitImpassableCount(eExistingUnit));
+				if (iAssaultValue > 0)
+				{
+					iAssaultValue += 200;
+				}
+				int iNewCapacity = kUnit.getMoves() * kUnit.getCargoSpace();
+				int iOldCapacity = GC.getUnitInfo(eExistingUnit).getMoves() * GC.getUnitInfo(eExistingUnit).getCargoSpace();
+/************************************************************************************************/
+/* UNOFFICIAL_PATCH                       09/28/09                       Afforess & jdog5000    */
+/*                                                                                              */
+/* Bugfix                                                                                       */
+/************************************************************************************************/
+/* original bts code
+				iAssaultValue += (800 * (iNewCapacity - iOldCapacity)) / iOldCapacity;
+*/
+				iAssaultValue += (800 * (iNewCapacity - iOldCapacity)) / std::max(1, iOldCapacity);
+/************************************************************************************************/
+/* UNOFFICIAL_PATCH                        END                                                  */
+/************************************************************************************************/
+			}
+
+			if (iAssaultValue > 0)
+			{
+				int iLoop;
+				CvArea* pLoopArea;
+				bool bIsAnyAssault = false;
+				for(pLoopArea = GC.getMapINLINE().firstArea(&iLoop); pLoopArea != NULL; pLoopArea = GC.getMapINLINE().nextArea(&iLoop))
+				{
+					if (AI_isPrimaryArea(pLoopArea))
+					{
+						if (pLoopArea->getAreaAIType(getTeam()) == AREAAI_ASSAULT)
+						{
+							bIsAnyAssault = true;
+							break;
+						}
+					}
+				}
+				if (bIsAnyAssault)
+				{
+					iNavalValue += iAssaultValue;
+				}
+				else
+				{
+					iNavalValue += iAssaultValue / 6;
+				}
+			}
+		}
+
+		if (iNavalValue > 0)
+		{
+			if (getCapitalCity() != NULL)
+			{
+				iNavalValue *= 2 * (getNumCities() - getCapitalCity()->area()->getCitiesPerPlayer(getID()));
+				iNavalValue /= getNumCities();
+
+				iUnitValue += iNavalValue;
+			}
+		}
+
+		iUnitValue += iMilitaryValue;
+
+		if (AI_totalUnitAIs((UnitAITypes)(kUnit.getDefaultUnitAIType())) == 0)
+		{
+			// do not give bonus to seagoing units if they are worthless
+			if (iUnitValue > 0)
+			{
+				iUnitValue *= 2;
+			}
+
+			if (kUnit.getDefaultUnitAIType() == UNITAI_EXPLORE)
+			{
+				if (pCapitalCity != NULL)
+				{
+					iUnitValue += (AI_neededExplorers(pCapitalCity->area()) * 400);
+				}
+			}
+
+			if (kUnit.getDefaultUnitAIType() == UNITAI_EXPLORE_SEA)
+			{
+				iUnitValue += 400;
+				iUnitValue += ((GC.getGameINLINE().countCivTeamsAlive() - iHasMetCount) * 200);
+			}
+		}
+		//Rhye - limit this to seafaring civs?
+		//Early Expansion by sea
+		if (kUnit.getUnitAIType(UNITAI_SETTLER_SEA))
+		{
+			if (AI_totalUnitAIs(UNITAI_SETTLER_SEA) == 0)
+			{
+				if (getCapitalCity() != NULL)
+				{
+					CvArea* pWaterArea = getCapitalCity()->waterArea();
+					if (pWaterArea != NULL)
+					{
+						int iBestAreaValue = 0;
+						int iBestOtherValue = 0;
+						AI_getNumAreaCitySites(getCapitalCity()->getArea(), iBestAreaValue);
+						AI_getNumAdjacentAreaCitySites(pWaterArea->getID(), getCapitalCity()->getArea(), iBestOtherValue);
+
+						if (iBestAreaValue == 0)
+						{
+							iUnitValue += 2000;
+						}
+						else if (iBestAreaValue < iBestOtherValue)
+						{
+							iUnitValue += 1000;
+						}
+						else if (iBestOtherValue > 0)
+						{
+							iUnitValue += 500;
+						}
+					}
+				}
+			}
+		}
+
+		iValue += iUnitValue;
+	}
+
+	return iValue;
+}
+
+bool CvPlayerAI::AI_enablesUnitWonder(UnitClassTypes eUnitClass, int iPathLength) const
+{
+	if (iPathLength <= 1)
+	{
+		if (getTotalPopulation() > 5)
+		{
+			if (isWorldUnitClass(eUnitClass))
+			{
+				if (!(GC.getGameINLINE().isUnitClassMaxedOut(eUnitClass)))
+				{
+					return true;
+				}
+			}
+		}
+	}
+
+	return false;
 }
