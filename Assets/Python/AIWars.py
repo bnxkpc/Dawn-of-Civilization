@@ -204,7 +204,7 @@ class AIWars:
 			if utils.getHumanID() not in [iPlayer, city.getOwner()]: 
 				iExtra += 1 #max(1, gc.getPlayer(iPlayer).getCurrentEra())
 				
-			if iPlayer == iMongolia and utils.getHumanID() != iPlayer:
+			if iPlayer in [iTurks, iMongolia] and utils.getHumanID() != iPlayer:
 				iExtra += 1
 			
 			tPlot = utils.findNearestLandPlot((city.getX(), city.getY()), iPlayer)
@@ -225,7 +225,7 @@ class AIWars:
 			if iPlayer == iSpain:
 				utils.makeUnitAI(utils.getBestCavalry(iPlayer), iPlayer, tPlot, UnitAITypes.UNITAI_ATTACK_CITY, 2 * iExtra)
 				
-			if iPlayer == iTurks:
+			if iPlayer == iTurks or iPlayer == iMongolia:
 				utils.makeUnitAI(utils.getBestCavalry(iPlayer), iPlayer, tPlot, UnitAITypes.UNITAI_ATTACK_CITY, 2 + iExtra)
 	
 	def forgetMemory(self, iTech, iPlayer):
