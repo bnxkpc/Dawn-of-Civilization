@@ -77,10 +77,10 @@ tPhilippinesBR = (110, 36)
 lMediterraneanPorts = [(66, 37), (66, 36), (67, 36), (68, 36), (69, 36), (70, 36), (71, 36), (72, 37), (73, 37), (73, 38), (73, 39), (73, 40), (73, 41), (73, 42), (71, 42), (70, 42), (70, 43), (69, 43), (69, 44), (68, 45)]
 
 # first Moorish goal: control three cities in Iberia, the Maghreb and West Africa in 1200 AD
-tIberiaTL = (49, 40)
-tIberiaBR = (55, 46)
-tMaghrebTL = (49, 35)
-tMaghrebBR = (58, 39)
+tIberiaTL = (54, 48)
+tIberiaBR = (62, 54)
+tMaghrebTL = (54, 39)
+tMaghrebBR = (76, 48)
 tWestAfricaTL = (48, 26)
 tWestAfricaBR = (56, 32)
 
@@ -116,9 +116,9 @@ tAsiaTL = (73, 29)
 tAsiaBR = (121, 64)
 
 # first Russian goal: found seven cities in Siberia by 1700 AD and build the Trans-Siberian Railway by 1920 AD
-tSiberiaTL = (82, 50)
-tSiberiaBR = (112, 64)
-lSiberianCoast = [(109, 50), (109, 51), (110, 51), (111, 51), (112, 52), (114, 54), (113, 55), (111, 54), (111, 55), (110, 55), (110, 58), (111, 58), (112, 59)]
+tSiberiaTL = (97, 64)
+tSiberiaBR = (148, 77)
+lSiberianCoast = [(134, 60), (134, 61), (134, 62), (135, 64), (135, 65), (135, 66), (134, 66), (133, 66), (132, 67), (133, 68), (134, 69), (134, 70), (135, 70), (136, 70), (137, 70), (138, 70)]
 
 # second Portuguese goal: acquire 12 colonial resources by 1650 AD
 lColonialResources = [iBanana, iSpices, iSugar, iCoffee, iTea, iTobacco]
@@ -863,9 +863,9 @@ def checkTurn(iGameTurn, iPlayer):
 			bMezquita = data.getWonderBuilder(iMezquita) == iMoors
 		
 			iCounter = 0
-			iCounter += countCitySpecialists(iMoors, (51, 41), iSpecialistGreatProphet)
-			iCounter += countCitySpecialists(iMoors, (51, 41), iSpecialistGreatScientist)
-			iCounter += countCitySpecialists(iMoors, (51, 41), iSpecialistGreatEngineer)
+			iCounter += countCitySpecialists(iMoors, (57, 49), iSpecialistGreatProphet)
+			iCounter += countCitySpecialists(iMoors, (57, 49), iSpecialistGreatScientist)
+			iCounter += countCitySpecialists(iMoors, (57, 49), iSpecialistGreatEngineer)
 			
 			if bMezquita and iCounter >= 4:
 				win(iMoors, 1)
@@ -912,7 +912,7 @@ def checkTurn(iGameTurn, iPlayer):
 	
 		# first goal: have 25000 culture in Paris in 1700 AD
 		if iGameTurn == getTurnForYear(1700):
-			if getCityCulture(iFrance, (55, 50)) >= utils.getTurns(25000):
+			if getCityCulture(iFrance, (61, 60)) >= utils.getTurns(25000):
 				win(iFrance, 0)
 			else:
 				lose(iFrance, 0)

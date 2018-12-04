@@ -82,19 +82,19 @@ tSpainMoorsBR = (61, 50)
 tConquestSpainMoors = (9, iSpain, iMoors, tSpainMoorsTL, tSpainMoorsBR, 1, iSpainMoorsYear, 10)
 
 iTurksPersiaYear = 1000
-tTurksPersiaTL = (78, 37)
-tTurksPersiaBR = (85, 43)
+tTurksPersiaTL = (91, 43)
+tTurksPersiaBR = (98, 51)
 
-iTurksAnatoliaYear = 1100
-tTurksAnatoliaTL = (69, 37)
-tTurksAnatoliaBR = (78, 45)
+iTurksAnatoliaYear = 1050
+tTurksAnatoliaTL = (82, 51)
+tTurksAnatoliaBR = (87, 55)
 
 tConquestTurksPersia = (10, iTurks, iArabia, tTurksPersiaTL, tTurksPersiaBR, 4, iTurksPersiaYear, 20)
 tConquestTurksAnatolia = (11, iTurks, iByzantium, tTurksAnatoliaTL, tTurksAnatoliaBR, 5, iTurksAnatoliaYear, 20)
 
 iMongolsPersiaYear = 1220
-tMongolsPersiaTL = (79, 37)
-tMongolsPersiaBR = (85, 49)
+tMongolsPersiaTL = (90, 43)
+tMongolsPersiaBR = (101, 56)
 
 tConquestMongolsPersia = (12, iMongolia, iTurks, tMongolsPersiaTL, tMongolsPersiaBR, 7, iMongolsPersiaYear, 10)
 
@@ -153,6 +153,7 @@ class AIWars:
 		if iGameTurn <= getTurnForYear(tBirth[iPlayer])+3: return
 		if not (iStartTurn <= iGameTurn <= iStartTurn + iIntervalTurns): return
 		if tPrereqConquest and not self.isConquered(tPrereqConquest): return
+		if tConquest == tConquestCholaSumatra: return
 		
 		self.spawnConquerors(iPlayer, iPreferredTarget, tTL, tBR, iNumTargets, iYear, iIntervalTurns, iWarPlan)
 		data.lConquest[iID] = True

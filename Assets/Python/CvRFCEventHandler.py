@@ -139,9 +139,9 @@ class CvRFCEventHandler:
 		
 		# relocate capitals
 		if utils.getHumanID() != iPlayer:
-			if iPlayer == iOttomans and tCity == (68, 45):
+			if iPlayer == iOttomans and tCity == (79, 55):
 				utils.moveCapital(iOttomans, tCity) # Kostantiniyye
-			elif iPlayer == iMongolia and tCity == (102, 47):
+			elif iPlayer == iMongolia and tCity == (124, 56):
 				utils.moveCapital(iMongolia, tCity) # Khanbaliq	
 			elif iPlayer == iTurks and utils.isAreaControlled(iTurks, Areas.tCoreArea[iPersia][0], Areas.tCoreArea[iPersia][1]):
 				capital = pTurks.getCapitalCity()
@@ -171,7 +171,7 @@ class CvRFCEventHandler:
 					utils.relocateCapital(iPlayer, city)
 					
 		# Leoreth: conquering Constantinople adds it to the Turkish core + Rumelia
-		if iPlayer == iOttomans and tCity == (68, 45):
+		if iPlayer == iOttomans and tCity == (79, 55):
 			utils.setReborn(iOttomans, True)
 			
 		if iPlayer == iTurks:
@@ -217,7 +217,10 @@ class CvRFCEventHandler:
 				iNationalWonder = i
 				if isNationalWonderClass(gc.getBuildingInfo(iNationalWonder).getBuildingClassType()) and city.hasBuilding(iNationalWonder):
 					city.setHasRealBuilding(iNationalWonder, False)
-					
+		
+		if city.isHasRealBuilding(iPalace) and city.isHasRealBuilding(iAdministrativeCenter):
+			city.setHasRealBuilding(iAdministrativeCenter, False)
+		
 		# Leoreth: Escorial effect
 		if gc.getPlayer(iPlayer).isHasBuildingEffect(iEscorial):
 			if city.isColony():
@@ -291,27 +294,27 @@ class CvRFCEventHandler:
 			self.up.ottomanUP(city, iOwner, -1)
 			
 		if iOwner == iCarthage:
-			if tCity == (58, 39):
+			if tCity == (67, 48):
 				if not gc.getPlayer(iCarthage).isHuman():
 					x = gc.getPlayer(iCarthage).getCapitalCity().getX()
 					y = gc.getPlayer(iCarthage).getCapitalCity().getY()
-					carthage = gc.getMap().plot(58, 39).getPlotCity()
+					carthage = gc.getMap().plot(67, 48).getPlotCity()
 					carthage.setHasRealBuilding(iPalace, True)
 					gc.getMap().plot(x, y).getPlotCity().setHasRealBuilding(iPalace, False)
 					dc.onPalaceMoved(iCarthage)
 					
 					carthage.setPopulation(3)
 					
-					utils.makeUnitAI(iWorkboat, iCarthage, (58, 39), UnitAITypes.UNITAI_WORKER_SEA, 1)
-					utils.makeUnitAI(iGalley, iCarthage, (57, 40), UnitAITypes.UNITAI_SETTLER_SEA, 1)
-					utils.makeUnitAI(iSettler, iCarthage, (57, 40), UnitAITypes.UNITAI_SETTLE, 1)
+					utils.makeUnitAI(iWorkboat, iCarthage, (68, 48), UnitAITypes.UNITAI_WORKER_SEA, 1)
+					utils.makeUnitAI(iGalley, iCarthage, (68, 48), UnitAITypes.UNITAI_SETTLER_SEA, 1)
+					utils.makeUnitAI(iSettler, iCarthage, (68, 48), UnitAITypes.UNITAI_SETTLE, 1)
 					
 					# additional defenders and walls to make human life not too easy
 					if utils.getHumanID() == iRome:
 						carthage.setHasRealBuilding(iWalls, True)
-						utils.makeUnitAI(iArcher, iCarthage, (58, 39), UnitAITypes.UNITAI_CITY_DEFENSE, 2)
-						utils.makeUnit(iNumidianCavalry, iCarthage, (58, 39), 3)
-						utils.makeUnitAI(iAtlasElephant, iCarthage, (58, 39), UnitAITypes.UNITAI_CITY_COUNTER, 2)
+						utils.makeUnitAI(iArcher, iCarthage, (67, 48), UnitAITypes.UNITAI_CITY_DEFENSE, 2)
+						utils.makeUnit(iNumidianCavalry, iCarthage, (67, 48), 3)
+						utils.makeUnitAI(iAtlasElephant, iCarthage, (67, 48), UnitAITypes.UNITAI_CITY_COUNTER, 2)
 					
 				if utils.getOwnedCoreCities(iCarthage) > 0:
 					utils.setReborn(iCarthage, True)
@@ -347,7 +350,7 @@ class CvRFCEventHandler:
 		if iOwner == iItaly and tCity == Areas.getCapital(iItaly) and gc.getGame().getGameTurn() <= getTurnForYear(tBirth[iItaly])+3:
 			city.setPopulation(7)
 			
-			for iBuilding in [iLibrary, iPharmacy, iTemple+4*gc.getPlayer(iItaly).getStateReligion(), iMarket, iArtStudio, iAqueduct, iCourthouse, iWalls]:
+			for iBuilding in [iLibrary, iPharmacy, iTemple+4*gc.getPlayer(iItaly).getStateReligion(), iMarket, iArtStudio, iAqueduct, iJail, iWalls]:
 				city.setHasRealBuilding(iBuilding, True)
 				
 			gc.getPlayer(iItaly).AI_updateFoundValues(False)
@@ -359,7 +362,7 @@ class CvRFCEventHandler:
 
 		if iOwner == iArabia:
 			if not gc.getGame().isReligionFounded(iIslam):
-				if tCity == (75, 33):
+				if tCity == (86, 39):
 					self.rel.foundReligion(tCity, iIslam)
 				
 		# Leoreth: free defender and worker for AI colonies
@@ -586,7 +589,7 @@ class CvRFCEventHandler:
 			if city.isHasRealBuilding(iAdministrativeCenter): city.setHasRealBuilding(iAdministrativeCenter, False)
 			
 			# Leoreth: in case human Phoenicia moves palace to Carthage
-			if iOwner == iCarthage and tCity == (58, 39):
+			if iOwner == iCarthage and tCity == (67, 48):
 				utils.setReborn(iCarthage, True)
 
 		# Leoreth: update trade routes when Porcelain Tower is built to start its effect
@@ -793,13 +796,13 @@ class CvRFCEventHandler:
 	
 		if utils.getHumanID() != iPlayer:
 			if iPlayer == iJapan and iEra == iIndustrial:
-				utils.moveCapital(iPlayer, (116, 47)) # Toukyou
+				utils.moveCapital(iPlayer, (140, 54)) # Toukyou
 			elif iPlayer == iItaly and iEra == iIndustrial:
-				utils.moveCapital(iPlayer, (60, 44)) # Roma
+				utils.moveCapital(iPlayer, (68, 53)) # Roma
 			elif iPlayer == iVikings and iEra == iRenaissance:
-				utils.moveCapital(iPlayer, (63, 59)) # Stockholm
+				utils.moveCapital(iPlayer, (72, 71)) # Stockholm
 			elif iPlayer == iHolyRome and iEra == iRenaissance:
-				utils.moveCapital(iPlayer, (62, 49)) # Wien
+				utils.moveCapital(iPlayer, (71, 59)) # Wien
 				
 		# Spain's core extends when reaching the Renaissance and there are no Moors in Iberia
 		# at the same time, the Moorish core relocates to Africa

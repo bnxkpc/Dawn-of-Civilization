@@ -17,20 +17,20 @@ tCompaniesLimit = (10, 12, 16, 10, 12, 12, 6, 10, 12) # kind of arbitrary curren
 
 lTradingCompanyCivs = [iSpain, iFrance, iEngland, iPortugal, iNetherlands, iVikings] # Vikings too now
 
-tSilkRouteTL = (80, 46)
-tSilkRouteBR = (99, 52)
+tSilkRouteTL = (93, 54)
+tSilkRouteBR = (119, 63)
 
-tMiddleEastTL = (68, 38)
-tMiddleEastBR = (85, 46)
+tMiddleEastTL = (79, 46)
+tMiddleEastBR = (100, 53)
 
-tCaribbeanTL = (26, 33)
-tCaribbeanBR = (34, 39)
+tCaribbeanTL = (26, 39)
+tCaribbeanBR = (37, 46)
 
-tSubSaharanAfricaTL = (49, 10)
-tSubSaharanAfricaBR = (77, 29)
+tSubSaharanAfricaTL = (55, 12)
+tSubSaharanAfricaBR = (90, 34)
 
-tSouthAsiaTL = (76, 24)
-tSouthAsiaBR = (117, 39)
+tSouthAsiaTL = (88, 23)
+tSouthAsiaBR = (141, 46)
 
 class Companies:
 
