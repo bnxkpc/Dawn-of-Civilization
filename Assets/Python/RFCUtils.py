@@ -897,12 +897,11 @@ class RFCUtils:
 
 	def getColonialTargets(self, iPlayer, bEmpty=False):
 		if iPlayer == iSpain or iPlayer == iFrance:
-			iNumCities = 1
+			iNumCities = 2
+		elif iPlayer == iPortugal and self.getHumanID() != iPortugal:
+			iNumCities = 5
 		else:
 			iNumCities = 3
-			
-		if iPlayer == iPortugal and self.getHumanID() != iPortugal:
-			iNumCities = 5
 
 		lCivList = [iSpain, iFrance, iEngland, iPortugal, iNetherlands]
 		id = lCivList.index(iPlayer)
