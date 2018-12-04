@@ -98,16 +98,24 @@
 		<Spanish>Goguryeo</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_CIV_KOREA_SHILLA</Tag>
+		<English>Shilla</English>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_CIV_KOREA_JOSEON</Tag>
-		<English>Greater Joseon</English>
+		<English>Great Joseon</English>
 		<French>
 			<Text>Joseon</Text>
 			<Gender>Male</Gender>
 			<Plural>0</Plural>
 		</French>
-		<German>Greater Joseon</German>
-		<Italian>Greater Joseon</Italian>
-		<Spanish>Greater Joseon</Spanish>
+		<German>Great Joseon</German>
+		<Italian>Great Joseon</Italian>
+		<Spanish>Great Joseon</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_CIV_KOREA_EMPIRE</Tag>
+		<English>Great Korean Empire</English>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_CIV_KOREA_ADJECTIVE</Tag>
