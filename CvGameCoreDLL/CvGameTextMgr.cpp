@@ -257,6 +257,8 @@ void CvGameTextMgr::setDateStrPlayer(CvWString& szString, int iGameTurn, bool bS
 		szString = gDLL->getText("TXT_KEY_AGE_IRON");
 	else if (GET_TEAM(GET_PLAYER(ePlayer).getTeam()).isHasTech((TechTypes)ALLOYS))
 		szString = gDLL->getText("TXT_KEY_AGE_BRONZE");
+	else if (GET_TEAM(GET_PLAYER(ePlayer).getTeam()).isHasTech((TechTypes)SMELTING))
+		szString = gDLL->getText("TXT_KEY_AGE_COPPER");
 	else szString = gDLL->getText("TXT_KEY_AGE_STONE");
 	if (bSave)
 		szString = szString + " " + gDLL->getText("TXT_KEY_SAVEGAME_TURN", (iGameTurn));

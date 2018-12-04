@@ -5096,6 +5096,9 @@ void CvCity::updateArtStyleType()
 			case REGION_SIBERIA:
 				eNewArtStyle = (ArtStyleTypes)ARTSTYLE_RUSSIA;
 				break;
+			case REGION_MESOPOTAMIA:
+				if (isHasReligion((ReligionTypes)ISLAM)) eNewArtStyle = (ArtStyleTypes)ARTSTYLE_ARABIA;
+				else eNewArtStyle = (ArtStyleTypes)ARTSTYLE_CRESCENT;
 			case REGION_ARABIA:
 				eNewArtStyle = (ArtStyleTypes)ARTSTYLE_ARABIA;
 				break;
@@ -5103,6 +5106,9 @@ void CvCity::updateArtStyleType()
 				if (isHasReligion((ReligionTypes)ISLAM)) eNewArtStyle = (ArtStyleTypes)ARTSTYLE_ARABIA;
 				else if (GET_PLAYER(eHighestCulture).getCurrentEra() == ERA_ANCIENT) eNewArtStyle = (ArtStyleTypes)ARTSTYLE_EGYPT;
 				else eNewArtStyle = (ArtStyleTypes)ARTSTYLE_GRECO_ROMAN;
+				break;
+			case REGION_PERSIA:
+				eNewArtStyle = (ArtStyleTypes)ARTSTYLE_CRESCENT;
 				break;
 			case REGION_INDIA:
 			case REGION_DECCAN:

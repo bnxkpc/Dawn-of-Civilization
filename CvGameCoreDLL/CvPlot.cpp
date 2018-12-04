@@ -9746,7 +9746,7 @@ ColorTypes CvPlot::plotMinimapColor()
 
 		if ((pCity != NULL) && pCity->isRevealed(GC.getGameINLINE().getActiveTeam(), true))
 		{
-			return (ColorTypes)GC.getInfoTypeForString("COLOR_WHITE");
+			return ((ColorTypes)(GC.getPlayerColorInfo(GET_PLAYER(getRevealedOwner(GC.getGameINLINE().getActiveTeam(), true)).getPlayerColor()).getColorTypeSecondary()));
 		}
 
 		if (isActiveVisible(true))
@@ -9760,7 +9760,7 @@ ColorTypes CvPlot::plotMinimapColor()
 		}
 
 		//if ((getRevealedOwner(GC.getGameINLINE().getActiveTeam(), true) != NO_PLAYER) && !isRevealedBarbarian())
-		if (/*!isWater() &&*/ (getRevealedOwner(GC.getGameINLINE().getActiveTeam(), true) != NO_PLAYER) && !isRevealedBarbarian()) // edead
+		if (!isWater() && (getRevealedOwner(GC.getGameINLINE().getActiveTeam(), true) != NO_PLAYER) && !isRevealedBarbarian()) // edead
 		{
 			return ((ColorTypes)(GC.getPlayerColorInfo(GET_PLAYER(getRevealedOwner(GC.getGameINLINE().getActiveTeam(), true)).getPlayerColor()).getColorTypePrimary()));
 		}

@@ -627,6 +627,18 @@
 		<Spanish>%d1 d.C.</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_AGE_COPPER</Tag>
+		<English>Copper Age</English>
+		<French>
+			<Text>&#194;ge de Cuivre</Text>
+			<Gender>Male</Gender>
+			<Plural>0</Plural>
+		</French>
+		<German>Kupferzeit</German>
+		<Italian>Et&#224; del rame</Italian>
+		<Spanish>Edad de Cobre</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_AGE_BRONZE</Tag>
 		<English>Bronze Age</English>
 		<French>
