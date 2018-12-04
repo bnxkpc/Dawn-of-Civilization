@@ -197,6 +197,39 @@ class CvRFCEventHandler:
 			
 			city.setHasRealBuilding(iTemple + 4*gc.getPlayer(iPlayer).getStateReligion(), True)
 			
+		# ac0e: help Italy
+		if iOwner == iItaly and tCity == Areas.getCapital(iItaly) and gc.getGame().getGameTurn() <= getTurnForYear(tBirth[iItaly])+3:
+			city.setPopulation(7)
+			lBuildings = [iGranary, iSmokehouse, iLibrary, iPharmacy, iTemple+4*gc.getPlayer(iItaly).getStateReligion(), iMarket, iArtStudio, iAqueduct, iJail, iWalls]
+			for iBuilding in lBuildings:
+				city.setHasRealBuilding(iBuilding, True)
+			gc.getPlayer(iItaly).AI_updateFoundValues(False)
+		
+		# ac0e: help Iran
+		if iOwner == iPersia and utils.isReborn(iPersia) and gc.getGame().getGameTurn() <= getTurnForYear(1501)+3:
+			if city.getPopulation() < 7:
+				city.setPopulation(7)
+			lBuildings = [iGranary, iForge, iAqueduct, iSmokehouse, iLibrary, iBarracks, iStable, iWalls, iCaravanserai, iTemple+4*gc.getPlayer(iPersia).getStateReligion()]
+			for iBuilding in lBuildings:
+				city.setHasRealBuilding(iBuilding, True)
+		
+		# ac0e: help Netherlands with preplaced Amsterdam
+		if iOwner == iNetherlands and tCity == Areas.getCapital(iNetherlands) and gc.getGame().getGameTurn() <= getTurnForYear(1580)+3:
+			if city.getPopulation() < 9:
+				city.setPopulation(9)
+			for iBuilding in [iGranary, iHarbor, iForge, iAqueduct, iSmokehouse, iLighthouse, iLibrary, iBarracks, iPharmacy, iBank, iArena, iTheatre, iTemple+4*gc.getPlayer(iNetherlands).getStateReligion()]:
+				city.setHasRealBuilding(iBuilding, True)	
+			gc.getPlayer(iNetherlands).AI_updateFoundValues(False)
+		
+		# ac0e: help Germany with preplaced Berlin
+		if iOwner == iGermany and tCity == Areas.getCapital(iGermany) and gc.getGame().getGameTurn() <= getTurnForYear(1700)+3:
+			if city.getPopulation() < 8:
+				city.setPopulation(8)
+			lBuildings = [iGranary, iForge, iAqueduct, iSmokehouse, iLibrary, iBarracks, iTemple+4*gc.getPlayer(iGermany).getStateReligion()]
+			for iBuilding in lBuildings:
+				city.setHasRealBuilding(iBuilding, True)
+			gc.getPlayer(iGermany).AI_updateFoundValues(False)
+		
 		if bConquest:
 
 			# Colombian UP: no resistance in conquered cities in Latin America
@@ -290,6 +323,14 @@ class CvRFCEventHandler:
 			if gc.getPlayer(iOwner).getNumCities() < 2:
 				gc.getPlayer(iOwner).AI_updateFoundValues(False); # fix for settler maps not updating after 1st city is founded
 
+		# ac0e: help Portugal
+		if iOwner == iPortugal and tCity == Areas.getCapital(iPortugal) and gc.getGame().getGameTurn() <= getTurnForYear(tBirth[iPortugal])+3:
+			city.setPopulation(6)
+			lBuildings = [iGranary, iAqueduct, iSmokehouse, iLibrary, iHarbor, iLighthouse, iTemple+4*gc.getPlayer(iItaly).getStateReligion(), iMarket, iForge, iAqueduct]
+			for iBuilding in lBuildings:
+				city.setHasRealBuilding(iBuilding, True)
+			gc.getPlayer(iPortugal).AI_updateFoundValues(False)
+		
 		if iOwner == iOttomans:
 			self.up.ottomanUP(city, iOwner, -1)
 			
