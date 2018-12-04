@@ -18,50 +18,75 @@ PyPlayer = PyHelpers.PyPlayer	# LOQ
 tMinorCities = (
 (-3000, (84, 45), iIndependent, 'Yerushalayim', 2, iArcher, 3),	# Jerusalem
 (-3000, (92, 46), iIndependent, 'Shushan', 1, iArcher, 1), 		# Susa
-(-3000, (88, 50), iIndependent2, 'Ashur', 2, iArcher, 2), 		# Assur
-(-2500, (78, 37), iBarbarian, 'Kerma', 2, iArcher, 2), 			# Kerma
+(-3000, (88, 49), iIndependent2, 'Ashur', 2, iArcher, 2), 		# Assur
+(-3000, (124, 52), iIndependent2, 'Chengzhou', 2, iArcher, 2), 		# Luoyang
+(-2500, (79, 37), iBarbarian, 'Kerma', 2, iArcher, 2), 			# Kerma
 (-2000, (100, 54), iIndependent, 'Afrasiyab', 1, iArcher, 1), 	# Samarkand
 #(-2000, (92, 39), iIndependent, 'Varanasi', 1, iMilitia, 1), 	# Varanasi
 (-1600, (105, 46), iIndependent, 'Indraprastha', 1, iMilitia, 1),	# Delhi
-(-1000, (124, 56), iIndependent, 'Zhongdu', 2, iSpearman, 1),	# Beijing
-(-1000, (83, 53), iIndependent, 'Ankuwash', 2, iArcher, 2),		# Ankara
-(-760, (67, 57), iCeltia, 'Melpum', 2, iArcher, 2),				# Milan
-(-500, (96, 56), iIndependent, 'K&#246;ne&#252;rgen&#231;', 1, iArcher, 2), 	# Urgench
-(-350, (64, 58), iCeltia, 'Lugodunon', 2, -1, -1),				# Lyon
+(-1000, (124, 56), iIndependent, 'Ji', 2, iSpearman, 1),	# Beijing
+(-1000, (82, 53), iIndependent, 'Ankuwash', 2, iArcher, 2),		# Ankara
+(-760, (66, 57), iCeltia, 'Melpum', 2, iArcher, 2),				# Milan
+(-500, (96, 56), iIndependent, 'Urganj', 1, iArcher, 2), 	# Urgench
+(-500, (98, 54), iIndependent2, 'Numijkat', 2, iArcher, 2), 	# Bukhara
+(-350, (63, 58), iCeltia, 'Lugodunon', 2, -1, -1),				# Lyon
 (-325, (107, 35), iIndependent, 'Kanchipuram', 2, iArcher, 1),	# Madras
 (-300, (128, 58), iBarbarian, 'Simiyan hoton', 2, iChariot, 2),	# Shenyang
-(-300, (60, 56), iCeltia, 'Burdigala', 2, -1, -1),				# Bordeaux
+(-300, (59, 56), iCeltia, 'Burdigala', 2, -1, -1),				# Bordeaux
 (-300, (106, 33), iIndependent, 'Tanjapuri', 1, iWarElephant, 1),	# Thanjavur
+(-258, (121, 42), iIndependent, 'Co Loa', 2, iArcher, 3),			# Hanoi
+(-214, (125, 43), iIndependent, 'Panyu', 2, iArcher, 2),	# Guangzhou
 (-190, (89, 54), iIndependent2, 'Artashat', 1, -1, -1),			# Artaxata
 (-100, (114, 57), iBarbarian, 'Dunhuang', 2, iArcher, 1),		# Dunhuang
 (-100, (109, 56), iBarbarian, 'Kuqa', 2, iArcher, 1),			# Kuqa
-(-100, (19, 41), iNative, 'Danni B&#225;a', 2, iHolkan, 2),		# Monte Albán
+(-100, (19, 41), iNative, 'Danib&#225;an', 2, iHolkan, 2),		# Monte Alban
 (-75, (105, 55), iBarbarian, 'Kashgar', 2, iArcher, 1),			# Kashgar
-(-50, (62, 60), iCeltia, 'Lutetia', 2, -1, -1),					# Paris
+(-50, (61, 60), iCeltia, 'Lutetia', 2, -1, -1),					# Paris
+(100, (17, 43), iBarbarian, 'Tolan', 2, iJaguar, 2),		# Teotihuacan
 (100, (88, 36), iIndependent, "Sana'a", 2, -1, -1),				# Sana'a
-(107, (117, 41), iIndependent2, 'Pagan', 2, -1, -1),			# Pagan
+(107, (117, 41), iIndependent2, 'Pugam', 2, -1, -1),			# Pagan
+(500, (103, 58), iBarbarian, 'Suyab', 2, iArcher, 2),		# Suyab
 (500, (124, 38), iIndependent, 'Indrapura', 2, iArcher, 1),		# Indrapura
-(633, (113, 48), iBarbarian, 'Rasa', 2, iKhampa, 1),			# Lhasa
-(680, (58, 44), iIndependent, 'Marrakus', 1, iCrossbowman, 1),	# Marrakesh
-(700, (34, 22), iNative, 'Tiwanaku', 1, -1, -1),				# Tihuanaco
-(738, (119, 45), iIndependent2, 'Taihe', 2, iArcher, 1),		# Dali
+(500, (86, 39), iIndependent, 'Bakkah', 2, iArcher, 1),		# Mecca
+(500, (73, 54), iIndependent, "Ragusa", 3, iCrossbowman, 3), # Ragusa
+(600, (86, 41), iIndependent, 'Yathrib', 2, iArcher, 1),		# Medina
+#(633, (113, 48), iBarbarian, 'Lhasa', 2, iKhampa, 1),			# Lhasa
+(680, (57, 44), iIndependent, 'Murrakush', 1, iCrossbowman, 1),	# Marrakesh
+(700, (34, 22), iNative, 'Tiyawanaku', 1, -1, -1),				# Tiahuanaco
+(700, (67, 48), iIndependent2, 'Tunis', 3, iCrossbowman, 2),	# Tunis
+(738, (117, 45), iIndependent2, 'Darllit', 2, iArcher, 1),		# Dali
 (800, tVienna, iIndependent, 'Vindobona', 1, iCrossbowman, 1),	# Wien
-(830, (67, 65), iIndependent, 'Hamburg', 2, iCrossbowman, 1),	# Hamburg
-(830, (68, 65), iIndependent, 'L&#252;beck', 2, iCrossbowman, 1),	# Lübeck
-(866, (122, 42), iBarbarian, 'Hanoi', 2, -1, -1),				# Hanoi
-(880, (75, 59), iIndependent2, 'Buda', 3, iHorseArcher, 5),		# Budapest
-(900, (25, 23), iNative, 'Pachakamaq', 1, iArcher, 2),			# Pachacamac
+(800, (70, 61), iIndependent2, 'Praha', 1, iCrossbowman, 1),	# Prague
+(800, (85, 69), iIndependent2, 'Beloozero', 1, iCrossbowman, 1),	# Beloozero
+(830, (66, 65), iIndependent, 'Hamburg', 2, iCrossbowman, 1),	# Hamburg
+(830, (67, 65), iIndependent, 'L&#252;beck', 2, iCrossbowman, 1),	# Lubeck
+(860, (82, 68), iIndependent, 'Novgorod', 3, iCrossbowman, 3),		# Novgorod
+(880, (74, 59), iIndependent2, 'Buda', 3, iHorseArcher, 5),		# Budapest
+(882, (80, 62), iIndependent, 'Kyiv', 2, iCrossbowman, 2),		# Kiev
+(900, (28, 25), iNative, 'Pachakamaq', 1, iArcher, 2),			# Pachacamac
 (900, (27, 28), iNative, 'Chan Chan', 2, iArcher, 2),			# Chan Chan
-(900, (81, 62), iIndependent, 'Kyiv', 2, iCrossbowman, 2),		# Kiev
-(990, (55, 64), iCeltia, '&#193;th Cliath', 1, -1, -1),			# Dublin
-(1000, (69, 74), iIndependent2, 'Nidaros', 1, iHuscarl, 1),		# Trondheim
+(944, (63, 48), iIndependent, "Dzayer", 3, iCrossbowman, 2),	# Algiers
+(990, (54, 64), iCeltia, '&#193;th Cliath', 1, -1, -1),			# Dublin
+(990, (130, 38), iIndependent, 'Maynilad', 2, iArcher, 2),		# Manila
+(1000, (68, 75), iIndependent2, 'Nidaros', 1, iHuscarl, 1),		# Trondheim
 (1000, (87, 30), iNative, 'Muqdisho', 1, iImpi, 1),				# Mogadishu
 (1000, (83, 20), iNative, 'Quelimane', 1, iImpi, 1),			# Quelimane
 (1050, (84, 27), iNative, 'Mombasa', 1, iImpi, 1),				# Mombasa
 (1100, (83, 24), iNative, 'Kilwa', 1, iImpi, 1),				# Kilwa
+(1115, (131, 61), iIndependent, "Huining", 3, iHorseArcher, 3),		# Huining
+(1154, (96, 40), iIndependent, "Masqat", 3, iCrossbowman, 3),	# Muscat
+(1157, (69, 64), iIndependent, 'Brandenburg', 3, iCrossbowman, 1),		# Brandenburg
 (1200, (92, 65), iBarbarian, 'Qazan', 2, iHorseArcher, 1),		# Kazan
-(1400, (123, 35), iIndependent, 'Saigon', 5, iCrossbowman, 3),	# Saigon
-(1483, (70, 24), iNative, 'Mbanza Kongo', 1, iPombos, 1),		# Mbanza Kongo
+(1200, (78, 68), iIndependent, 'Riga', 3, iCrossbowman, 2),		# Riga
+(1200, (89, 61), iBarbarian, 'Tsaritsyn', 3, iHorseArcher, 1),		# Tsaritsyn
+(1200, (131, 36), iIndependent2, 'Sugbo', 2, iArcher, 2),		# Cebu
+(1252, (72, 71), iIndependent2, 'Stockholm', 3, iCrossbowman, 3),		# Stockholm
+(1255, (75, 65), iIndependent, 'K&#246;nigsberg', 3, iCrossbowman, 3),		# Konigsberg
+(1300, (120, 30), iIndependent2, 'Melaka', 5, iCrossbowman, 3),	# Malacca
+(1300, (62, 64), iIndependent2, 'Amsterdam', 3, iCrossbowman, 4),		# Amsterdam
+(1400, (123, 35), iIndependent, 'Sai Gon', 5, iCrossbowman, 3),	# Saigon
+(1483, (70, 24), iNative, "M'banza-Kongo", 1, iPombos, 1),		# Mbanza Kongo
+# (1515, (130, 33), iIndependent2, 'Maguindanao', 2, iCrossbowman, 2),		# Maguindanao
 )
 
 # do some research on dates here
@@ -71,12 +96,19 @@ tMinorStates = (
 	(-75, 600, (105, 55), [iHorseman]),		# Kashgar early
 	(600, 1600, (105, 55), [iHorseArcher]),		# Kashgar late
 	(-75, 600, (100, 54), [iHorseman]),		# Samarkand early
-	(600, 1600, (100, 54), [iHorseArcher]),		# Samarkand late
+	(600, 1600, (100, 54), [iHorseArcher, iCrossbowman]),		# Samarkand late
 	(-300, 600, (106, 33), [iArcher, iSwordsman, iWarElephant]), # Chola
 	(-300, 600, (107, 35), [iArcher, iSwordsman, iWarElephant]), # Chola
 	(-300, 900, (128, 58), [iHorseArcher, iSwordsman]), # Jurchen
-	(1100, 1500, (69, 54), [iPikeman, iLongbowman]), # Rome late
-	(0, 1100, (69, 54), [iSpearman, iArcher]), # Rome early
+	(500, 1500, (68, 53), [iPikeman, iCrossbowman]), # Rome late
+	(0, 1100, (68, 53), [iSpearman, iArcher]), # Rome early
+	(860, 1380, (82, 68), [iCrossbowman, iHeavySpearman, iWorker]), # Novgorod
+	(884, 1380, (80, 62), [iCrossbowman, iHeavySpearman, iWorker]), # Kiev
+	(990, 1565, (130, 38), [iCrossbowman, iSwordsman, iWorker]), # Manila
+	#(1010, 1380, (73, 58), [iCrossbowman, iHeavySpearman, iWorker]), # Yaroslavl
+	(1200, 1570, (92, 65), [iCrossbowman, iKeshik]), # Kazan
+	(1200, 1420, (89, 61), [iCrossbowman, iKeshik]), # Tsaritsyn
+	(1300, 1581, (62, 64), [iCrossbowman, iHeavySpearman, iLancer]), # Amsterdam
 )
 
 #handicap level modifier
@@ -325,12 +357,11 @@ class Barbs:
 			if not self.canFoundCity(sName): continue
 			
 			lReligions = []
-			bForceSpawn = False
+			bForceSpawn = True
 			
-			if sName == 'Kyiv': lReligions = [iOrthodoxy, iCatholicism]
+			if sName == 'Kyiv': lReligions = [iOrthodoxy]
 			if sName == 'Kilwa': lReligions = [iIslam]
 			if iPlayer == iCeltia and utils.getScenario() != i3000BC: iPlayer = iIndependent
-			if sName == 'Buda': bForceSpawn = True
 			
 			if not self.isFreePlot(tPlot, bForceSpawn): continue
 			
@@ -342,7 +373,7 @@ class Barbs:
 	def canFoundCity(self, sName):
 		if sName == 'Kanchipuram' and utils.getHumanID() == iTamils: return False
 		elif sName == 'Tanjapuri' and gc.getPlayer(iTamils).isAlive(): return False
-		elif sName == 'Zhongdu' and utils.getHumanID() == iChina: return False
+		elif sName == 'Ji' and utils.getHumanID() == iChina: return False
 		elif sName == 'Hamburg' and (utils.getHumanID() == iHolyRome or data.iSeed % 4 == 0): return False
 		elif sName == 'L&#252;beck' and (utils.getHumanID() == iHolyRome or data.iSeed % 4 != 0): return False
 		elif sName == 'Rasa' and gc.getPlayer(iTibet).isAlive(): return False
