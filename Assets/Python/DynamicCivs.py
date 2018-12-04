@@ -31,9 +31,9 @@ tEuropeanRussiaExceptions = ((80, 75), (81, 75), (82, 75), (83, 75), (84, 75), (
 
 tKhazariaTL = (71, 46)
 tKhazariaBR = (79, 53)
-tAnatoliaTL = (69, 41)
-tAnatoliaBR = (75, 45)
-iTurkicEastWestBorder = 89
+tAnatoliaTL = (79, 51)
+tAnatoliaBR = (87, 55)
+iTurkicEastWestBorder = 105
 
 ### Setup methods ###
 
@@ -497,7 +497,7 @@ dAdjectiveChanges = {
 
 dCapitals = {
 	iPolynesia : ["Kaua'i", "O'ahu", "Maui", "Manu'a", "Niue"],
-	iBabylonia : ["Ninua", "Kalhu"],
+	iBabylonia : ["Ninua", "Kalhu", "Ashur"],
 	iByzantium : ["Dyrrachion", "Athena", "Konstantinoupolis"],
 	iVikings : ["Stockholm", "Oslo", "Nidaros", "Kalmar", "Roskilde"],
 	iKhmer : ["Pagan", "Dali", "Angkor", "Hanoi"],
@@ -565,14 +565,21 @@ dStartingLeaders = [
 # 600 AD
 {
 	iChina : iTaizong,
+	iIndia : iChandragupta,
+	iPersia : iKhosrow,
 },
 # 1700 AD
 {
 	iChina : iHongwu,
 	iIndia : iShahuji,
 	iPersia : iAbbas,
+	iKorea : iSejong,
 	iJapan : iOdaNobunaga,
 	iVikings : iGustav,
+	iTurks : iTamerlane,
+	iTibet : iLobsangGyatso,
+	iIndonesia : iHayamWuruk,
+	iMoors : iYaqub,
 	iSpain : iPhilip,
 	iFrance : iLouis,
 	iEngland : iVictoria,
@@ -772,6 +779,10 @@ def setLeaderName(iPlayer, sName):
 	if gc.getLeaderHeadInfo(gc.getPlayer(iPlayer).getLeader()).getText() != sName:
 		gc.getPlayer(iPlayer).setLeaderName(sName)
 
+def setCivFlag(iCiv, sName):
+	pPlayer = gc.getPlayer(iCiv)
+	pPlayer.setFlag("Art/Interface/TeamColor/FlagDECAL_" + sName + ".dds")
+		
 ### Utility methods ###
 
 def getOrElse(dDictionary, iPlayer, sDefault=None):
@@ -1008,15 +1019,15 @@ def specificName(iPlayer):
 	bWar = isAtWar(iPlayer)
 	
 	if iPlayer == iChina:
-		if bEmpire:
-			if iEra >= iIndustrial or utils.getScenario() == i1700AD:
+		if iEra >= iRenaissance:
+			if iGameTurn >= getTurnForYear(1640) or utils.getScenario() == i1700AD:
 				return "TXT_KEY_CIV_CHINA_QING"
-			
-			if iEra == iRenaissance and iGameTurn >= getTurnForYear(1400):
+				
+			elif iGameTurn >= getTurnForYear(1350):
 				return "TXT_KEY_CIV_CHINA_MING"
-			
+	
 	elif iPlayer == iBabylonia:
-		if isCapital(iPlayer, ["Ninua", "Kalhu"]):
+		if isCapital(iPlayer, ["Ninua", "Kalhu", "Ashur"]):
 			return "TXT_KEY_CIV_BABYLONIA_ASSYRIA"
 			
 	elif iPlayer == iGreece:
@@ -1047,14 +1058,19 @@ def specificName(iPlayer):
 			return "TXT_KEY_CIV_ETHIOPIA_AKSUM"
 			
 	elif iPlayer == iKorea:
-		if iEra == iClassical:
+		if iEra == iRenaissance or (iGameTurn >= getTurnForYear(1390) and iGameTurn <= getTurnForYear(1910)):
+			return "TXT_KEY_CIV_KOREA_JOSEON"
+		
+		elif iEra == iMedieval:
+			if iGameTurn >= getTurnForYear(910):
+				return "TXT_KEY_CIV_KOREA_GORYEO"
+			else:
+				return "TXT_KEY_CIV_KOREA_SHILLA"
+		
+		elif iEra == iClassical:
 			if bEmpire:
-				return "TXT_KEY_CIV_KOREA_GOGURYEO"
-				
-		if iEra <= iMedieval:
-			return "TXT_KEY_CIV_KOREA_GORYEO"
-			
-		return "TXT_KEY_CIV_KOREA_JOSEON"
+				return "TXT_KEY_CIV_KOREA_GOGURYEO"		
+		
 		
 	elif iPlayer == iByzantium:
 		if iReligion == iIslam:
@@ -1115,7 +1131,7 @@ def specificName(iPlayer):
 			return "TXT_KEY_CIV_INDONESIA_MATARAM"
 			
 		if iEra <= iRenaissance:
-			if bEmpire:
+			if iGameTurn >= getTurnForYear(1238):
 				return "TXT_KEY_CIV_INDONESIA_MAJAPAHIT"
 				
 			return "TXT_KEY_CIV_INDONESIA_SRIVIJAYA"
@@ -1268,32 +1284,39 @@ def specificAdjective(iPlayer):
 				return "TXT_KEY_CIV_EGYPT_AYYUBID"
 			
 	elif iPlayer == iIndia:
-		if bMonarchy and not bCityStates:
-			if iEra >= iRenaissance:
-				return "TXT_KEY_CIV_INDIA_MARATHA"
+		if bMonarchy:
+			if not bCityStates:
+				if iEra >= iRenaissance:
+					return "TXT_KEY_CIV_INDIA_MARATHA"
 			
-			if iEra >= iMedieval:
-				return "TXT_KEY_CIV_INDIA_PALA"
-			
+				if iEra >= iMedieval:
+					return "TXT_KEY_CIV_INDIA_PALA"
+					
+				if iReligion == iBuddhism:
+					return "TXT_KEY_CIV_INDIA_MAURYA"
+				
+				if iReligion == iHinduism:
+					return "TXT_KEY_CIV_INDIA_GUPTA"
+					
 			if iReligion == iBuddhism:
 				return "TXT_KEY_CIV_INDIA_MAURYA"
-			
+				
 			if iReligion == iHinduism:
 				return "TXT_KEY_CIV_INDIA_GUPTA"
 			
 	elif iPlayer == iChina:
 		if bMonarchy:
 			if iEra >= iMedieval:
-				if tPlayer.isHasTech(iPaper) and tPlayer.isHasTech(iGunpowder):
+				if iGameTurn >= getTurnForYear(960) or (tPlayer.isHasTech(iPaper) and tPlayer.isHasTech(iGunpowder)):
 					return "TXT_KEY_CIV_CHINA_SONG"
 			
-				if iGameTurn >= getTurnForYear(600):
+				if iGameTurn >= getTurnForYear(618):
 					return "TXT_KEY_CIV_CHINA_TANG"
 				
 				return "TXT_KEY_CIV_CHINA_SUI"
 			
 			if iEra == iClassical:
-				if iGameTurn >= getTurnForYear(0):
+				if iGameTurn >= getTurnForYear(-210):
 					return "TXT_KEY_CIV_CHINA_HAN"
 				
 				return "TXT_KEY_CIV_CHINA_QIN"
@@ -1304,7 +1327,7 @@ def specificAdjective(iPlayer):
 		if bCityStates and not bEmpire:
 			return "TXT_KEY_CIV_BABYLONIA_MESOPOTAMIAN"
 			
-		if isCapital(iPlayer, ["Ninua", "Kalhu"]):
+		if isCapital(iPlayer, ["Ninua", "Kalhu", "Ashur"]):
 			return "TXT_KEY_CIV_BABYLONIA_ASSYRIAN"
 			
 	elif iPlayer == iGreece:
@@ -1325,14 +1348,16 @@ def specificAdjective(iPlayer):
 			
 				return "TXT_KEY_CIV_PERSIA_PAHLAVI"
 			
+			if getColumn(iPlayer) >= 6: 
+				return "TXT_KEY_CIV_PERSIA_SASSANID"
+			
 			if iEra <= iClassical:
-				if bResurrected:
+				if bResurrected or iGameTurn >= getTurnForYear(-247):
 					return "TXT_KEY_CIV_PERSIA_PARTHIAN"
 					
 				return "TXT_KEY_CIV_PERSIA_ACHAEMENID"
 			
-			if getColumn(iPlayer) >= 6: 
-				return "TXT_KEY_CIV_PERSIA_SASSANID"
+			
 				
 	elif iPlayer == iPolynesia:
 		if isCapital(iPlayer, ["Manu'a"]):
@@ -1374,22 +1399,22 @@ def specificAdjective(iPlayer):
 			return "TXT_KEY_CIV_VIKINGS_SWEDISH"
 			
 	elif iPlayer == iTurks:
-		if bResurrected:
+		if bResurrected or iGameTurn >= getTurnForYear(1370):
 			return "TXT_KEY_CIV_TURKS_TIMURID"
 	
 		if utils.isPlotInArea(tCapitalCoords, tKhazariaTL, tKhazariaBR):
 			return "TXT_KEY_CIV_TURKS_KHAZAR"
 			
-		if isAreaControlled(iTurks, Areas.tCoreArea[iPersia][0], Areas.tCoreArea[iPersia][1]):
+		if isAreaControlled(iTurks, Areas.tCoreArea[iPersia][0], Areas.tCoreArea[iPersia][1]) and iGameTurn <= getTurnForYear(1370):
 			return "TXT_KEY_CIV_TURKS_SELJUK"
 			
-		if utils.isPlotInArea(iTurks, Areas.tCoreArea[iPersia][0], Areas.tCoreArea[iPersia][0]):
+		if utils.isPlotInArea(iTurks, Areas.tCoreArea[iPersia][0], Areas.tCoreArea[iPersia][1]):
 			return "TXT_KEY_CIV_TURKS_SELJUK"
 			
 		if utils.isPlotInArea(tCapitalCoords, tAnatoliaTL, tAnatoliaBR):
 			return "TXT_KEY_CIV_TURKS_SELJUK"
 			
-		if iEra >= iRenaissance:
+		if iGameTurn >= getTurnForYear(1500):
 			if bEmpire:
 				return "TXT_KEY_CIV_TURKS_SHAYBANID"
 		
@@ -1412,13 +1437,19 @@ def specificAdjective(iPlayer):
 				return "TXT_KEY_CIV_ARABIA_UMMAYAD"
 				
 			return "TXT_KEY_CIV_ARABIA_ABBASID"
-			
+	
+	elif iPlayer == iIndonesia:
+		if iGameTurn >= getTurnForYear(1238):
+			return "TXT_KEY_CIV_INDONESIA_MAJAPAHIT"
+		else:
+			return "TXT_KEY_CIV_INDONESIA_SRIVIJAYA"
+	
 	elif iPlayer == iMoors:
-		if bEmpire and iEra <= iRenaissance:
-			return "TXT_KEY_CIV_MOORS_ALMOHAD"
-			
 		if not utils.isPlotInArea(tCapitalCoords, vic.tIberiaTL, vic.tIberiaBR):
-			return "TXT_KEY_CIV_MOORS_MOROCCAN"
+			if bEmpire and iEra <= iRenaissance:
+				return "TXT_KEY_CIV_MOORS_ALMOHAD"
+			else:
+				return "TXT_KEY_CIV_MOORS_MOROCCAN"
 			
 	elif iPlayer == iSpain:
 		bSpain = not pMoors.isAlive() or not utils.isPlotInArea(capitalCoords(iMoors), vic.tIberiaTL, vic.tIberiaBR)
@@ -1665,12 +1696,12 @@ def specificTitle(iPlayer, lPreviousOwners=[]):
 			if iEra >= iIndustrial or utils.getScenario() == i1700AD:
 				return "TXT_KEY_EMPIRE_OF"
 			
-			if iEra == iRenaissance and iGameTurn >= getTurnForYear(1400):
+			if iEra == iRenaissance and iGameTurn >= getTurnForYear(1350):
 				return "TXT_KEY_EMPIRE_OF"
 				
 			return "TXT_KEY_EMPIRE_ADJECTIVE"
 			
-	elif iPlayer == iBabylonia:
+	elif iPlayer == iBabylonia:	
 		if bCityStates and not bEmpire:
 			return "TXT_KEY_CITY_STATES_ADJECTIVE"
 			
@@ -1745,11 +1776,15 @@ def specificTitle(iPlayer, lPreviousOwners=[]):
 	elif iPlayer == iKorea:
 		if iEra >= iIndustrial:
 			if bEmpire:
-				return "TXT_KEY_EMPIRE_ADJECTIVE"
+				return "TXT_KEY_CIV_KOREA_EMPIRE"
+			else:
+				return "TXT_KEY_KINGDOM_OF"
 				
 		if iEra == iClassical:
 			if bEmpire:
 				return "TXT_KEY_EMPIRE_OF"
+			else:
+				return "TXT_KEY_CIV_KOREA_DEFAULT"
 				
 		if bCityStates:
 			return "TXT_KEY_CIV_KOREA_SAMHAN"
@@ -1835,6 +1870,8 @@ def specificTitle(iPlayer, lPreviousOwners=[]):
 	elif iPlayer == iIndonesia:
 		if iReligion == iIslam:
 			return "TXT_KEY_SULTANATE_OF"
+		if bEmpire:
+			return "TXT_KEY_EMPIRE_ADJECTIVE"
 			
 	elif iPlayer == iMoors:
 		if bCityStates:
@@ -1900,7 +1937,7 @@ def specificTitle(iPlayer, lPreviousOwners=[]):
 			return "TXT_KEY_CIV_HOLY_ROME_ARCHDUCHY_OF"
 		
 	elif iPlayer == iRussia:
-		if bEmpire and iEra >= iRenaissance:
+		if bEmpire and getColumn(iPlayer) >= 12:
 			return "TXT_KEY_EMPIRE_ADJECTIVE"
 			
 		if bCityStates and iEra <= iMedieval:
@@ -1997,7 +2034,7 @@ def specificTitle(iPlayer, lPreviousOwners=[]):
 				
 			return "TXT_KEY_SULTANATE_OF"
 	
-		if iEra == iMedieval and not bEmpire:
+		if iEra == iMedieval: # and not bEmpire:
 			return "TXT_KEY_SULTANATE_OF"
 			
 	elif iPlayer == iOttomans:
@@ -2053,7 +2090,7 @@ def leader(iPlayer):
 	
 	if not gc.getPlayer(iPlayer).isAlive(): return None
 	
-	if gc.getPlayer(iPlayer).isHuman(): return None
+	#if gc.getPlayer(iPlayer).isHuman(): return None
 	
 	pPlayer = gc.getPlayer(iPlayer)
 	tPlayer = gc.getTeam(pPlayer.getTeam())
@@ -2089,7 +2126,7 @@ def leader(iPlayer):
 	elif iPlayer == iChina:
 		if isCommunist(iPlayer) or isRepublic(iPlayer) and iEra >= iIndustrial: return iMao
 			
-		if iEra >= iRenaissance and iGameTurn >= getTurnForYear(1400): return iHongwu
+		if iEra >= iRenaissance and iGameTurn >= getTurnForYear(1350): return iHongwu
 	
 		if bResurrected: return iHongwu
 		
@@ -2129,7 +2166,7 @@ def leader(iPlayer):
 		if bEmpire or not bCityStates: return iAugustus
 		
 	elif iPlayer == iKorea:		
-		if iEra >= iRenaissance: return iSejong
+		if iEra >= iRenaissance or iGameTurn >= getTurnForYear(1390): return iSejong
 		
 		if utils.getScenario() >= i1700AD: return iSejong
 	
@@ -2157,7 +2194,7 @@ def leader(iPlayer):
 		if iEra >= iRenaissance: return iGustav
 		
 	elif iPlayer == iTurks:
-		if bResurrected or bReborn: return iTamerlane
+		if bResurrected or iGameTurn >= getTurnForYear(1370): return iTamerlane
 	
 		if iGameTurn >= getTurnForYear(1000): return iAlpArslan
 		
@@ -2170,7 +2207,7 @@ def leader(iPlayer):
 	elif iPlayer == iIndonesia:
 		if iEra >= iGlobal: return iSuharto
 		
-		if bEmpire: return iHayamWuruk
+		if iGameTurn >= getTurnForYear(1280): return iHayamWuruk
 		
 	elif iPlayer == iMoors:
 		if not utils.isPlotInArea(tCapitalCoords, vic.tIberiaTL, vic.tIberiaBR): return iYaqub
@@ -2192,14 +2229,14 @@ def leader(iPlayer):
 		
 		if iEra >= iIndustrial: return iVictoria
 		
-		if utils.getScenario() == i1700AD: return iVictoria
+		#if utils.getScenario() == i1700AD: return iVictoria
 		
 		if iEra >= iRenaissance: return iElizabeth
 		
 	elif iPlayer == iHolyRome:
 		if iEra >= iIndustrial: return iFrancis
 		
-		if utils.getScenario() == i1700AD: return iFrancis
+		#if utils.getScenario() == i1700AD: return iFrancis
 		
 		if iEra >= iRenaissance: return iCharles
 		
@@ -2212,7 +2249,7 @@ def leader(iPlayer):
 		if iEra >= iRenaissance:
 			if iGameTurn >= getTurnForYear(1750): return iCatherine
 			
-			return iPeter
+			elif iGameTurn >= getTurnForYear(1600): return iPeter
 		
 	elif iPlayer == iNetherlands:
 		if iGameTurn >= getTurnForYear(1650): return iWilliam
@@ -2222,7 +2259,7 @@ def leader(iPlayer):
 		
 		if isFascist(iPlayer) or isCommunist(iPlayer): return iPilsudski
 	
-		if iEra >= iRenaissance: return iSobieski
+		if iGameTurn >= getTurnForYear(1650): return iSobieski
 		
 		if utils.getScenario() == i1700AD: return iSobieski
 		
@@ -2257,7 +2294,7 @@ def leader(iPlayer):
 	elif iPlayer == iMughals:
 		if iEra >= iGlobal: return iBhutto
 	
-		if getColumn(iPlayer) >= 9: return iAkbar
+		if getColumn(iPlayer) >= 10: return iAkbar
 		
 	elif iPlayer == iOttomans:
 		if not bMonarchy and iEra >= iIndustrial: return iAtaturk
