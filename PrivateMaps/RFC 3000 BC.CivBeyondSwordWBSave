@@ -178,7 +178,7 @@ BeginPlayer
 EndPlayer
 BeginPlayer
 	Team=2
-	LeaderType=LEADER_HAMMURABI
+	LeaderType=LEADER_GILGAMESH
 	CivType=CIVILIZATION_BABYLONIA
 	PlayableCiv=1
 	Handicap=HANDICAP_REGENT
@@ -315,7 +315,7 @@ BeginPlayer
 EndPlayer
 BeginPlayer
 	Team=15
-	LeaderType=LEADER_TOKUGAWA
+	LeaderType=LEADER_JIMMU
 	CivType=CIVILIZATION_JAPAN
 	PlayableCiv=1
 	StartingGold=100
@@ -342,7 +342,7 @@ BeginPlayer
 EndPlayer
 BeginPlayer
 	Team=17
-	LeaderType=LEADER_ALP_ARSLAN
+	LeaderType=LEADER_BUMIN
 	CivType=CIVILIZATION_TURKS
 	PlayableCiv=1
 	StartingGold=100
@@ -355,7 +355,7 @@ BeginPlayer
 EndPlayer
 BeginPlayer
 	Team=18
-	LeaderType=LEADER_SALADIN
+	LeaderType=LEADER_HARUN
 	CivType=CIVILIZATION_ARABIA
 	PlayableCiv=1
 	StartingGold=300
@@ -369,7 +369,7 @@ BeginPlayer
 EndPlayer
 BeginPlayer
 	Team=19
-	LeaderType=LEADER_LOBSANG_GYATSO
+	LeaderType=LEADER_SONGTSEN
 	CivType=CIVILIZATION_TIBET
 	PlayableCiv=1
 	StartingGold=50
@@ -383,7 +383,7 @@ BeginPlayer
 EndPlayer
 BeginPlayer
 	Team=20
-	LeaderType=LEADER_HAYAM_WURUK
+	LeaderType=LEADER_DHARMASETU
 	CivType=CIVILIZATION_INDONESIA
 	PlayableCiv=1
 	StartingGold=300
@@ -424,7 +424,7 @@ BeginPlayer
 EndPlayer
 BeginPlayer
 	Team=23
-	LeaderType=LEADER_LOUIS_XIV
+	LeaderType=LEADER_CHARLEMAGNE
 	CivType=CIVILIZATION_FRANCE
 	PlayableCiv=1
 	StartingGold=150
@@ -452,7 +452,7 @@ BeginPlayer
 EndPlayer
 BeginPlayer
 	Team=25
-	LeaderType=LEADER_VICTORIA
+	LeaderType=LEADER_ALFRED
 	CivType=CIVILIZATION_ENGLAND
 	PlayableCiv=1
 	StartingGold=200
@@ -481,7 +481,7 @@ BeginPlayer
 EndPlayer
 BeginPlayer
 	Team=27
-	LeaderType=LEADER_PETER
+	LeaderType=LEADER_IVAN_IV
 	CivType=CIVILIZATION_RUSSIA
 	PlayableCiv=1
 	StartingGold=200
@@ -507,7 +507,7 @@ BeginPlayer
 EndPlayer
 BeginPlayer
 	Team=29
-	LeaderType=LEADER_SOBIESKI
+	LeaderType=LEADER_CASIMIR
 	CivType=CIVILIZATION_POLAND
 	PlayableCiv=1
 	StartingGold=100
@@ -521,7 +521,7 @@ BeginPlayer
 EndPlayer
 BeginPlayer
 	Team=30
-	LeaderType=LEADER_JOAO
+	LeaderType=LEADER_AFONSO
 	CivType=CIVILIZATION_PORTUGAL
 	PlayableCiv=1
 	StartingGold=200
@@ -547,7 +547,7 @@ BeginPlayer
 EndPlayer
 BeginPlayer
 	Team=32
-	LeaderType=LEADER_CAVOUR
+	LeaderType=LEADER_LORENZO
 	CivType=CIVILIZATION_ITALY
 	PlayableCiv=1
 	StartingGold=350
@@ -587,7 +587,7 @@ BeginPlayer
 EndPlayer
 BeginPlayer
 	Team=35
-	LeaderType=LEADER_AKBAR
+	LeaderType=LEADER_IBN_TUGHLUQ
 	CivType=CIVILIZATION_MUGHALS
 	PlayableCiv=1
 	StartingGold=400
@@ -672,7 +672,7 @@ BeginPlayer
 EndPlayer
 BeginPlayer
 	Team=41
-	LeaderType=LEADER_FRANKLIN_ROOSEVELT
+	LeaderType=LEADER_WASHINGTON
 	CivType=CIVILIZATION_AMERICA
 	PlayableCiv=1
 	StartingGold=1500
@@ -715,7 +715,7 @@ BeginPlayer
 EndPlayer
 BeginPlayer
 	Team=44
-	LeaderType=LEADER_TRUDEAU
+	LeaderType=LEADER_MACDONALD
 	CivType=CIVILIZATION_CANADA
 	PlayableCiv=1
 	StartingGold=1000
@@ -773,8 +773,8 @@ EndPlayer
 BeginMap
 	grid width=150
 	grid height=80
-	top latitude=90
-	bottom latitude=-90
+	top latitude=75
+	bottom latitude=-60
 	wrap X=1
 	wrap Y=0
 	world size=WORLDSIZE_HUGE
@@ -12751,7 +12751,7 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=27,y=37
-	FeatureType=FEATURE_JUNGLE, FeatureVariety=0
+	FeatureType=FEATURE_RAINFOREST, FeatureVariety=0
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 EndPlot
@@ -20540,17 +20540,17 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=44,y=51
-	TerrainType=TERRAIN_OCEAN
+	TerrainType=TERRAIN_COAST
 	PlotType=3
 EndPlot
 BeginPlot
 	x=44,y=52
-	TerrainType=TERRAIN_OCEAN
+	TerrainType=TERRAIN_COAST
 	PlotType=3
 EndPlot
 BeginPlot
 	x=44,y=53
-	TerrainType=TERRAIN_OCEAN
+	TerrainType=TERRAIN_COAST
 	PlotType=3
 EndPlot
 BeginPlot
@@ -20961,17 +20961,18 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=45,y=51
-	TerrainType=TERRAIN_OCEAN
+	TerrainType=TERRAIN_COAST
 	PlotType=3
 EndPlot
 BeginPlot
 	x=45,y=52
-	TerrainType=TERRAIN_OCEAN
-	PlotType=3
+	FeatureType=FEATURE_FOREST, FeatureVariety=0
+	TerrainType=TERRAIN_PLAINS
+	PlotType=2
 EndPlot
 BeginPlot
 	x=45,y=53
-	TerrainType=TERRAIN_OCEAN
+	TerrainType=TERRAIN_COAST
 	PlotType=3
 EndPlot
 BeginPlot
@@ -21378,17 +21379,17 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=46,y=51
-	TerrainType=TERRAIN_OCEAN
+	TerrainType=TERRAIN_COAST
 	PlotType=3
 EndPlot
 BeginPlot
 	x=46,y=52
-	TerrainType=TERRAIN_OCEAN
+	TerrainType=TERRAIN_COAST
 	PlotType=3
 EndPlot
 BeginPlot
 	x=46,y=53
-	TerrainType=TERRAIN_OCEAN
+	TerrainType=TERRAIN_COAST
 	PlotType=3
 EndPlot
 BeginPlot
@@ -24249,18 +24250,17 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=53,y=50
-	BonusType=BONUS_FISH
 	TerrainType=TERRAIN_COAST
 	PlotType=3
 EndPlot
 BeginPlot
 	x=53,y=51
+	BonusType=BONUS_CRAB
 	TerrainType=TERRAIN_COAST
 	PlotType=3
 EndPlot
 BeginPlot
 	x=53,y=52
-	BonusType=BONUS_CRAB
 	TerrainType=TERRAIN_COAST
 	PlotType=3
 EndPlot
@@ -24655,21 +24655,22 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=54,y=49
+	BonusType=BONUS_FISH
 	TerrainType=TERRAIN_COAST
 	PlotType=3
 EndPlot
 BeginPlot
 	x=54,y=50
-	BonusType=BONUS_WINE
+	RiverNSDirection=2
+	isWOfRiver
 	TerrainType=TERRAIN_PLAINS
 	PlotType=2
 EndPlot
 BeginPlot
 	x=54,y=51
 	RiverNSDirection=2
-	isNOfRiver
-	RiverWEDirection=3
 	isWOfRiver
+	BonusType=BONUS_WINE
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 EndPlot
@@ -24739,12 +24740,12 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=54,y=64
+	BonusType=BONUS_HORSE
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 EndPlot
 BeginPlot
 	x=54,y=65
-	BonusType=BONUS_HORSE
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 EndPlot
@@ -25070,7 +25071,6 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=55,y=48
-	BonusType=BONUS_CRAB
 	TerrainType=TERRAIN_COAST
 	PlotType=3
 EndPlot
@@ -25496,6 +25496,7 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=56,y=48
+	BonusType=BONUS_CRAB
 	TerrainType=TERRAIN_COAST
 	PlotType=3
 EndPlot
@@ -25534,6 +25535,7 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=56,y=54
+	BonusType=BONUS_STONE
 	TerrainType=TERRAIN_GRASS
 	PlotType=1
 EndPlot
@@ -29016,7 +29018,8 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=64,y=47
-	TerrainType=TERRAIN_DESERT
+	BonusType=BONUS_WHEAT
+	TerrainType=TERRAIN_PLAINS
 	PlotType=1
 EndPlot
 BeginPlot
@@ -29506,6 +29509,7 @@ BeginPlot
 	isNOfRiver
 	RiverWEDirection=1
 	BonusType=BONUS_WHEAT
+	FeatureType=FEATURE_FLOOD_PLAINS, FeatureVariety=0
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 EndPlot
@@ -29944,6 +29948,7 @@ BeginPlot
 	x=66,y=57
 	isNOfRiver
 	RiverWEDirection=1
+	FeatureType=FEATURE_FLOOD_PLAINS, FeatureVariety=0
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 EndPlot
@@ -31341,8 +31346,8 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=69,y=68
-	FeatureType=FEATURE_ISLANDS, FeatureVariety=0
-	TerrainType=TERRAIN_COAST
+	FeatureType=FEATURE_FOREST, FeatureVariety=1
+	TerrainType=TERRAIN_GRASS
 	PlotType=3
 EndPlot
 BeginPlot
@@ -31797,8 +31802,7 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=70,y=68
-	FeatureType=FEATURE_FOREST, FeatureVariety=1
-	TerrainType=TERRAIN_GRASS
+	TerrainType=TERRAIN_COAST
 	PlotType=2
 EndPlot
 BeginPlot
@@ -33109,6 +33113,8 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=73,y=57
+	RiverNSDirection=2
+	isWOfRiver
 	TerrainType=TERRAIN_PLAINS
 	PlotType=2
 EndPlot
@@ -33570,14 +33576,14 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=74,y=57
+	isNOfRiver
+	RiverWEDirection=1
 	BonusType=BONUS_OIL
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 EndPlot
 BeginPlot
 	x=74,y=58
-	isNOfRiver
-	RiverWEDirection=1
 	BonusType=BONUS_HORSE
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
@@ -34042,16 +34048,14 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=75,y=57
-	RiverNSDirection=2
-	isWOfRiver
+	isNOfRiver
+	RiverWEDirection=1
 	FeatureType=FEATURE_FOREST, FeatureVariety=0
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 EndPlot
 BeginPlot
 	x=75,y=58
-	isNOfRiver
-	RiverWEDirection=1
 	BonusType=BONUS_GOLD
 	FeatureType=FEATURE_FOREST, FeatureVariety=1
 	TerrainType=TERRAIN_GRASS
@@ -35019,7 +35023,6 @@ BeginPlot
 	x=77,y=61
 	isNOfRiver
 	RiverWEDirection=1
-	BonusType=BONUS_PIG
 	TerrainType=TERRAIN_GRASS
 	PlotType=1
 EndPlot
@@ -35446,6 +35449,7 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=78,y=56
+	BonusType=BONUS_IRON
 	TerrainType=TERRAIN_PLAINS
 	PlotType=2
 EndPlot
@@ -35475,6 +35479,7 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=78,y=61
+	BonusType=BONUS_PIG
 	TerrainType=TERRAIN_GRASS
 	PlotType=1
 EndPlot
@@ -36327,6 +36332,14 @@ BeginPlot
 	FeatureType=FEATURE_FLOOD_PLAINS, FeatureVariety=0
 	TerrainType=TERRAIN_DESERT
 	PlotType=2
+	BeginUnit
+		UnitType=UNIT_MILITIA, UnitOwner=0, (Ramesses II)
+		Level=0, Experience=0
+	EndUnit
+	BeginUnit
+		UnitType=UNIT_SETTLER, UnitOwner=0, (Ramesses II)
+		Level=0, Experience=0
+	EndUnit
 EndPlot
 BeginPlot
 	x=80,y=44
@@ -36776,12 +36789,6 @@ BeginPlot
 	FeatureType=FEATURE_FLOOD_PLAINS, FeatureVariety=0
 	TerrainType=TERRAIN_DESERT
 	PlotType=2
-	BeginUnit
-		UnitType=UNIT_MILITIA, UnitOwner=0, (Egypt)
-	EndUnit
-	BeginUnit
-		UnitType=UNIT_SETTLER, UnitOwner=0, (Egypt)
-	EndUnit
 EndPlot
 BeginPlot
 	x=81,y=41
@@ -38087,13 +38094,13 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=84,y=32
-	BonusType=BONUS_MILLET
+	FeatureType=FEATURE_FOREST, FeatureVariety=0
 	TerrainType=TERRAIN_GRASS
 	PlotType=1
 EndPlot
 BeginPlot
 	x=84,y=33
-	FeatureType=FEATURE_FOREST, FeatureVariety=0
+	BonusType=BONUS_MILLET
 	TerrainType=TERRAIN_GRASS
 	PlotType=1
 EndPlot
@@ -38588,6 +38595,7 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=85,y=42
+	BonusType=BONUS_CAMEL
 	TerrainType=TERRAIN_DESERT
 	PlotType=1
 EndPlot
@@ -39031,7 +39039,6 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=86,y=41
-	BonusType=BONUS_CAMEL
 	TerrainType=TERRAIN_DESERT
 	PlotType=1
 EndPlot
@@ -40433,10 +40440,12 @@ BeginPlot
 	TerrainType=TERRAIN_DESERT
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_MILITIA, UnitOwner=2, (Babylonia)
+		UnitType=UNIT_MILITIA, UnitOwner=2, (Sargon)
+		Level=0, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_SETTLER, UnitOwner=2, (Babylonia)
+		UnitType=UNIT_SETTLER, UnitOwner=2, (Sargon)
+		Level=0, Experience=0
 	EndUnit
 EndPlot
 BeginPlot
@@ -42657,7 +42666,7 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=94,y=48
-	BonusType=BONUS_HORSE
+	BonusType=BONUS_MILLET
 	TerrainType=TERRAIN_PLAINS
 	PlotType=2
 EndPlot
@@ -42953,6 +42962,7 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=95,y=20
+	BonusType=BONUS_SUGAR
 	TerrainType=TERRAIN_PLAINS
 	PlotType=2
 EndPlot
@@ -43103,7 +43113,7 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=95,y=49
-	BonusType=BONUS_MILLET
+	BonusType=BONUS_HORSE
 	TerrainType=TERRAIN_PLAINS
 	PlotType=2
 EndPlot
@@ -43473,6 +43483,7 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=96,y=39
+	BonusType=BONUS_COFFEE
 	FeatureType=FEATURE_FOREST, FeatureVariety=0
 	TerrainType=TERRAIN_PLAINS
 	PlotType=2
@@ -44429,6 +44440,7 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=98,y=55
+	BonusType=BONUS_WHEAT
 	TerrainType=TERRAIN_PLAINS
 	PlotType=2
 EndPlot
@@ -44819,7 +44831,7 @@ EndPlot
 BeginPlot
 	x=99,y=47
 	TerrainType=TERRAIN_PLAINS
-	PlotType=0
+	PlotType=1
 EndPlot
 BeginPlot
 	x=99,y=48
@@ -47098,7 +47110,7 @@ BeginPlot
 	x=104,y=52
 	isNOfRiver
 	RiverWEDirection=3
-	TerrainType=TERRAIN_TUNDRA
+	TerrainType=TERRAIN_STEPPE
 	PlotType=1
 EndPlot
 BeginPlot
@@ -47553,12 +47565,12 @@ BeginPlot
 	x=105,y=51
 	isNOfRiver
 	RiverWEDirection=3
-	TerrainType=TERRAIN_TUNDRA
+	TerrainType=TERRAIN_STEPPE
 	PlotType=0
 EndPlot
 BeginPlot
 	x=105,y=52
-	TerrainType=TERRAIN_TUNDRA
+	TerrainType=TERRAIN_STEPPE
 	PlotType=0
 EndPlot
 BeginPlot
@@ -48004,12 +48016,12 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=106,y=50
-	TerrainType=TERRAIN_TUNDRA
+	TerrainType=TERRAIN_STEPPE
 	PlotType=0
 EndPlot
 BeginPlot
 	x=106,y=51
-	TerrainType=TERRAIN_TUNDRA
+	TerrainType=TERRAIN_STEPPE
 	PlotType=0
 EndPlot
 BeginPlot
@@ -48452,22 +48464,22 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=107,y=48
-	TerrainType=TERRAIN_TUNDRA
-	PlotType=0
+	TerrainType=TERRAIN_GRASS
+	PlotType=1
 EndPlot
 BeginPlot
 	x=107,y=49
-	TerrainType=TERRAIN_TUNDRA
+	TerrainType=TERRAIN_STEPPE
 	PlotType=0
 EndPlot
 BeginPlot
 	x=107,y=50
-	TerrainType=TERRAIN_TUNDRA
+	TerrainType=TERRAIN_STEPPE
 	PlotType=1
 EndPlot
 BeginPlot
 	x=107,y=51
-	TerrainType=TERRAIN_TUNDRA
+	TerrainType=TERRAIN_STEPPE
 	PlotType=0
 EndPlot
 BeginPlot
@@ -48917,17 +48929,17 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=108,y=49
-	TerrainType=TERRAIN_TUNDRA
-	PlotType=0
+	TerrainType=TERRAIN_STEPPE
+	PlotType=1
 EndPlot
 BeginPlot
 	x=108,y=50
-	TerrainType=TERRAIN_TUNDRA
+	TerrainType=TERRAIN_STEPPE
 	PlotType=1
 EndPlot
 BeginPlot
 	x=108,y=51
-	TerrainType=TERRAIN_TUNDRA
+	TerrainType=TERRAIN_STEPPE
 	PlotType=1
 EndPlot
 BeginPlot
@@ -49357,22 +49369,24 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=109,y=48
-	TerrainType=TERRAIN_TUNDRA
+	TerrainType=TERRAIN_STEPPE
 	PlotType=0
 EndPlot
 BeginPlot
 	x=109,y=49
-	TerrainType=TERRAIN_TUNDRA
+	isNOfRiver
+	RiverWEDirection=1
+	TerrainType=TERRAIN_STEPPE
 	PlotType=1
 EndPlot
 BeginPlot
 	x=109,y=50
-	TerrainType=TERRAIN_TUNDRA
+	TerrainType=TERRAIN_STEPPE
 	PlotType=1
 EndPlot
 BeginPlot
 	x=109,y=51
-	TerrainType=TERRAIN_TUNDRA
+	TerrainType=TERRAIN_STEPPE
 	PlotType=0
 EndPlot
 BeginPlot
@@ -49794,27 +49808,32 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=110,y=48
-	TerrainType=TERRAIN_TUNDRA
+	RiverNSDirection=2
+	isWOfRiver
+	TerrainType=TERRAIN_STEPPE
 	PlotType=0
 EndPlot
 BeginPlot
 	x=110,y=49
-	TerrainType=TERRAIN_TUNDRA
+	isNOfRiver
+	RiverWEDirection=1
+	BonusType=BONUS_COW
+	TerrainType=TERRAIN_STEPPE
 	PlotType=1
 EndPlot
 BeginPlot
 	x=110,y=50
-	TerrainType=TERRAIN_TUNDRA
+	TerrainType=TERRAIN_STEPPE
 	PlotType=1
 EndPlot
 BeginPlot
 	x=110,y=51
-	TerrainType=TERRAIN_TUNDRA
+	TerrainType=TERRAIN_STEPPE
 	PlotType=1
 EndPlot
 BeginPlot
 	x=110,y=52
-	TerrainType=TERRAIN_TUNDRA
+	TerrainType=TERRAIN_DESERT
 	PlotType=0
 EndPlot
 BeginPlot
@@ -50231,12 +50250,12 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=111,y=46
-	TerrainType=TERRAIN_TUNDRA
+	TerrainType=TERRAIN_GRASS
 	PlotType=0
 EndPlot
 BeginPlot
 	x=111,y=47
-	TerrainType=TERRAIN_TUNDRA
+	TerrainType=TERRAIN_GRASS
 	PlotType=0
 EndPlot
 BeginPlot
@@ -50244,7 +50263,7 @@ BeginPlot
 	isNOfRiver
 	RiverWEDirection=1
 	BonusType=BONUS_INCENSE
-	TerrainType=TERRAIN_DESERT
+	TerrainType=TERRAIN_STEPPE
 	PlotType=1
 EndPlot
 BeginPlot
@@ -50254,12 +50273,12 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=111,y=50
-	TerrainType=TERRAIN_TUNDRA
+	TerrainType=TERRAIN_STEPPE
 	PlotType=1
 EndPlot
 BeginPlot
 	x=111,y=51
-	TerrainType=TERRAIN_TUNDRA
+	TerrainType=TERRAIN_DESERT
 	PlotType=0
 EndPlot
 BeginPlot
@@ -50675,7 +50694,7 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=112,y=46
-	TerrainType=TERRAIN_TUNDRA
+	TerrainType=TERRAIN_GRASS
 	PlotType=0
 EndPlot
 BeginPlot
@@ -50698,12 +50717,12 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=112,y=50
-	TerrainType=TERRAIN_TUNDRA
+	TerrainType=TERRAIN_STEPPE
 	PlotType=1
 EndPlot
 BeginPlot
 	x=112,y=51
-	TerrainType=TERRAIN_TUNDRA
+	TerrainType=TERRAIN_DESERT
 	PlotType=0
 EndPlot
 BeginPlot
@@ -51115,7 +51134,7 @@ BeginPlot
 	x=113,y=46
 	isNOfRiver
 	RiverWEDirection=3
-	TerrainType=TERRAIN_TUNDRA
+	TerrainType=TERRAIN_GRASS
 	PlotType=0
 EndPlot
 BeginPlot
@@ -53278,13 +53297,13 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=118,y=33
-	BonusType=BONUS_SUGAR
 	FeatureType=FEATURE_RAINFOREST, FeatureVariety=0
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 EndPlot
 BeginPlot
 	x=118,y=34
+	BonusType=BONUS_SUGAR
 	FeatureType=FEATURE_RAINFOREST, FeatureVariety=0
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
@@ -53930,6 +53949,7 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=119,y=61
+	BonusType=BONUS_SHEEP
 	TerrainType=TERRAIN_PLAINS
 	PlotType=2
 EndPlot
@@ -53939,7 +53959,6 @@ BeginPlot
 	isNOfRiver
 	RiverWEDirection=1
 	isWOfRiver
-	BonusType=BONUS_SHEEP
 	TerrainType=TERRAIN_PLAINS
 	PlotType=2
 EndPlot
@@ -54732,6 +54751,7 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=121,y=41
+	BonusType=BONUS_IRON
 	TerrainType=TERRAIN_GRASS
 	PlotType=1
 EndPlot
@@ -57580,6 +57600,7 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=127,y=50
+	BonusType=BONUS_PIG
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 EndPlot
@@ -57587,7 +57608,6 @@ BeginPlot
 	x=127,y=51
 	isNOfRiver
 	RiverWEDirection=1
-	BonusType=BONUS_PIG
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 EndPlot
@@ -58356,7 +58376,6 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=129,y=27
-	BonusType=BONUS_RICE
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 EndPlot
@@ -58810,6 +58829,7 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=130,y=27
+	BonusType=BONUS_RICE
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 EndPlot
@@ -58860,6 +58880,7 @@ EndPlot
 BeginPlot
 	x=130,y=36
 	BonusType=BONUS_PEARL
+	FeatureType=FEATURE_ISLANDS, FeatureVariety=0
 	TerrainType=TERRAIN_COAST
 	PlotType=3
 EndPlot
@@ -58873,7 +58894,6 @@ BeginPlot
 	x=130,y=38
 	RiverNSDirection=2
 	isWOfRiver
-	BonusType=BONUS_SUGAR
 	FeatureType=FEATURE_RAINFOREST, FeatureVariety=0
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
@@ -58882,7 +58902,7 @@ BeginPlot
 	x=130,y=39
 	BonusType=BONUS_RICE
 	TerrainType=TERRAIN_GRASS
-	PlotType=2
+	PlotType=1
 EndPlot
 BeginPlot
 	x=130,y=40
@@ -59074,8 +59094,7 @@ BeginPlot
 	isNOfRiver
 	RiverWEDirection=1
 	isWOfRiver
-	FeatureType=FEATURE_MARSH, FeatureVariety=0
-	TerrainType=TERRAIN_MARSH
+	TerrainType=TERRAIN_GRASS
 	PlotType=2
 EndPlot
 BeginPlot
@@ -59296,7 +59315,6 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=131,y=32
-	BonusType=BONUS_CLAM
 	TerrainType=TERRAIN_COAST
 	PlotType=3
 EndPlot
@@ -59314,32 +59332,34 @@ EndPlot
 BeginPlot
 	x=131,y=35
 	BonusType=BONUS_WHALE
+	FeatureType=FEATURE_ISLANDS, FeatureVariety=0
 	TerrainType=TERRAIN_COAST
 	PlotType=3
 EndPlot
 BeginPlot
 	x=131,y=36
-	BonusType=BONUS_SUGAR
 	FeatureType=FEATURE_RAINFOREST, FeatureVariety=0
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 EndPlot
 BeginPlot
 	x=131,y=37
+	FeatureType=FEATURE_ISLANDS, FeatureVariety=0
 	TerrainType=TERRAIN_COAST
 	PlotType=3
 EndPlot
 BeginPlot
 	x=131,y=38
+	BonusType=BONUS_SUGAR
 	FeatureType=FEATURE_RAINFOREST, FeatureVariety=0
 	TerrainType=TERRAIN_GRASS
-	PlotType=1
+	PlotType=2
 EndPlot
 BeginPlot
 	x=131,y=39
 	FeatureType=FEATURE_RAINFOREST, FeatureVariety=0
 	TerrainType=TERRAIN_GRASS
-	PlotType=2
+	PlotType=1
 EndPlot
 BeginPlot
 	x=131,y=40
@@ -59774,6 +59794,7 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=132,y=34
+	BonusType=BONUS_COPPER
 	FeatureType=FEATURE_RAINFOREST, FeatureVariety=0
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
@@ -59786,9 +59807,9 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=132,y=36
-	FeatureType=FEATURE_ISLANDS, FeatureVariety=0
-	TerrainType=TERRAIN_COAST
-	PlotType=3
+	FeatureType=FEATURE_RAINFOREST, FeatureVariety=0
+	TerrainType=TERRAIN_GRASS
+	PlotType=2
 EndPlot
 BeginPlot
 	x=132,y=37
@@ -59891,6 +59912,7 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=132,y=55
+	BonusType=BONUS_STONE
 	FeatureType=FEATURE_FOREST, FeatureVariety=1
 	TerrainType=TERRAIN_PLAINS
 	PlotType=1
@@ -60217,28 +60239,27 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=133,y=33
+	BonusType=BONUS_FISH
 	TerrainType=TERRAIN_COAST
 	PlotType=3
 EndPlot
 BeginPlot
 	x=133,y=34
-	BonusType=BONUS_GOLD
 	FeatureType=FEATURE_RAINFOREST, FeatureVariety=0
 	TerrainType=TERRAIN_GRASS
 	PlotType=1
 EndPlot
 BeginPlot
 	x=133,y=35
-	FeatureType=FEATURE_ISLANDS, FeatureVariety=0
-	TerrainType=TERRAIN_COAST
-	PlotType=3
+	BonusType=BONUS_GOLD
+	FeatureType=FEATURE_RAINFOREST, FeatureVariety=0
+	TerrainType=TERRAIN_GRASS
+	PlotType=1
 EndPlot
 BeginPlot
 	x=133,y=36
-	BonusType=BONUS_COPPER
-	FeatureType=FEATURE_RAINFOREST, FeatureVariety=0
-	TerrainType=TERRAIN_GRASS
-	PlotType=2
+	TerrainType=TERRAIN_COAST
+	PlotType=3
 EndPlot
 BeginPlot
 	x=133,y=37
@@ -60677,7 +60698,7 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=134,y=37
-	TerrainType=TERRAIN_COAST
+	TerrainType=TERRAIN_OCEAN
 	PlotType=3
 EndPlot
 BeginPlot
@@ -66477,7 +66498,6 @@ BeginPlot
 	FeatureType=FEATURE_ISLANDS, FeatureVariety=0
 	TerrainType=TERRAIN_COAST
 	PlotType=3
-	TeamReveal=0,
 EndPlot
 BeginPlot
 	x=148,y=4
@@ -66485,19 +66505,16 @@ BeginPlot
 	FeatureType=FEATURE_FOREST, FeatureVariety=1
 	TerrainType=TERRAIN_GRASS
 	PlotType=1
-	TeamReveal=0,
 EndPlot
 BeginPlot
 	x=148,y=5
 	TerrainType=TERRAIN_GRASS
 	PlotType=0
-	TeamReveal=0,
 EndPlot
 BeginPlot
 	x=148,y=6
 	TerrainType=TERRAIN_COAST
 	PlotType=3
-	TeamReveal=0,
 EndPlot
 BeginPlot
 	x=148,y=7
@@ -67301,3 +67318,5 @@ BeginPlot
 	TerrainType=TERRAIN_OCEAN
 	PlotType=3
 EndPlot
+
+### Sign Info ###
