@@ -55,11 +55,11 @@ class Resources:
 		
 		# Gujarati horses appear later so Harappa cannot benefit too early
 		if iGameTurn == getTurnForYear(-1000):
-			self.createResource(104, 43, iHorse)
+			self.createResource(102, 43, iHorse)
 			
 		# Assyrian copper appears later to prevent Babylonia from building too strong a defensive military
 		if iGameTurn == getTurnForYear(-800):
-			self.createResource(78, 42, iCopper) # Leoreth: to do new map
+			self.createResource(89, 51, iCopper)
 			
 		# Tamils, 300 BC
 		elif iGameTurn == getTurnForYear(tBirth[iTamils])-1 and data.isPlayerEnabled(iTamils):
@@ -74,26 +74,27 @@ class Resources:
 		elif iGameTurn == getTurnForYear(-100):
 			gc.getMap().plot(104, 56).setPlotType(PlotTypes.PLOT_HILLS, True, True)
 			gc.getMap().plot(104, 56).setRouteType(iRoad)
+			self.createResource(104, 56, iCamel)
 			
 			self.createResource(103, 55, iSilk)
 			self.createResource(101, 53, iSilk)
 
 		#Leoreth: Hanseong's pig appears later so China isn't that eager to found Sanshan
 		elif iGameTurn == getTurnForYear(-50):
-			self.createResource(129, 57, iPig)
+			self.createResource(130, 55, iPig)
 
 		# Leoreth: remove floodplains in Sudan and ivory in Morocco and Tunisia
 		elif iGameTurn == getTurnForYear(550):
-			gc.getMap().plot(79, 37).setFeatureType(-1, 0)
-			gc.getMap().plot(79, 38).setFeatureType(-1, 0)
+			#gc.getMap().plot(79, 37).setFeatureType(-1, 0)
+			#gc.getMap().plot(79, 38).setFeatureType(-1, 0)
 			
-			self.removeResource(59, 44)
-			self.removeResource(67, 46)
+			self.removeResource(58, 44)
+			self.removeResource(66, 46)
 			
 		# Leoreth: prepare Tibet, 630 AD
 		elif iGameTurn == getTurnForYear(tBirth[iTibet])-1 and data.isPlayerEnabled(iTibet):
-			self.createResource(114, 59, iWheat)
-			self.createResource(112, 59, iHorse)
+			self.createResource(114, 49, iWheat)
+			self.createResource(112, 49, iHorse)
 			
 		# Leoreth: obstacles for colonization
 		elif iGameTurn == getTurnForYear(700):
@@ -105,8 +106,8 @@ class Resources:
 				gc.getMap().plot(45, 72).setFeatureType(-1, 0)
 		
 		# Leoreth: New Guinea can be settled
-		elif iGameTurn == getTurnForYear(1000):
-			gc.getMap().plot(113, 25).setFeatureType(-1, 0)
+		# elif iGameTurn == getTurnForYear(1000):
+		#	gc.getMap().plot(113, 25).setFeatureType(-1, 0)
 		
 		# Leoreth: for respawned Egypt
 		elif iGameTurn == getTurnForYear(900):
@@ -116,7 +117,7 @@ class Resources:
 		elif iGameTurn == getTurnForYear(1100):
 			#gc.getMap().plot(71, 30).setBonusType(iSugar) #Egypt
 			
-			self.createResource(84, 28, iSugar) # East Africa
+			self.createResource(83, 26, iSugar) # East Africa # (84, 28)
 			self.createResource(81, 19, iSugar) # Zimbabwe
 			self.createResource(77, 13, iSugar) # South Africa
 			
@@ -129,12 +130,12 @@ class Resources:
 				self.createResource(69, 28, iIvory) # Cameroon
 			
 			self.createResource(66, 56, iWine) # Savoy
-			self.createResource(66, 54, iClam) # Savoy
+			self.createResource(66, 55, iClam) # Savoy
 			
-			self.createResource(56, 52, iIron) # Portugal
+			self.createResource(55, 52, iIron) # Portugal
 			
-			self.removeResource(87, 49) # Orduqent # Leoreth: to do new map
-			self.removeResource(89, 51) # Orduqent # Leoreth: to do new map
+			#self.removeResource(87, 49) # Orduqent # Leoreth: to do new map
+			#self.removeResource(89, 51) # Orduqent # Leoreth: to do new map
 			
 		# Leoreth: route to connect Karakorum to Beijing and help the Mongol attackers
 		elif iGameTurn == getTurnForYear(tBirth[iMongolia]):
@@ -148,6 +149,10 @@ class Resources:
 		if iGameTurn == getTurnForYear(1250):
 			#gc.getMap().plot(57, 52).setBonusType(iWheat) #Amsterdam
 			self.createResource(113, 41, iFish) # Calcutta, Dhaka, Pagan
+			
+			gc.getMap().plot(62, 64).setFeatureType(-1, 0)
+			gc.getMap().plot(63, 65).setFeatureType(-1, 0)
+			gc.getMap().plot(64, 65).setFeatureType(-1, 0)
 
 		#elif iGameTurn == getTurnForYear(1350):
 			#gc.getMap().plot(102, 35).setFeatureType(-1, 0) #remove rainforest in Vietnam
@@ -172,7 +177,7 @@ class Resources:
 			self.createResource(32, 59, iCow) # Boston area
 			#self.createResource(25, 49, iCow) # Lakes
 			self.createResource(21, 49, iCow) # New Orleans area
-			self.createResource(29, 58, iCow) # New York area
+			self.createResource(29, 57, iCow) # New York area
 			self.createResource(16, 54, iCow) # Colorado
 			self.createResource(17, 51, iCow) # Texas
 			self.createResource(39, 12, iCow) # Argentina
@@ -193,23 +198,23 @@ class Resources:
 			
 			#self.createResource(21, 50, iWheat) # Canadian border
 			self.createResource(17, 54, iWheat) # Midwest
-			self.createResource(20, 63, iWheat) # Manitoba
+			self.createResource(19, 63, iWheat) # Manitoba
 			
 			self.createResource(23, 39, iBanana) # Guatemala
 			self.createResource(29, 35, iBanana) # Colombia
 			self.createResource(42, 31, iBanana) # Brazil
 			self.createResource(49, 29, iBanana) # Brazil
 			
-			self.createResource(55, 52, iCorn) # Galicia
-			self.createResource(61, 56, iCorn) # France
-			self.createResource(74, 58, iCorn) # Hungary
+			self.createResource(54, 52, iCorn) # Galicia
+			self.createResource(60, 56, iCorn) # France
+			self.createResource(73, 58, iCorn) # Hungary
 			self.createResource(77, 57, iCorn) # Romania
 			self.createResource(129, 59, iCorn) # Manchuria
 			self.createResource(125, 56, iCorn) # Beijing
 			#self.createResource(77, 52, iCorn) # Caricyn
 			
-			self.createResource(65, 64, iPotato) # Amsterdam
-			self.createResource(58, 64, iPotato) # England
+			self.createResource(64, 64, iPotato) # Amsterdam
+			self.createResource(57, 64, iPotato) # England
 			
 			self.createResource(108, 39, iSpices) # Deccan
 			gc.getMap().plot(108, 39).setFeatureType(iRainforest, 0)
@@ -256,11 +261,12 @@ class Resources:
 			
 			self.createResource(44, 19, iFish) # Brazil
 			self.createResource(31, 14, iFish) # Chile
+			self.createResource(129, 51, iFish) # Shanghai
 			
 			# self.createResource(70, 59, iDeer) # St Petersburg
 			
-			self.createResource(68, 64, iPotato) # Germany
-			self.createResource(71, 63, iPotato) # Germany
+			self.createResource(67, 64, iPotato) # Germany
+			self.createResource(70, 63, iPotato) # Germany
 			self.createResource(93, 62, iPotato) # Caricyn
 			self.createResource(123, 48, iPotato) # China
 			self.createResource(127, 51, iPotato) # China
