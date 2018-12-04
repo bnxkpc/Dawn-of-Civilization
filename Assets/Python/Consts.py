@@ -255,7 +255,7 @@ tBirth = (
 -1500, # 0, #3000BC			# India
 -1200, # 66, #814BC # Leoreth: 1200 BC	# Carthage
 -1000,					# Polynesia
--850, # 84, #844BC			# Persia
+-844, # 84, #844BC			# Persia
 -753, # 90, #753BC			# Rome
 -300,					# Tamils
 -290, # 121, #300BC			# Ethiopia
@@ -265,16 +265,16 @@ tBirth = (
 525, # 97, #660BC			# Japan
 551, # 177, #551AD			# Vikings
 552,					# Turks
-620, # 183, #622AD			# Arabia
+618, # 183, #622AD			# Arabia
 630,					# Tibet
 650,					# Indonesia
 711,					# Moors
 722, # 193, #718AD			# Spain
-750, # 196, #751AD			# France
+751, # 196, #751AD			# France
 800, # 187, #657AD			# Khmer
-820, # 203, #829AD			# England
-840, # 205, #843AD			# Holy Rome
-860, # 207, #860AD			# Russia
+829, # 203, #829AD			# England
+843, # 205, #843AD			# Holy Rome
+864, # 207, #860AD			# Russia
 989, # 220, #989AD			# Mali
 1025,					# Poland
 1130, # 234, #1128AD			# Portugal
@@ -283,7 +283,7 @@ tBirth = (
 1190, # 240, #1190AD			# Mongolia
 1195, # 241, #1195AD			# Aztecs
 1206,					# Mughals
-1280, # 249, #1280AD (1071AD)		# Turkey
+1280, # 249, #1280AD (1071AD)		# Ottomans
 1350,					# Thailand
 1390,					# Congo
 1580, # 281, #922AD # Leoreth: 1500 AD	# Netherlands
@@ -327,7 +327,7 @@ tFall = (
 1500,					# Moors
 2020,					# Spain
 2020,					# France
-1200, # earlier so that the Thai can spawn # Khmer
+1431, # earlier so that the Thai can spawn # Khmer
 2020,					# England
 2020, #1648,				# Holy Rome
 2020,					# Russia
@@ -339,7 +339,7 @@ tFall = (
 1368,					# Mongolia
 1521,					# Aztecs
 1640,					# Mughals
-2020,					# Turkey
+2020,					# Ottomans
 2020,					# Thailand
 1800,					# Congo
 2020,					# Netherlands
@@ -426,17 +426,17 @@ tResurrectionIntervals = (
 [(-750, 450)], #Rome
 [(-300, 600), (1300, 1650)], #Tamils
 [(1270, 1520), (1850, 2020)], #Ethiopia
-[(1800, 2020)], #Korea
+[(1390, 2020)], #Korea
 [(0, 800)], #Maya
 [(1100, 1280)], #Byzantium
 [(1800, 2020)], #Japan
 [(1520, 2020)], #Vikings
-[(1350, 1500)], #Turks
+[(1350, 1700)], #Turks
 [(1900, 2020)], #Arabia
 [],		#Tibet
 [(1900, 2020)], #Indonesia
 [(1000, 2020)],	#Moors
-[(1700, 2020)], #Spain
+[(1490, 2020)], #Spain
 [(1700, 2020)], #France
 [(1950, 2020)], #Khmer
 [(1700, 2020)], #England
@@ -649,7 +649,7 @@ tAIStopBirthThreshold = (
     70, #Mongolia
     50, #Aztec
     70, #Mughals
-    70, #Turkey
+    70, #Ottomans
     80, #Thailand
     80, #Congo
     40, #Holland
@@ -667,36 +667,36 @@ tAIStopBirthThreshold = (
 
 #RiseAndFall
 tResurrectionProb = (
-25, #Egypt
+100, #Egypt
 100, #China
 40, #Babylonia
 0, #Harappa
 60, #Greece
-50, #India
+70, #India
 30, #Carthage
 40, #Polynesia
 70, #Persia
 65, #Rome
-10, #Tamils
+20, #Tamils
 80, #Ethopia
-80, #Korea
+100, #Korea
 30, #Maya
 65, #Byzantium
 100, #Japan
-60, #Viking
-30, #Turks
+90, #Viking
+90, #Turks
 100, #Arabia
 60, #Tibet
-80, #Indonesia
-70, #Moors
+100, #Indonesia
+80, #Moors
 100, #Spain
 100, #France
-60, #Khmer
+70, #Khmer
 100, #England
-80, #Holy Rome
+90, #Holy Rome
 100, #Russia
-30, #Mali
-65, #Poland
+60, #Mali
+75, #Poland
 100, #Portugal
 70, #Inca
 100, #Italy
@@ -705,7 +705,7 @@ tResurrectionProb = (
 80, #Mughals
 100, #Ottomans
 100, #Thailand
-20, #Congo
+60, #Congo
 100, #Holland
 100, #Germany
 100, #America
