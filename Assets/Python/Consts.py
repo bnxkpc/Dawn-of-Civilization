@@ -110,14 +110,14 @@ tAustraliaTL = (125, 6)
 tAustraliaBR = (149, 24)
 
 # new capital locations
-tVienna = (72, 59)
+tVienna = (71, 59)
 tWarsaw = (75, 63)
-tStockholm = (73, 70)
-tIstanbul = (80, 55)
+tStockholm = (72, 71)
+tIstanbul = (79, 55)
 tBeijing = (124, 56)
-tEsfahan = (93, 47)
-tHamburg = (67, 65)
-tMilan = (67, 57)
+tEsfahan = (93, 48)
+tHamburg = (66, 65)
+tMilan = (66, 57)
 tBaghdad = (89, 47)
 tMumbai = (103, 38)
 tMysore = (105, 34)
@@ -140,7 +140,7 @@ iTan = 90
 iLime = 100
 
 # independent cities
-iNumMinorCities = 45
+iNumMinorCities = 70
 
 # scripted conquerors
 iNumConquests = 13
@@ -232,7 +232,7 @@ lOlderNeighbours = [
 [iChina, iJapan, iKorea, iArabia, iTibet, iKhmer, iRussia, iTurks], #Mongolia
 [iMaya], #Aztec
 [iHarappa, iIndia, iPersia, iArabia, iTibet, iTurks], #Mughals
-[iBabylonia, iGreece, iPersia, iByzantium, iArabia, iTurks], #Turkey
+[iBabylonia, iGreece, iPersia, iByzantium, iArabia, iTurks], #Ottomans
 [iIndia, iChina, iJapan, iKhmer, iIndonesia], #Thailand
 [], #Congo
 [iRome, iHolyRome], #Netherlands
@@ -866,10 +866,11 @@ iGreatSpy : iFemaleGreatSpy,
 }
 
 # initialise bonuses variables to bonuses IDs from WBS
-iNumBonuses = 44
-(iAluminium, iCamel, iCoal, iCopper, iHorse, iIron, iMarble, iOil, iStone, iUranium, iBanana, iClam, iCorn, iCow, iCrab,
-iDeer, iFish, iPig, iPotato, iRice, iSheep, iWheat, iCocoa, iCoffee, iCotton, iDye, iFur, iGems, iGold, iIncense, iIvory, iOlives, iPearls, iSilk, iSilver, iSpices,
-iSugar, iTea, iTobacco, iWine, iWhales, iSoccer, iSongs, iMovies) = range(iNumBonuses)
+iNumBonuses = 52
+(iAluminium, iAmber, iCamel, iCoal, iCopper, iHorse, iIron, iMarble, iOil, iStone, iUranium, iBanana, iClam, iCorn, iCow, iCrab,
+iDeer, iFish, iPig, iPotato, iRice, iSheep, iWheat, iCocoa, iCoffee, iCotton, iDye, iFur, iGems, iGold, iIncense, iIvory, iJade, 
+iMillet, iObsidian, iOlives, iOpium, iPearls, iRareEarths, iRubber, iSalt, iSilk, iSilver, iSpices, iSugar, iTea, iTobacco, iWine,
+iWhales, iSoccer, iSongs, iMovies) = range(iNumBonuses)
 # Buildings
 
 iNumBuildings = 318
@@ -1066,9 +1067,9 @@ rebirthLeaders = {
 }
 
 tTradingCompanyPlotLists = (
-[(130, 38)], #Spain
-[(122, 42), (121, 41), (121, 40), (122, 40), (122, 39), (123, 39), (123, 38), (124, 38), (123, 37), (124, 37), (123, 36), (124, 36), (123, 35)], #France
-[(113, 42), (112, 42), (111, 42), (111, 41), (111, 40), (110, 40), (110, 39), (109, 39), (109, 38), (108, 38), (108, 37), (107, 37), (107, 36), (107, 35), (107, 34), (103, 39), (103, 38), (103, 37), (103, 36)], #England
+[(130, 38), (130, 39), (131, 36), (131, 38), (131, 39), (131, 40), (132, 36), (132, 37)], #Spain
+[(122, 42), (121, 42), (121, 41), (121, 40), (122, 40), (122, 39), (123, 39), (123, 38), (124, 38), (123, 37), (124, 37), (123, 36), (124, 36), (123, 35)], #France
+[(113, 42), (112, 42), (111, 42), (111, 41), (111, 40), (110, 40), (110, 39), (109, 39), (109, 38), (108, 38), (108, 37), (107, 37), (107, 36), (107, 35), (107, 34), (103, 39), (103, 38), (103, 37)], #England
 [(62, 31), (70, 24), (79, 17), (83, 20), (96, 40), (96, 39), (104, 34), (108, 30), (108, 31), (120, 30), (125, 43)], #Portugal
 [(119, 28), (120, 28), (120, 27), (121, 27), (120, 26), (121, 26), (123, 25), (124, 25), (125, 25), (126, 25), (123, 29), (124, 29), (125, 29), (126, 29), (127, 29), (124, 28), (125, 28), (126, 28), (132, 28), (134, 28), (134, 29)] #Netherlands
 )
@@ -1083,7 +1084,8 @@ lMongolCivs = [iPersia, iByzantium, iArabia, iRussia, iMughals]
 iNumPlotStabilityTypes = 5
 (iCore, iHistorical, iContest, iForeignCore, iAIForbidden) = range(iNumPlotStabilityTypes)
 lStabilityColors = ["COLOR_CYAN", "COLOR_GREEN", "COLOR_YELLOW", "COLOR_RED", "COLOR_PLAYER_LIGHT_PURPLE"]
-lPresetValues = [3, 20, 90, 200, 500, 700]
+#lPresetValues = [3, 20, 90, 200, 500, 700]
+lPresetValues = [3, 20, 40, 60, 90, 100, 200, 300, 400, 500, 600, 700, 800]
 
 iMaxWarValue = 12
 lWarMapColors = ["COLOR_RED", "COLOR_PLAYER_ORANGE", "COLOR_YELLOW", "COLOR_GREEN", "COLOR_PLAYER_DARK_GREEN", "COLOR_BLUE"]
