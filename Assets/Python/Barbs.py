@@ -45,9 +45,7 @@ tMinorCities = (
 (100, (17, 43), iBarbarian, 'Tolan', 2, iJaguar, 2),		# Teotihuacan
 (100, (88, 36), iIndependent, "Sana'a", 2, -1, -1),				# Sana'a
 (107, (117, 41), iIndependent2, 'Pugam', 2, -1, -1),			# Pagan
-(500, (103, 58), iBarbarian, 'Suyab', 2, iArcher, 2),		# Suyab
 (500, (124, 38), iIndependent, 'Indrapura', 2, iArcher, 1),		# Indrapura
-(500, (86, 39), iIndependent, 'Bakkah', 2, iArcher, 1),		# Mecca
 (500, (73, 54), iIndependent, "Ragusa", 3, iCrossbowman, 3), # Ragusa
 (600, (86, 41), iIndependent, 'Yathrib', 2, iArcher, 1),		# Medina
 #(633, (113, 48), iBarbarian, 'Lhasa', 2, iKhampa, 1),			# Lhasa
@@ -57,7 +55,7 @@ tMinorCities = (
 (738, (117, 45), iIndependent2, 'Darllit', 2, iArcher, 1),		# Dali
 (800, tVienna, iIndependent, 'Vindobona', 1, iCrossbowman, 1),	# Wien
 (800, (70, 61), iIndependent2, 'Praha', 1, iCrossbowman, 1),	# Prague
-(800, (85, 69), iIndependent2, 'Beloozero', 1, iCrossbowman, 1),	# Beloozero
+#(800, (85, 69), iIndependent2, 'Beloozero', 1, iCrossbowman, 1),	# Beloozero
 (830, (66, 65), iIndependent, 'Hamburg', 2, iCrossbowman, 1),	# Hamburg
 (830, (67, 65), iIndependent, 'L&#252;beck', 2, iCrossbowman, 1),	# Lubeck
 (860, (82, 68), iIndependent, 'Novgorod', 3, iCrossbowman, 3),		# Novgorod
