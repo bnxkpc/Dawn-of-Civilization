@@ -22,7 +22,7 @@ tMinorCities = (
 (-3000, (124, 52), iIndependent2, 'Chengzhou', 2, iArcher, 2), 		# Luoyang
 (-2500, (79, 37), iBarbarian, 'Kerma', 2, iArcher, 2), 			# Kerma
 (-2000, (100, 54), iIndependent, 'Afrasiyab', 1, iArcher, 1), 	# Samarkand
-#(-2000, (92, 39), iIndependent, 'Varanasi', 1, iMilitia, 1), 	# Varanasi
+(-2000, (108, 45), iIndependent, 'Varanasi', 1, iMilitia, 1), 	# Varanasi
 (-1600, (105, 46), iIndependent, 'Indraprastha', 1, iMilitia, 1),	# Delhi
 (-1000, (124, 56), iIndependent, 'Ji', 2, iSpearman, 1),	# Beijing
 (-1000, (82, 53), iIndependent, 'Ankuwash', 2, iArcher, 2),		# Ankara
@@ -35,7 +35,7 @@ tMinorCities = (
 (-300, (59, 56), iCeltia, 'Burdigala', 2, -1, -1),				# Bordeaux
 (-300, (106, 33), iIndependent, 'Tanjapuri', 1, iWarElephant, 1),	# Thanjavur
 (-258, (121, 42), iIndependent, 'Co Loa', 2, iArcher, 3),			# Hanoi
-(-214, (125, 43), iIndependent, 'Panyu', 2, iArcher, 2),	# Guangzhou
+(-214, (125, 44), iIndependent, 'Panyu', 2, iArcher, 2),	# Guangzhou
 (-190, (89, 54), iIndependent2, 'Artashat', 1, -1, -1),			# Artaxata
 (-100, (114, 57), iBarbarian, 'Dunhuang', 2, iArcher, 1),		# Dunhuang
 (-100, (109, 56), iBarbarian, 'Kuqa', 2, iArcher, 1),			# Kuqa
@@ -45,7 +45,7 @@ tMinorCities = (
 (100, (17, 43), iBarbarian, 'Tolan', 2, iJaguar, 2),		# Teotihuacan
 (100, (88, 36), iIndependent, "Sana'a", 2, -1, -1),				# Sana'a
 (107, (117, 41), iIndependent2, 'Pugam', 2, -1, -1),			# Pagan
-(500, (124, 38), iIndependent, 'Indrapura', 2, iArcher, 1),		# Indrapura
+(500, (123, 39), iIndependent, 'Indrapura', 2, iArcher, 1),		# Indrapura
 (500, (73, 54), iIndependent, "Ragusa", 3, iCrossbowman, 3), # Ragusa
 (600, (86, 41), iIndependent, 'Yathrib', 2, iArcher, 1),		# Medina
 #(633, (113, 48), iBarbarian, 'Lhasa', 2, iKhampa, 1),			# Lhasa
@@ -64,8 +64,8 @@ tMinorCities = (
 (900, (28, 25), iNative, 'Pachakamaq', 1, iArcher, 2),			# Pachacamac
 (900, (27, 28), iNative, 'Chan Chan', 2, iArcher, 2),			# Chan Chan
 (944, (63, 48), iIndependent, "Dzayer", 3, iCrossbowman, 2),	# Algiers
-(990, (54, 64), iCeltia, '&#193;th Cliath', 1, -1, -1),			# Dublin
-(990, (130, 38), iIndependent, 'Maynilad', 2, iArcher, 2),		# Manila
+(990, (54, 65), iCeltia, '&#193;th Cliath', 1, -1, -1),			# Dublin
+(990, (130, 38), iIndependent, 'Maynila', 2, iArcher, 2),		# Manila
 (1000, (68, 75), iIndependent2, 'Nidaros', 1, iHuscarl, 1),		# Trondheim
 (1000, (87, 30), iNative, 'Muqdisho', 1, iImpi, 1),				# Mogadishu
 (1000, (83, 20), iNative, 'Quelimane', 1, iImpi, 1),			# Quelimane
