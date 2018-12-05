@@ -38682,7 +38682,6 @@ BeginPlot
 	x=83,y=53
 	isNOfRiver
 	RiverWEDirection=3
-	BonusType=BONUS_WHEAT
 	RouteType=ROUTE_ROAD
 	TerrainType=TERRAIN_PLAINS
 	PlotType=2
@@ -39229,6 +39228,7 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=84,y=54
+	BonusType=BONUS_WHEAT
 	ImprovementType=IMPROVEMENT_FARM
 	TerrainType=TERRAIN_PLAINS
 	PlotType=2
@@ -45915,7 +45915,7 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=98,y=55
-	BonusType=BONUS_WHEAT
+	BonusType=BONUS_MILLET
 	ImprovementType=IMPROVEMENT_FARM
 	RouteType=ROUTE_ROAD
 	TerrainType=TERRAIN_PLAINS

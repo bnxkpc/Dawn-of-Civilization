@@ -46205,13 +46205,13 @@ EndPlot
 BeginPlot
 	x=88,y=18
 	TerrainType=TERRAIN_GRASS
-	PlotType=0
+	PlotType=1
 EndPlot
 BeginPlot
 	x=88,y=19
 	ImprovementType=IMPROVEMENT_MINE
 	TerrainType=TERRAIN_GRASS
-	PlotType=1
+	PlotType=0
 EndPlot
 BeginPlot
 	x=88,y=20
@@ -51792,7 +51792,7 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=98,y=55
-	BonusType=BONUS_WHEAT
+	BonusType=BONUS_MILLET
 	ImprovementType=IMPROVEMENT_FARM
 	RouteType=ROUTE_ROAD
 	TerrainType=TERRAIN_PLAINS
@@ -58408,6 +58408,7 @@ BeginPlot
 	x=110,y=49
 	isNOfRiver
 	RiverWEDirection=1
+	BonusType=BONUS_COW
 	RouteType=ROUTE_ROAD
 	TerrainType=TERRAIN_STEPPE
 	PlotType=1
@@ -65511,6 +65512,7 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=123,y=55
+	BonusType=BONUS_IRON
 	ImprovementType=IMPROVEMENT_MINE
 	RouteType=ROUTE_ROAD
 	TerrainType=TERRAIN_PLAINS

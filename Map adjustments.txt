@@ -1,0 +1,48 @@
+[MAP ADJUSTMENTS BY @h0spitall3rz]
+
+EUROPE
+* Adjust Danube river (Belgrade must be on its side)
+* Lviv: Move Pig (77, 61) 1E
+* Italy: Flood Plains on Milan tile and 1W
+* Adjust Tagus river
+* Add Flores islands (?)
+* Sevilla: Move Crab 1E
+* Lisboa: Move Crab 1S, Fish 1SE
+* La Coruna: Add Stone 2E
+* Scandinavia (69, 68): Coast -> Grassland
+* (70, 68): Grassland -> Coast
+
+MIDDLE EAST
+* Istanbul: Add Iron 1NW
+* Medina: Move Camel 1NW
+* Muscat: Add Coffee 1S
+* Esfahan: Swap Millet and Horse
+* Qandahar (99, 47): Peak -> Hill
+* Bukhara: Add Millet 1N (98, 55)
+
+EAST & CENTRAL ASIA
+* Beijing: Add Iron 1SW
+* China: (127, 55) move 1W; (129, 51) move 2N1W
+* Nanjing: Move Pig 1S
+* Seoul: Add Stone 1NE
+* Tibet: terrain adjustments, Aksai Pass (107, 48), (108, 49), extend River
+* (110, 49) Add Cow
+* Kashgar: Camel (103, 56) spawns 1E at 100 BC instead
+* Karakorum: Move Sheep (119, 62) 1S
+* Yakutsk (130, 71): Marsh -> Grassland
+
+SOUTHEAST ASIA
+* Philippines (minor revamp)
+* Hanoi (121, 42): Add Iron 1S
+* Phuket: Move Sugar 1N
+* Makassar: Move Rice 1E
+* Singapore: Add Spices 1NW
+
+AFRICA
+* Algiers: Add Wheat 1SE
+* Addis Ababa: move Millet 1N
+* Mauritius (95, 20): Add Sugar
+* Madagascar: (88, 19) Hill -> Peak; 1N & 1S Peak -> Hill
+
+SOUTH AMERICA
+* Panama (27, 37): Jungle -> Rainforest
