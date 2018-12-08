@@ -19,7 +19,7 @@ tMinorCities = (
 (-3000, (84, 45), iIndependent, 'Yerushalayim', 2, iArcher, 3),	# Jerusalem
 (-3000, (92, 46), iIndependent, 'Shushan', 1, iArcher, 1), 		# Susa
 (-3000, (88, 49), iIndependent2, 'Ashur', 2, iArcher, 2), 		# Assur
-(-3000, (124, 52), iIndependent2, 'Chengzhou', 2, iArcher, 2), 		# Luoyang
+#(-3000, (124, 52), iIndependent2, 'Chengzhou', 2, iArcher, 2), 		# Luoyang
 (-2500, (79, 37), iBarbarian, 'Kerma', 2, iArcher, 2), 			# Kerma
 (-2000, (100, 54), iIndependent, 'Afrasiyab', 1, iArcher, 1), 	# Samarkand
 (-2000, (108, 45), iIndependent, 'Varanasi', 1, iMilitia, 1), 	# Varanasi
