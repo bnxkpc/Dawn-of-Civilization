@@ -438,7 +438,7 @@ class RiseAndFall:
 
 
 	def adjust1700ADWonders(self):
-		lExpiredWonders = [iOracle, iIshtarGate, iHangingGardens, iGreatCothon, iApadanaPalace, iColossus, iStatueOfZeus, iGreatMausoleum, iTempleOfArtemis, iAquaAppia, iAlKhazneh, iJetavanaramaya, iGreatLighthouse, iMoaiStatues, iFlavianAmphitheatre, iGreatLibrary, iGondeshapur, iSilverTreeFountain, iAlamut]
+		lExpiredWonders = [iOracle, iIshtarGate, iHangingGardens, iGreatCothon, iApadanaPalace, iColossus, iStatueOfZeus, iGreatMausoleum, iTempleOfArtemis, iAquaAppia, iAlKhazneh, iJetavanaramaya, iGreatLighthouse, iMoaiStatues, iFlavianAmphitheatre, iGreatLibrary, iGondeshapur, iSilverTreeFountain, iAlamut, iMountAthos, iDujiangyan]
 		self.expireWonders(lExpiredWonders)
 	
 		# pMilan = gc.getMap().plot(66, 57).getPlotCity()
@@ -558,6 +558,7 @@ class RiseAndFall:
 			iHolyRome: 8,
 			iPoland: 8,
 			iPortugal: 8,
+			iItaly: 8,
 			iMughals: 8,
 			iOttomans: 8,
 			iThailand: 8,
@@ -579,6 +580,7 @@ class RiseAndFall:
 			iHolyRome: 4,
 			iPoland: 3,
 			iPortugal: 3,
+			iItaly: 3,
 			iMughals: 4,
 			iOttomans: 5,
 			iThailand: 3,
