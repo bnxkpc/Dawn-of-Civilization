@@ -192,7 +192,7 @@ class WBTechScreen:
 			ItemInfo = gc.getTechInfo(i)
 			if iSelectedEra == -1 or iSelectedEra == ItemInfo.getEra():
 				lTech.append([ItemInfo.getDescription(), i])
-		lTech.sort()
+		#lTech.sort()
 
 	def handlePlatyTechAll(self, bEnable):
 		for item in lTech:
