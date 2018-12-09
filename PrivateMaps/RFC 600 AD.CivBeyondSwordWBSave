@@ -56559,7 +56559,6 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=120,y=30
-	BonusType=BONUS_SPICES
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 EndPlot
