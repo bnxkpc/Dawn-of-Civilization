@@ -1478,7 +1478,7 @@
 			<Type>BONUS_MILLET</Type>
 			<Description>TXT_KEY_BONUS_MILLET</Description>
 			<Civilopedia>TXT_KEY_BONUS_MILLET_PEDIA</Civilopedia>
-			<BonusClassType>BONUSCLASS_GENERAL</BonusClassType>
+			<BonusClassType>BONUSCLASS_GRAIN</BonusClassType>
 			<ArtDefineTag>ART_DEF_BONUS_MILLET</ArtDefineTag>
 			<TechCityTrade>TECH_AGRICULTURE</TechCityTrade>
 			<YieldChanges>
