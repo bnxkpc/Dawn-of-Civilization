@@ -2313,7 +2313,7 @@ class RiseAndFall:
 			utils.makeUnit(iBombard, iCiv, tPlot, 3)
 		elif iCiv == iAmerica:
 			utils.makeUnit(iGrenadier, iCiv, tPlot, 3)
-			utils.makeUnit(iMinuteman, iCiv, tPlot, 3)
+			utils.makeUnit(iMinuteman, iCiv, tPlot, 5)
 			utils.makeUnit(iCannon, iCiv, tPlot, 3)
 		elif iCiv == iArgentina:
 			utils.makeUnit(iRifleman, iCiv, tPlot, 2)
@@ -2683,9 +2683,9 @@ class RiseAndFall:
 				utils.makeUnit(iBombard, iCiv, tPlot, 5, "", 2)
 		elif iCiv == iAmerica:
 			utils.createSettlers(iCiv, 8)
-			utils.makeUnit(iGrenadier, iCiv, tPlot, 2)
-			utils.makeUnit(iMinuteman, iCiv, tPlot, 4)
-			utils.makeUnit(iCannon, iCiv, tPlot, 2)
+			utils.makeUnit(iGrenadier, iCiv, tPlot, 4)
+			utils.makeUnit(iMinuteman, iCiv, tPlot, 6)
+			utils.makeUnit(iCannon, iCiv, tPlot, 4)
 			tSeaPlot = self.findSeaPlots(tPlot, 1, iCiv)
 			if tSeaPlot:
 				utils.makeUnit(iWorkboat, iCiv, tSeaPlot, 2)
@@ -2693,7 +2693,7 @@ class RiseAndFall:
 				utils.makeUnit(iFrigate, iCiv, tSeaPlot, 1)
 			if utils.getHumanID() != iAmerica:
 				utils.makeUnitAI(iMinuteman, iCiv, tPlot, UnitAITypes.UNITAI_CITY_DEFENSE, 1)
-			iReligion = self.findAreaReligion(iCiv, utils.getPlotList((23, 40), (33, 52)))
+			iReligion = self.findAreaReligion(iCiv, utils.getPlotList((22, 53),	(34, 60)))
 			if iReligion >= 0:
 				pAmerica.setLastStateReligion(iReligion)
 				utils.makeUnit(iMissionary + iReligion, iCiv, tPlot, 1)
@@ -2847,8 +2847,8 @@ class RiseAndFall:
 			utils.makeUnit(iWorker, iCiv, tPlot, 3)
 			if utils.getHumanID() != iPoland:
 				iRand = gc.getGame().getSorenRandNum(5, 'Random city spot')
-				if iRand == 0: tCityPlot = (74, 65) # Memel
-				elif iRand == 1: tCityPlot = (74, 65) # Koenigsberg
+				if iRand == 0: tCityPlot = (76, 65) # Memel
+				elif iRand == 1: tCityPlot = (75, 65) # Koenigsberg
 				else: tCityPlot = (73, 65) # Gdansk
 				utils.makeUnit(iSettler, iCiv, tCityPlot, 1)
 				utils.makeUnit(iLongbowman, iCiv, tCityPlot, 1)
@@ -2874,7 +2874,7 @@ class RiseAndFall:
 		elif iCiv == iGermany:
 			utils.makeUnit(iWorker, iCiv, tPlot, 3)
 		elif iCiv == iAmerica:
-			utils.makeUnit(iWorker, iCiv, tPlot, 4)
+			utils.makeUnit(iWorker, iCiv, tPlot, 8)
 		elif iCiv == iBrazil:
 			utils.makeUnit(iMadeireiro, iCiv, tPlot, 3)
 		elif iCiv == iArgentina:
