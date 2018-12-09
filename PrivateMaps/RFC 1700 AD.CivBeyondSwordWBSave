@@ -69526,7 +69526,7 @@ BeginPlot
 	EndUnit
 	BeginCity
 		CityOwner=1, (Kangxi)
-		CityName=Hailar
+		CityName=Harbin
 		CityPopulation=6
 		BuildingType=BUILDING_BARRACKS
 		BuildingType=BUILDING_GRANARY
