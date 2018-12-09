@@ -39520,7 +39520,6 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=87,y=47
-	FeatureType=FEATURE_FLOOD_PLAINS, FeatureVariety=0
 	TerrainType=TERRAIN_DESERT
 	PlotType=2
 EndPlot
@@ -39961,7 +39960,6 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=88,y=45
-	FeatureType=FEATURE_FLOOD_PLAINS, FeatureVariety=0
 	TerrainType=TERRAIN_DESERT
 	PlotType=2
 EndPlot
