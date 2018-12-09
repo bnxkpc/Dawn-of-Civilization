@@ -409,7 +409,7 @@ class WBCityEditScreen:
 			popup.setHeaderString(CyTranslator().getText("TXT_KEY_NAME_CITY", ()))
 			popup.setBodyString(CyTranslator().getText("TXT_KEY_SETTLE_NEW_CITY_NAME", ()))
 			popup.createEditBox(pCity.getName())
-			popup.setEditBoxMaxCharCount( 15 )
+			popup.setEditBoxMaxCharCount( 31 )
 			popup.launch()
 
 		elif inputClass.getFunctionName() == "CityOwner":
