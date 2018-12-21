@@ -57119,7 +57119,7 @@ BeginPlot
 	EndUnit
 	BeginCity
 		CityOwner=45, (Independent Leader)
-		CityName=Co Loa
+		CityName=Tong Binh
 		CityPopulation=5
 		BuildingType=BUILDING_WALLS
 		BuildingType=BUILDING_BARRACKS
