@@ -40107,20 +40107,8 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=86,y=39
-	RouteType=ROUTE_ROAD
 	TerrainType=TERRAIN_PLAINS
 	PlotType=1
-	BeginUnit
-		UnitType=UNIT_ARCHER, UnitOwner=45, (Independent Leader)
-		Level=1, Experience=0
-	EndUnit
-	BeginCity
-		CityOwner=45, (Independent Leader)
-		CityName=Bakkah
-		CityPopulation=3
-		BuildingType=BUILDING_GRANARY
-		Player45Culture=10, (Independent Leader)
-	EndCity
 EndPlot
 BeginPlot
 	x=86,y=40
