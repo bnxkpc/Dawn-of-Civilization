@@ -1084,7 +1084,9 @@ void CvCity::doTurn()
 /**	END                                                                  						**/
 /*************************************************************************************************/
 
-	doPlotCulture(false, getOwnerINLINE(), getCommerceRate(COMMERCE_CULTURE));
+	doPlotCulture(false, getOwnerINLINE(), getModifiedCultureRate());
+
+	updateHappinessYield();
 
 	doProduction(bAllowNoProduction);
 
@@ -1178,8 +1180,6 @@ void CvCity::doTurn()
 			setWeLoveTheKingDay(false);
 		}
 	}
-
-	updateHappinessYield();
 
 	// Leoreth: update art style type once per turn
 	updateArtStyleType();
@@ -2155,6 +2155,10 @@ bool CvCity::canTrain(UnitTypes eUnit, bool bContinue, bool bTestVisible, bool b
 			bException = true;
 		}
 		else if ((iCapitalRegion == REGION_IBERIA && iRegion == REGION_MAGHREB) || (iCapitalRegion == REGION_MAGHREB && iRegion == REGION_IBERIA))
+		{
+			bException = true;
+		}
+		else if ((iCapitalRegion == REGION_CENTRAL_ASIA && iRegion == REGION_PERSIA) || (iCapitalRegion == REGION_PERSIA && iRegion == REGION_CENTRAL_ASIA))
 		{
 			bException = true;
 		}
@@ -10500,13 +10504,14 @@ int CvCity::getHappinessYield(YieldTypes eIndex) const
 // Leoreth
 void CvCity::updateHappinessYield()
 {
-	int iHappinessDifference = std::min(getPopulation(), happyLevel() - unhappyLevel(0));
+	int iHappinessDifference = happyLevel() - unhappyLevel(0);
+	int iHappinessMultiplier = std::min(getPopulation(), abs(iHappinessDifference));
 
 	int iOldYield, iNewYield;
 	for (int iI = 0; iI < NUM_YIELD_TYPES; iI++)
 	{
 		iOldYield = getHappinessYield((YieldTypes)iI);
-		iNewYield = iHappinessDifference > 0 ? abs(iHappinessDifference) * GET_PLAYER(getOwnerINLINE()).getHappinessExtraYield((YieldTypes)iI) : abs(iHappinessDifference) * GET_PLAYER(getOwnerINLINE()).getUnhappinessExtraYield((YieldTypes)iI);
+		iNewYield = iHappinessMultiplier * (iHappinessDifference > 0 ? GET_PLAYER(getOwnerINLINE()).getHappinessExtraYield((YieldTypes)iI) : GET_PLAYER(getOwnerINLINE()).getUnhappinessExtraYield((YieldTypes)iI));
 
 		if (iOldYield != iNewYield)
 		{
@@ -10543,6 +10548,27 @@ int CvCity::getCommerceRateTimes100(CommerceTypes eIndex) const
 	}
 
 	return iRate;
+}
+
+
+// Leoreth
+int CvCity::getModifiedCultureRateTimes100() const
+{
+	int iCultureTimes100 = getCommerceRateTimes100(COMMERCE_CULTURE);
+
+	if (iCultureTimes100 <= 400)
+	{
+		return iCultureTimes100;
+	}
+
+	return iCultureTimes100 * GET_PLAYER(getOwnerINLINE()).getModifier(MODIFIER_CULTURE) / 100;
+}
+
+
+// Leoreth
+int CvCity::getModifiedCultureRate() const
+{
+	return getModifiedCultureRateTimes100() / 100;
 }
 
 
@@ -12634,7 +12660,7 @@ void CvCity::setGreatPeopleUnitRate(UnitTypes eIndex, int iNewValue)
 
 void CvCity::changeGreatPeopleUnitRate(UnitTypes eIndex, int iChange)
 {
-	setGreatPeopleUnitRate(eIndex, (getGreatPeopleUnitRate(eIndex) + iChange));
+	setGreatPeopleUnitRate(eIndex, std::max(0, getGreatPeopleUnitRate(eIndex) + iChange));
 }
 
 
@@ -14765,16 +14791,7 @@ void CvCity::doGrowth()
 
 void CvCity::doCulture()
 {
-	if 	(getCommerceRate(COMMERCE_CULTURE) <= 4)
-	{
-		changeCultureTimes100(getOwnerINLINE(), getCommerceRateTimes100(COMMERCE_CULTURE), false, true);
-		return;
-	}
-
-	PlayerTypes eOwner = getOwnerINLINE();
-	int iCultureModifier = GET_PLAYER(eOwner).getModifier(MODIFIER_CULTURE);
-
-	changeCultureTimes100(eOwner, getCommerceRateTimes100(COMMERCE_CULTURE) * iCultureModifier / 100, false, true);
+	changeCultureTimes100(getOwnerINLINE(), getModifiedCultureRateTimes100(), false, true);
 
 	// Leoreth: let culture of dead civilizations decay
 	int iTotalCultureTimes100 = countTotalCultureTimes100();
@@ -15642,7 +15659,8 @@ void CvCity::doGreatPeople()
 		int iTotalGreatPeopleUnitProgress = 0;
 		for (int iI = 0; iI < GC.getNumUnitInfos(); iI++)
 		{
-			iTotalGreatPeopleUnitProgress += getGreatPeopleUnitProgress((UnitTypes)iI);
+			int iProgress = getGreatPeopleUnitProgress((UnitTypes)iI);
+			iTotalGreatPeopleUnitProgress += iProgress;
 		}
 
 		int iGreatPeopleUnitRand = GC.getGameINLINE().getSorenRandNum(iTotalGreatPeopleUnitProgress, "Great Person");

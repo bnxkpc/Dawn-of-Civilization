@@ -575,6 +575,7 @@ dStartingLeaders = [
 	iPersia : iAbbas,
 	iKorea : iSejong,
 	iJapan : iOdaNobunaga,
+	iTurks : iTamerlane,
 	iVikings : iGustav,
 	iTurks : iTamerlane,
 	iTibet : iLobsangGyatso,
@@ -1204,11 +1205,11 @@ def specificName(iPlayer):
 			return "TXT_KEY_CIV_THAILAND_AYUTTHAYA"
 			
 	elif iPlayer == iNetherlands:
-		if isCapital(iPlayer, ["Brussels", "Antwerpen"]):
-			return "TXT_KEY_CIV_NETHERLANDS_BELGIUM"
-			
 		if bCityStates:
 			return short(iPlayer)
+			
+		if isCapital(iPlayer, ["Brussels", "Antwerpen"]):
+			return "TXT_KEY_CIV_NETHERLANDS_BELGIUM"
 			
 	elif iPlayer == iGermany:
 		if getColumn(iGermany) <= 14 and pHolyRome.isAlive():
@@ -1515,8 +1516,7 @@ def specificAdjective(iPlayer):
 			return "TXT_KEY_CIV_MONGOLIA_MONGOL"
 				
 	elif iPlayer == iOttomans:
-		if iReligion == iIslam:
-			return "TXT_KEY_CIV_OTTOMANS_OTTOMAN"
+		return "TXT_KEY_CIV_OTTOMANS_OTTOMAN"
 			
 	elif iPlayer == iNetherlands:
 		if isCapital(iPlayer, ["Brussels", "Antwerpen"]):

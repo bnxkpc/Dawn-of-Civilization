@@ -735,7 +735,7 @@ def checkTurn(iGameTurn, iPlayer):
 				win(iTurks, 0)
 				
 		if iGameTurn == getTurnForYear(900):
-			expire(iVikings, 0)
+			expire(iTurks, 0)
 			
 		# second goal: create an overland trade route between a Chinese and a Mediterranean city and spread the Silk Route to ten of your cities by 1100 AD
 		if isPossible(iTurks, 1):
@@ -763,11 +763,11 @@ def checkTurn(iGameTurn, iPlayer):
 					win(iTurks, 2)
 					
 		if iGameTurn == getTurnForYear(900):
-			if not data.tTurkicCapitals[0]:
+			if not data.tFirstTurkicCapital:
 				expire(iTurks, 2)
 				
 		if iGameTurn == getTurnForYear(1100):
-			if not data.tTurkicCapitals[1]:
+			if not data.tSecondTurkicCapital:
 				expire(iTurks, 2)
 				
 		if iGameTurn == getTurnForYear(1400):
@@ -2903,11 +2903,15 @@ def countCivicPlayers(iCivicType, iCivic):
 				iCivicPlayers += 1
 	return iCivicPlayers, iTotalPlayers
 	
-def countBestCitiesReligion(iReligion, function, iNumCities):
+def getBestCities(function):
 	lCities = []
 	for iLoopPlayer in range(iNumPlayers):
 		lCities.extend(utils.getCityList(iLoopPlayer))
-	lCities = utils.getSortedList(lCities, function, True)
+	
+	return utils.getSortedList(lCities, function, True)
+	
+def countBestCitiesReligion(iReligion, function, iNumCities):
+	lCities = getBestCities(function)
 	
 	iCount = 0
 	for city in lCities[:iNumCities]:
@@ -3126,8 +3130,10 @@ def getURVHelp(iPlayer, iGoal):
 			iOrthodoxCathedrals = getNumBuildings(iPlayer, iOrthodoxCathedral)
 			aHelp.append(getIcon(iOrthodoxCathedrals >= 4) + localText.getText("TXT_KEY_VICTORY_ORTHODOX_CATHEDRALS", (iOrthodoxCathedrals, 4)))
 		elif iGoal == 1:
+			lCultureCities = getBestCities(cityCulture)[:5]
 			iCultureCities = countBestCitiesReligion(iOrthodoxy, cityCulture, 5)
-			aHelp.append(getIcon(iCultureCities >= 5) + localText.getText("TXT_KEY_VICTORY_ORTHODOX_CULTURE_CITIES", (iCultureCities, 5)))
+			for city in lCultureCities:
+				aHelp.append(getIcon(city.isHasReligion(iOrthodoxy) and gc.getPlayer(city.getOwner()).getStateReligion() == iOrthodoxy) + city.getName())
 		elif iGoal == 2:
 			bNoCatholics = countReligionPlayers(iCatholicism)[0] == 0
 			aHelp.append(getIcon(bNoCatholics) + localText.getText("TXT_KEY_VICTORY_NO_CATHOLICS", ()))

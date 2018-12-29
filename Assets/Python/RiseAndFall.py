@@ -105,19 +105,11 @@ class RiseAndFall:
 		iNewCiv = data.getNewCiv()
 		if popupReturn.getButtonClicked() == 0: # 1st button
 			self.handleNewCiv(iNewCiv)
-			
-	def respawnPopup(self, iCiv):
-		self.showPopup(7628, CyTranslator().getText("TXT_KEY_NEWCIV_TITLE", ()), CyTranslator().getText("TXT_KEY_NEWCIV_MESSAGE", (gc.getPlayer(iCiv).getCivilizationAdjectiveKey(),)), (CyTranslator().getText("TXT_KEY_POPUP_YES", ()), CyTranslator().getText("TXT_KEY_POPUP_NO", ())))
-		data.iRespawnCiv = iCiv
-		
-	def eventApply7628(self, popupReturn):
-		if popupReturn.getButtonClicked() == 0:
-			self.handleNewCiv(data.iRespawnCiv)
-			
+
 	def scheduleFlipPopup(self, iNewCiv, lPlots):
 		data.lTempEvents.append((iNewCiv, lPlots))
 		self.checkFlipPopup()
-		
+
 	def checkFlipPopup(self):
 		for tEvent in data.lTempEvents:
 			iNewCiv, lPlots = tEvent
@@ -296,7 +288,7 @@ class RiseAndFall:
 			self.adjust1700ADWonders()
 			self.adjust1700ADGreatPeople()
 			
-			for iPlayer in [iIndia, iPersia, iSpain, iHolyRome, iOttomans]:
+			for iPlayer in [iIndia, iPersia, iTurks, iSpain, iHolyRome, iOttomans]:
 				utils.setReborn(iPlayer, True)
 			
 			pChina.updateTradeRoutes()
@@ -796,8 +788,8 @@ class RiseAndFall:
 
 				
 		#kill the remaining barbs in the region: it's necessary to do this more than once to protect those civs
-		for iPlayer in [iVikings, iSpain, iFrance, iHolyRome, iRussia]:
-			if iGameTurn >= getTurnForYear(tBirth[iPlayer])+2 and iGameTurn <= getTurnForYear(tBirth[iVikings])+utils.getTurns(10):
+		for iPlayer in [iVikings, iSpain, iFrance, iHolyRome, iRussia, iAztecs]:
+			if iGameTurn >= getTurnForYear(tBirth[iPlayer])+2 and iGameTurn <= getTurnForYear(tBirth[iPlayer])+utils.getTurns(10):
 				utils.killUnitsInArea(iBarbarian, Areas.getBirthArea(iPlayer))
 				
 		#fragment utility
@@ -912,7 +904,7 @@ class RiseAndFall:
 
 		self.assignTechs(iCiv)
 		if gc.getGame().getGameTurn() >= getTurnForYear(tBirth[gc.getGame().getActivePlayer()]):
-			self.respawnPopup(iCiv)
+			startNewCivSwitchEvent(iCiv)
 
 		gc.getPlayer(iCiv).setLatestRebellionTurn(getTurnForYear(dRebirth[iCiv]))
 
@@ -1298,6 +1290,8 @@ class RiseAndFall:
 			
 		if (iCurrentTurn == iBirthYear + data.players[iCiv].iSpawnDelay) and (gc.getPlayer(iCiv).isAlive()) and (not data.bAlreadySwitched or utils.getReborn(iCiv) == 1 or data.bUnlimitedSwitching) and ((iHuman not in lNeighbours[iCiv] and getTurnForYear(tBirth[iCiv]) - getTurnForYear(tBirth[iHuman]) > 0) or getTurnForYear(tBirth[iCiv]) - getTurnForYear(tBirth[iHuman]) >= utils.getTurns(25) ):
 			startNewCivSwitchEvent(iCiv)
+			
+		data.players[iCiv].bSpawned = True
 
 	def moveOutInvaders(self, tTL, tBR):
 		if pMongolia.isAlive():
