@@ -89,6 +89,7 @@
 				<BonusType>BONUS_POTATO</BonusType>
 				<BonusType>BONUS_RICE</BonusType>
 				<BonusType>BONUS_WHEAT</BonusType>
+				<BonusType>BONUS_MILLET</BonusType>
 			</PrereqBonuses>
 			<HeadquarterCommerces>
 				<iHeadquarterCommerce>0</iHeadquarterCommerce>
@@ -198,6 +199,7 @@
 				<BonusType>BONUS_COAL</BonusType>
 				<BonusType>BONUS_COPPER</BonusType>
 				<BonusType>BONUS_IRON</BonusType>
+				<BonusType>BONUS_RARE_EARTHS</BonusType>
 			</PrereqBonuses>
 			<HeadquarterCommerces>
 				<iHeadquarterCommerce>0</iHeadquarterCommerce>
@@ -268,6 +270,8 @@
 				<BonusType>BONUS_GEMS</BonusType>
 				<BonusType>BONUS_PEARL</BonusType>
 				<BonusType>BONUS_SILVER</BonusType>
+				<BonusType>BONUS_JADE</BonusType>
+				<BonusType>BONUS_AMBER</BonusType>
 			</PrereqBonuses>
 			<HeadquarterCommerces>
 				<iHeadquarterCommerce>0</iHeadquarterCommerce>
@@ -303,6 +307,7 @@
 				<BonusType>BONUS_ALUMINUM</BonusType>
 				<BonusType>BONUS_COPPER</BonusType>
 				<BonusType>BONUS_OIL</BonusType>
+				<BonusType>BONUS_RARE_EARTHS</BonusType>
 			</PrereqBonuses>
 			<HeadquarterCommerces>
 				<iHeadquarterCommerce>0</iHeadquarterCommerce>
