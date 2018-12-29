@@ -1781,6 +1781,7 @@ int CvPlayerAI::AI_foundValue(int iX, int iY, int iMinRivalRange, bool bStarting
 	}
 
 	//Leoreth: prevent France from founding Metz
+	/* 
 	if (iX == 57 && iY == 50)
 	{
 		return 0;
@@ -1792,15 +1793,16 @@ int CvPlayerAI::AI_foundValue(int iX, int iY, int iMinRivalRange, bool bStarting
 		return 0;
 	}
 
-	if (iX == 62 && (iY == 51 || iY == 52 || iY == 54))
+	if (iX == 62 && (iY == 51 || iY == 52 || iY == 54)) // Berlin, y
 	{
 		return 0;
-	}
+	} 
+	*/
 
 	//Leoreth: if Poland exists, prevent HRE from founding cities in its core
 	if (getID() == HOLY_ROME && GET_PLAYER((PlayerTypes)POLAND).isPlayable() /* better option later when it exists */)
 	{
-	    if (iX >= 63 && iY >= 49)
+	    if (iX >= 72 && iY >= 61) // near Vienna
 	    {
 	        return 0;
 	    }
@@ -2690,7 +2692,7 @@ int CvPlayerAI::AI_foundValue(int iX, int iY, int iMinRivalRange, bool bStarting
 	// Leoreth: more English settlements in North America
 	if (getID() == ENGLAND)
 	{
-		if (pArea->getID() == GC.getMap().plot(27, 46)->getArea()) // Washington tile
+		if (pArea->getID() == GC.getMap().plot(29, 54)->getArea()) // Washington tile
 		{
 			iValue *= 2;
 		}
@@ -2957,8 +2959,8 @@ int CvPlayerAI::AI_targetCityValue(CvCity* pCity, bool bRandomize, bool bIgnoreA
 		}
 	}
 	//Rhye - end
-
-	if (getID() == FRANCE && pCity->getX() == 69 && pCity->getY() == 52 && pCity->getOwner() >= NUM_MAJOR_PLAYERS)
+	// France should not seize Kiev
+	if (getID() == FRANCE && pCity->getX() == 80 && pCity->getY() == 62 && pCity->getOwner() >= NUM_MAJOR_PLAYERS)
 	{
 		return 0;
 	}
@@ -3006,7 +3008,7 @@ int CvPlayerAI::AI_targetCityValue(CvCity* pCity, bool bRandomize, bool bIgnoreA
 	}
 
 	//Rhye - start switch
-	if (pCity->getX_INLINE() <= 43) { //wars in America
+	if (pCity->getX_INLINE() <= 49) { //wars in America -->
 		switch (getID())
 		{
 			case SPAIN:

@@ -7468,12 +7468,12 @@ int CvPlot::getFoundValue(PlayerTypes eIndex)
 	FAssertMsg(eIndex >= 0, "eIndex is expected to be non-negative (invalid Index)");
 	FAssertMsg(eIndex < MAX_PLAYERS, "eIndex is expected to be within maximum bounds (invalid Index)");
 
-	if (eIndex == KOREA && getX_INLINE() == 108 && getY_INLINE() == 48)
+	if (eIndex == KOREA && getX_INLINE() == 130 && getY_INLINE() == 56) // P'yongyang
 	{
 		return 82393;
 	}
 
-	if ((getX_INLINE() == 101 && getY_INLINE() == 37) || (getSettlerValue(eIndex) >= 800))
+	if ((getX_INLINE() == 121 && getY_INLINE() == 42) || (getSettlerValue(eIndex) >= 800)) // Hanoi
 	{
 		int iValue = GET_PLAYER(eIndex).AI_foundValue(getX_INLINE(), getY_INLINE(), -1, false);
 		if (iValue > area()->getBestFoundValue(eIndex))
