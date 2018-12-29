@@ -12230,6 +12230,7 @@ void CvPlayerAI::AI_doCommerce()
 		if (getNumCities() > 0)
 		{
 			iIdealPercent = 0;
+			int iGameTurn = GC.getGameINLINE().getGameTurn();
 
 			for (pLoopCity = firstCity(&iLoop); pLoopCity != NULL; pLoopCity = nextCity(&iLoop))
 			{
@@ -12266,6 +12267,102 @@ void CvPlayerAI::AI_doCommerce()
 				iIdealPercent = 30;
 			}
 
+			if (getID() == KOREA)
+			{
+				switch(getCurrentEra())
+				{
+					case ERA_MEDIEVAL:
+						iIdealPercent = 20;
+						break;
+					case ERA_RENAISSANCE:
+						iIdealPercent = 40;
+						break;
+					case ERA_INDUSTRIAL:
+					case ERA_GLOBAL:
+					case ERA_DIGITAL:
+						iIdealPercent = 30;
+						break;
+				}
+			}
+
+			if (getID() == BYZANTIUM)
+			{
+				iIdealPercent = 20;
+			}
+
+			if (getID() == TURKS)
+			{
+				if (iGameTurn >= getTurnForYear(1000))
+				{
+					iIdealPercent = 20;
+				}
+				else
+				{
+					iIdealPercent = 10;
+				}
+			}
+
+			if (getID() == ARABIA)
+			{
+				iIdealPercent = 20;
+			}
+
+			if (getID() == FRANCE && GC.getGame().getTechRank(getTeam()) < 3) 
+			{
+				iIdealPercent = 40 - 10 * GC.getGame().getTeamRank(getTeam());
+			}
+			
+			if (getID() == HOLY_ROME)
+			{
+				if (getCurrentEra() >= ERA_RENAISSANCE)
+				{
+					iIdealPercent = 30;
+				}
+
+				else
+				{
+					iIdealPercent = 20;
+				}
+			}
+
+			if (getID() == ITALY)
+			{
+				switch(getCurrentEra())
+				{
+					case ERA_RENAISSANCE:
+					case ERA_INDUSTRIAL:
+						iIdealPercent = 30;
+						break;
+					case ERA_MEDIEVAL:
+					case ERA_GLOBAL:
+					case ERA_DIGITAL:
+						iIdealPercent = 20;
+						break;
+				}
+			}
+
+			if (getID() == MUGHALS && getCurrentEra() >= ERA_RENAISSANCE)
+			{
+				iIdealPercent = 30;
+			}
+
+			if (getID() == TURKEY && getCurrentEra() == ERA_RENAISSANCE)
+			{
+				iIdealPercent = 20;
+			}
+
+			if (getID() == PERSIA && GET_PLAYER((PlayerTypes)PERSIA).isReborn())
+			{
+				if (getCurrentEra() >= ERA_INDUSTRIAL)
+				{
+					iIdealPercent = 20;
+				}
+				else
+				{
+					iIdealPercent = 30;
+				}
+			}
+			
 			if (AI_isDoStrategy(AI_STRATEGY_CULTURE4))
 			{
 			    iIdealPercent = 100;
