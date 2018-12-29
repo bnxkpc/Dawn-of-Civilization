@@ -2894,7 +2894,8 @@ int CvTeam::getSpreadResearchModifier(TechTypes eTech) const
 	// 0% for the fourth civ (iCivsWithTech == 3)
 	// limited to human players now
 	int iLowerThreshold = iCivsAlive / 4;
-	if (GET_PLAYER(getLeaderID()).isHuman() && iCivsWithTech < iLowerThreshold) iSpreadModifier += iLeaderPenalty * (iLowerThreshold - iCivsWithTech) / iLowerThreshold;
+	// if (GET_PLAYER(getLeaderID()).isHuman() && iCivsWithTech < iLowerThreshold) iSpreadModifier += iLeaderPenalty * (iLowerThreshold - iCivsWithTech) / iLowerThreshold;
+	if (iCivsWithTech < iLowerThreshold) iSpreadModifier += iLeaderPenalty * (iLowerThreshold - iCivsWithTech) / iLowerThreshold;
 
 	// more than three quarters know it -> less expensive
 	// assume there are 12 civs, then its a decrease for the 10th to 12th civ to discover something
