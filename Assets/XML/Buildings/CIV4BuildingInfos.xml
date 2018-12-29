@@ -136,6 +136,14 @@
 					<BonusType>BONUS_CORN</BonusType>
 					<iHealthChange>1</iHealthChange>
 				</BonusHealthChange>
+				<BonusHealthChange>
+					<BonusType>BONUS_POTATO</BonusType>
+					<iHealthChange>1</iHealthChange>
+				</BonusHealthChange>
+				<BonusHealthChange>
+					<BonusType>BONUS_MILLET</BonusType>
+					<iHealthChange>1</iHealthChange>
+				</BonusHealthChange>
 			</BonusHealthChanges>
 			<ConstructSound>AS2D_BUILD_GRANARY</ConstructSound>
 			<Flavors>
@@ -173,6 +181,14 @@
 				</BonusHealthChange>
 				<BonusHealthChange>
 					<BonusType>BONUS_CORN</BonusType>
+					<iHealthChange>1</iHealthChange>
+				</BonusHealthChange>
+				<BonusHealthChange>
+					<BonusType>BONUS_POTATO</BonusType>
+					<iHealthChange>1</iHealthChange>
+				</BonusHealthChange>
+				<BonusHealthChange>
+					<BonusType>BONUS_MILLET</BonusType>
 					<iHealthChange>1</iHealthChange>
 				</BonusHealthChange>
 			</BonusHealthChanges>
@@ -223,6 +239,10 @@
 				</BonusHealthChange>
 				<BonusHealthChange>
 					<BonusType>BONUS_PIG</BonusType>
+					<iHealthChange>1</iHealthChange>
+				</BonusHealthChange>
+				<BonusHealthChange>
+					<BonusType>BONUS_SALT</BonusType>
 					<iHealthChange>1</iHealthChange>
 				</BonusHealthChange>
 			</BonusHealthChanges>
@@ -1609,6 +1629,10 @@
 					<BonusType>BONUS_WHALE</BonusType>
 					<iHappinessChange>1</iHappinessChange>
 				</BonusHappinessChange>
+				<BonusHappinessChange>
+					<BonusType>BONUS_JADE</BonusType>
+					<iHappinessChange>1</iHappinessChange>
+				</BonusHappinessChange>
 			</BonusHappinessChanges>
 			<Flavors>
 				<Flavor>
@@ -1665,6 +1689,10 @@
 					<BonusType>BONUS_WHALE</BonusType>
 					<iHappinessChange>1</iHappinessChange>
 				</BonusHappinessChange>
+				<BonusHappinessChange>
+					<BonusType>BONUS_JADE</BonusType>
+					<iHappinessChange>1</iHappinessChange>
+				</BonusHappinessChange>
 			</BonusHappinessChanges>
 			<Flavors>
 				<Flavor>
@@ -1715,6 +1743,10 @@
 				</BonusHappinessChange>
 				<BonusHappinessChange>
 					<BonusType>BONUS_WHALE</BonusType>
+					<iHappinessChange>1</iHappinessChange>
+				</BonusHappinessChange>
+				<BonusHappinessChange>
+					<BonusType>BONUS_JADE</BonusType>
 					<iHappinessChange>1</iHappinessChange>
 				</BonusHappinessChange>
 			</BonusHappinessChanges>
@@ -2271,6 +2303,14 @@
 					<BonusType>BONUS_SPICES</BonusType>
 					<iHealthChange>1</iHealthChange>
 				</BonusHealthChange>
+				<BonusHealthChange>
+					<BonusType>BONUS_OLIVES</BonusType>
+					<iHealthChange>1</iHealthChange>
+				</BonusHealthChange>
+				<BonusHealthChange>
+					<BonusType>BONUS_OPIUM</BonusType>
+					<iHealthChange>1</iHealthChange>
+				</BonusHealthChange>
 			</BonusHealthChanges>
 			<Flavors>
 				<Flavor>
@@ -2644,6 +2684,10 @@
 					<BonusType>BONUS_TOBACCO</BonusType>
 					<iHappinessChange>1</iHappinessChange>
 				</BonusHappinessChange>
+				<BonusHappinessChange>
+					<BonusType>BONUS_COCOA</BonusType>
+					<iHappinessChange>1</iHappinessChange>
+				</BonusHappinessChange>
 			</BonusHappinessChanges>
 			<Flavors>
 				<Flavor>
@@ -2714,6 +2758,10 @@
 				</BonusHappinessChange>
 				<BonusHappinessChange>
 					<BonusType>BONUS_TOBACCO</BonusType>
+					<iHappinessChange>1</iHappinessChange>
+				</BonusHappinessChange>
+				<BonusHappinessChange>
+					<BonusType>BONUS_COCOA</BonusType>
 					<iHappinessChange>1</iHappinessChange>
 				</BonusHappinessChange>
 			</BonusHappinessChanges>
@@ -9499,7 +9547,7 @@
 			<MaxStartEra>ERA_MEDIEVAL</MaxStartEra>
 			<PrereqTech>TECH_LAW</PrereqTech>
 			<ObsoleteTech>TECH_GEOLOGY</ObsoleteTech>
-			<PrereqBonuses>BONUS_CORN</PrereqBonuses>
+			<PrereqBonuses>BONUS_POTATO</PrereqBonuses>
 			<GreatPeopleUnitClass>UNITCLASS_GREAT_PROPHET</GreatPeopleUnitClass>
 			<iGreatPeopleRateChange>2</iGreatPeopleRateChange>
 			<bTeamShare>1</bTeamShare>
@@ -12900,6 +12948,12 @@
 				<iYield>0</iYield>
 				<iYield>2</iYield>
 			</ReligionYieldChanges>
+			<BonusProductionModifiers>
+				<BonusProductionModifier>
+					<BonusType>BONUS_SALT</BonusType>
+					<iProductonModifier>100</iProductonModifier>
+				</BonusProductionModifier>
+			</BonusProductionModifiers>
 			<ConstructSound>AS2D_BUILD_CHRISTIAN</ConstructSound>
 			<Flavors>
 				<Flavor>
@@ -12951,6 +13005,12 @@
 				<bCommerceChangeOriginalOwner>0</bCommerceChangeOriginalOwner>
 				<bCommerceChangeOriginalOwner>1</bCommerceChangeOriginalOwner>
 			</CommerceChangeOriginalOwners>
+			<BonusProductionModifiers>
+				<BonusProductionModifier>
+					<BonusType>BONUS_AMBER</BonusType>
+					<iProductonModifier>100</iProductonModifier>
+				</BonusProductionModifier>
+			</BonusProductionModifiers>
 			<ConstructSound>AS2D_BUILD_ORACLE</ConstructSound>
 			<Flavors>
 				<Flavor>
