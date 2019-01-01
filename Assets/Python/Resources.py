@@ -274,6 +274,10 @@ class Resources:
 			self.createResource(105, 45, iPotato) # India
 			self.createResource(113, 44, iPotato) # Bangladesh
 			
+			# remove marshes for St. Petersburg
+			gc.getMap().plot(81, 70).setFeatureType(-1, 0)
+			gc.getMap().plot(80, 69).setFeatureType(-1, 0)
+			
 		elif iGameTurn == getTurnForYear(1800):
 			if gc.getDefineINT("PLAYER_REBIRTH_MEXICO") != 0:
 				self.createResource(16, 47, iHorse) # Mexico
