@@ -50,7 +50,7 @@ tMinorCities = (
 (600, (86, 41), iIndependent, 'Yathrib', 2, iArcher, 1),		# Medina
 #(633, (113, 48), iBarbarian, 'Lhasa', 2, iKhampa, 1),			# Lhasa
 (680, (57, 44), iIndependent, 'Murrakush', 1, iCrossbowman, 1),	# Marrakesh
-(700, (34, 22), iNative, 'Tiyawanaku', 1, -1, -1),				# Tiahuanaco
+(700, (34, 22), iNative, 'Tiwanaku', 1, -1, -1),				# Tiahuanaco
 (700, (67, 48), iIndependent2, 'Tunis', 3, iCrossbowman, 2),	# Tunis
 (738, (117, 45), iIndependent2, 'Darllit', 2, iArcher, 1),		# Dali
 (800, tVienna, iIndependent, 'Vindobona', 1, iCrossbowman, 1),	# Wien
@@ -82,6 +82,7 @@ tMinorCities = (
 (1255, (75, 65), iIndependent, 'K&#246;nigsberg', 3, iCrossbowman, 3),		# Konigsberg
 (1300, (120, 30), iIndependent2, 'Melaka', 5, iCrossbowman, 3),	# Malacca
 (1300, (62, 64), iIndependent2, 'Amsterdam', 3, iCrossbowman, 4),		# Amsterdam
+(1300, (100, 67), iBarbarian, "Qasliq", 4, iCrossbowman, 3),	# Sibir (Tobolsk)
 (1400, (123, 35), iIndependent, 'Sai Gon', 5, iCrossbowman, 3),	# Saigon
 (1483, (70, 24), iNative, "M'banza-Kongo", 1, iPombos, 1),		# Mbanza Kongo
 # (1515, (130, 33), iIndependent2, 'Maguindanao', 2, iCrossbowman, 2),		# Maguindanao

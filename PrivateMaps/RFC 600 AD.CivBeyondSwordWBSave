@@ -36558,7 +36558,6 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=79,y=40
-	FeatureType=FEATURE_FLOOD_PLAINS, FeatureVariety=0
 	TerrainType=TERRAIN_DESERT
 	PlotType=2
 EndPlot
@@ -54680,34 +54679,12 @@ BeginPlot
 	x=116,y=41
 	RiverNSDirection=2
 	isWOfRiver
+	BonusType=BONUS_IVORY
+	ImprovementType=IMPROVEMENT_CAMP
+	FeatureType=FEATURE_RAINFOREST, FeatureVariety=0
 	RouteType=ROUTE_ROAD
 	TerrainType=TERRAIN_GRASS
 	PlotType=1
-	BeginUnit
-		UnitType=UNIT_ARCHER, UnitOwner=46, (Independent Leader)
-		Level=1, Experience=0
-	EndUnit
-	BeginUnit
-		UnitType=UNIT_ARCHER, UnitOwner=46, (Independent Leader)
-		Level=1, Experience=0
-	EndUnit
-	BeginUnit
-		UnitType=UNIT_ARCHER, UnitOwner=46, (Independent Leader)
-		Level=1, Experience=0
-	EndUnit
-	BeginCity
-		CityOwner=46, (Independent Leader)
-		CityName=Pugam
-		CityPopulation=4
-		BuildingType=BUILDING_BARRACKS
-		BuildingType=BUILDING_GRANARY
-		BuildingType=BUILDING_HARBOR
-		BuildingType=BUILDING_FORGE
-		BuildingType=BUILDING_BUDDHIST_TEMPLE
-		BuildingType=BUILDING_SHWEDAGON_PAYA
-		ReligionType=RELIGION_BUDDHISM
-		Player46Culture=50, (Independent Leader)
-	EndCity
 EndPlot
 BeginPlot
 	x=116,y=42
@@ -55171,12 +55148,34 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=117,y=41
-	BonusType=BONUS_IVORY
-	ImprovementType=IMPROVEMENT_CAMP
-	FeatureType=FEATURE_RAINFOREST, FeatureVariety=0
 	RouteType=ROUTE_ROAD
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
+	BeginUnit
+		UnitType=UNIT_ARCHER, UnitOwner=46, (Independent Leader)
+		Level=1, Experience=0
+	EndUnit
+	BeginUnit
+		UnitType=UNIT_ARCHER, UnitOwner=46, (Independent Leader)
+		Level=1, Experience=0
+	EndUnit
+	BeginUnit
+		UnitType=UNIT_ARCHER, UnitOwner=46, (Independent Leader)
+		Level=1, Experience=0
+	EndUnit
+	BeginCity
+		CityOwner=46, (Independent Leader)
+		CityName=Pugam
+		CityPopulation=4
+		BuildingType=BUILDING_BARRACKS
+		BuildingType=BUILDING_GRANARY
+		BuildingType=BUILDING_HARBOR
+		BuildingType=BUILDING_FORGE
+		BuildingType=BUILDING_BUDDHIST_TEMPLE
+		BuildingType=BUILDING_SHWEDAGON_PAYA
+		ReligionType=RELIGION_BUDDHISM
+		Player46Culture=50, (Independent Leader)
+	EndCity
 EndPlot
 BeginPlot
 	x=117,y=42

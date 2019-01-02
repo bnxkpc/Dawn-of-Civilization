@@ -35834,7 +35834,6 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=79,y=40
-	FeatureType=FEATURE_FLOOD_PLAINS, FeatureVariety=0
 	TerrainType=TERRAIN_DESERT
 	PlotType=2
 EndPlot
@@ -52419,6 +52418,8 @@ BeginPlot
 	x=116,y=41
 	RiverNSDirection=2
 	isWOfRiver
+	BonusType=BONUS_IVORY
+	FeatureType=FEATURE_RAINFOREST, FeatureVariety=0
 	TerrainType=TERRAIN_GRASS
 	PlotType=1
 EndPlot
@@ -52876,8 +52877,6 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=117,y=41
-	BonusType=BONUS_IVORY
-	FeatureType=FEATURE_RAINFOREST, FeatureVariety=0
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 EndPlot
