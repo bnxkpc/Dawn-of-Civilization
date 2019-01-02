@@ -727,7 +727,7 @@ class RiseAndFall:
 		
 		if utils.isYearIn(1350, 1918):
 			for iPlayer in [iSpain, iEngland, iFrance, iPortugal, iNetherlands, iVikings, iGermany]:
-				if iGameTurn == data.players[iPlayer].iExplorationTurn + 1 + data.players[iPlayer].iColonistsAlreadyGiven * 8:
+				if iGameTurn == data.players[iPlayer].iExplorationTurn + 1 + data.players[iPlayer].iColonistsAlreadyGiven * utils.getTurns(4):
 					self.giveColonists(iPlayer)
 					
 		if iGameTurn == getTurnForYear(710)-1:
@@ -1790,7 +1790,7 @@ class RiseAndFall:
 		pCiv = gc.getPlayer(iCiv)
 		teamCiv = gc.getTeam(pCiv.getTeam())
 		
-		if pCiv.isAlive() and utils.getHumanID() != iCiv and iCiv in dMaxColonists:
+		if pCiv.isAlive() and iCiv in dMaxColonists:
 			if teamCiv.isHasTech(iExploration) and data.players[iCiv].iColonistsAlreadyGiven < dMaxColonists[iCiv]:
 				lCities = utils.getAreaCitiesCiv(iCiv, Areas.getCoreArea(iCiv))
 				
