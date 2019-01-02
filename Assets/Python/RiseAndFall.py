@@ -823,6 +823,21 @@ class RiseAndFall:
 		if iGameTurn == getTurnForYear(651) and utils.getScenario() == i600AD and pPersia.isAlive() and not pPersia.isHuman():
 			sta.completeCollapse(iPersia)
 		
+		# other "scripted" falls and rebirths by h0spitall3rz
+		
+		# Fatimid Egypt
+		if iGameTurn == getTurnForYear(909):
+			tCairo = (80, 43)
+			tRespawnArea = ((75, 39), (82, 45), [])
+			lUnits = [
+				(iLancer, 4),
+				(iSwordsman, 6),
+				(iTrebuchet, 4),
+				(iCrossbowman, 4),
+			]
+			tTechs = ([iDoctrine], 7, [iAlchemy, iCivilService])
+			lCivics = [iDespotism, iVassalage, iSlavery, iMerchantTrade, iTheocracy, iSovereignty]
+			self.triggerRespawn(iEgypt, tCairo, tRespawnArea, lUnits, tTechs, lCivics, iIslam, 300)
 					
 	def endTurn(self, iPlayer):
 		for tTimedConquest in data.lTimedConquests:
@@ -1658,7 +1673,43 @@ class RiseAndFall:
 				if iRand >= tAIStopBirthThreshold[iEnemy]:
 					tEnemy.declareWar(iPlayer, True, WarPlanTypes.WARPLAN_ATTACKED_RECENT)
 					self.spawnAdditionalUnits(iPlayer)
-					
+
+	def triggerRespawn(self, iCiv, tCapital, tRespawnArea, lUnits, tTechs, lCivics, iStateReligion, iGold=[], lWarsOnSpawn=[]):
+		pCiv = gc.getPlayer(iCiv)
+		teamCiv = gc.getTeam(iCiv)
+
+		utils.setReborn(iCiv, True)
+		for iOtherCiv in range(iNumPlayers):
+				if teamCiv.isVassal(iOtherCiv):
+					gc.getTeam(iOtherCiv).freeVassal(iCiv)
+				if gc.getTeam(iOtherCiv).isVassal(iCiv):
+					teamCiv.freeVassal(iOtherCiv)
+		for iOtherCiv in lWarsOnSpawn:
+			if gc.getPlayer(iOtherCiv).isAlive():
+					teamCiv.declareWar(iOtherCiv, True, WarPlanTypes.WARPLAN_LIMITED)
+
+		tTL, tBR, lExceptions = tRespawnArea
+		lPlots = utils.getPlotList(tTL, tBR, lExceptions)
+		iNumAICitiesConverted, iNumHumanCitiesToConvert = self.convertSurroundingCities(iCiv, lPlots)
+		if iNumHumanCitiesToConvert > 0 and iCiv != utils.getHumanID():
+			self.scheduleFlipPopup(iCiv, lPlots)
+		utils.moveCapital(iCiv, tCapital)
+		for tUnit in lUnits:
+			iUnit, iNumber = tUnit
+			utils.makeUnit(iUnit, iCiv, tCapital, iNumber)
+
+		lLatestTechs, iColumn, lExceptions = tTechs
+		lTechs = Civilizations.Techs(lLatestTechs, column=iColumn, exceptions=lExceptions).list()
+		Civilizations.initTechs(iCiv, lTechs)
+
+		for iCategory in range(iNumCivicCategories):
+			pCiv.setCivics(iCategory, lCivics[iCategory])
+		pCiv.setLastStateReligion(iStateReligion)
+		pCiv.setGold(iGold)
+		data.players[iCiv].resetStability()
+		dc.onCivRespawn(iCiv, [])
+		Modifiers.updateModifiers(iCiv)
+
 	def spawnAdditionalUnits(self, iPlayer):
 		tPlot = Areas.getCapital(iPlayer)
 		self.createAdditionalUnits(iPlayer, tPlot)
@@ -2889,43 +2940,7 @@ class RiseAndFall:
 				utils.makeUnit(iMilitia, iPlayer, Areas.getCapital(iPlayer), 1)
 
 	def create600ADstartingUnits( self ):
-
-		# tCapital = Areas.getCapital(iChina)
-		# utils.makeUnit(iSwordsman, iChina, tCapital, 2)
-		# utils.makeUnit(iArcher, iChina, tCapital, 1)
-		# utils.makeUnitAI(iSpearman, iChina, tCapital, UnitAITypes.UNITAI_CITY_DEFENSE, 1)
-		# utils.makeUnit(iChokonu, iChina, tCapital, 2)
-		# utils.makeUnit(iHorseArcher, iChina, tCapital, 1)
-		# utils.makeUnit(iWorker, iChina, tCapital, 2)
-
-		# tCapital = Areas.getCapital(iByzantium)
-		# tSeaPlot = self.findSeaPlots(tCapital, 1, iByzantium)
-		# if tSeaPlot:
-			# utils.makeUnit(iGalley, iByzantium, tSeaPlot, 2)
-			# utils.makeUnit(iWarGalley, iByzantium, tSeaPlot, 2)
-
-		# tCapital = Areas.getCapital(iVikings)
-		# tSeaPlot = self.findSeaPlots(tCapital, 1, iVikings)
-		# if tSeaPlot:
-		# 	utils.makeUnit(iWorkboat, iVikings, tSeaPlot, 1)
-		# 	if utils.getHumanID() == iVikings:
-		# 		utils.makeUnitAI(iGalley, iVikings, tSeaPlot, UnitAITypes.UNITAI_SETTLER_SEA, 1)
-		# 		utils.makeUnit(iSettler, iVikings, tSeaPlot, 1)
-		# 		utils.makeUnit(iArcher, iVikings, tSeaPlot, 1)
-		# 		utils.makeUnitAI(iGalley, iVikings, tSeaPlot, UnitAITypes.UNITAI_EXPLORE_SEA, 2)
-		# 	else:
-		# 		utils.makeUnitAI(iGalley, iVikings, tSeaPlot, UnitAITypes.UNITAI_EXPLORE_SEA, 3)
-				
-		# start AI settler and garrison in Denmark and Sweden
-		# if utils.getHumanID() != iVikings:
-		# 	utils.makeUnit(iSettler, iVikings, (68, 67), 1)
-		# 	utils.makeUnit(iArcher, iVikings, (68, 67), 1)
-		# 	utils.makeUnit(iSettler, iVikings, (73, 70), 1)
-		# 	utils.makeUnit(iArcher, iVikings, (73, 70), 1)
-		# else:
-		# 	utils.makeUnit(iSettler, iVikings, tCapital, 1)
-		# 	utils.makeUnit(iArcher, iVikings, tCapital, 2)
-			
+	
 		for iPlayer in range(iNumPlayers):
 			if tBirth[iPlayer] > utils.getScenarioStartYear() and gc.getPlayer(iPlayer).isHuman():
 				tCapital = Areas.getCapital(iPlayer)
