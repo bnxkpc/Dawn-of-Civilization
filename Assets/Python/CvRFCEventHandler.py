@@ -205,6 +205,15 @@ class CvRFCEventHandler:
 				city.setHasRealBuilding(iBuilding, True)
 			gc.getPlayer(iItaly).AI_updateFoundValues(False)
 		
+		# ac0e: help Siam
+		if iOwner == iThailand and tCity == Areas.getCapital(iThailand) and gc.getGame().getGameTurn() <= getTurnForYear(tBirth[iThailand])+3:
+			if city.getPopulation() < 4:
+				city.setPopulation(4)
+			lBuildings = [iBarracks, iGranary, iSmokehouse, iHoTrai, iTemple+4*gc.getPlayer(iThailand).getStateReligion(), iMarket, iForge, iHarbor, iAqueduct, iWalls]
+			for iBuilding in lBuildings:
+				city.setHasRealBuilding(iBuilding, True)
+			gc.getPlayer(iThailand).AI_updateFoundValues(False)
+		
 		# ac0e: help Iran
 		if iOwner == iPersia and utils.isReborn(iPersia) and gc.getGame().getGameTurn() <= getTurnForYear(1501)+3:
 			if city.getPopulation() < 7:
@@ -331,6 +340,14 @@ class CvRFCEventHandler:
 				city.setHasRealBuilding(iBuilding, True)
 			gc.getPlayer(iPortugal).AI_updateFoundValues(False)
 		
+		# ac0e: help Siam
+		if iOwner == iThailand and tCity == Areas.getCapital(iThailand) and gc.getGame().getGameTurn() <= getTurnForYear(tBirth[iThailand])+3:
+			city.setPopulation(4)
+			lBuildings = [iBarracks, iGranary, iSmokehouse, iHoTrai, iTemple+4*gc.getPlayer(iThailand).getStateReligion(), iMarket, iForge, iHarbor, iAqueduct, iWalls]
+			for iBuilding in lBuildings:
+				city.setHasRealBuilding(iBuilding, True)
+			gc.getPlayer(iThailand).AI_updateFoundValues(False)
+
 		if iOwner == iOttomans:
 			self.up.ottomanUP(city, iOwner, -1)
 			
