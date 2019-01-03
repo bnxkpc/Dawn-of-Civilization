@@ -21858,17 +21858,17 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=44,y=51
-	TerrainType=TERRAIN_COAST
+	TerrainType=TERRAIN_OCEAN
 	PlotType=3
 EndPlot
 BeginPlot
 	x=44,y=52
-	TerrainType=TERRAIN_COAST
+	TerrainType=TERRAIN_OCEAN
 	PlotType=3
 EndPlot
 BeginPlot
 	x=44,y=53
-	TerrainType=TERRAIN_COAST
+	TerrainType=TERRAIN_OCEAN
 	PlotType=3
 EndPlot
 BeginPlot
@@ -22289,9 +22289,8 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=45,y=52
-	FeatureType=FEATURE_FOREST, FeatureVariety=0
-	TerrainType=TERRAIN_PLAINS
-	PlotType=2
+	TerrainType=TERRAIN_COAST
+	PlotType=3
 EndPlot
 BeginPlot
 	x=45,y=53
@@ -22766,8 +22765,9 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=46,y=52
-	TerrainType=TERRAIN_COAST
-	PlotType=3
+	ImprovementType=IMPROVEMENT_WORKSHOP
+	TerrainType=TERRAIN_PLAINS
+	PlotType=2
 EndPlot
 BeginPlot
 	x=46,y=53
@@ -23216,7 +23216,7 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=47,y=53
-	TerrainType=TERRAIN_OCEAN
+	TerrainType=TERRAIN_COAST
 	PlotType=3
 EndPlot
 BeginPlot
@@ -46916,7 +46916,7 @@ BeginPlot
 	EndUnit
 	BeginCity
 		CityOwner=45, (Independent Leader)
-		CityName=Ar-Riyadh
+		CityName=Ar-Riyad
 		CityPopulation=5
 		BuildingType=BUILDING_BARRACKS
 		BuildingType=BUILDING_GRANARY
@@ -61289,6 +61289,7 @@ BeginPlot
 	x=116,y=41
 	RiverNSDirection=2
 	isWOfRiver
+	BonusType=BONUS_IVORY
 	ImprovementType=IMPROVEMENT_CAMP
 	FeatureType=FEATURE_RAINFOREST, FeatureVariety=0
 	TerrainType=TERRAIN_GRASS
