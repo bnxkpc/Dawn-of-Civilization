@@ -1362,40 +1362,45 @@ void CvPlayerAI::AI_conquerCity(CvCity* pCity)
 		//Rhye - start
 		int iX = pCity->getX_INLINE();
 		int iY = pCity->getY_INLINE();
-		if ((iX == 58 && iY == 39) || //Carthage
+		if ((iX == 67 && iY == 48) || //Carthage
 			//(iX == 76 && iY == 40) || //Babylon
-			(iX == 62 && iY == 42) || //Pompeii
-			(iX == 76 && iY == 42) || //Niniveh
-			(iX == 77 && iY == 42) || //Niniveh
-			(iX == 77 && iY == 38) || //Ur
-			(iX == 71 && iY == 43) || //Gordium
-			(iX == 73 && iY == 43) || //Hattusas
-			(iX == 77 && iY == 44) || //Artaxata
-			(iX == 69 && iY == 15) || //Zimbabwe
-			(iX == 71 && iY == 17)) { //Quelimane
+			(iX == 70 && iY == 52) || //Pompeii
+			(iX == 88 && iY == 51) || //Niniveh
+			(iX == 89 && iY == 51) || //Niniveh
+			(iX == 88 && iY == 49) || //Assur
+			(iX == 92 && iY == 46) || //Susa
+			(iX == 89 && iY == 45) || //Uruk
+			(iX == 90 && iY == 45) || //Ur
+			(iX == 83 && iY == 54) || //Hattusas
+			(iX == 89 && iY == 54) || //Artaxata
+			(iX == 74 && iY == 50) || //Sparta
+			(iX == 79 && iY == 18) || //Great Zimbabwe
+			(iX == 83 && iY == 20)) { //Quelimane
 			iRazeValue += 60;
 			if (pCity->hasActiveWorldWonder())
 				iRazeValue -= 30;
 			}
-		else if ((iX == 73 && iY == 40) || //Sur
-			(iX == 59 && iY == 50) || //Mainz
-			(iX == 54 && iY == 38)) { //Russadir
+		else if ((iX == 84 && iY == 47) || //Sur
+			// (iX == 59 && iY == 50) || //Mainz
+			(iX == 59 && iY == 46)) { //Russadir
 			iRazeValue += 20;
 			if (pCity->hasActiveWorldWonder())
 				iRazeValue -= 10;
 			}
         // Leoreth: added more 600 AD cities here
-		else if ((iX == 68 && iY == 45) || //Byzantium
-            (iX == 60 && iY == 37) ||     //Tripolis
-            (iX == 64 && iY == 36) ||     //Bengazi
-            (iX == 67 && iY == 36) ||     //Alexandria
-            (iX == 69 && iY == 35) ||     //Cairo
-            (iX == 82 && iY == 38) ||     //Shiraz
-            (iX == 83 && iY == 45) ||     //Merv
-            (iX == 85 && iY == 47) ||    //Samarkand
-			(iX == 102 && iY == 47) ||	//Beijing
-			(iX == 75 && iY == 44) ||	//Trabzon
-			(iX == 72 && iY == 43)){	//Konya
+		else if ((iX == 79 && iY == 55) || //Byzantium
+            (iX == 69 && iY == 45) ||     //Tripolis
+            (iX == 75 && iY == 45) ||     //Bengazi
+            (iX == 78 && iY == 44) ||     //Alexandria
+            (iX == 80 && iY == 43) ||     //Cairo
+            (iX == 94 && iY == 45) ||     //Shiraz
+            (iX == 97 && iY == 52) ||     //Merv
+            (iX == 100 && iY == 54) ||    //Samarkand
+            (iX == 98 && iY == 54) ||    //Bukhara
+			(iX == 124 && iY == 56) ||	//Beijing
+			(iX == 86 && iY == 54) ||	//Trabzon
+			(iX == 82 && iY == 53) ||	//Ankara
+			(iX == 82 && iY == 52)){	//Konya
 				iRazeValue -= 30;
 			}
 

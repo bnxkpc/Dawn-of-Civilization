@@ -1445,7 +1445,7 @@ void CvMap::calculateAreas()
 				case REGION_SCANDINAVIA:
 					if (plot->getArea() == asiaID)
 					{
-						if ((iX == 59 && iY >= 55 && iY <= 57) || (iX == 60 && iY == 56)) plot->setArea(denmarkID);
+						if ((iX >= 66 && iX <= 68 && iY >= 66 && iY <= 69)) plot->setArea(denmarkID);
 						else plot->setArea(scandinaviaID);
 					}
 					break;
