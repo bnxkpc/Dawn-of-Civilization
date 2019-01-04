@@ -110,7 +110,7 @@ tCapitals = (
 (3, 20), # Tonga
 (94, 45), # Persepolis
 (68, 53), # Rome
-(106, 33), # Thanjavur
+(107, 33), # Thanjavur
 (84, 35), # Aksum
 (131, 54), # Seoul
 (22, 41), # Tikal
@@ -138,7 +138,7 @@ tCapitals = (
 (105, 46), # Delhi
 (82, 53), # Sogut/Ankara
 (119, 37), # Ayutthaya
-(71, 25), # Mbanza Kongo # (70, 25)?
+(70, 25), # Mbanza Kongo # (71, 25)?
 (62, 64), # Amsterdam
 (69, 64), # Berlin
 (29, 54), # Washington
@@ -407,7 +407,7 @@ tNormalArea = (
 ((75, 49),	(84, 56)),	# Byzantium
 ((133, 49),	(139, 62)),	# Japan
 ((65, 67),	(79, 77)),	# Vikings
-((79, 44),	(103, 52)),	# Turks
+((94, 52),	(115, 63)),	# Turks
 ((84, 35),	(96, 46)),	# Arabia
 ((107, 47),	(115, 54)),	# Tibet
 ((116, 25),	(136, 33)),	# Indonesia
