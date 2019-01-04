@@ -26,6 +26,7 @@ tMinorCities = (
 (-1600, (105, 46), iIndependent, 'Indraprastha', 1, iMilitia, 1),	# Delhi
 (-1000, (124, 56), iIndependent, 'Ji', 2, iSpearman, 1),	# Beijing
 (-1000, (82, 53), iIndependent, 'Ankuwash', 2, iArcher, 2),		# Ankara
+(-850, (93, 51), iIndependent, 'Rag&#226;', 2, iArcher, 2),		# Ragha
 (-760, (66, 57), iCeltia, 'Melpum', 2, iArcher, 2),				# Milan
 (-500, (96, 56), iIndependent, 'Urganj', 1, iArcher, 2), 	# Urgench
 (-500, (98, 54), iIndependent2, 'Numijkat', 2, iArcher, 2), 	# Bukhara
@@ -37,6 +38,7 @@ tMinorCities = (
 (-258, (121, 42), iIndependent, 'Co Loa', 2, iArcher, 3),			# Hanoi
 (-214, (125, 44), iIndependent, 'Panyu', 2, iArcher, 2),	# Guangzhou
 (-190, (89, 54), iIndependent2, 'Artashat', 1, -1, -1),			# Artaxata
+(-130, (87, 51), iIndependent2, 'Urfa', 2, iArcher, 2),		# Edessa
 (-100, (114, 57), iBarbarian, 'Dunhuang', 2, iArcher, 1),		# Dunhuang
 (-100, (109, 56), iBarbarian, 'Kuqa', 2, iArcher, 1),			# Kuqa
 (-100, (19, 41), iNative, 'Danib&#225;an', 2, iHolkan, 2),		# Monte Alban
@@ -52,7 +54,7 @@ tMinorCities = (
 (680, (57, 44), iIndependent, 'Murrakush', 1, iCrossbowman, 1),	# Marrakesh
 (700, (34, 22), iNative, 'Tiwanaku', 1, -1, -1),				# Tiahuanaco
 (700, (67, 48), iIndependent2, 'Tunis', 3, iCrossbowman, 2),	# Tunis
-(738, (117, 45), iIndependent2, 'Darllit', 2, iArcher, 1),		# Dali
+(738, (118, 45), iIndependent2, 'Darllit', 2, iArcher, 1),		# Dali
 (800, tVienna, iIndependent, 'Vindobona', 1, iCrossbowman, 1),	# Wien
 (800, (70, 61), iIndependent2, 'Praha', 1, iCrossbowman, 1),	# Prague
 #(800, (85, 69), iIndependent2, 'Beloozero', 1, iCrossbowman, 1),	# Beloozero
