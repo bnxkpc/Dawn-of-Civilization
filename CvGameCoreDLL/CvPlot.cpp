@@ -9760,7 +9760,7 @@ ColorTypes CvPlot::plotMinimapColor()
 		}
 
 		//if ((getRevealedOwner(GC.getGameINLINE().getActiveTeam(), true) != NO_PLAYER) && !isRevealedBarbarian())
-		if (!isWater() && (getRevealedOwner(GC.getGameINLINE().getActiveTeam(), true) != NO_PLAYER) && !isRevealedBarbarian()) // edead
+		if (!isWater() && (getRevealedOwner(GC.getGameINLINE().getActiveTeam(), true) != NO_PLAYER)) // edead
 		{
 			return ((ColorTypes)(GC.getPlayerColorInfo(GET_PLAYER(getRevealedOwner(GC.getGameINLINE().getActiveTeam(), true)).getPlayerColor()).getColorTypePrimary()));
 		}
