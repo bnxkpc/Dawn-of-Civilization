@@ -42150,9 +42150,8 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=90,y=50
-	FeatureType=FEATURE_FOREST, FeatureVariety=0
 	TerrainType=TERRAIN_PLAINS
-	PlotType=1
+	PlotType=0
 EndPlot
 BeginPlot
 	x=90,y=51
@@ -42621,8 +42620,9 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=91,y=50
+	FeatureType=FEATURE_FOREST, FeatureVariety=0
 	TerrainType=TERRAIN_PLAINS
-	PlotType=0
+	PlotType=1
 EndPlot
 BeginPlot
 	x=91,y=51
@@ -43534,7 +43534,7 @@ BeginPlot
 	EndUnit
 	BeginCity
 		CityOwner=8, (Khosrow I)
-		CityName=Spahan
+		CityName=Spah&#226;n
 		CityPopulation=4
 		BuildingType=BUILDING_BARRACKS
 		BuildingType=BUILDING_GRANARY
@@ -59194,7 +59194,6 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=125,y=44
-	BonusType=BONUS_SUGAR
 	RouteType=ROUTE_ROAD
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
@@ -59687,7 +59686,8 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=126,y=44
-	ImprovementType=IMPROVEMENT_WORKSHOP
+	BonusType=BONUS_SUGAR
+	ImprovementType=IMPROVEMENT_PLANTATION
 	RouteType=ROUTE_ROAD
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
