@@ -1715,7 +1715,7 @@ def doResurrection(iPlayer, lCityList, bAskFlip = True):
 	
 		
 	# others revert to their old cores instead
-	if iPlayer in [iArabia, iMongolia]:
+	if iPlayer in [iArabia, iMongolia, iTurks]:
 		utils.setReborn(iPlayer, False)
 	
 	# resurrection leaders
