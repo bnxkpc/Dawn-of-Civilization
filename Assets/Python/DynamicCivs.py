@@ -502,7 +502,7 @@ dCapitals = {
 	iVikings : ["Stockholm", "Oslo", "Nidaros", "Kalmar", "Roskilde"],
 	iKhmer : ["Pagan", "Dali", "Angkor", "Hanoi"],
 	iHolyRome : ["Buda"],
-	iRussia : ["Moskva", "Kiev"],
+	iRussia : ["Moskva", "Kiev", "Novgorod", "Smolensk", "Yaroslavl'", "Tver'", "Ryazan'", "Pskov"],
 	iItaly : ["Fiorenza", "Roma"],
 	iTamils : ["Madurai", "Thiruvananthapuram", "Cochin", "Kozhikode"],
 	iArabia : ["Dimashq"],
@@ -1400,6 +1400,12 @@ def specificAdjective(iPlayer):
 			return "TXT_KEY_CIV_VIKINGS_SWEDISH"
 			
 	elif iPlayer == iTurks:
+		if iGameTurn >= getTurnForYear(1500):
+			if bEmpire:
+				return "TXT_KEY_CIV_TURKS_SHAYBANID"
+		
+			return "TXT_KEY_CIV_TURKS_UZBEK"
+			
 		if bResurrected or iGameTurn >= getTurnForYear(1370):
 			return "TXT_KEY_CIV_TURKS_TIMURID"
 	
@@ -1414,12 +1420,6 @@ def specificAdjective(iPlayer):
 			
 		if utils.isPlotInArea(tCapitalCoords, tAnatoliaTL, tAnatoliaBR):
 			return "TXT_KEY_CIV_TURKS_SELJUK"
-			
-		if iGameTurn >= getTurnForYear(1500):
-			if bEmpire:
-				return "TXT_KEY_CIV_TURKS_SHAYBANID"
-		
-			return "TXT_KEY_CIV_TURKS_UZBEK"
 			
 		easternmostCity = utils.getHighestEntry(utils.getCityList(iTurks), lambda city: city.getX())
 		if easternmostCity and easternmostCity.getX() < iTurkicEastWestBorder:
@@ -1774,7 +1774,7 @@ def specificTitle(iPlayer, lPreviousOwners=[]):
 			return "TXT_KEY_EMPIRE_ADJECTIVE"
 	
 	elif iPlayer == iKorea:
-		if iEra >= iIndustrial:
+		if iEra >= iRenaissance:
 			if bEmpire:
 				return "TXT_KEY_CIV_KOREA_EMPIRE"
 			else:
