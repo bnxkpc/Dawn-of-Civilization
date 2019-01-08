@@ -132,6 +132,8 @@ class CvRFCEventHandler:
 			sta.onCityAcquired(city, iOwner, iPlayer)
 			
 		if iPlayer == iArabia:
+			if tCity == tCapitals[iArabia] and gc.getGame().getGameTurn() <= getTurnForYear(tBirth[iPlayer]) + 4:
+				self.rel.foundReligion(tCity, iIslam)
 			self.up.arabianUP(city)
 			
 		if iPlayer == iMongolia and bConquest and utils.getHumanID() != iPlayer:
