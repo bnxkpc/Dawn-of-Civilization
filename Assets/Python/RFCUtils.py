@@ -1356,9 +1356,9 @@ class RFCUtils:
 		if gc.getMap().plot(x, y).isCity(): bCapital = True
 		
 		if iNumCities < iTargetCities:
-			self.makeUnit(iSettler, iPlayer, (x, y), iTargetCities - iNumCities)
+			self.makeUnit(self.getUniqueUnit(iPlayer, iSettler), iPlayer, (x, y), iTargetCities - iNumCities)
 		else:
-			if not bCapital: self.makeUnit(iSettler, iPlayer, (x, y), 1)
+			if not bCapital: self.makeUnit(self.getUniqueUnit(iPlayer, iSettler), iPlayer, (x, y), 1)
 			
 	def createMissionaries(self, iPlayer, iNumUnits, iReligion=None):
 		if iReligion == None:
@@ -1721,14 +1721,13 @@ class RFCUtils:
 			engine.clearAreaBorderPlots(1000+i)
 		self.bStabilityOverlay = False
 		CyGInterfaceScreen("MainInterface", CvScreenEnums.MAIN_INTERFACE).setState("StabilityOverlay", False)
+		
+	def getRegionPlots(self, lRegions):
+		if isinstance(lRegions, int): lRegions = [lRegions]
+		return [(x, y) for (x, y) in self.getWorldPlotsList() if gc.getMap().plot(x, y).getRegionID() in lRegions]
 			
 	def getRegionCities(self, lRegions):
-		lCities = []
-		for (x, y) in self.getWorldPlotsList():
-			plot = gc.getMap().plot(x, y)
-			if plot.getRegionID() in lRegions and plot.isCity():
-				lCities.append(plot.getPlotCity())
-		return lCities
+		return [gc.getMap().plot(x, y).getPlotCity() for (x, y) in self.getRegionPlots(lRegions) if gc.getMap().plot(x, y).isCity()]
 		
 	def getAdvisorString(self, iBuilding):
 		''

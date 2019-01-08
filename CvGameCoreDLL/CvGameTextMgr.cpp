@@ -9122,16 +9122,27 @@ void CvGameTextMgr::setBasicUnitHelpWithCity(CvWStringBuffer &szBuffer, UnitType
 
 	for (iI = 0; iI < GC.getNumTerrainInfos(); ++iI)
 	{
-		if (GC.getUnitInfo(eUnit).getTerrainDefenseModifier(iI) != 0)
+		if (GC.getUnitInfo(eUnit).getTerrainDefenseModifier(iI) == GC.getUnitInfo(eUnit).getTerrainAttackModifier(iI))
 		{
-			szBuffer.append(NEWLINE);
-			szBuffer.append(gDLL->getText("TXT_KEY_UNIT_DEFENSE", GC.getUnitInfo(eUnit).getTerrainDefenseModifier(iI), GC.getTerrainInfo((TerrainTypes) iI).getTextKeyWide()));
+			if (GC.getUnitInfo(eUnit).getTerrainAttackModifier(iI) != 0)
+			{
+				szBuffer.append(NEWLINE);
+				szBuffer.append(gDLL->getText("TXT_KEY_UNIT_ATTACK_AND_DEFENSE", GC.getUnitInfo(eUnit).getTerrainAttackModifier(iI), GC.getTerrainInfo((TerrainTypes)iI).getTextKeyWide()));
+			}
 		}
-
-		if (GC.getUnitInfo(eUnit).getTerrainAttackModifier(iI) != 0)
+		else
 		{
-			szBuffer.append(NEWLINE);
-			szBuffer.append(gDLL->getText("TXT_KEY_UNIT_ATTACK", GC.getUnitInfo(eUnit).getTerrainAttackModifier(iI), GC.getTerrainInfo((TerrainTypes) iI).getTextKeyWide()));
+			if (GC.getUnitInfo(eUnit).getTerrainDefenseModifier(iI) != 0)
+			{
+				szBuffer.append(NEWLINE);
+				szBuffer.append(gDLL->getText("TXT_KEY_UNIT_DEFENSE", GC.getUnitInfo(eUnit).getTerrainDefenseModifier(iI), GC.getTerrainInfo((TerrainTypes) iI).getTextKeyWide()));
+			}
+
+			if (GC.getUnitInfo(eUnit).getTerrainAttackModifier(iI) != 0)
+			{
+				szBuffer.append(NEWLINE);
+				szBuffer.append(gDLL->getText("TXT_KEY_UNIT_ATTACK", GC.getUnitInfo(eUnit).getTerrainAttackModifier(iI), GC.getTerrainInfo((TerrainTypes) iI).getTextKeyWide()));
+			}
 		}
 	}
 
@@ -18230,7 +18241,7 @@ void CvGameTextMgr::parseGreatPeopleHelp(CvWStringBuffer &szBuffer, CvCity& city
 			int iCount = city.getNumBuilding((BuildingTypes)i);
 			if (iCount > 0)
 			{
-				iRate += iCount * GC.getBuildingInfo((BuildingTypes)i).getGreatPeopleRateChange();
+				iRate += iCount * (GC.getBuildingInfo((BuildingTypes)i).getGreatPeopleRateChange() + city.getBuildingGreatPeopleRateChange((BuildingClassTypes)GC.getBuildingInfo((BuildingTypes)i).getBuildingClassType()));
 			}
 		}
 		if (iRate > 0)
@@ -21311,4 +21322,24 @@ void CvGameTextMgr::parseMinorReligionHelp(CvWStringBuffer &szBuffer, Civilizati
 	}
 
 	szBuffer.append(CvWString::format(SETCOLR L"%s (%s)" ENDCOLR , TEXT_COLOR("COLOR_HIGHLIGHT_TEXT"), szPaganReligionName, gDLL->getText("TXT_KEY_PEDIA_MINOR_RELIGION_PAGANISM").c_str()));
+}
+
+void CvGameTextMgr::setWonderLimitHelp(CvWStringBuffer &szBuffer, CvCity& city, int iWonderType)
+{
+	FAssertMsg(NO_PLAYER != city.getOwnerINLINE(), "City must have an owner");
+
+	int iCultureLevel = city.getCultureLevel();
+	
+	if (iWonderType == 0) // National wonders
+	{
+		int iNationalWonders = city.getNumNationalWonders();
+		int iNationalWondersLimit = GC.getCultureLevelInfo((CultureLevelTypes)iCultureLevel).getNationalWonderLimit();
+		szBuffer.append(gDLL->getText("INTERFACE_CITY_NATIONAL_WONDER_LIMIT_HELP", iNationalWonders, iNationalWondersLimit, GC.getCultureLevelInfo((CultureLevelTypes)iCultureLevel).getTextKeyWide()));
+	}
+	else
+	{
+		int iWorldWonders = city.getNumWorldWonders();
+		int iWorldWondersLimit = GC.getCultureLevelInfo((CultureLevelTypes)iCultureLevel).getWonderLimit();
+		szBuffer.append(gDLL->getText("INTERFACE_CITY_WORLD_WONDER_LIMIT_HELP", iWorldWonders, iWorldWondersLimit, GC.getCultureLevelInfo((CultureLevelTypes)iCultureLevel).getTextKeyWide()));
+	}
 }
