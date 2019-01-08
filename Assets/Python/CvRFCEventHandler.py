@@ -211,7 +211,7 @@ class CvRFCEventHandler:
 		if iOwner == iThailand and tCity == Areas.getCapital(iThailand) and gc.getGame().getGameTurn() <= getTurnForYear(tBirth[iThailand])+3:
 			if city.getPopulation() < 4:
 				city.setPopulation(4)
-			lBuildings = [iBarracks, iGranary, iSmokehouse, iHoTrai, iTemple+4*gc.getPlayer(iThailand).getStateReligion(), iMarket, iForge, iHarbor, iAqueduct, iWalls]
+			lBuildings = [iBarracks, iGranary, iHoTrai, iTemple+4*gc.getPlayer(iThailand).getStateReligion(), iMarket, iForge, iAqueduct]
 			for iBuilding in lBuildings:
 				city.setHasRealBuilding(iBuilding, True)
 			gc.getPlayer(iThailand).AI_updateFoundValues(False)
@@ -228,7 +228,7 @@ class CvRFCEventHandler:
 		if iOwner == iNetherlands and tCity == Areas.getCapital(iNetherlands) and gc.getGame().getGameTurn() <= getTurnForYear(1580)+3:
 			if city.getPopulation() < 9:
 				city.setPopulation(9)
-			for iBuilding in [iGranary, iHarbor, iForge, iAqueduct, iSmokehouse, iLighthouse, iLibrary, iBarracks, iPharmacy, iBank, iArena, iTheatre, iTemple+4*gc.getPlayer(iNetherlands).getStateReligion()]:
+			for iBuilding in [iGranary, iHarbor, iForge, iAqueduct, iSmokehouse, iJail, iLibrary, iMarket, iWharf, iLighthouse, iBarracks, iPharmacy, iBank, iArena, iTheatre, iTemple+4*gc.getPlayer(iNetherlands).getStateReligion()]:
 				city.setHasRealBuilding(iBuilding, True)	
 			gc.getPlayer(iNetherlands).AI_updateFoundValues(False)
 		
@@ -345,7 +345,7 @@ class CvRFCEventHandler:
 		# ac0e: help Siam
 		if iOwner == iThailand and tCity == Areas.getCapital(iThailand) and gc.getGame().getGameTurn() <= getTurnForYear(tBirth[iThailand])+3:
 			city.setPopulation(4)
-			lBuildings = [iBarracks, iGranary, iSmokehouse, iHoTrai, iTemple+4*gc.getPlayer(iThailand).getStateReligion(), iMarket, iForge, iHarbor, iAqueduct, iWalls]
+			lBuildings = [iBarracks, iGranary, iHoTrai, iTemple+4*gc.getPlayer(iThailand).getStateReligion(), iMarket, iForge, iAqueduct]
 			for iBuilding in lBuildings:
 				city.setHasRealBuilding(iBuilding, True)
 			gc.getPlayer(iThailand).AI_updateFoundValues(False)
@@ -402,7 +402,7 @@ class CvRFCEventHandler:
 		if iOwner == iNetherlands and tCity == Areas.getCapital(iNetherlands) and gc.getGame().getGameTurn() <= getTurnForYear(1580)+3:
 			city.setPopulation(9)
 			
-			for iBuilding in [iLibrary, iMarket, iWharf, iLighthouse, iBarracks, iPharmacy, iBank, iArena, iTheatre, iTemple+4*gc.getPlayer(iNetherlands).getStateReligion()]:
+			for iBuilding in [iGranary, iHarbor, iForge, iAqueduct, iSmokehouse, iJail, iLibrary, iMarket, iWharf, iLighthouse, iBarracks, iPharmacy, iBank, iArena, iTheatre, iTemple+4*gc.getPlayer(iNetherlands).getStateReligion()]:
 				city.setHasRealBuilding(iBuilding, True)
 				
 			gc.getPlayer(iNetherlands).AI_updateFoundValues(False)
