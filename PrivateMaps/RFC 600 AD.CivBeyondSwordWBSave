@@ -24503,12 +24503,18 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=53,y=64
+	RiverNSDirection=2
+	isNOfRiver
+	RiverWEDirection=3
+	isWOfRiver
 	BonusType=BONUS_SHEEP
 	TerrainType=TERRAIN_GRASS
 	PlotType=1
 EndPlot
 BeginPlot
 	x=53,y=65
+	RiverNSDirection=2
+	isWOfRiver
 	FeatureType=FEATURE_FOREST, FeatureVariety=0
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
@@ -26208,6 +26214,8 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=57,y=65
+	isWOfRiver
+	RiverNSDirection=0
 	FeatureType=FEATURE_FOREST, FeatureVariety=0
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
@@ -26678,6 +26686,8 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=58,y=66
+	isNOfRiver
+	RiverWEDirection=1
 	FeatureType=FEATURE_FOREST, FeatureVariety=0
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
