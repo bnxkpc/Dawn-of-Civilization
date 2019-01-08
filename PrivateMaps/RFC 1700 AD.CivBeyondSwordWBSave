@@ -30365,23 +30365,23 @@ BeginPlot
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_FRENCH_HEAVY_CANNON, UnitOwner=23, (Louis XIV)
+		UnitType=UNIT_BOMBARD, UnitOwner=23, (Louis XIV)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_FRENCH_HEAVY_CANNON, UnitOwner=23, (Louis XIV)
+		UnitType=UNIT_BOMBARD, UnitOwner=23, (Louis XIV)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_FRENCH_HEAVY_CANNON, UnitOwner=23, (Louis XIV)
+		UnitType=UNIT_BOMBARD, UnitOwner=23, (Louis XIV)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_FRENCH_HEAVY_CANNON, UnitOwner=23, (Louis XIV)
+		UnitType=UNIT_BOMBARD, UnitOwner=23, (Louis XIV)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_FRENCH_HEAVY_CANNON, UnitOwner=23, (Louis XIV)
+		UnitType=UNIT_BOMBARD, UnitOwner=23, (Louis XIV)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
@@ -43773,7 +43773,7 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=1
 	BeginUnit
-		UnitType=UNIT_ETHIOPIAN_ASKARI, UnitOwner=11, (Zara Yaqob)
+		UnitType=UNIT_ARQUEBUSIER, UnitOwner=11, (Zara Yaqob)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -43827,27 +43827,27 @@ BeginPlot
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ETHIOPIAN_ASKARI, UnitOwner=11, (Zara Yaqob)
+		UnitType=UNIT_ARQUEBUSIER, UnitOwner=11, (Zara Yaqob)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ETHIOPIAN_ASKARI, UnitOwner=11, (Zara Yaqob)
+		UnitType=UNIT_ARQUEBUSIER, UnitOwner=11, (Zara Yaqob)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ETHIOPIAN_ASKARI, UnitOwner=11, (Zara Yaqob)
+		UnitType=UNIT_ARQUEBUSIER, UnitOwner=11, (Zara Yaqob)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ETHIOPIAN_ASKARI, UnitOwner=11, (Zara Yaqob)
+		UnitType=UNIT_ARQUEBUSIER, UnitOwner=11, (Zara Yaqob)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ETHIOPIAN_ASKARI, UnitOwner=11, (Zara Yaqob)
+		UnitType=UNIT_ARQUEBUSIER, UnitOwner=11, (Zara Yaqob)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ETHIOPIAN_ASKARI, UnitOwner=11, (Zara Yaqob)
+		UnitType=UNIT_ARQUEBUSIER, UnitOwner=11, (Zara Yaqob)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
