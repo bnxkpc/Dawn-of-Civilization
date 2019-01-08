@@ -129,7 +129,7 @@ class CvRFCEventHandler:
 			sta.onCityAcquired(city, iOwner, iPlayer)
 			
 		if iPlayer == iArabia:
-			if tCity == tCapitals[iArabia] and gc.getGame().getGameTurn() <= getTurnForYear(tBirth[iPlayer]) + 4:
+			if tCity == Areas.tCapitals[iArabia] and gc.getGame().getGameTurn() <= getTurnForYear(tBirth[iPlayer]) + 4:
 				self.rel.foundReligion(tCity, iIslam)
 			self.up.arabianUP(city)
 			
@@ -168,7 +168,12 @@ class CvRFCEventHandler:
 			else:
 				if Areas.getRespawnCapital(iPlayer) == tCity:
 					utils.relocateCapital(iPlayer, city)
-					
+		
+		if iPlayer == iArabia:
+			if not gc.getGame().isReligionFounded(iIslam):
+				if tCity == (86, 39):
+					self.rel.foundReligion(tCity, iIslam)
+		
 		# Leoreth: conquering Constantinople adds it to the Turkish core + Rumelia
 		if iPlayer == iOttomans and tCity == (79, 55):
 			utils.setReborn(iOttomans, True)
@@ -330,7 +335,7 @@ class CvRFCEventHandler:
 			utils.spreadMajorCulture(iOwner, tCity)
 			if gc.getPlayer(iOwner).getNumCities() < 2:
 				gc.getPlayer(iOwner).AI_updateFoundValues(False); # fix for settler maps not updating after 1st city is founded
-
+		
 		# ac0e: help Portugal
 		if iOwner == iPortugal and tCity == Areas.getCapital(iPortugal) and gc.getGame().getGameTurn() <= getTurnForYear(tBirth[iPortugal])+3:
 			city.setPopulation(6)
