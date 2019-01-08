@@ -55526,19 +55526,15 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_CUIRASSIER, UnitOwner=35, (Akbar)
+		UnitType=UNIT_LANCER, UnitOwner=35, (Akbar)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_CUIRASSIER, UnitOwner=35, (Akbar)
+		UnitType=UNIT_LANCER, UnitOwner=35, (Akbar)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_CUIRASSIER, UnitOwner=35, (Akbar)
-		Level=1, Experience=0
-	EndUnit
-	BeginUnit
-		UnitType=UNIT_CUIRASSIER, UnitOwner=35, (Akbar)
+		UnitType=UNIT_LANCER, UnitOwner=35, (Akbar)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
@@ -55563,26 +55559,6 @@ BeginPlot
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_ARQUEBUSIER, UnitOwner=35, (Akbar)
-		Level=1, Experience=0
-	EndUnit
-	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=35, (Akbar)
-		Level=1, Experience=0
-	EndUnit
-	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=35, (Akbar)
-		Level=1, Experience=0
-	EndUnit
-	BeginUnit
-		UnitType=UNIT_MUGHAL_SIEGE_ELEPHANT, UnitOwner=35, (Akbar)
-		Level=1, Experience=0
-	EndUnit
-	BeginUnit
-		UnitType=UNIT_MUGHAL_SIEGE_ELEPHANT, UnitOwner=35, (Akbar)
-		Level=1, Experience=0
-	EndUnit
-	BeginUnit
-		UnitType=UNIT_MUGHAL_SIEGE_ELEPHANT, UnitOwner=35, (Akbar)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
@@ -56091,18 +56067,6 @@ BeginPlot
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_ARQUEBUSIER, UnitOwner=10, (Rajendra Chola)
-		Level=1, Experience=0
-	EndUnit
-	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=10, (Rajendra Chola)
-		Level=1, Experience=0
-	EndUnit
-	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=10, (Rajendra Chola)
-		Level=1, Experience=0
-	EndUnit
-	BeginUnit
-		UnitType=UNIT_BOMBARD, UnitOwner=10, (Rajendra Chola)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
@@ -57202,6 +57166,17 @@ BeginPlot
 		CityOwner=39, (William III)
 		CityName=Colombo
 		CityPopulation=5
+		BuildingType=BUILDING_BARRACKS
+		BuildingType=BUILDING_GRANARY
+		BuildingType=BUILDING_LIBRARY
+		BuildingType=BUILDING_HARBOR
+		BuildingType=BUILDING_AQUEDUCT
+		BuildingType=BUILDING_LIGHTHOUSE
+		BuildingType=BUILDING_WEAVER
+		BuildingType=BUILDING_MARKET
+		BuildingType=BUILDING_FORGE
+		BuildingType=BUILDING_WHARF
+		BuildingType=BUILDING_HINDU_TEMPLE
 		BuildingType=BUILDING_JETAVANARAMAYA
 		ReligionType=RELIGION_PROTESTANTISM
 		ReligionType=RELIGION_HINDUISM
