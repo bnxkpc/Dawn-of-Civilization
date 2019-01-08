@@ -31,12 +31,13 @@ tEasterIslandTL = (20, 15)
 tEasterIslandBR = (22, 17)
 
 # second Roman goal: control Iberia, Gaul, Britain, Africa, Greece, Asia Minor and Egypt in 320 AD
-tFranceTL = (51, 47)
+tFranceTL = (56, 56)
+tFranceBR = (63, 60)
 
 # second Roman goal: control Iberia, Gaul, Britain, Africa, Greece, Asia Minor and Egypt in 320 AD
 # second Arabian goal: control or vassalize Spain, the Maghreb, Egypt, Mesopotamia and Persia in 1300 AD
-tCarthageTL = (50, 36)
-tCarthageBR = (61, 39)
+tCarthageTL = (56, 43)
+tCarthageBR = (69, 48)
 
 # second Tamil goal: control or vassalize the Deccan and Srivijaya in 1000 AD
 tDeccanTL = (88, 28)
@@ -51,7 +52,7 @@ tSubeqAfricaTL = (60, 10)
 tSubeqAfricaBR = (72, 29)
 
 # third Byzantine goal: control three cities in the Balkans, Northern Africa and the Near East in 1450 AD
-tNearEastTL = (69, 37)
+tNearEastTL = (69, 37) # Anatolia, Mesopotamia
 tNearEastBR = (76, 45)
 tBalkansTL = (64, 40)
 tBalkansBR = (68, 47)
@@ -72,6 +73,7 @@ tIndonesiaTL = (98, 24)
 tIndonesiaBR = (109, 30)
 tPhilippinesTL = (108, 30)
 tPhilippinesBR = (110, 36)
+lJapanUHV2 = [rManchuria, rKorea, rChina, rIndochina, rIndonesia]
 
 # second Turkic goal: create an overland trade route from a city in China to a Mediterranean port by 1100 AD
 lMediterraneanPorts = [(66, 37), (66, 36), (67, 36), (68, 36), (69, 36), (70, 36), (71, 36), (72, 37), (73, 37), (73, 38), (73, 39), (73, 40), (73, 41), (73, 42), (71, 42), (70, 42), (70, 43), (69, 43), (69, 44), (68, 45)]
@@ -83,6 +85,7 @@ tMaghrebTL = (54, 39)
 tMaghrebBR = (76, 48)
 tWestAfricaTL = (48, 26)
 tWestAfricaBR = (56, 32)
+lMoorsUHV1 = [rIberia, rMaghreb, rWestAfrica]
 
 # third Spanish goal: spread Catholicism to 40% and allow no Protestant civilization in Europe in 1700 AD
 # second French goal: control 40% of Europe and North America in 1800 AD
@@ -91,7 +94,7 @@ tEuropeBR = (68, 65)
 
 # second French goal: control 40% of Europe and North America in 1800 AD
 tEasternEuropeTL = (69, 48)
-tEasternEuropeBR = (73, 64)
+tEasternEuropeBR = (73, 64) # not including east of Moscow and Crimea
 
 # second French goal: control 40% of Europe and North America in 1800 AD
 # first English goal: colonize every continent by 1730 AD
@@ -501,7 +504,7 @@ def checkTurn(iGameTurn, iPlayer):
 		# second goal: control Iberia, Gaul, Britain, Africa, Greece, Asia Minor and Egypt in 320 AD
 		if iGameTurn == getTurnForYear(320):
 			bSpain = getNumCitiesInArea(iRome, Areas.getNormalArea(iSpain, False)) >= 2
-			bFrance = getNumCitiesInArea(iRome, utils.getPlotList(tFranceTL, Areas.tNormalArea[iFrance][1])) >= 3
+			bFrance = getNumCitiesInArea(iRome, utils.getPlotList(tFranceTL, tFranceBR)) >= 3
 			bEngland = getNumCitiesInArea(iRome, Areas.getCoreArea(iEngland, False)) >= 1
 			bCarthage = getNumCitiesInArea(iRome, utils.getPlotList(tCarthageTL, tCarthageBR)) >= 2
 			bByzantium = getNumCitiesInArea(iRome, Areas.getCoreArea(iByzantium, False)) >= 4
@@ -692,13 +695,13 @@ def checkTurn(iGameTurn, iPlayer):
 				
 		# second goal: control or vassalize Korea, Manchuria, China, Indochina, Indonesia and the Philippines in 1940 AD
 		if iGameTurn == getTurnForYear(1940):
-			bKorea = isControlledOrVassalized(iJapan, utils.getPlotList(tKoreaTL, tKoreaBR))
-			bManchuria = isControlledOrVassalized(iJapan, utils.getPlotList(tManchuriaTL, tManchuriaBR))
-			bChina = isControlledOrVassalized(iJapan, utils.getPlotList(tChinaTL, tChinaBR))
-			bIndochina = isControlledOrVassalized(iJapan, utils.getPlotList(tIndochinaTL, tIndochinaBR, tIndochinaExceptions))
-			bIndonesia = isControlledOrVassalized(iJapan, utils.getPlotList(tIndonesiaTL, tIndonesiaBR))
-			bPhilippines = isControlledOrVassalized(iJapan, utils.getPlotList(tPhilippinesTL, tPhilippinesBR))
-			if bKorea and bManchuria and bChina and bIndochina and bIndonesia and bPhilippines:
+			bKorea = isControlledOrVassalized(iJapan, utils.getRegionPlotList(rKorea))
+			bManchuria = isControlledOrVassalized(iJapan, utils.getRegionPlotList(rManchuria))
+			bChina = isControlledOrVassalized(iJapan, utils.getRegionPlotList(rChina))
+			bIndochina = isControlledOrVassalized(iJapan, utils.getRegionPlotList(rIndochina))
+			bIndonesia = isControlledOrVassalized(iJapan, utils.getRegionPlotList(rIndonesia))
+			#bPhilippines = isControlledOrVassalized(iJapan, utils.getPlotList(tPhilippinesTL, tPhilippinesBR))
+			if bKorea and bManchuria and bChina and bIndochina and bIndonesia: # and bPhilippines:
 				win(iJapan, 1)
 			else:
 				lose(iJapan, 1)
@@ -3543,7 +3546,7 @@ def getUHVHelp(iPlayer, iGoal):
 			aHelp.append(getIcon(iNumBarracks >= 6) + localText.getText("TXT_KEY_VICTORY_NUM_BARRACKS", (iNumBarracks, 6)) + ' ' + getIcon(iNumAqueducts >= 5) + localText.getText("TXT_KEY_VICTORY_NUM_AQUEDUCTS", (iNumAqueducts, 5)) + ' ' + getIcon(iNumArenas >= 4) + localText.getText("TXT_KEY_VICTORY_NUM_ARENAS", (iNumArenas, 4)) + ' ' + getIcon(iNumForums >= 3) + localText.getText("TXT_KEY_VICTORY_NUM_FORUMS", (iNumForums, 3)))
 		elif iGoal == 1:
 			iCitiesSpain = getNumCitiesInArea(iRome, Areas.getNormalArea(iSpain, False))
-			iCitiesFrance = getNumCitiesInArea(iRome, utils.getPlotList(tFranceTL, Areas.tNormalArea[iFrance][1]))
+			iCitiesFrance = getNumCitiesInArea(iRome, utils.getPlotList(tFranceTL, tFranceBR))
 			iCitiesEngland = getNumCitiesInArea(iRome, Areas.getCoreArea(iEngland, False))
 			iCitiesCarthage = getNumCitiesInArea(iRome, utils.getPlotList(tCarthageTL, tCarthageBR))
 			iCitiesByzantium = getNumCitiesInArea(iRome, Areas.getCoreArea(iByzantium, False))

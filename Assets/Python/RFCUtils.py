@@ -1248,7 +1248,17 @@ class RFCUtils:
 		
 	def getPlotList(self, tTL, tBR, tExceptions=()):
 		return [(x, y) for x in range(tTL[0], tBR[0]+1) for y in range(tTL[1], tBR[1]+1) if (x, y) not in tExceptions]
-		
+
+	# h0spitall3rz: From DoC Platybuilder screen code, credits to @merijn_v1
+	def getRegionPlotList(self, iRegion):
+		lPlots = []
+		for i in range(CyMap().numPlots()):
+			plot = CyMap().plotByIndex(i)
+			if plot.getRegionID() == iRegion:
+				tPlot = (plot.getX(), plot.getY())
+				lPlots.append(tPlot)
+		return lPlots
+
 	def getAreaCities(self, lPlots):
 		lCities = []
 		
