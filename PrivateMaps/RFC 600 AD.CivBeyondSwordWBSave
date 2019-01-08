@@ -31348,17 +31348,14 @@ BeginPlot
 	BeginUnit
 		UnitType=UNIT_VIKING_HUSCARL, UnitOwner=16, (Ragnar)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_AMPHIBIOUS
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_VIKING_HUSCARL, UnitOwner=16, (Ragnar)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_AMPHIBIOUS
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_VIKING_HUSCARL, UnitOwner=16, (Ragnar)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_AMPHIBIOUS
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_ARCHER, UnitOwner=16, (Ragnar)
@@ -41615,12 +41612,10 @@ BeginPlot
 	BeginUnit
 		UnitType=UNIT_PERSIAN_IMMORTAL, UnitOwner=8, (Khosrow I)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_MARCH
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_PERSIAN_IMMORTAL, UnitOwner=8, (Khosrow I)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_MARCH
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_ARCHER, UnitOwner=8, (Khosrow I)
@@ -43520,7 +43515,6 @@ BeginPlot
 	BeginUnit
 		UnitType=UNIT_PERSIAN_IMMORTAL, UnitOwner=8, (Khosrow I)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_MARCH
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_ARCHER, UnitOwner=8, (Khosrow I)
@@ -43578,7 +43572,6 @@ BeginPlot
 	BeginUnit
 		UnitType=UNIT_PERSIAN_IMMORTAL, UnitOwner=8, (Khosrow I)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_MARCH
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_ARCHER, UnitOwner=8, (Khosrow I)
@@ -44007,7 +44000,6 @@ BeginPlot
 	BeginUnit
 		UnitType=UNIT_PERSIAN_IMMORTAL, UnitOwner=8, (Khosrow I)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_MARCH
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_ARCHER, UnitOwner=8, (Khosrow I)
@@ -44986,7 +44978,7 @@ BeginPlot
 	EndUnit
 	BeginCity
 		CityOwner=17, (Bumin)
-		CityName=Urganj
+		CityName=Urgen&#231;
 		CityPopulation=2
 		BuildingType=BUILDING_GRANARY
 		BuildingType=BUILDING_WEAVER
@@ -45399,7 +45391,6 @@ BeginPlot
 	BeginUnit
 		UnitType=UNIT_PERSIAN_IMMORTAL, UnitOwner=8, (Khosrow I)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_MARCH
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_ARCHER, UnitOwner=8, (Khosrow I)
@@ -45898,7 +45889,7 @@ BeginPlot
 	EndUnit
 	BeginCity
 		CityOwner=17, (Bumin)
-		CityName=Bukhara
+		CityName=Buxoro
 		CityPopulation=3
 		BuildingType=BUILDING_GRANARY
 		BuildingType=BUILDING_FORGE
@@ -46317,7 +46308,7 @@ BeginPlot
 	EndUnit
 	BeginCity
 		CityOwner=46, (Independent Leader)
-		CityName=Kandahar
+		CityName=Kandah&#226;r
 		CityPopulation=3
 		BuildingType=BUILDING_BARRACKS
 		BuildingType=BUILDING_GRANARY
@@ -46860,7 +46851,7 @@ BeginPlot
 	EndUnit
 	BeginCity
 		CityOwner=17, (Bumin)
-		CityName=Samarkand
+		CityName=Samarqand
 		CityPopulation=4
 		BuildingType=BUILDING_WALLS
 		BuildingType=BUILDING_BARRACKS
@@ -48140,14 +48131,10 @@ BeginPlot
 	BeginUnit
 		UnitType=UNIT_INDIAN_PATIYODHA, UnitOwner=45, (Independent Leader)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_FORMATION
-		PromotionType=PROMOTION_WOODSMAN1
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_INDIAN_PATIYODHA, UnitOwner=45, (Independent Leader)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_FORMATION
-		PromotionType=PROMOTION_WOODSMAN1
 	EndUnit
 	BeginCity
 		CityOwner=45, (Independent Leader)
@@ -48182,20 +48169,14 @@ BeginPlot
 	BeginUnit
 		UnitType=UNIT_INDIAN_PATIYODHA, UnitOwner=45, (Independent Leader)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_FORMATION
-		PromotionType=PROMOTION_WOODSMAN1
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_INDIAN_PATIYODHA, UnitOwner=45, (Independent Leader)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_FORMATION
-		PromotionType=PROMOTION_WOODSMAN1
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_INDIAN_PATIYODHA, UnitOwner=45, (Independent Leader)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_FORMATION
-		PromotionType=PROMOTION_WOODSMAN1
 	EndUnit
 	BeginCity
 		CityOwner=45, (Independent Leader)
@@ -48268,20 +48249,14 @@ BeginPlot
 	BeginUnit
 		UnitType=UNIT_INDIAN_PATIYODHA, UnitOwner=46, (Independent Leader)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_FORMATION
-		PromotionType=PROMOTION_WOODSMAN1
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_INDIAN_PATIYODHA, UnitOwner=46, (Independent Leader)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_FORMATION
-		PromotionType=PROMOTION_WOODSMAN1
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_INDIAN_PATIYODHA, UnitOwner=46, (Independent Leader)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_FORMATION
-		PromotionType=PROMOTION_WOODSMAN1
 	EndUnit
 	BeginCity
 		CityOwner=46, (Independent Leader)
@@ -48837,32 +48812,26 @@ BeginPlot
 	BeginUnit
 		UnitType=UNIT_TURKIC_OGHUZ, UnitOwner=17, (Bumin)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_MARCH
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_TURKIC_OGHUZ, UnitOwner=17, (Bumin)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_MARCH
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_TURKIC_OGHUZ, UnitOwner=17, (Bumin)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_MARCH
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_TURKIC_OGHUZ, UnitOwner=17, (Bumin)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_MARCH
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_TURKIC_OGHUZ, UnitOwner=17, (Bumin)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_MARCH
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_TURKIC_OGHUZ, UnitOwner=17, (Bumin)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_MARCH
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_ARCHER, UnitOwner=17, (Bumin)
@@ -49314,26 +49283,18 @@ BeginPlot
 	BeginUnit
 		UnitType=UNIT_INDIAN_PATIYODHA, UnitOwner=46, (Independent Leader)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_FORMATION
-		PromotionType=PROMOTION_WOODSMAN1
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_INDIAN_PATIYODHA, UnitOwner=46, (Independent Leader)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_FORMATION
-		PromotionType=PROMOTION_WOODSMAN1
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_INDIAN_PATIYODHA, UnitOwner=46, (Independent Leader)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_FORMATION
-		PromotionType=PROMOTION_WOODSMAN1
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_INDIAN_PATIYODHA, UnitOwner=46, (Independent Leader)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_FORMATION
-		PromotionType=PROMOTION_WOODSMAN1
 	EndUnit
 	BeginCity
 		CityOwner=46, (Independent Leader)
@@ -49379,26 +49340,18 @@ BeginPlot
 	BeginUnit
 		UnitType=UNIT_INDIAN_PATIYODHA, UnitOwner=45, (Independent Leader)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_FORMATION
-		PromotionType=PROMOTION_WOODSMAN1
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_INDIAN_PATIYODHA, UnitOwner=45, (Independent Leader)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_FORMATION
-		PromotionType=PROMOTION_WOODSMAN1
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_INDIAN_PATIYODHA, UnitOwner=45, (Independent Leader)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_FORMATION
-		PromotionType=PROMOTION_WOODSMAN1
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_INDIAN_PATIYODHA, UnitOwner=45, (Independent Leader)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_FORMATION
-		PromotionType=PROMOTION_WOODSMAN1
 	EndUnit
 	BeginCity
 		CityOwner=45, (Independent Leader)
@@ -49484,7 +49437,7 @@ BeginPlot
 	EndUnit
 	BeginCity
 		CityOwner=17, (Bumin)
-		CityName=Kashgar
+		CityName=Qeshqer
 		CityPopulation=3
 		BuildingType=BUILDING_WALLS
 		BuildingType=BUILDING_GRANARY
@@ -49905,20 +49858,14 @@ BeginPlot
 	BeginUnit
 		UnitType=UNIT_INDIAN_PATIYODHA, UnitOwner=45, (Independent Leader)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_FORMATION
-		PromotionType=PROMOTION_WOODSMAN1
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_INDIAN_PATIYODHA, UnitOwner=45, (Independent Leader)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_FORMATION
-		PromotionType=PROMOTION_WOODSMAN1
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_INDIAN_PATIYODHA, UnitOwner=45, (Independent Leader)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_FORMATION
-		PromotionType=PROMOTION_WOODSMAN1
 	EndUnit
 	BeginCity
 		CityOwner=45, (Independent Leader)
@@ -50972,10 +50919,36 @@ BeginPlot
 	isNOfRiver
 	RiverWEDirection=1
 	isWOfRiver
-	ImprovementType=IMPROVEMENT_FARM
 	RouteType=ROUTE_ROAD
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
+	BeginUnit
+		UnitType=UNIT_INDIAN_PATIYODHA, UnitOwner=5, (Chandragupta)
+		Level=1, Experience=0
+	EndUnit
+	BeginUnit
+		UnitType=UNIT_INDIAN_PATIYODHA, UnitOwner=5, (Chandragupta)
+		Level=1, Experience=0
+	EndUnit
+	BeginCity
+		CityOwner=5, (Chandragupta)
+		CityName=Varanasi
+		CityPopulation=5
+		BuildingType=BUILDING_GRANARY
+		BuildingType=BUILDING_WALLS
+		BuildingType=BUILDING_FORGE
+		BuildingType=BUILDING_AQUEDUCT
+		BuildingType=BUILDING_BARRACKS
+		BuildingType=BUILDING_LIBRARY
+		BuildingType=BUILDING_HINDU_TEMPLE
+		BuildingType=BUILDING_HINDU_MONASTERY
+		BuildingType=BUILDING_HINDU_SHRINE
+		BuildingType=BUILDING_BUDDHIST_TEMPLE
+		ReligionType=RELIGION_HINDUISM
+		HolyCityReligionType=RELIGION_HINDUISM
+		ReligionType=RELIGION_BUDDHISM
+		Player5Culture=300, (Chandragupta)
+	EndCity
 EndPlot
 BeginPlot
 	x=108,y=46
@@ -51388,14 +51361,10 @@ BeginPlot
 	BeginUnit
 		UnitType=UNIT_INDIAN_PATIYODHA, UnitOwner=46, (Independent Leader)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_FORMATION
-		PromotionType=PROMOTION_WOODSMAN1
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_INDIAN_PATIYODHA, UnitOwner=46, (Independent Leader)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_FORMATION
-		PromotionType=PROMOTION_WOODSMAN1
 	EndUnit
 	BeginCity
 		CityOwner=46, (Independent Leader)
@@ -51929,38 +51898,26 @@ BeginPlot
 	BeginUnit
 		UnitType=UNIT_INDIAN_PATIYODHA, UnitOwner=5, (Chandragupta)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_FORMATION
-		PromotionType=PROMOTION_WOODSMAN1
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_INDIAN_PATIYODHA, UnitOwner=5, (Chandragupta)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_FORMATION
-		PromotionType=PROMOTION_WOODSMAN1
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_INDIAN_PATIYODHA, UnitOwner=5, (Chandragupta)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_FORMATION
-		PromotionType=PROMOTION_WOODSMAN1
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_INDIAN_PATIYODHA, UnitOwner=5, (Chandragupta)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_FORMATION
-		PromotionType=PROMOTION_WOODSMAN1
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_INDIAN_PATIYODHA, UnitOwner=5, (Chandragupta)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_FORMATION
-		PromotionType=PROMOTION_WOODSMAN1
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_INDIAN_PATIYODHA, UnitOwner=5, (Chandragupta)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_FORMATION
-		PromotionType=PROMOTION_WOODSMAN1
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_WORKER, UnitOwner=5, (Chandragupta)
@@ -51988,11 +51945,11 @@ BeginPlot
 		BuildingType=BUILDING_MARKET
 		BuildingType=BUILDING_HINDU_TEMPLE
 		BuildingType=BUILDING_HINDU_MONASTERY
-		BuildingType=BUILDING_HINDU_SHRINE
+		BuildingType=BUILDING_BUDDHIST_TEMPLE
+		BuildingType=BUILDING_BUDDHIST_MONASTERY
 		BuildingType=BUILDING_BUDDHIST_SHRINE
 		BuildingType=BUILDING_NALANDA
 		ReligionType=RELIGION_HINDUISM
-		HolyCityReligionType=RELIGION_HINDUISM
 		ReligionType=RELIGION_BUDDHISM
 		HolyCityReligionType=RELIGION_BUDDHISM
 		Player5Culture=500, (Chandragupta)
@@ -52891,13 +52848,14 @@ BeginPlot
 	BeginUnit
 		UnitType=UNIT_INDIAN_PATIYODHA, UnitOwner=5, (Chandragupta)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_FORMATION
-		PromotionType=PROMOTION_WOODSMAN1
 	EndUnit
 	BeginCity
 		CityOwner=5, (Chandragupta)
 		CityName=Kolkata
 		CityPopulation=3
+		BuildingType=BUILDING_GRANARY
+		BuildingType=BUILDING_FORGE
+		BuildingType=BUILDING_AQUEDUCT
 		ReligionType=RELIGION_HINDUISM
 		Player5Culture=100, (Chandragupta)
 	EndCity
@@ -56205,6 +56163,8 @@ BeginPlot
 		BuildingType=BUILDING_CHINESE_TAIXUE
 		BuildingType=BUILDING_WEAVER
 		BuildingType=BUILDING_DUJIANGYAN
+		BuildingType=BUILDING_TAOIST_TEMPLE
+		BuildingType=BUILDING_CONFUCIAN_TEMPLE
 		ReligionType=RELIGION_BUDDHISM
 		ReligionType=RELIGION_CONFUCIANISM
 		ReligionType=RELIGION_TAOISM
@@ -57205,51 +57165,11 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=1
 	BeginUnit
-		UnitType=UNIT_HEAVY_SWORDSMAN, UnitOwner=1, (Tang Taizong)
-		Level=1, Experience=0
-	EndUnit
-	BeginUnit
-		UnitType=UNIT_HEAVY_SWORDSMAN, UnitOwner=1, (Tang Taizong)
-		Level=1, Experience=0
-	EndUnit
-	BeginUnit
-		UnitType=UNIT_HEAVY_SWORDSMAN, UnitOwner=1, (Tang Taizong)
-		Level=1, Experience=0
-	EndUnit
-	BeginUnit
-		UnitType=UNIT_HORSE_ARCHER, UnitOwner=1, (Tang Taizong)
-		Level=1, Experience=0
-	EndUnit
-	BeginUnit
-		UnitType=UNIT_HORSE_ARCHER, UnitOwner=1, (Tang Taizong)
-		Level=1, Experience=0
-	EndUnit
-	BeginUnit
 		UnitType=UNIT_CHINESE_CHOKONU, UnitOwner=1, (Tang Taizong)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_CHINESE_CHOKONU, UnitOwner=1, (Tang Taizong)
-		Level=1, Experience=0
-	EndUnit
-	BeginUnit
-		UnitType=UNIT_CHINESE_CHOKONU, UnitOwner=1, (Tang Taizong)
-		Level=1, Experience=0
-	EndUnit
-	BeginUnit
-		UnitType=UNIT_CHINESE_CHOKONU, UnitOwner=1, (Tang Taizong)
-		Level=1, Experience=0
-	EndUnit
-	BeginUnit
-		UnitType=UNIT_CHINESE_CHOKONU, UnitOwner=1, (Tang Taizong)
-		Level=1, Experience=0
-	EndUnit
-	BeginUnit
-		UnitType=UNIT_HEAVY_SPEARMAN, UnitOwner=1, (Tang Taizong)
-		Level=1, Experience=0
-	EndUnit
-	BeginUnit
-		UnitType=UNIT_HEAVY_SPEARMAN, UnitOwner=1, (Tang Taizong)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
@@ -57275,6 +57195,8 @@ BeginPlot
 		BuildingType=BUILDING_PALACE
 		BuildingType=BUILDING_WALLS
 		BuildingType=BUILDING_BARRACKS
+		BuildingType=BUILDING_GRANARY
+		BuildingType=BUILDING_FORGE
 		BuildingType=BUILDING_CHINESE_TAIXUE
 		BuildingType=BUILDING_WEAVER
 		BuildingType=BUILDING_MARKET
@@ -57285,6 +57207,7 @@ BeginPlot
 		BuildingType=BUILDING_CONFUCIAN_MONASTERY
 		BuildingType=BUILDING_TAOIST_TEMPLE
 		BuildingType=BUILDING_TAOIST_MONASTERY
+		BuildingType=BUILDING_TAOIST_CATHEDRAL
 		BuildingType=BUILDING_TERRACOTTA_ARMY
 		ReligionType=RELIGION_BUDDHISM
 		ReligionType=RELIGION_CONFUCIANISM
@@ -58805,6 +58728,47 @@ BeginPlot
 		UnitType=UNIT_CHINESE_CHOKONU, UnitOwner=1, (Tang Taizong)
 		Level=1, Experience=0
 	EndUnit
+	BeginUnit
+		UnitType=UNIT_HEAVY_SWORDSMAN, UnitOwner=1, (Tang Taizong)
+		Level=1, Experience=0
+	EndUnit
+	BeginUnit
+		UnitType=UNIT_HEAVY_SWORDSMAN, UnitOwner=1, (Tang Taizong)
+		Level=1, Experience=0
+	EndUnit
+	BeginUnit
+		UnitType=UNIT_HEAVY_SWORDSMAN, UnitOwner=1, (Tang Taizong)
+		Level=1, Experience=0
+	EndUnit
+	BeginUnit
+		UnitType=UNIT_HORSE_ARCHER, UnitOwner=1, (Tang Taizong)
+		Level=1, Experience=0
+	EndUnit
+	BeginUnit
+		UnitType=UNIT_HORSE_ARCHER, UnitOwner=1, (Tang Taizong)
+		Level=1, Experience=0
+	EndUnit
+	BeginUnit
+		UnitType=UNIT_CHINESE_CHOKONU, UnitOwner=1, (Tang Taizong)
+		Level=1, Experience=0
+	EndUnit
+	BeginUnit
+		UnitType=UNIT_CHINESE_CHOKONU, UnitOwner=1, (Tang Taizong)
+		Level=1, Experience=0
+	EndUnit
+	BeginUnit
+		UnitType=UNIT_CHINESE_CHOKONU, UnitOwner=1, (Tang Taizong)
+		Level=1, Experience=0
+	EndUnit
+	BeginUnit
+		UnitType=UNIT_HEAVY_SPEARMAN, UnitOwner=1, (Tang Taizong)
+		Level=1, Experience=0
+	EndUnit
+	BeginUnit
+		UnitType=UNIT_HEAVY_SPEARMAN, UnitOwner=1, (Tang Taizong)
+		Level=1, Experience=0
+	EndUnit
+	
 	BeginCity
 		CityOwner=1, (Tang Taizong)
 		CityName=Youzhou
@@ -59220,6 +59184,7 @@ BeginPlot
 		BuildingType=BUILDING_HARBOR
 		BuildingType=BUILDING_FORGE
 		BuildingType=BUILDING_MARKET
+		BuildingType=BUILDING_TAOIST_TEMPLE
 		ReligionType=RELIGION_BUDDHISM
 		ReligionType=RELIGION_CONFUCIANISM
 		ReligionType=RELIGION_TAOISM
@@ -60218,10 +60183,28 @@ BeginPlot
 	x=127,y=51
 	isNOfRiver
 	RiverWEDirection=1
-	ImprovementType=IMPROVEMENT_HAMLET
 	RouteType=ROUTE_ROAD
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
+	BeginUnit
+		UnitType=UNIT_CHINESE_CHOKONU, UnitOwner=1, (Tang Taizong)
+		Level=1, Experience=0
+	EndUnit
+	BeginCity
+		CityOwner=1, (Tang Taizong)
+		CityName=Jiankang
+		CityPopulation=4
+		BuildingType=BUILDING_GRANARY
+		BuildingType=BUILDING_HARBOR
+		BuildingType=BUILDING_FORGE
+		BuildingType=BUILDING_CHINESE_TAIXUE
+		BuildingType=BUILDING_CONFUCIAN_TEMPLE
+		BuildingType=BUILDING_CONFUCIAN_SHRINE
+		ReligionType=RELIGION_CONFUCIANISM
+		HolyCityReligionType=RELIGION_CONFUCIANISM
+		ReligionType=RELIGION_TAOISM
+		Player1Culture=100, (Tang Taizong)
+	EndCity
 EndPlot
 BeginPlot
 	x=127,y=52
@@ -60233,27 +60216,10 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=127,y=53
+	ImprovementType=IMPROVEMENT_HAMLET
 	RouteType=ROUTE_ROAD
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
-	BeginUnit
-		UnitType=UNIT_CHINESE_CHOKONU, UnitOwner=1, (Tang Taizong)
-		Level=1, Experience=0
-	EndUnit
-	BeginCity
-		CityOwner=1, (Tang Taizong)
-		CityName=Qufu
-		CityPopulation=4
-		BuildingType=BUILDING_GRANARY
-		BuildingType=BUILDING_HARBOR
-		BuildingType=BUILDING_FORGE
-		BuildingType=BUILDING_CHINESE_TAIXUE
-		BuildingType=BUILDING_CONFUCIAN_TEMPLE
-		BuildingType=BUILDING_CONFUCIAN_SHRINE
-		ReligionType=RELIGION_CONFUCIANISM
-		HolyCityReligionType=RELIGION_CONFUCIANISM
-		Player1Culture=100, (Tang Taizong)
-	EndCity
 EndPlot
 BeginPlot
 	x=127,y=54
@@ -60696,6 +60662,8 @@ BeginPlot
 		BuildingType=BUILDING_CHINESE_TAIXUE
 		BuildingType=BUILDING_MARKET
 		BuildingType=BUILDING_JAIL
+		BuildingType=BUILDING_TAOIST_TEMPLE
+		BuildingType=BUILDING_CONFUCIAN_TEMPLE
 		ReligionType=RELIGION_CONFUCIANISM
 		ReligionType=RELIGION_TAOISM
 		Player1Culture=50, (Tang Taizong)
@@ -64878,22 +64846,18 @@ BeginPlot
 	BeginUnit
 		UnitType=UNIT_JAPANESE_SAMURAI, UnitOwner=15, (Kammu)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_LEADERSHIP
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_JAPANESE_SAMURAI, UnitOwner=15, (Kammu)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_LEADERSHIP
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_JAPANESE_SAMURAI, UnitOwner=15, (Kammu)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_LEADERSHIP
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_JAPANESE_SAMURAI, UnitOwner=15, (Kammu)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_LEADERSHIP
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_ARCHER, UnitOwner=15, (Kammu)
