@@ -896,9 +896,9 @@ class RFCUtils:
 				self.makeUnit(iMissionary+gc.getPlayer(iCiv).getStateReligion(), iCiv, tPlot, 1)
 
 	def getColonialTargets(self, iPlayer, bEmpty=False):
-		if iPlayer == iSpain or iPlayer == iFrance:
+		if iPlayer == iSpain:
 			iNumCities = 2
-		elif iPlayer == iPortugal and self.getHumanID() != iPortugal:
+		elif iPlayer in [iPortugal, iEngland]:
 			iNumCities = 5
 		else:
 			iNumCities = 3
