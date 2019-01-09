@@ -705,10 +705,6 @@ class RiseAndFall:
 		if iGameTurn == getTurnForYear(-50):
 			if pByzantium.isHuman() and pGreece.isAlive():
 				sta.completeCollapse(iGreece)
-				
-		if iGameTurn == getTurnForYear(651):
-			if pArabia.isHuman() and pPersia.isAlive():
-				sta.completeCollapse(iPersia)
 			
 		#Colonists
 		if iGameTurn == getTurnForYear(-850):
@@ -1233,7 +1229,7 @@ class RiseAndFall:
 				
 				bBirthInCapital = False
 				
-				if (iCiv in lConditionalCivs and iCiv != iThailand) or bCapitalSettled:
+				if iCiv in lConditionalCivs or bCapitalSettled:
 					bBirthInCapital = True
 				
 				if iCiv == iOttomans:
@@ -2936,7 +2932,8 @@ class RiseAndFall:
 	
 		for iPlayer in range(iNumPlayers):
 			if tBirth[iPlayer] > utils.getScenarioStartYear() and gc.getPlayer(iPlayer).isHuman():
-				tCapital = Areas.getCapital(iPlayer)
+				if iPlayer == iArabia: tCapital = (Areas.tCapitals[iArabia][0], Areas.tCapitals[iArabia][1]-1)
+				else: tCapital = Areas.getCapital(iPlayer)
 				utils.makeUnit(iSettler, iPlayer, tCapital, 1)
 				utils.makeUnit(iMilitia, iPlayer, tCapital, 1)
 
