@@ -21,14 +21,16 @@ lGreatPeople = [iSpecialistGreatProphet, iSpecialistGreatArtist, iSpecialistGrea
 
 # first Polynesian goal: settle two out of the following island groups by 800 AD: Hawaii, New Zealand, Marquesas and Easter Island
 # second Polynesian goal: settle Hawaii, New Zealand, Marquesas and Easter Island by 1000 AD
-tHawaiiTL = (0, 34)
-tHawaiiBR = (6, 39)
-tNewZealandTL = (119, 4)
-tNewZealandBR = (123, 12)
-tMarquesasTL = (14, 22)
-tMarquesasBR = (16, 24)
-tEasterIslandTL = (20, 15)
-tEasterIslandBR = (22, 17)
+tHawaiiTL = (0, 41)
+tHawaiiBR = (2, 44)
+tNewZealandTLW = (147, 3)
+tNewZealandBRW = (149, 7)
+tNewZealandTLE = (0, 6)
+tNewZealandBRE = (2, 12)
+tMarquesasTL = (13, 25)
+tMarquesasBR = (15, 27)
+tEasterIslandTL = (19, 17)
+tEasterIslandBR = (21, 19)
 
 # second Roman goal: control Iberia, Gaul, Britain, Africa, Greece, Asia Minor and Egypt in 320 AD
 tFranceTL = (56, 56)
@@ -1551,7 +1553,8 @@ def onCityBuilt(iPlayer, city):
 	if iPlayer == iPolynesia:
 		iCount = 0
 		if getNumCitiesInArea(iPolynesia, utils.getPlotList(tHawaiiTL, tHawaiiBR)) >= 1: iCount += 1
-		if getNumCitiesInArea(iPolynesia, utils.getPlotList(tNewZealandTL, tNewZealandBR)) >= 1: iCount += 1
+		if (getNumCitiesInArea(iPolynesia, utils.getPlotList(tNewZealandTLW, tNewZealandBRW)) >= 1
+		or getNumCitiesInArea(iPolynesia, utils.getPlotList(tNewZealandTLE, tNewZealandBRE)) >= 1): iCount += 1
 		if getNumCitiesInArea(iPolynesia, utils.getPlotList(tMarquesasTL, tMarquesasBR)) >= 1: iCount += 1
 		if getNumCitiesInArea(iPolynesia, utils.getPlotList(tEasterIslandTL, tEasterIslandBR)) >= 1: iCount += 1
 		
@@ -3507,7 +3510,8 @@ def getUHVHelp(iPlayer, iGoal):
 	elif iPlayer == iPolynesia:
 		if iGoal == 0 or iGoal == 1:
 			bHawaii = getNumCitiesInArea(iPolynesia, utils.getPlotList(tHawaiiTL, tHawaiiBR)) > 0
-			bNewZealand = getNumCitiesInArea(iPolynesia, utils.getPlotList(tNewZealandTL, tNewZealandBR)) > 0
+			bNewZealand = (getNumCitiesInArea(iPolynesia, utils.getPlotList(tNewZealandTLW, tNewZealandBRW)) > 0
+			or getNumCitiesInArea(iPolynesia, utils.getPlotList(tNewZealandTLE, tNewZealandBRE)) > 0)
 			bMarquesas = getNumCitiesInArea(iPolynesia, utils.getPlotList(tMarquesasTL, tMarquesasBR)) > 0
 			bEasterIsland = getNumCitiesInArea(iPolynesia, utils.getPlotList(tEasterIslandTL, tEasterIslandBR)) > 0
 			aHelp.append(getIcon(bHawaii) + localText.getText("TXT_KEY_VICTORY_HAWAII", ()) + getIcon(bNewZealand) + localText.getText("TXT_KEY_VICTORY_NEW_ZEALAND", ()) + getIcon(bMarquesas) + localText.getText("TXT_KEY_VICTORY_MARQUESAS", ()) + getIcon(bEasterIsland) + localText.getText("TXT_KEY_VICTORY_EASTER_ISLAND", ()))
