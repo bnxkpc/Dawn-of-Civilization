@@ -49,6 +49,7 @@ tMinorCities = (
 (107, (117, 41), iIndependent2, 'Pugam', 2, -1, -1),			# Pagan
 (500, (123, 39), iIndependent, 'Indrapura', 2, iArcher, 1),		# Indrapura
 (500, (73, 54), iIndependent, "Ragusa", 3, iCrossbowman, 3), # Ragusa
+(500, (86, 39), iIndependent, 'Bakkah', 3, iArcher, 1),		# Mecca
 (600, (86, 41), iIndependent, 'Yathrib', 2, iArcher, 1),		# Medina
 #(633, (113, 48), iBarbarian, 'Lhasa', 2, iKhampa, 1),			# Lhasa
 (680, (57, 44), iIndependent, 'Murrakush', 1, iCrossbowman, 1),	# Marrakesh
