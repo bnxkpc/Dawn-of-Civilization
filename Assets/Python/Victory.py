@@ -298,25 +298,6 @@ def checkTurn(iGameTurn, iPlayer):
 			else:
 				lose(iEgypt, 2)
 				
-	elif iPlayer == iChina:
-	
-		# first goal: build two Confucian and Taoist Cathedrals by 1000 AD
-		if iGameTurn == getTurnForYear(1000):
-			expire(iChina, 0)
-			
-		# second goal: be first to discover Compass, Gunpowder, Paper and Printing Press
-		
-		# third goal: experience four golden ages by 1800 AD
-		if isPossible(iChina, 2):
-			if data.iChineseGoldenAgeTurns >= utils.getTurns(32):
-				win(iChina, 2)
-				
-			if pChina.isGoldenAge() and not pChina.isAnarchy():
-				data.iChineseGoldenAgeTurns += 1
-				
-		if iGameTurn == getTurnForYear(1800):
-			expire(iChina, 2)
-				
 	elif iPlayer == iBabylonia:
 	
 		# first goal: be the first to discover Construction, Arithmetics, Writing, Calendar and Contract
@@ -356,6 +337,25 @@ def checkTurn(iGameTurn, iPlayer):
 				
 		if iGameTurn == getTurnForYear(-800):
 			expire(iHarappa, 2)
+				
+	elif iPlayer == iChina:
+	
+		# first goal: build two Confucian and Taoist Cathedrals by 1000 AD
+		if iGameTurn == getTurnForYear(1000):
+			expire(iChina, 0)
+			
+		# second goal: be first to discover Compass, Gunpowder, Paper and Printing Press
+		
+		# third goal: experience four golden ages by 1800 AD
+		if isPossible(iChina, 2):
+			if data.iChineseGoldenAgeTurns >= utils.getTurns(32):
+				win(iChina, 2)
+				
+			if pChina.isGoldenAge() and not pChina.isAnarchy():
+				data.iChineseGoldenAgeTurns += 1
+				
+		if iGameTurn == getTurnForYear(1800):
+			expire(iChina, 2)
 			
 	elif iPlayer == iGreece:
 	
@@ -517,6 +517,62 @@ def checkTurn(iGameTurn, iPlayer):
 					
 		# third goal: be first to discover Theology, Machinery and Civil Service
 		
+	elif iPlayer == iMaya:
+	
+		# Maya
+		if not pMaya.isReborn():
+		
+			# first goal: discover Calendar by 200 AD
+			if iGameTurn == getTurnForYear(200):
+				expire(iMaya, 0)
+				
+			# second goal: build the Temple of Kukulkan by 900 AD
+			if iGameTurn == getTurnForYear(900):
+				expire(iMaya, 1)
+				
+			# third goal: make contact with a European civilization before they discover America
+			if isPossible(iMaya, 2):
+				for iEuropean in lCivGroups[0]:
+					if teamMaya.canContact(iEuropean):
+						win(iMaya, 2)
+						break
+			
+		# Colombia
+		else:
+		
+			# first goal: allow no European civilizations in Peru, Gran Colombia, the Guayanas and the Caribbean in 1870 AD
+			if iGameTurn == getTurnForYear(1870):
+				bPeru = isAreaFreeOfCivs(utils.getPlotList(tPeruTL, tPeruBR), lCivGroups[0])
+				bGranColombia = isAreaFreeOfCivs(utils.getPlotList(tGranColombiaTL, tGranColombiaBR), lCivGroups[0])
+				bGuayanas = isAreaFreeOfCivs(utils.getPlotList(tGuayanasTL, tGuayanasBR), lCivGroups[0])
+				bCaribbean = isAreaFreeOfCivs(utils.getPlotList(tCaribbeanTL, tCaribbeanBR), lCivGroups[0])
+				if bPeru and bGranColombia and bGuayanas and bCaribbean:
+					win(iMaya, 0)
+				else:
+					lose(iMaya, 0)
+					
+			# second goal: control South America in 1920 AD
+			if iGameTurn == getTurnForYear(1920):
+				if isControlled(iMaya, utils.getPlotList(tSAmericaTL, tSAmericaBR, tSouthAmericaExceptions)):
+					win(iMaya, 1)
+				else:
+					lose(iMaya, 1)
+			
+			# third goal: acquire 3000 gold by selling resources by 1950 AD
+			if isPossible(iMaya, 2):
+				iTradeGold = 0
+				
+				for iLoopPlayer in range(iNumPlayers):
+					iTradeGold += pMaya.getGoldPerTurnByPlayer(iLoopPlayer)
+				
+				data.iColombianTradeGold += iTradeGold
+				
+				if data.iColombianTradeGold >= utils.getTurns(3000):
+					win(iMaya, 2)
+					
+			if iGameTurn == getTurnForYear(1950):
+				expire(iMaya, 2)
+		
 	elif iPlayer == iTamils:
 	
 		# first goal: have 3000 gold and 2000 culture in 800 AD
@@ -599,62 +655,6 @@ def checkTurn(iGameTurn, iPlayer):
 		# second goal: be first to discover Printing Press
 		
 		# third goal: sink 20 enemy ships
-		
-	elif iPlayer == iMaya:
-	
-		# Maya
-		if not pMaya.isReborn():
-		
-			# first goal: discover Calendar by 600 AD
-			if iGameTurn == getTurnForYear(600):
-				expire(iMaya, 0)
-				
-			# second goal: build the Temple of Kukulkan by 900 AD
-			if iGameTurn == getTurnForYear(900):
-				expire(iMaya, 1)
-				
-			# third goal: make contact with a European civilization before they discover America
-			if isPossible(iMaya, 2):
-				for iEuropean in lCivGroups[0]:
-					if teamMaya.canContact(iEuropean):
-						win(iMaya, 2)
-						break
-			
-		# Colombia
-		else:
-		
-			# first goal: allow no European civilizations in Peru, Gran Colombia, the Guayanas and the Caribbean in 1870 AD
-			if iGameTurn == getTurnForYear(1870):
-				bPeru = isAreaFreeOfCivs(utils.getPlotList(tPeruTL, tPeruBR), lCivGroups[0])
-				bGranColombia = isAreaFreeOfCivs(utils.getPlotList(tGranColombiaTL, tGranColombiaBR), lCivGroups[0])
-				bGuayanas = isAreaFreeOfCivs(utils.getPlotList(tGuayanasTL, tGuayanasBR), lCivGroups[0])
-				bCaribbean = isAreaFreeOfCivs(utils.getPlotList(tCaribbeanTL, tCaribbeanBR), lCivGroups[0])
-				if bPeru and bGranColombia and bGuayanas and bCaribbean:
-					win(iMaya, 0)
-				else:
-					lose(iMaya, 0)
-					
-			# second goal: control South America in 1920 AD
-			if iGameTurn == getTurnForYear(1920):
-				if isControlled(iMaya, utils.getPlotList(tSAmericaTL, tSAmericaBR, tSouthAmericaExceptions)):
-					win(iMaya, 1)
-				else:
-					lose(iMaya, 1)
-			
-			# third goal: acquire 3000 gold by selling resources by 1950 AD
-			if isPossible(iMaya, 2):
-				iTradeGold = 0
-				
-				for iLoopPlayer in range(iNumPlayers):
-					iTradeGold += pMaya.getGoldPerTurnByPlayer(iLoopPlayer)
-				
-				data.iColombianTradeGold += iTradeGold
-				
-				if data.iColombianTradeGold >= utils.getTurns(3000):
-					win(iMaya, 2)
-					
-			if iGameTurn == getTurnForYear(1950):
-				expire(iMaya, 2)
 					
 	elif iPlayer == iByzantium:
 		
@@ -1689,11 +1689,11 @@ def onTechAcquired(iPlayer, iTech):
 				if iPlayer != iLoopPlayer: lose(iLoopPlayer, iGoal)
 				elif checkEraGoal(iLoopPlayer, lEras): win(iLoopPlayer, iGoal)
 				
-	# first Maya goal: discover Calendar by 600 AD
+	# first Maya goal: discover Calendar by 200 AD
 	if iPlayer == iMaya:
 		if not pMaya.isReborn() and isPossible(iMaya, 0):
-			if iTech in [iWriting, iMathematics]:
-				if teamMaya.isHasTech(iWriting) and teamMaya.isHasTech(iMathematics):
+			if iTech == iCalendar:
+				if teamMaya.isHasTech(iCalendar):
 					win(iMaya, 0)
 				
 	# third Congolese goal: enter the Industrial era before anyone enters the Modern era
@@ -3412,21 +3412,6 @@ def getUHVHelp(iPlayer, iGoal):
 		elif iGoal == 2:
 			iCulture = pEgypt.countTotalCulture()
 			aHelp.append(getIcon(iCulture >= utils.getTurns(5000)) + localText.getText("TXT_KEY_VICTORY_TOTAL_CULTURE", (iCulture, utils.getTurns(5000))))
-			
-	elif iPlayer == iChina:
-		if iGoal == 0:
-			iConfucianCounter = getNumBuildings(iChina, iConfucianCathedral)
-			iTaoistCounter = getNumBuildings(iChina, iTaoistCathedral)
-			aHelp.append(getIcon(iConfucianCounter >= 2) + localText.getText("TXT_KEY_VICTORY_NUM_CONFUCIAN_ACADEMIES", (iConfucianCounter, 2)) + ' ' + getIcon(iTaoistCounter >= 2) + localText.getText("TXT_KEY_VICTORY_NUM_TAOIST_PAGODAS", (iTaoistCounter, 2)))
-		elif iGoal == 1:
-			bCompass = data.lFirstDiscovered[iCompass] == iChina
-			bPaper = data.lFirstDiscovered[iPaper] == iChina
-			bGunpowder = data.lFirstDiscovered[iGunpowder] == iChina
-			bPrintingPress = data.lFirstDiscovered[iPrinting] == iChina
-			aHelp.append(getIcon(bCompass) + localText.getText("TXT_KEY_TECH_COMPASS", ()) + ' ' + getIcon(bPaper) + localText.getText("TXT_KEY_TECH_PAPER", ()) + ' ' + getIcon(bGunpowder) + localText.getText("TXT_KEY_TECH_GUNPOWDER", ()) + ' ' + getIcon(bPrintingPress) + localText.getText("TXT_KEY_TECH_PRINTING", ()))
-		elif iGoal == 2:
-			iGoldenAgeTurns = data.iChineseGoldenAgeTurns
-			aHelp.append(getIcon(iGoldenAgeTurns >= utils.getTurns(32)) + localText.getText("TXT_KEY_VICTORY_GOLDEN_AGES", (iGoldenAgeTurns / utils.getTurns(8), 4)))
 
 	elif iPlayer == iHarappa:
 		if iGoal == 1:
@@ -3455,6 +3440,21 @@ def getUHVHelp(iPlayer, iGoal):
 			pBestCity = getBestCity(iBabylonia, (89, 47), cityCulture)
 			bBestCity = isBestCity(iBabylonia, (89, 47), cityCulture)
 			aHelp.append(getIcon(bBestCity) + localText.getText("TXT_KEY_VICTORY_MOST_CULTURED_CITY", (pBestCity.getName(),)))
+			
+	elif iPlayer == iChina:
+		if iGoal == 0:
+			iConfucianCounter = getNumBuildings(iChina, iConfucianCathedral)
+			iTaoistCounter = getNumBuildings(iChina, iTaoistCathedral)
+			aHelp.append(getIcon(iConfucianCounter >= 2) + localText.getText("TXT_KEY_VICTORY_NUM_CONFUCIAN_ACADEMIES", (iConfucianCounter, 2)) + ' ' + getIcon(iTaoistCounter >= 2) + localText.getText("TXT_KEY_VICTORY_NUM_TAOIST_PAGODAS", (iTaoistCounter, 2)))
+		elif iGoal == 1:
+			bCompass = data.lFirstDiscovered[iCompass] == iChina
+			bPaper = data.lFirstDiscovered[iPaper] == iChina
+			bGunpowder = data.lFirstDiscovered[iGunpowder] == iChina
+			bPrintingPress = data.lFirstDiscovered[iPrinting] == iChina
+			aHelp.append(getIcon(bCompass) + localText.getText("TXT_KEY_TECH_COMPASS", ()) + ' ' + getIcon(bPaper) + localText.getText("TXT_KEY_TECH_PAPER", ()) + ' ' + getIcon(bGunpowder) + localText.getText("TXT_KEY_TECH_GUNPOWDER", ()) + ' ' + getIcon(bPrintingPress) + localText.getText("TXT_KEY_TECH_PRINTING", ()))
+		elif iGoal == 2:
+			iGoldenAgeTurns = data.iChineseGoldenAgeTurns
+			aHelp.append(getIcon(iGoldenAgeTurns >= utils.getTurns(32)) + localText.getText("TXT_KEY_VICTORY_GOLDEN_AGES", (iGoldenAgeTurns / utils.getTurns(8), 4)))
 
 	elif iPlayer == iGreece:
 		if iGoal == 0:
@@ -3565,6 +3565,23 @@ def getUHVHelp(iPlayer, iGoal):
 			aHelp.append(getIcon(bArchitecture) + localText.getText("TXT_KEY_TECH_ARCHITECTURE", ()) + ' ' + getIcon(bPolitics) + localText.getText("TXT_KEY_TECH_POLITICS", ()) + ' ' + getIcon(bScholarship) + localText.getText("TXT_KEY_TECH_SCHOLARSHIP", ()))
 			aHelp.append(getIcon(bMachinery) + localText.getText("TXT_KEY_TECH_MACHINERY", ()) + ' ' + getIcon(bCivilService) + localText.getText("TXT_KEY_TECH_CIVIL_SERVICE", ()))
 
+	# Maya goals have no stages
+	elif iPlayer == iMaya:
+		if pMaya.isReborn():
+			if iGoal == 0:
+				bPeru = isAreaFreeOfCivs(utils.getPlotList(tPeruTL, tPeruBR), lCivGroups[0])
+				bGranColombia = isAreaFreeOfCivs(utils.getPlotList(tGranColombiaTL, tGranColombiaBR), lCivGroups[0])
+				bGuayanas = isAreaFreeOfCivs(utils.getPlotList(tGuayanasTL, tGuayanasBR), lCivGroups[0])
+				bCaribbean = isAreaFreeOfCivs(utils.getPlotList(tCaribbeanTL, tCaribbeanBR), lCivGroups[0])
+				aHelp.append(getIcon(bPeru) + localText.getText("TXT_KEY_VICTORY_NO_COLONIES_PERU", ()) + ' ' + getIcon(bGranColombia) + localText.getText("TXT_KEY_VICTORY_NO_COLONIES_GRAN_COLOMBIA", ()))
+				aHelp.append(getIcon(bGuayanas) + localText.getText("TXT_KEY_VICTORY_NO_COLONIES_GUAYANAS", ()) + ' ' + getIcon(bCaribbean) + localText.getText("TXT_KEY_VICTORY_NO_COLONIES_CARIBBEAN", ()))
+			elif iGoal == 1:
+				bSouthAmerica = isControlled(iMaya, utils.getPlotList(tSAmericaTL, tSAmericaBR, tSouthAmericaExceptions))
+				aHelp.append(getIcon(bSouthAmerica) + localText.getText("TXT_KEY_VICTORY_CONTROL_SOUTH_AMERICA", ()))
+			elif iGoal == 2:
+				iTradeGold = data.iColombianTradeGold
+				aHelp.append(getIcon(iTradeGold >= utils.getTurns(3000)) + localText.getText("TXT_KEY_VICTORY_TRADE_GOLD_RESOURCES", (iTradeGold, utils.getTurns(3000))))
+
 	elif iPlayer == iTamils:
 		if iGoal == 0:
 			iTreasury = pTamils.getGold()
@@ -3598,23 +3615,6 @@ def getUHVHelp(iPlayer, iGoal):
 		elif iGoal == 2:
 			iNumSinks = data.iKoreanSinks
 			aHelp.append(getIcon(iNumSinks >= 20) + localText.getText("TXT_KEY_VICTORY_ENEMY_SHIPS_SUNK", (iNumSinks, 20)))
-
-	# Maya goals have no stages
-	elif iPlayer == iMaya:
-		if pMaya.isReborn():
-			if iGoal == 0:
-				bPeru = isAreaFreeOfCivs(utils.getPlotList(tPeruTL, tPeruBR), lCivGroups[0])
-				bGranColombia = isAreaFreeOfCivs(utils.getPlotList(tGranColombiaTL, tGranColombiaBR), lCivGroups[0])
-				bGuayanas = isAreaFreeOfCivs(utils.getPlotList(tGuayanasTL, tGuayanasBR), lCivGroups[0])
-				bCaribbean = isAreaFreeOfCivs(utils.getPlotList(tCaribbeanTL, tCaribbeanBR), lCivGroups[0])
-				aHelp.append(getIcon(bPeru) + localText.getText("TXT_KEY_VICTORY_NO_COLONIES_PERU", ()) + ' ' + getIcon(bGranColombia) + localText.getText("TXT_KEY_VICTORY_NO_COLONIES_GRAN_COLOMBIA", ()))
-				aHelp.append(getIcon(bGuayanas) + localText.getText("TXT_KEY_VICTORY_NO_COLONIES_GUAYANAS", ()) + ' ' + getIcon(bCaribbean) + localText.getText("TXT_KEY_VICTORY_NO_COLONIES_CARIBBEAN", ()))
-			elif iGoal == 1:
-				bSouthAmerica = isControlled(iMaya, utils.getPlotList(tSAmericaTL, tSAmericaBR, tSouthAmericaExceptions))
-				aHelp.append(getIcon(bSouthAmerica) + localText.getText("TXT_KEY_VICTORY_CONTROL_SOUTH_AMERICA", ()))
-			elif iGoal == 2:
-				iTradeGold = data.iColombianTradeGold
-				aHelp.append(getIcon(iTradeGold >= utils.getTurns(3000)) + localText.getText("TXT_KEY_VICTORY_TRADE_GOLD_RESOURCES", (iTradeGold, utils.getTurns(3000))))
 
 	elif iPlayer == iByzantium:
 		if iGoal == 0:

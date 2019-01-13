@@ -36,12 +36,12 @@ tMinorCities = (
 (-300, (59, 56), iCeltia, 'Burdigala', 2, -1, -1),				# Bordeaux
 (-300, (106, 33), iIndependent, 'Tanjapuri', 1, iWarElephant, 1),	# Thanjavur
 (-258, (121, 42), iIndependent, 'Co Loa', 2, iArcher, 3),			# Hanoi
+(-250, (19, 41), iNative, 'Danib&#225;an', 2, iHolkan, 2),		# Monte Alban
 (-214, (125, 44), iIndependent, 'Panyu', 2, iArcher, 2),	# Guangzhou
 (-190, (89, 54), iIndependent2, 'Artashat', 1, -1, -1),			# Artaxata
 (-130, (87, 51), iIndependent2, 'Urfa', 2, iArcher, 2),		# Edessa
 (-100, (114, 57), iBarbarian, 'Dunhuang', 2, iArcher, 1),		# Dunhuang
 (-100, (109, 56), iBarbarian, 'Kuqa', 2, iArcher, 1),			# Kuqa
-(-100, (19, 41), iNative, 'Danib&#225;an', 2, iHolkan, 2),		# Monte Alban
 (-75, (105, 55), iBarbarian, 'Kashgar', 2, iArcher, 1),			# Kashgar
 (-50, (61, 60), iCeltia, 'Lutetia', 2, -1, -1),					# Paris
 (100, (17, 43), iBarbarian, 'Tolan', 2, iJaguar, 2),		# Teotihuacan
@@ -197,6 +197,8 @@ class Barbs:
 			self.checkSpawn(iBarbarian, iHorseArcher, 2+iHandicap, (97, 47), (104, 51), self.spawnInvaders, iGameTurn, 5-iHandicap, 2, ["TXT_KEY_ADJECTIVE_HEPHTHALITE"])
 
 		# Holkans in classical Mesoamerica
+		if utils.isYearIn(-200, 100):
+			self.checkSpawn(iBarbarian, iHolkan, 1, (15, 36), (27, 44), self.spawnUprising, iGameTurn, 7, 5)
 		if utils.isYearIn(100, 600):
 			self.checkSpawn(iBarbarian, iHolkan, 1, (15, 36), (27, 44), self.spawnUprising, iGameTurn, 6, 4)
 		elif utils.isYearIn(600, 1000):
@@ -328,6 +330,10 @@ class Barbs:
 			if utils.isYearIn(1500, 1850):
 				self.checkSpawn(iNative, iMohawk, 1, (24, 54), (31, 61), self.spawnUprising, iGameTurn, 8, 4)
 				
+		if iGameTurn == getTurnForYear(-500):
+			gc.getMap().plot(19, 41).setImprovementType(iHut)
+			utils.makeUnitAI(iHolkan, iNative, (19, 41), UnitAITypes.UNITAI_ATTACK, 2)
+				
 		#pirates in the Caribbean
 		if utils.isYearIn(1600, 1800):
 			self.checkSpawn(iNative, iPrivateer, 1, (25, 37), (38, 53), self.spawnPirates, iGameTurn, 5, 0)
@@ -372,7 +378,7 @@ class Barbs:
 			
 			if not self.isFreePlot(tPlot, bForceSpawn): continue
 			
-			utils.evacuate(tPlot)
+			utils.evacuate(iPlayer, tPlot)
 		
 			if self.foundCity(iPlayer, tPlot, sName, iPopulation, iUnitType, iNumUnits, lReligions):
 				data.lMinorCityFounded[i] = True

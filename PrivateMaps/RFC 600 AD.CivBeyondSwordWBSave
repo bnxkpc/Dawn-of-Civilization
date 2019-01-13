@@ -13,13 +13,13 @@ BeginTeam
 	TeamID=0, (Egypt)
 EndTeam
 BeginTeam
-	TeamID=1, (China)
+	TeamID=1, (Babylonia)
 EndTeam
 BeginTeam
-	TeamID=2, (Babylonia)
+	TeamID=2, (Harappa)
 EndTeam
 BeginTeam
-	TeamID=3, (Harappa)
+	TeamID=3, (China)
 EndTeam
 BeginTeam
 	TeamID=4, (Greece)
@@ -40,16 +40,16 @@ BeginTeam
 	TeamID=9, (Rome)
 EndTeam
 BeginTeam
-	TeamID=10, (Tamils)
+	TeamID=10, (Maya)
 EndTeam
 BeginTeam
-	TeamID=11, (Ethiopia)
+	TeamID=11, (Tamils)
 EndTeam
 BeginTeam
-	TeamID=12, (Korea)
+	TeamID=12, (Ethiopia)
 EndTeam
 BeginTeam
-	TeamID=13, (Maya)
+	TeamID=13, (Korea)
 EndTeam
 BeginTeam
 	TeamID=14, (Byzantium)
@@ -168,6 +168,20 @@ BeginPlayer
 EndPlayer
 BeginPlayer
 	Team=1
+	LeaderType=LEADER_HAMMURABI
+	CivType=CIVILIZATION_BABYLONIA
+	PlayableCiv=0
+	Handicap=HANDICAP_REGENT
+EndPlayer
+BeginPlayer
+	Team=2
+	LeaderType=LEADER_VATAVELLI
+	CivType=CIVILIZATION_HARAPPANS
+	PlayableCiv=0
+	Handicap=HANDICAP_REGENT
+EndPlayer
+BeginPlayer
+	Team=3
 	LeaderType=LEADER_TAIZONG
 	CivType=CIVILIZATION_CHINA
 	PlayableCiv=1
@@ -178,20 +192,6 @@ BeginPlayer
 	CivicOption=CIVICOPTION_SOCIETY, Civic=CIVIC_MANORIALISM
 	CivicOption=CIVICOPTION_ECONOMY, Civic=CIVIC_MERCHANT_TRADE
 	CivicOption=CIVICOPTION_RELIGION, Civic=CIVIC_MONASTICISM
-	Handicap=HANDICAP_REGENT
-EndPlayer
-BeginPlayer
-	Team=2
-	LeaderType=LEADER_HAMMURABI
-	CivType=CIVILIZATION_BABYLONIA
-	PlayableCiv=0
-	Handicap=HANDICAP_REGENT
-EndPlayer
-BeginPlayer
-	Team=3
-	LeaderType=LEADER_VATAVELLI
-	CivType=CIVILIZATION_HARAPPANS
-	PlayableCiv=0
 	Handicap=HANDICAP_REGENT
 EndPlayer
 BeginPlayer
@@ -252,6 +252,18 @@ BeginPlayer
 EndPlayer
 BeginPlayer
 	Team=10
+	LeaderType=LEADER_PACAL
+	CivType=CIVILIZATION_MAYA
+	PlayableCiv=0
+	StartingGold=100
+	CivicOption=CIVICOPTION_LEGITIMACY, Civic=CIVIC_CITIZENSHIP
+	CivicOption=CIVICOPTION_SOCIETY, Civic=CIVIC_SLAVERY
+	CivicOption=CIVICOPTION_ECONOMY, Civic=CIVIC_REDISTRIBUTION
+	CivicOption=CIVICOPTION_RELIGION, Civic=CIVIC_DEIFICATION
+	Handicap=HANDICAP_REGENT
+EndPlayer
+BeginPlayer
+	Team=11
 	LeaderType=LEADER_RAJENDRA
 	CivType=CIVILIZATION_TAMILS
 	PlayableCiv=1
@@ -265,7 +277,7 @@ BeginPlayer
 	Handicap=HANDICAP_REGENT
 EndPlayer
 BeginPlayer
-	Team=11
+	Team=12
 	LeaderType=LEADER_ZARA_YAQOB
 	CivType=CIVILIZATION_ETHIOPIA
 	PlayableCiv=1
@@ -279,7 +291,7 @@ BeginPlayer
 	Handicap=HANDICAP_REGENT
 EndPlayer
 BeginPlayer
-	Team=12
+	Team=13
 	LeaderType=LEADER_WANGKON
 	CivType=CIVILIZATION_KOREA
 	PlayableCiv=1
@@ -290,18 +302,6 @@ BeginPlayer
 	CivicOption=CIVICOPTION_SOCIETY, Civic=CIVIC_CASTE_SYSTEM
 	CivicOption=CIVICOPTION_ECONOMY, Civic=CIVIC_MERCHANT_TRADE
 	CivicOption=CIVICOPTION_RELIGION, Civic=CIVIC_MONASTICISM
-	Handicap=HANDICAP_REGENT
-EndPlayer
-BeginPlayer
-	Team=13
-	LeaderType=LEADER_PACAL
-	CivType=CIVILIZATION_MAYA
-	PlayableCiv=0
-	StartingGold=100
-	CivicOption=CIVICOPTION_LEGITIMACY, Civic=CIVIC_CITIZENSHIP
-	CivicOption=CIVICOPTION_SOCIETY, Civic=CIVIC_SLAVERY
-	CivicOption=CIVICOPTION_ECONOMY, Civic=CIVIC_REDISTRIBUTION
-	CivicOption=CIVICOPTION_RELIGION, Civic=CIVIC_DEIFICATION
 	Handicap=HANDICAP_REGENT
 EndPlayer
 BeginPlayer
@@ -10694,31 +10694,31 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_MAYAN_HOLKAN, UnitOwner=13, (Pacal II)
+		UnitType=UNIT_MAYAN_HOLKAN, UnitOwner=10, (Pacal II)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_MAYAN_HOLKAN, UnitOwner=13, (Pacal II)
+		UnitType=UNIT_MAYAN_HOLKAN, UnitOwner=10, (Pacal II)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_MAYAN_HOLKAN, UnitOwner=13, (Pacal II)
+		UnitType=UNIT_MAYAN_HOLKAN, UnitOwner=10, (Pacal II)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_MAYAN_HOLKAN, UnitOwner=13, (Pacal II)
+		UnitType=UNIT_MAYAN_HOLKAN, UnitOwner=10, (Pacal II)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_WORKER, UnitOwner=13, (Pacal II)
+		UnitType=UNIT_WORKER, UnitOwner=10, (Pacal II)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_WORKER, UnitOwner=13, (Pacal II)
+		UnitType=UNIT_WORKER, UnitOwner=10, (Pacal II)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
-		CityOwner=13, (Pacal II)
+		CityOwner=10, (Pacal II)
 		CityName=Y'ax Mutal
 		CityPopulation=4
 		BuildingType=BUILDING_PALACE
@@ -10727,7 +10727,7 @@ BeginPlot
 		BuildingType=BUILDING_LIBRARY
 		BuildingType=BUILDING_MAYAN_BALL_COURT
 		BuildingType=BUILDING_TEOTL_STEP_PYRAMID
-		Player13Culture=200, (Pacal II)
+		Player10Culture=200, (Pacal II)
 	EndCity
 EndPlot
 BeginPlot
@@ -10751,11 +10751,11 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_MAYAN_HOLKAN, UnitOwner=13, (Pacal II)
+		UnitType=UNIT_MAYAN_HOLKAN, UnitOwner=10, (Pacal II)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
-		CityOwner=13, (Pacal II)
+		CityOwner=10, (Pacal II)
 		CityName=Uxmal
 		CityPopulation=3
 		BuildingType=BUILDING_GRANARY
@@ -10763,7 +10763,7 @@ BeginPlot
 		BuildingType=BUILDING_MAYAN_BALL_COURT
 		BuildingType=BUILDING_TEMPLE_OF_KUKULKAN
 		BuildingType=BUILDING_TEOTL_STEP_PYRAMID
-		Player13Culture=100, (Pacal II)
+		Player10Culture=100, (Pacal II)
 	EndCity
 EndPlot
 BeginPlot
@@ -39049,48 +39049,48 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=1
 	BeginUnit
-		UnitType=UNIT_SWORDSMAN, UnitOwner=11, (Zara Yaqob)
+		UnitType=UNIT_SWORDSMAN, UnitOwner=12, (Zara Yaqob)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_SWORDSMAN, UnitOwner=11, (Zara Yaqob)
+		UnitType=UNIT_SWORDSMAN, UnitOwner=12, (Zara Yaqob)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_SWORDSMAN, UnitOwner=11, (Zara Yaqob)
+		UnitType=UNIT_SWORDSMAN, UnitOwner=12, (Zara Yaqob)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARCHER, UnitOwner=11, (Zara Yaqob)
+		UnitType=UNIT_ARCHER, UnitOwner=12, (Zara Yaqob)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARCHER, UnitOwner=11, (Zara Yaqob)
+		UnitType=UNIT_ARCHER, UnitOwner=12, (Zara Yaqob)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARCHER, UnitOwner=11, (Zara Yaqob)
+		UnitType=UNIT_ARCHER, UnitOwner=12, (Zara Yaqob)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARCHER, UnitOwner=11, (Zara Yaqob)
+		UnitType=UNIT_ARCHER, UnitOwner=12, (Zara Yaqob)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_WORKER, UnitOwner=11, (Zara Yaqob)
+		UnitType=UNIT_WORKER, UnitOwner=12, (Zara Yaqob)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_WORKER, UnitOwner=11, (Zara Yaqob)
+		UnitType=UNIT_WORKER, UnitOwner=12, (Zara Yaqob)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
-		CityOwner=11, (Zara Yaqob)
+		CityOwner=12, (Zara Yaqob)
 		CityName=Aksum
 		CityPopulation=4
 		BuildingType=BUILDING_PALACE
 		ReligionType=RELIGION_ORTHODOXY
-		Player11Culture=100, (Zara Yaqob)
+		Player12Culture=100, (Zara Yaqob)
 	EndCity
 EndPlot
 BeginPlot
@@ -49209,15 +49209,15 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=1
 	BeginUnit
-		UnitType=UNIT_ARCHER, UnitOwner=10, (Rajendra Chola)
+		UnitType=UNIT_ARCHER, UnitOwner=11, (Rajendra Chola)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARCHER, UnitOwner=10, (Rajendra Chola)
+		UnitType=UNIT_ARCHER, UnitOwner=11, (Rajendra Chola)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
-		CityOwner=10, (Rajendra Chola)
+		CityOwner=11, (Rajendra Chola)
 		CityName=Vijayanagara
 		CityPopulation=4
 		BuildingType=BUILDING_BARRACKS
@@ -49229,7 +49229,7 @@ BeginPlot
 		BuildingType=BUILDING_HINDU_TEMPLE
 		BuildingType=BUILDING_HINDU_MONASTERY
 		ReligionType=RELIGION_HINDUISM
-		Player10Culture=100, (Rajendra Chola)
+		Player11Culture=100, (Rajendra Chola)
 	EndCity
 EndPlot
 BeginPlot
@@ -49774,39 +49774,39 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_SWORDSMAN, UnitOwner=10, (Rajendra Chola)
+		UnitType=UNIT_SWORDSMAN, UnitOwner=11, (Rajendra Chola)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_SWORDSMAN, UnitOwner=10, (Rajendra Chola)
+		UnitType=UNIT_SWORDSMAN, UnitOwner=11, (Rajendra Chola)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_SWORDSMAN, UnitOwner=10, (Rajendra Chola)
+		UnitType=UNIT_SWORDSMAN, UnitOwner=11, (Rajendra Chola)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARCHER, UnitOwner=10, (Rajendra Chola)
+		UnitType=UNIT_ARCHER, UnitOwner=11, (Rajendra Chola)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARCHER, UnitOwner=10, (Rajendra Chola)
+		UnitType=UNIT_ARCHER, UnitOwner=11, (Rajendra Chola)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARCHER, UnitOwner=10, (Rajendra Chola)
+		UnitType=UNIT_ARCHER, UnitOwner=11, (Rajendra Chola)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_WORKER, UnitOwner=10, (Rajendra Chola)
+		UnitType=UNIT_WORKER, UnitOwner=11, (Rajendra Chola)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_WORKER, UnitOwner=10, (Rajendra Chola)
+		UnitType=UNIT_WORKER, UnitOwner=11, (Rajendra Chola)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
-		CityOwner=10, (Rajendra Chola)
+		CityOwner=11, (Rajendra Chola)
 		CityName=Madurai
 		CityPopulation=4
 		BuildingType=BUILDING_PALACE
@@ -49817,7 +49817,7 @@ BeginPlot
 		BuildingType=BUILDING_TAMIL_SANGAM
 		BuildingType=BUILDING_HINDU_TEMPLE
 		ReligionType=RELIGION_HINDUISM
-		Player10Culture=100, (Rajendra Chola)
+		Player11Culture=100, (Rajendra Chola)
 	EndCity
 EndPlot
 BeginPlot
@@ -50340,11 +50340,11 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_ARCHER, UnitOwner=10, (Rajendra Chola)
+		UnitType=UNIT_ARCHER, UnitOwner=11, (Rajendra Chola)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
-		CityOwner=10, (Rajendra Chola)
+		CityOwner=11, (Rajendra Chola)
 		CityName=Chennai
 		CityPopulation=3
 		BuildingType=BUILDING_GRANARY
@@ -50353,7 +50353,7 @@ BeginPlot
 		BuildingType=BUILDING_TAMIL_SANGAM
 		BuildingType=BUILDING_HINDU_TEMPLE
 		ReligionType=RELIGION_HINDUISM
-		Player10Culture=100, (Rajendra Chola)
+		Player11Culture=100, (Rajendra Chola)
 	EndCity
 EndPlot
 BeginPlot
@@ -50818,11 +50818,11 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_ARCHER, UnitOwner=10, (Rajendra Chola)
+		UnitType=UNIT_ARCHER, UnitOwner=11, (Rajendra Chola)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
-		CityOwner=10, (Rajendra Chola)
+		CityOwner=11, (Rajendra Chola)
 		CityName=Anuradhapura
 		CityPopulation=3
 		BuildingType=BUILDING_GRANARY
@@ -50831,7 +50831,7 @@ BeginPlot
 		BuildingType=BUILDING_HINDU_TEMPLE
 		BuildingType=BUILDING_JETAVANARAMAYA
 		ReligionType=RELIGION_HINDUISM
-		Player10Culture=50, (Rajendra Chola)
+		Player11Culture=50, (Rajendra Chola)
 	EndCity
 EndPlot
 BeginPlot
@@ -56164,11 +56164,11 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=1
 	BeginUnit
-		UnitType=UNIT_CHINESE_CHOKONU, UnitOwner=1, (Tang Taizong)
+		UnitType=UNIT_CHINESE_CHOKONU, UnitOwner=3, (Tang Taizong)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
-		CityOwner=1, (Tang Taizong)
+		CityOwner=3, (Tang Taizong)
 		CityName=Chengdu
 		CityPopulation=4
 		BuildingType=BUILDING_GRANARY
@@ -56181,7 +56181,7 @@ BeginPlot
 		ReligionType=RELIGION_BUDDHISM
 		ReligionType=RELIGION_CONFUCIANISM
 		ReligionType=RELIGION_TAOISM
-		Player1Culture=100, (Tang Taizong)
+		Player3Culture=100, (Tang Taizong)
 	EndCity
 EndPlot
 BeginPlot
@@ -57178,31 +57178,31 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=1
 	BeginUnit
-		UnitType=UNIT_CHINESE_CHOKONU, UnitOwner=1, (Tang Taizong)
+		UnitType=UNIT_CHINESE_CHOKONU, UnitOwner=3, (Tang Taizong)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_CHINESE_CHOKONU, UnitOwner=1, (Tang Taizong)
+		UnitType=UNIT_CHINESE_CHOKONU, UnitOwner=3, (Tang Taizong)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_WORKER, UnitOwner=1, (Tang Taizong)
+		UnitType=UNIT_WORKER, UnitOwner=3, (Tang Taizong)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_WORKER, UnitOwner=1, (Tang Taizong)
+		UnitType=UNIT_WORKER, UnitOwner=3, (Tang Taizong)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_WORKER, UnitOwner=1, (Tang Taizong)
+		UnitType=UNIT_WORKER, UnitOwner=3, (Tang Taizong)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_WORKER, UnitOwner=1, (Tang Taizong)
+		UnitType=UNIT_WORKER, UnitOwner=3, (Tang Taizong)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
-		CityOwner=1, (Tang Taizong)
+		CityOwner=3, (Tang Taizong)
 		CityName=Chang'an
 		CityPopulation=7
 		BuildingType=BUILDING_PALACE
@@ -57225,7 +57225,7 @@ BeginPlot
 		ReligionType=RELIGION_BUDDHISM
 		ReligionType=RELIGION_CONFUCIANISM
 		ReligionType=RELIGION_TAOISM
-		Player1Culture=500, (Tang Taizong)
+		Player3Culture=500, (Tang Taizong)
 	EndCity
 EndPlot
 BeginPlot
@@ -58685,11 +58685,11 @@ BeginPlot
 	TerrainType=TERRAIN_PLAINS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_CHINESE_CHOKONU, UnitOwner=1, (Tang Taizong)
+		UnitType=UNIT_CHINESE_CHOKONU, UnitOwner=3, (Tang Taizong)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
-		CityOwner=1, (Tang Taizong)
+		CityOwner=3, (Tang Taizong)
 		CityName=Bianzhou
 		CityPopulation=5
 		BuildingType=BUILDING_GRANARY
@@ -58702,7 +58702,7 @@ BeginPlot
 		ReligionType=RELIGION_BUDDHISM
 		ReligionType=RELIGION_CONFUCIANISM
 		ReligionType=RELIGION_TAOISM
-		Player1Culture=200, (Tang Taizong)
+		Player3Culture=200, (Tang Taizong)
 	EndCity
 EndPlot
 BeginPlot
@@ -58734,56 +58734,56 @@ BeginPlot
 	TerrainType=TERRAIN_PLAINS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_CHINESE_CHOKONU, UnitOwner=1, (Tang Taizong)
+		UnitType=UNIT_CHINESE_CHOKONU, UnitOwner=3, (Tang Taizong)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_CHINESE_CHOKONU, UnitOwner=1, (Tang Taizong)
+		UnitType=UNIT_CHINESE_CHOKONU, UnitOwner=3, (Tang Taizong)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_HEAVY_SWORDSMAN, UnitOwner=1, (Tang Taizong)
+		UnitType=UNIT_HEAVY_SWORDSMAN, UnitOwner=3, (Tang Taizong)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_HEAVY_SWORDSMAN, UnitOwner=1, (Tang Taizong)
+		UnitType=UNIT_HEAVY_SWORDSMAN, UnitOwner=3, (Tang Taizong)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_HEAVY_SWORDSMAN, UnitOwner=1, (Tang Taizong)
+		UnitType=UNIT_HEAVY_SWORDSMAN, UnitOwner=3, (Tang Taizong)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_HORSE_ARCHER, UnitOwner=1, (Tang Taizong)
+		UnitType=UNIT_HORSE_ARCHER, UnitOwner=3, (Tang Taizong)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_HORSE_ARCHER, UnitOwner=1, (Tang Taizong)
+		UnitType=UNIT_HORSE_ARCHER, UnitOwner=3, (Tang Taizong)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_CHINESE_CHOKONU, UnitOwner=1, (Tang Taizong)
+		UnitType=UNIT_CHINESE_CHOKONU, UnitOwner=3, (Tang Taizong)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_CHINESE_CHOKONU, UnitOwner=1, (Tang Taizong)
+		UnitType=UNIT_CHINESE_CHOKONU, UnitOwner=3, (Tang Taizong)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_CHINESE_CHOKONU, UnitOwner=1, (Tang Taizong)
+		UnitType=UNIT_CHINESE_CHOKONU, UnitOwner=3, (Tang Taizong)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_HEAVY_SPEARMAN, UnitOwner=1, (Tang Taizong)
+		UnitType=UNIT_HEAVY_SPEARMAN, UnitOwner=3, (Tang Taizong)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_HEAVY_SPEARMAN, UnitOwner=1, (Tang Taizong)
+		UnitType=UNIT_HEAVY_SPEARMAN, UnitOwner=3, (Tang Taizong)
 		Level=1, Experience=0
 	EndUnit
 	
 	BeginCity
-		CityOwner=1, (Tang Taizong)
+		CityOwner=3, (Tang Taizong)
 		CityName=Youzhou
 		CityPopulation=5
 		BuildingType=BUILDING_WALLS
@@ -58802,7 +58802,7 @@ BeginPlot
 		ReligionType=RELIGION_CONFUCIANISM
 		ReligionType=RELIGION_TAOISM
 		HolyCityReligionType=RELIGION_TAOISM
-		Player1Culture=200, (Tang Taizong)
+		Player3Culture=200, (Tang Taizong)
 	EndCity
 EndPlot
 BeginPlot
@@ -59185,11 +59185,11 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_CHINESE_CHOKONU, UnitOwner=1, (Tang Taizong)
+		UnitType=UNIT_CHINESE_CHOKONU, UnitOwner=3, (Tang Taizong)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
-		CityOwner=1, (Tang Taizong)
+		CityOwner=3, (Tang Taizong)
 		CityName=Guangzhou
 		CityPopulation=3
 		BuildingType=BUILDING_GRANARY
@@ -59201,7 +59201,7 @@ BeginPlot
 		ReligionType=RELIGION_BUDDHISM
 		ReligionType=RELIGION_CONFUCIANISM
 		ReligionType=RELIGION_TAOISM
-		Player1Culture=20, (Tang Taizong)
+		Player3Culture=20, (Tang Taizong)
 	EndCity
 EndPlot
 BeginPlot
@@ -60200,11 +60200,11 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_CHINESE_CHOKONU, UnitOwner=1, (Tang Taizong)
+		UnitType=UNIT_CHINESE_CHOKONU, UnitOwner=3, (Tang Taizong)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
-		CityOwner=1, (Tang Taizong)
+		CityOwner=3, (Tang Taizong)
 		CityName=Jiankang
 		CityPopulation=4
 		BuildingType=BUILDING_GRANARY
@@ -60216,7 +60216,7 @@ BeginPlot
 		ReligionType=RELIGION_CONFUCIANISM
 		HolyCityReligionType=RELIGION_CONFUCIANISM
 		ReligionType=RELIGION_TAOISM
-		Player1Culture=100, (Tang Taizong)
+		Player3Culture=100, (Tang Taizong)
 	EndCity
 EndPlot
 BeginPlot
@@ -60661,11 +60661,11 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_CHINESE_CHOKONU, UnitOwner=1, (Tang Taizong)
+		UnitType=UNIT_CHINESE_CHOKONU, UnitOwner=3, (Tang Taizong)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
-		CityOwner=1, (Tang Taizong)
+		CityOwner=3, (Tang Taizong)
 		CityName=Hangzhou
 		CityPopulation=4
 		BuildingType=BUILDING_GRANARY
@@ -60679,7 +60679,7 @@ BeginPlot
 		BuildingType=BUILDING_CONFUCIAN_TEMPLE
 		ReligionType=RELIGION_CONFUCIANISM
 		ReligionType=RELIGION_TAOISM
-		Player1Culture=50, (Tang Taizong)
+		Player3Culture=50, (Tang Taizong)
 	EndCity
 EndPlot
 BeginPlot
@@ -61669,11 +61669,11 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_CROSSBOWMAN, UnitOwner=12, (Wang Geon)
+		UnitType=UNIT_CROSSBOWMAN, UnitOwner=13, (Wang Geon)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
-		CityOwner=12, (Wang Geon)
+		CityOwner=13, (Wang Geon)
 		CityName=P'yongyang
 		CityPopulation=2
 		BuildingType=BUILDING_BARRACKS
@@ -61681,7 +61681,7 @@ BeginPlot
 		BuildingType=BUILDING_HARBOR
 		BuildingType=BUILDING_FORGE
 		ReligionType=RELIGION_BUDDHISM
-		Player12Culture=50, (Wang Geon)
+		Player13Culture=50, (Wang Geon)
 	EndCity
 EndPlot
 BeginPlot
@@ -62134,11 +62134,11 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_CROSSBOWMAN, UnitOwner=12, (Wang Geon)
+		UnitType=UNIT_CROSSBOWMAN, UnitOwner=13, (Wang Geon)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
-		CityOwner=12, (Wang Geon)
+		CityOwner=13, (Wang Geon)
 		CityName=Hanyang
 		CityPopulation=3
 		BuildingType=BUILDING_WALLS
@@ -62151,7 +62151,7 @@ BeginPlot
 		BuildingType=BUILDING_JAIL
 		ReligionType=RELIGION_BUDDHISM
 		ReligionType=RELIGION_CONFUCIANISM
-		Player12Culture=200, (Wang Geon)
+		Player13Culture=200, (Wang Geon)
 	EndCity
 EndPlot
 BeginPlot
@@ -63070,47 +63070,47 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_HEAVY_SWORDSMAN, UnitOwner=12, (Wang Geon)
+		UnitType=UNIT_HEAVY_SWORDSMAN, UnitOwner=13, (Wang Geon)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_HEAVY_SWORDSMAN, UnitOwner=12, (Wang Geon)
+		UnitType=UNIT_HEAVY_SWORDSMAN, UnitOwner=13, (Wang Geon)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_HEAVY_SWORDSMAN, UnitOwner=12, (Wang Geon)
+		UnitType=UNIT_HEAVY_SWORDSMAN, UnitOwner=13, (Wang Geon)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_HORSEMAN, UnitOwner=12, (Wang Geon)
+		UnitType=UNIT_HORSEMAN, UnitOwner=13, (Wang Geon)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_HORSEMAN, UnitOwner=12, (Wang Geon)
+		UnitType=UNIT_HORSEMAN, UnitOwner=13, (Wang Geon)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_CROSSBOWMAN, UnitOwner=12, (Wang Geon)
+		UnitType=UNIT_CROSSBOWMAN, UnitOwner=13, (Wang Geon)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_CROSSBOWMAN, UnitOwner=12, (Wang Geon)
+		UnitType=UNIT_CROSSBOWMAN, UnitOwner=13, (Wang Geon)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_CROSSBOWMAN, UnitOwner=12, (Wang Geon)
+		UnitType=UNIT_CROSSBOWMAN, UnitOwner=13, (Wang Geon)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_WORKER, UnitOwner=12, (Wang Geon)
+		UnitType=UNIT_WORKER, UnitOwner=13, (Wang Geon)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_WORKER, UnitOwner=12, (Wang Geon)
+		UnitType=UNIT_WORKER, UnitOwner=13, (Wang Geon)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
-		CityOwner=12, (Wang Geon)
+		CityOwner=13, (Wang Geon)
 		CityName=Seorabeol
 		CityPopulation=5
 		BuildingType=BUILDING_PALACE
@@ -63127,7 +63127,7 @@ BeginPlot
 		BuildingType=BUILDING_BUDDHIST_TEMPLE
 		BuildingType=BUILDING_CHEOMSEONGDAE
 		ReligionType=RELIGION_BUDDHISM
-		Player12Culture=100, (Wang Geon)
+		Player13Culture=100, (Wang Geon)
 	EndCity
 EndPlot
 BeginPlot

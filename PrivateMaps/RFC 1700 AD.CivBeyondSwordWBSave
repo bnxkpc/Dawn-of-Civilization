@@ -13,13 +13,13 @@ BeginTeam
 	TeamID=0, (Egypt)
 EndTeam
 BeginTeam
-	TeamID=1, (China)
+	TeamID=1, (Babylonia)
 EndTeam
 BeginTeam
-	TeamID=2, (Babylonia)
+	TeamID=2, (Harappa)
 EndTeam
 BeginTeam
-	TeamID=3, (Harappa)
+	TeamID=3, (China)
 EndTeam
 BeginTeam
 	TeamID=4, (Greece)
@@ -40,16 +40,16 @@ BeginTeam
 	TeamID=9, (Rome)
 EndTeam
 BeginTeam
-	TeamID=10, (Tamils)
+	TeamID=10, (Colombia)
 EndTeam
 BeginTeam
-	TeamID=11, (Ethiopia)
+	TeamID=11, (Tamils)
 EndTeam
 BeginTeam
-	TeamID=12, (Korea)
+	TeamID=12, (Ethiopia)
 EndTeam
 BeginTeam
-	TeamID=13, (Colombia)
+	TeamID=13, (Korea)
 EndTeam
 BeginTeam
 	TeamID=14, (Byzantium)
@@ -168,6 +168,20 @@ BeginPlayer
 EndPlayer
 BeginPlayer
 	Team=1
+	LeaderType=LEADER_HAMMURABI
+	CivType=CIVILIZATION_BABYLONIA
+	PlayableCiv=0
+	Handicap=HANDICAP_REGENT
+EndPlayer
+BeginPlayer
+	Team=2
+	LeaderType=LEADER_VATAVELLI
+	CivType=CIVILIZATION_HARAPPANS
+	PlayableCiv=0
+	Handicap=HANDICAP_REGENT
+EndPlayer
+BeginPlayer
+	Team=3
 	LeaderType=LEADER_HONGWU
 	LeaderName=TXT_KEY_LEADER_KANGXI
 	CivType=CIVILIZATION_CHINA
@@ -181,20 +195,6 @@ BeginPlayer
 	CivicOption=CIVICOPTION_RELIGION, Civic=CIVIC_MONASTICISM
 	CivicOption=CIVICOPTION_TERRITORY, Civic=CIVIC_ISOLATIONISM
 	AttitudePlayer=12, AttitudeExtra=2, (Korea)
-	Handicap=HANDICAP_REGENT
-EndPlayer
-BeginPlayer
-	Team=2
-	LeaderType=LEADER_HAMMURABI
-	CivType=CIVILIZATION_BABYLONIA
-	PlayableCiv=0
-	Handicap=HANDICAP_REGENT
-EndPlayer
-BeginPlayer
-	Team=3
-	LeaderType=LEADER_VATAVELLI
-	CivType=CIVILIZATION_HARAPPANS
-	PlayableCiv=0
 	Handicap=HANDICAP_REGENT
 EndPlayer
 BeginPlayer
@@ -260,6 +260,13 @@ BeginPlayer
 EndPlayer
 BeginPlayer
 	Team=10
+	LeaderType=LEADER_PACAL
+	CivType=CIVILIZATION_MAYA
+	PlayableCiv=0
+	Handicap=HANDICAP_REGENT
+EndPlayer
+BeginPlayer
+	Team=11
 	LeaderType=LEADER_KRISHNA_DEVA_RAYA
 	LeaderName=TXT_KEY_LEADER_TIPU_SULTAN
 	CivType=CIVILIZATION_TAMILS
@@ -275,7 +282,7 @@ BeginPlayer
 	Handicap=HANDICAP_REGENT
 EndPlayer
 BeginPlayer
-	Team=11
+	Team=12
 	LeaderType=LEADER_ZARA_YAQOB
 	CivType=CIVILIZATION_ETHIOPIA
 	PlayableCiv=1
@@ -290,7 +297,7 @@ BeginPlayer
 	Handicap=HANDICAP_REGENT
 EndPlayer
 BeginPlayer
-	Team=12
+	Team=13
 	LeaderType=LEADER_SEJONG
 	CivType=CIVILIZATION_KOREA
 	PlayableCiv=1
@@ -303,13 +310,6 @@ BeginPlayer
 	CivicOption=CIVICOPTION_RELIGION, Civic=CIVIC_MONASTICISM
 	CivicOption=CIVICOPTION_TERRITORY, Civic=CIVIC_ISOLATIONISM
 	AttitudePlayer=1, AttitudeExtra=2, (China)
-	Handicap=HANDICAP_REGENT
-EndPlayer
-BeginPlayer
-	Team=13
-	LeaderType=LEADER_PACAL
-	CivType=CIVILIZATION_MAYA
-	PlayableCiv=0
 	Handicap=HANDICAP_REGENT
 EndPlayer
 BeginPlayer
@@ -43747,11 +43747,11 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=1
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=11, (Zara Yaqob)
+		UnitType=UNIT_ARQUEBUSIER, UnitOwner=12, (Zara Yaqob)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
-		CityOwner=11, (Zara Yaqob)
+		CityOwner=12, (Zara Yaqob)
 		CityName=Addis Ababa
 		CityPopulation=5
 		BuildingType=BUILDING_BARRACKS
@@ -43767,7 +43767,7 @@ BeginPlot
 		BuildingType=BUILDING_ORTHODOX_MONASTERY
 		BuildingType=BUILDING_MONOLITHIC_CHURCH
 		ReligionType=RELIGION_ORTHODOXY
-		Player11Culture=200, (Zara Yaqob)
+		Player12Culture=200, (Zara Yaqob)
 	EndCity
 EndPlot
 BeginPlot
@@ -43789,71 +43789,71 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=1
 	BeginUnit
-		UnitType=UNIT_LANCER, UnitOwner=11, (Zara Yaqob)
+		UnitType=UNIT_LANCER, UnitOwner=12, (Zara Yaqob)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_LANCER, UnitOwner=11, (Zara Yaqob)
+		UnitType=UNIT_LANCER, UnitOwner=12, (Zara Yaqob)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_LANCER, UnitOwner=11, (Zara Yaqob)
+		UnitType=UNIT_LANCER, UnitOwner=12, (Zara Yaqob)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=11, (Zara Yaqob)
+		UnitType=UNIT_ARQUEBUSIER, UnitOwner=12, (Zara Yaqob)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=11, (Zara Yaqob)
+		UnitType=UNIT_ARQUEBUSIER, UnitOwner=12, (Zara Yaqob)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=11, (Zara Yaqob)
+		UnitType=UNIT_ARQUEBUSIER, UnitOwner=12, (Zara Yaqob)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=11, (Zara Yaqob)
+		UnitType=UNIT_ARQUEBUSIER, UnitOwner=12, (Zara Yaqob)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=11, (Zara Yaqob)
+		UnitType=UNIT_ARQUEBUSIER, UnitOwner=12, (Zara Yaqob)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=11, (Zara Yaqob)
+		UnitType=UNIT_ARQUEBUSIER, UnitOwner=12, (Zara Yaqob)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_BOMBARD, UnitOwner=11, (Zara Yaqob)
+		UnitType=UNIT_BOMBARD, UnitOwner=12, (Zara Yaqob)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_BOMBARD, UnitOwner=11, (Zara Yaqob)
+		UnitType=UNIT_BOMBARD, UnitOwner=12, (Zara Yaqob)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_BOMBARD, UnitOwner=11, (Zara Yaqob)
+		UnitType=UNIT_BOMBARD, UnitOwner=12, (Zara Yaqob)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_BOMBARD, UnitOwner=11, (Zara Yaqob)
+		UnitType=UNIT_BOMBARD, UnitOwner=12, (Zara Yaqob)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_WORKER, UnitOwner=11, (Zara Yaqob)
+		UnitType=UNIT_WORKER, UnitOwner=12, (Zara Yaqob)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_WORKER, UnitOwner=11, (Zara Yaqob)
+		UnitType=UNIT_WORKER, UnitOwner=12, (Zara Yaqob)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_WORKER, UnitOwner=11, (Zara Yaqob)
+		UnitType=UNIT_WORKER, UnitOwner=12, (Zara Yaqob)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
-		CityOwner=11, (Zara Yaqob)
+		CityOwner=12, (Zara Yaqob)
 		CityName=Aksum
 		CityPopulation=7
 		BuildingType=BUILDING_PALACE
@@ -43871,7 +43871,7 @@ BeginPlot
 		BuildingType=BUILDING_ORTHODOX_TEMPLE
 		BuildingType=BUILDING_ORTHODOX_MONASTERY
 		ReligionType=RELIGION_ORTHODOXY
-		Player11Culture=500, (Zara Yaqob)
+		Player12Culture=500, (Zara Yaqob)
 	EndCity
 EndPlot
 BeginPlot
@@ -47617,12 +47617,10 @@ BeginPlot
 	BeginUnit
 		UnitType=UNIT_IRANIAN_QIZILBASH, UnitOwner=8, (Abbas I)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_GUERILLA1
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_IRANIAN_QIZILBASH, UnitOwner=8, (Abbas I)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_GUERILLA1
 	EndUnit
 	BeginCity
 		CityOwner=8, (Abbas I)
@@ -49133,57 +49131,46 @@ BeginPlot
 	BeginUnit
 		UnitType=UNIT_IRANIAN_QIZILBASH, UnitOwner=8, (Abbas I)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_GUERILLA1
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_IRANIAN_QIZILBASH, UnitOwner=8, (Abbas I)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_GUERILLA1
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_IRANIAN_QIZILBASH, UnitOwner=8, (Abbas I)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_GUERILLA1
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_IRANIAN_QIZILBASH, UnitOwner=8, (Abbas I)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_GUERILLA1
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_IRANIAN_QIZILBASH, UnitOwner=8, (Abbas I)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_GUERILLA1
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_IRANIAN_QIZILBASH, UnitOwner=8, (Abbas I)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_GUERILLA1
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_IRANIAN_QIZILBASH, UnitOwner=8, (Abbas I)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_GUERILLA1
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_IRANIAN_QIZILBASH, UnitOwner=8, (Abbas I)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_GUERILLA1
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_IRANIAN_QIZILBASH, UnitOwner=8, (Abbas I)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_GUERILLA1
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_IRANIAN_QIZILBASH, UnitOwner=8, (Abbas I)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_GUERILLA1
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_IRANIAN_QIZILBASH, UnitOwner=8, (Abbas I)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_GUERILLA1
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_BOMBARD, UnitOwner=8, (Abbas I)
@@ -49265,7 +49252,6 @@ BeginPlot
 	BeginUnit
 		UnitType=UNIT_IRANIAN_QIZILBASH, UnitOwner=8, (Abbas I)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_GUERILLA1
 	EndUnit
 	BeginCity
 		CityOwner=8, (Abbas I)
@@ -49709,7 +49695,6 @@ BeginPlot
 	BeginUnit
 		UnitType=UNIT_IRANIAN_QIZILBASH, UnitOwner=8, (Abbas I)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_GUERILLA1
 	EndUnit
 	BeginCity
 		CityOwner=8, (Abbas I)
@@ -51187,7 +51172,6 @@ BeginPlot
 	BeginUnit
 		UnitType=UNIT_IRANIAN_QIZILBASH, UnitOwner=8, (Abbas I)
 		Level=1, Experience=0
-		PromotionType=PROMOTION_GUERILLA1
 	EndUnit
 	BeginCity
 		CityOwner=8, (Abbas I)
@@ -55366,15 +55350,15 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=1
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=10, (Rajendra Chola)
+		UnitType=UNIT_ARQUEBUSIER, UnitOwner=11, (Rajendra Chola)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=10, (Rajendra Chola)
+		UnitType=UNIT_ARQUEBUSIER, UnitOwner=11, (Rajendra Chola)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
-		CityOwner=10, (Rajendra Chola)
+		CityOwner=11, (Rajendra Chola)
 		CityName=Vijayanagara
 		CityPopulation=7
 		BuildingType=BUILDING_BARRACKS
@@ -55394,7 +55378,7 @@ BeginPlot
 		BuildingType=BUILDING_HINDU_MONASTERY
 		ReligionType=RELIGION_ISLAM
 		ReligionType=RELIGION_HINDUISM
-		Player10Culture=700, (Rajendra Chola)
+		Player11Culture=700, (Rajendra Chola)
 	EndCity
 EndPlot
 BeginPlot
@@ -56042,55 +56026,55 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=10, (Rajendra Chola)
+		UnitType=UNIT_ARQUEBUSIER, UnitOwner=11, (Rajendra Chola)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=10, (Rajendra Chola)
+		UnitType=UNIT_ARQUEBUSIER, UnitOwner=11, (Rajendra Chola)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=10, (Rajendra Chola)
+		UnitType=UNIT_ARQUEBUSIER, UnitOwner=11, (Rajendra Chola)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=10, (Rajendra Chola)
+		UnitType=UNIT_ARQUEBUSIER, UnitOwner=11, (Rajendra Chola)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=10, (Rajendra Chola)
+		UnitType=UNIT_ARQUEBUSIER, UnitOwner=11, (Rajendra Chola)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=10, (Rajendra Chola)
+		UnitType=UNIT_ARQUEBUSIER, UnitOwner=11, (Rajendra Chola)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_BOMBARD, UnitOwner=10, (Rajendra Chola)
+		UnitType=UNIT_BOMBARD, UnitOwner=11, (Rajendra Chola)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_BOMBARD, UnitOwner=10, (Rajendra Chola)
+		UnitType=UNIT_BOMBARD, UnitOwner=11, (Rajendra Chola)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_BOMBARD, UnitOwner=10, (Rajendra Chola)
+		UnitType=UNIT_BOMBARD, UnitOwner=11, (Rajendra Chola)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_WORKER, UnitOwner=10, (Rajendra Chola)
+		UnitType=UNIT_WORKER, UnitOwner=11, (Rajendra Chola)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_WORKER, UnitOwner=10, (Rajendra Chola)
+		UnitType=UNIT_WORKER, UnitOwner=11, (Rajendra Chola)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_WORKER, UnitOwner=10, (Rajendra Chola)
+		UnitType=UNIT_WORKER, UnitOwner=11, (Rajendra Chola)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
-		CityOwner=10, (Rajendra Chola)
+		CityOwner=11, (Rajendra Chola)
 		CityName=Mahishuru
 		CityPopulation=7
 		BuildingType=BUILDING_PALACE
@@ -56110,7 +56094,7 @@ BeginPlot
 		BuildingType=BUILDING_HINDU_TEMPLE
 		BuildingType=BUILDING_HINDU_MONASTERY
 		ReligionType=RELIGION_HINDUISM
-		Player10Culture=500, (Rajendra Chola)
+		Player11Culture=500, (Rajendra Chola)
 	EndCity
 EndPlot
 BeginPlot
@@ -59432,11 +59416,11 @@ BeginPlot
 	TerrainType=TERRAIN_PLAINS
 	PlotType=1
 	BeginUnit
-		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=3, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
-		CityOwner=1, (Kangxi)
+		CityOwner=3, (Kangxi)
 		CityName=Khovd
 		CityPopulation=4
 		BuildingType=BUILDING_GRANARY
@@ -59446,7 +59430,7 @@ BeginPlot
 		BuildingType=BUILDING_FORGE
 		ReligionType=RELIGION_BUDDHISM
 		ReligionType=RELIGION_CONFUCIANISM
-		Player1Culture=50, (Kangxi)
+		Player3Culture=50, (Kangxi)
 	EndCity
 EndPlot
 BeginPlot
@@ -60893,11 +60877,11 @@ BeginPlot
 	TerrainType=TERRAIN_DESERT
 	PlotType=1
 	BeginUnit
-		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=3, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
-		CityOwner=1, (Kangxi)
+		CityOwner=3, (Kangxi)
 		CityName=Dunhuang
 		CityPopulation=4
 		BuildingType=BUILDING_GRANARY
@@ -60911,7 +60895,7 @@ BeginPlot
 		ReligionType=RELIGION_BUDDHISM
 		ReligionType=RELIGION_CONFUCIANISM
 		ReligionType=RELIGION_TAOISM
-		Player1Culture=200, (Kangxi)
+		Player3Culture=200, (Kangxi)
 	EndCity
 EndPlot
 BeginPlot
@@ -62354,11 +62338,11 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=1
 	BeginUnit
-		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=3, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
-		CityOwner=1, (Kangxi)
+		CityOwner=3, (Kangxi)
 		CityName=Kunming
 		CityPopulation=7
 		BuildingType=BUILDING_GRANARY
@@ -62375,7 +62359,7 @@ BeginPlot
 		ReligionType=RELIGION_BUDDHISM
 		ReligionType=RELIGION_CONFUCIANISM
 		ReligionType=RELIGION_TAOISM
-		Player1Culture=100, (Kangxi)
+		Player3Culture=100, (Kangxi)
 	EndCity
 EndPlot
 BeginPlot
@@ -62433,11 +62417,11 @@ BeginPlot
 	TerrainType=TERRAIN_PLAINS
 	PlotType=1
 	BeginUnit
-		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=3, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
-		CityOwner=1, (Kangxi)
+		CityOwner=3, (Kangxi)
 		CityName=Lanzhou
 		CityPopulation=4
 		BuildingType=BUILDING_BARRACKS
@@ -62450,7 +62434,7 @@ BeginPlot
 		BuildingType=BUILDING_POST_OFFICE
 		ReligionType=RELIGION_BUDDHISM
 		ReligionType=RELIGION_CONFUCIANISM
-		Player1Culture=50, (Kangxi)
+		Player3Culture=50, (Kangxi)
 	EndCity
 EndPlot
 BeginPlot
@@ -63057,11 +63041,11 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=1
 	BeginUnit
-		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=3, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
-		CityOwner=1, (Kangxi)
+		CityOwner=3, (Kangxi)
 		CityName=Chengdu
 		CityPopulation=10
 		BuildingType=BUILDING_BARRACKS
@@ -63088,7 +63072,7 @@ BeginPlot
 		ReligionType=RELIGION_BUDDHISM
 		ReligionType=RELIGION_CONFUCIANISM
 		ReligionType=RELIGION_TAOISM
-		Player1Culture=600, (Kangxi)
+		Player3Culture=600, (Kangxi)
 	EndCity
 EndPlot
 BeginPlot
@@ -63182,15 +63166,15 @@ BeginPlot
 	TerrainType=TERRAIN_PLAINS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=3, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=3, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
-		CityOwner=1, (Kangxi)
+		CityOwner=3, (Kangxi)
 		CityName=Ulanbaatar
 		CityPopulation=7
 		BuildingType=BUILDING_BARRACKS
@@ -63210,7 +63194,7 @@ BeginPlot
 		BuildingType=BUILDING_SILVER_TREE_FOUNTAIN
 		ReligionType=RELIGION_BUDDHISM
 		ReligionType=RELIGION_CONFUCIANISM
-		Player1Culture=50, (Kangxi)
+		Player3Culture=50, (Kangxi)
 	EndCity
 EndPlot
 BeginPlot
@@ -64211,11 +64195,11 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=1
 	BeginUnit
-		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=3, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
-		CityOwner=1, (Kangxi)
+		CityOwner=3, (Kangxi)
 		CityName=Guiyang
 		CityPopulation=5
 		BuildingType=BUILDING_GRANARY
@@ -64228,7 +64212,7 @@ BeginPlot
 		ReligionType=RELIGION_BUDDHISM
 		ReligionType=RELIGION_CONFUCIANISM
 		ReligionType=RELIGION_TAOISM
-		Player1Culture=50, (Kangxi)
+		Player3Culture=50, (Kangxi)
 	EndCity
 EndPlot
 BeginPlot
@@ -64253,11 +64237,11 @@ BeginPlot
 	TerrainType=TERRAIN_PLAINS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=3, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
-		CityOwner=1, (Kangxi)
+		CityOwner=3, (Kangxi)
 		CityName=Chongqing
 		CityPopulation=7
 		BuildingType=BUILDING_GRANARY
@@ -64274,7 +64258,7 @@ BeginPlot
 		ReligionType=RELIGION_BUDDHISM
 		ReligionType=RELIGION_CONFUCIANISM
 		ReligionType=RELIGION_TAOISM
-		Player1Culture=100, (Kangxi)
+		Player3Culture=100, (Kangxi)
 	EndCity
 EndPlot
 BeginPlot
@@ -64306,11 +64290,11 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=1
 	BeginUnit
-		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=3, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
-		CityOwner=1, (Kangxi)
+		CityOwner=3, (Kangxi)
 		CityName=Xi'an
 		CityPopulation=11
 		BuildingType=BUILDING_BARRACKS
@@ -64343,7 +64327,7 @@ BeginPlot
 		ReligionType=RELIGION_TAOISM
 		FreeSpecialistType=SPECIALIST_GREAT_ARTIST
 		FreeSpecialistType=SPECIALIST_GREAT_GENERAL
-		Player1Culture=2000, (Kangxi)
+		Player3Culture=2000, (Kangxi)
 	EndCity
 EndPlot
 BeginPlot
@@ -64382,11 +64366,11 @@ BeginPlot
 	TerrainType=TERRAIN_PLAINS
 	PlotType=1
 	BeginUnit
-		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=3, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
-		CityOwner=1, (Kangxi)
+		CityOwner=3, (Kangxi)
 		CityName=Baotou
 		CityPopulation=5
 		BuildingType=BUILDING_GRANARY
@@ -64396,7 +64380,7 @@ BeginPlot
 		BuildingType=BUILDING_FORGE
 		ReligionType=RELIGION_BUDDHISM
 		ReligionType=RELIGION_CONFUCIANISM
-		Player1Culture=50, (Kangxi)
+		Player3Culture=50, (Kangxi)
 	EndCity
 EndPlot
 BeginPlot
@@ -65933,11 +65917,11 @@ BeginPlot
 	TerrainType=TERRAIN_PLAINS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=3, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
-		CityOwner=1, (Kangxi)
+		CityOwner=3, (Kangxi)
 		CityName=Changsha
 		CityPopulation=8
 		BuildingType=BUILDING_GRANARY
@@ -65953,7 +65937,7 @@ BeginPlot
 		ReligionType=RELIGION_BUDDHISM
 		ReligionType=RELIGION_CONFUCIANISM
 		ReligionType=RELIGION_TAOISM
-		Player1Culture=100, (Kangxi)
+		Player3Culture=100, (Kangxi)
 	EndCity
 EndPlot
 BeginPlot
@@ -65991,11 +65975,11 @@ BeginPlot
 	TerrainType=TERRAIN_PLAINS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=3, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
-		CityOwner=1, (Kangxi)
+		CityOwner=3, (Kangxi)
 		CityName=Kaifeng
 		CityPopulation=10
 		BuildingType=BUILDING_BARRACKS
@@ -66020,7 +66004,7 @@ BeginPlot
 		ReligionType=RELIGION_BUDDHISM
 		ReligionType=RELIGION_CONFUCIANISM
 		ReligionType=RELIGION_TAOISM
-		Player1Culture=500, (Kangxi)
+		Player3Culture=500, (Kangxi)
 	EndCity
 EndPlot
 BeginPlot
@@ -66053,103 +66037,103 @@ BeginPlot
 	TerrainType=TERRAIN_PLAINS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_CUIRASSIER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CUIRASSIER, UnitOwner=3, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_CUIRASSIER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CUIRASSIER, UnitOwner=3, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_CUIRASSIER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CUIRASSIER, UnitOwner=3, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_CUIRASSIER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CUIRASSIER, UnitOwner=3, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_CUIRASSIER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CUIRASSIER, UnitOwner=3, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=3, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=3, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=3, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=3, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=3, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=3, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=3, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=3, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=3, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=3, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=3, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=3, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_BOMBARD, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_BOMBARD, UnitOwner=3, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_BOMBARD, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_BOMBARD, UnitOwner=3, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_BOMBARD, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_BOMBARD, UnitOwner=3, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_WORKER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_WORKER, UnitOwner=3, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_WORKER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_WORKER, UnitOwner=3, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_WORKER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_WORKER, UnitOwner=3, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_WORKER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_WORKER, UnitOwner=3, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
-		CityOwner=1, (Kangxi)
+		CityOwner=3, (Kangxi)
 		CityName=Beijing
 		CityPopulation=14
 		BuildingType=BUILDING_PALACE
@@ -66186,7 +66170,7 @@ BeginPlot
 		FreeSpecialistType=SPECIALIST_GREAT_ARTIST
 		FreeSpecialistType=SPECIALIST_GREAT_STATESMAN
 		FreeSpecialistType=SPECIALIST_GREAT_GENERAL
-		Player1Culture=2000, (Kangxi)
+		Player3Culture=2000, (Kangxi)
 	EndCity
 EndPlot
 BeginPlot
@@ -66232,11 +66216,11 @@ BeginPlot
 	TerrainType=TERRAIN_PLAINS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=3, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
-		CityOwner=1, (Kangxi)
+		CityOwner=3, (Kangxi)
 		CityName=Choibalsan
 		CityPopulation=4
 		BuildingType=BUILDING_GRANARY
@@ -66246,7 +66230,7 @@ BeginPlot
 		BuildingType=BUILDING_FORGE
 		ReligionType=RELIGION_BUDDHISM
 		ReligionType=RELIGION_CONFUCIANISM
-		Player1Culture=30, (Kangxi)
+		Player3Culture=30, (Kangxi)
 	EndCity
 EndPlot
 BeginPlot
@@ -66598,15 +66582,15 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=3, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=3, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
-		CityOwner=1, (Kangxi)
+		CityOwner=3, (Kangxi)
 		CityName=Guangzhou
 		CityPopulation=10
 		BuildingType=BUILDING_GRANARY
@@ -66629,7 +66613,7 @@ BeginPlot
 		ReligionType=RELIGION_BUDDHISM
 		ReligionType=RELIGION_CONFUCIANISM
 		ReligionType=RELIGION_TAOISM
-		Player1Culture=300, (Kangxi)
+		Player3Culture=300, (Kangxi)
 	EndCity
 EndPlot
 BeginPlot
@@ -67783,11 +67767,11 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=3, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
-		CityOwner=1, (Kangxi)
+		CityOwner=3, (Kangxi)
 		CityName=Nanjing
 		CityPopulation=10
 		BuildingType=BUILDING_BARRACKS
@@ -67814,7 +67798,7 @@ BeginPlot
 		ReligionType=RELIGION_CONFUCIANISM
 		HolyCityReligionType=RELIGION_CONFUCIANISM
 		ReligionType=RELIGION_TAOISM
-		Player1Culture=500, (Kangxi)
+		Player3Culture=500, (Kangxi)
 	EndCity
 EndPlot
 BeginPlot
@@ -67898,11 +67882,11 @@ BeginPlot
 	TerrainType=TERRAIN_PLAINS
 	PlotType=1
 	BeginUnit
-		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=3, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
-		CityOwner=1, (Kangxi)
+		CityOwner=3, (Kangxi)
 		CityName=Hulun Buir
 		CityPopulation=5
 		BuildingType=BUILDING_BARRACKS
@@ -67913,7 +67897,7 @@ BeginPlot
 		BuildingType=BUILDING_FORGE
 		ReligionType=RELIGION_BUDDHISM
 		ReligionType=RELIGION_CONFUCIANISM
-		Player1Culture=50, (Kangxi)
+		Player3Culture=50, (Kangxi)
 	EndCity
 EndPlot
 BeginPlot
@@ -68260,11 +68244,11 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=1
 	BeginUnit
-		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=3, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
-		CityOwner=1, (Kangxi)
+		CityOwner=3, (Kangxi)
 		CityName=Fuzhou
 		CityPopulation=8
 		BuildingType=BUILDING_GRANARY
@@ -68286,7 +68270,7 @@ BeginPlot
 		ReligionType=RELIGION_BUDDHISM
 		ReligionType=RELIGION_CONFUCIANISM
 		ReligionType=RELIGION_TAOISM
-		Player1Culture=200, (Kangxi)
+		Player3Culture=200, (Kangxi)
 	EndCity
 EndPlot
 BeginPlot
@@ -68369,15 +68353,15 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=3, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=3, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
-		CityOwner=1, (Kangxi)
+		CityOwner=3, (Kangxi)
 		CityName=Shenyang
 		CityPopulation=8
 		BuildingType=BUILDING_BARRACKS
@@ -68399,7 +68383,7 @@ BeginPlot
 		ReligionType=RELIGION_BUDDHISM
 		ReligionType=RELIGION_CONFUCIANISM
 		ReligionType=RELIGION_TAOISM
-		Player1Culture=300, (Kangxi)
+		Player3Culture=300, (Kangxi)
 	EndCity
 EndPlot
 BeginPlot
@@ -68838,15 +68822,15 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=3, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=3, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
-		CityOwner=1, (Kangxi)
+		CityOwner=3, (Kangxi)
 		CityName=Shanghai
 		CityPopulation=12
 		BuildingType=BUILDING_GRANARY
@@ -68874,7 +68858,7 @@ BeginPlot
 		ReligionType=RELIGION_BUDDHISM
 		ReligionType=RELIGION_CONFUCIANISM
 		ReligionType=RELIGION_TAOISM
-		Player1Culture=200, (Kangxi)
+		Player3Culture=200, (Kangxi)
 	EndCity
 EndPlot
 BeginPlot
@@ -69434,11 +69418,11 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=12, (Sejong)
+		UnitType=UNIT_ARQUEBUSIER, UnitOwner=13, (Sejong)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
-		CityOwner=12, (Sejong)
+		CityOwner=13, (Sejong)
 		CityName=P'yongyang
 		CityPopulation=8
 		BuildingType=BUILDING_BARRACKS
@@ -69458,7 +69442,7 @@ BeginPlot
 		BuildingType=BUILDING_CONFUCIAN_MONASTERY
 		ReligionType=RELIGION_BUDDHISM
 		ReligionType=RELIGION_CONFUCIANISM
-		Player12Culture=400, (Sejong)
+		Player13Culture=400, (Sejong)
 	EndCity
 EndPlot
 BeginPlot
@@ -69498,11 +69482,11 @@ BeginPlot
 	TerrainType=TERRAIN_PLAINS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=3, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
-		CityOwner=1, (Kangxi)
+		CityOwner=3, (Kangxi)
 		CityName=Harbin
 		CityPopulation=6
 		BuildingType=BUILDING_BARRACKS
@@ -69517,7 +69501,7 @@ BeginPlot
 		BuildingType=BUILDING_CONFUCIAN_TEMPLE
 		ReligionType=RELIGION_BUDDHISM
 		ReligionType=RELIGION_CONFUCIANISM
-		Player1Culture=50, (Kangxi)
+		Player3Culture=50, (Kangxi)
 	EndCity
 EndPlot
 BeginPlot
@@ -69993,79 +69977,79 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_CUIRASSIER, UnitOwner=12, (Sejong)
+		UnitType=UNIT_CUIRASSIER, UnitOwner=13, (Sejong)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_CUIRASSIER, UnitOwner=12, (Sejong)
+		UnitType=UNIT_CUIRASSIER, UnitOwner=13, (Sejong)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_CUIRASSIER, UnitOwner=12, (Sejong)
+		UnitType=UNIT_CUIRASSIER, UnitOwner=13, (Sejong)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_CUIRASSIER, UnitOwner=12, (Sejong)
+		UnitType=UNIT_CUIRASSIER, UnitOwner=13, (Sejong)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=12, (Sejong)
+		UnitType=UNIT_ARQUEBUSIER, UnitOwner=13, (Sejong)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=12, (Sejong)
+		UnitType=UNIT_ARQUEBUSIER, UnitOwner=13, (Sejong)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=12, (Sejong)
+		UnitType=UNIT_ARQUEBUSIER, UnitOwner=13, (Sejong)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=12, (Sejong)
+		UnitType=UNIT_ARQUEBUSIER, UnitOwner=13, (Sejong)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=12, (Sejong)
+		UnitType=UNIT_ARQUEBUSIER, UnitOwner=13, (Sejong)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=12, (Sejong)
+		UnitType=UNIT_ARQUEBUSIER, UnitOwner=13, (Sejong)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=12, (Sejong)
+		UnitType=UNIT_ARQUEBUSIER, UnitOwner=13, (Sejong)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=12, (Sejong)
+		UnitType=UNIT_ARQUEBUSIER, UnitOwner=13, (Sejong)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_KOREAN_HWACHA, UnitOwner=12, (Sejong)
+		UnitType=UNIT_KOREAN_HWACHA, UnitOwner=13, (Sejong)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_KOREAN_HWACHA, UnitOwner=12, (Sejong)
+		UnitType=UNIT_KOREAN_HWACHA, UnitOwner=13, (Sejong)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_KOREAN_HWACHA, UnitOwner=12, (Sejong)
+		UnitType=UNIT_KOREAN_HWACHA, UnitOwner=13, (Sejong)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_WORKER, UnitOwner=12, (Sejong)
+		UnitType=UNIT_WORKER, UnitOwner=13, (Sejong)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_WORKER, UnitOwner=12, (Sejong)
+		UnitType=UNIT_WORKER, UnitOwner=13, (Sejong)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_WORKER, UnitOwner=12, (Sejong)
+		UnitType=UNIT_WORKER, UnitOwner=13, (Sejong)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
-		CityOwner=12, (Sejong)
+		CityOwner=13, (Sejong)
 		CityName=Hanseong
 		CityPopulation=12
 		BuildingType=BUILDING_PALACE
@@ -70093,7 +70077,7 @@ BeginPlot
 		ReligionType=RELIGION_BUDDHISM
 		ReligionType=RELIGION_CONFUCIANISM
 		FreeSpecialistType=SPECIALIST_GREAT_STATESMAN
-		Player12Culture=1200, (Sejong)
+		Player13Culture=1200, (Sejong)
 	EndCity
 EndPlot
 BeginPlot
@@ -71065,11 +71049,11 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=12, (Sejong)
+		UnitType=UNIT_ARQUEBUSIER, UnitOwner=13, (Sejong)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
-		CityOwner=12, (Sejong)
+		CityOwner=13, (Sejong)
 		CityName=Busan
 		CityPopulation=10
 		BuildingType=BUILDING_GRANARY
@@ -71088,7 +71072,7 @@ BeginPlot
 		BuildingType=BUILDING_CHEOMSEONGDAE
 		ReligionType=RELIGION_BUDDHISM
 		ReligionType=RELIGION_CONFUCIANISM
-		Player12Culture=600, (Sejong)
+		Player13Culture=600, (Sejong)
 	EndCity
 EndPlot
 BeginPlot
@@ -71130,18 +71114,18 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=1
 	BeginUnit
-		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=3, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
-		CityOwner=1, (Kangxi)
+		CityOwner=3, (Kangxi)
 		CityName=Haishenwai
 		CityPopulation=3
 		BuildingType=BUILDING_GRANARY
 		BuildingType=BUILDING_HARBOR
 		BuildingType=BUILDING_AQUEDUCT
 		BuildingType=BUILDING_FORGE
-		Player1Culture=20, (Kangxi)
+		Player3Culture=20, (Kangxi)
 	EndCity
 EndPlot
 BeginPlot

@@ -9,20 +9,20 @@ iWorldY = 80
 
 # initialise player variables to player IDs from WBS
 iNumPlayers = 45
-(iEgypt, iChina, iBabylonia, iHarappa, iGreece, iIndia, iCarthage, iPolynesia, iPersia, iRome, 
-iTamils, iEthiopia, iKorea, iMaya, iByzantium, iJapan, iVikings, iTurks, iArabia, iTibet, 
+(iEgypt, iBabylonia, iHarappa, iChina, iGreece, iIndia, iCarthage, iPolynesia, iPersia, iRome, 
+iMaya, iTamils, iEthiopia, iKorea, iByzantium, iJapan, iVikings, iTurks, iArabia, iTibet, 
 iIndonesia, iMoors, iSpain, iFrance, iKhmer, iEngland, iHolyRome, iRussia, iMali, iPoland, 
 iPortugal, iInca, iItaly, iMongolia, iAztecs, iMughals, iOttomans, iThailand, iCongo, iNetherlands, 
 iGermany, iAmerica, iArgentina, iBrazil, iCanada) = range(iNumPlayers)
 
-(pEgypt, pChina, pBabylonia, pHarappa, pGreece, pIndia, pCarthage, pPolynesia, pPersia, pRome, 
-pTamils, pEthiopia, pKorea, pMaya, pByzantium, pJapan, pVikings, pTurks, pArabia, pTibet, 
+(pEgypt, pBabylonia, pHarappa, pChina, pGreece, pIndia, pCarthage, pPolynesia, pPersia, pRome, 
+pMaya, pTamils, pEthiopia, pKorea, pByzantium, pJapan, pVikings, pTurks, pArabia, pTibet, 
 pIndonesia, pMoors, pSpain, pFrance, pKhmer, pEngland, pHolyRome, pRussia, pMali, pPoland, 
 pPortugal, pInca, pItaly, pMongolia, pAztecs, pMughals, pOttomans, pThailand, pCongo, pNetherlands, 
 pGermany, pAmerica, pArgentina, pBrazil, pCanada) = [gc.getPlayer(i) for i in range(iNumPlayers)]
 
-(teamEgypt, teamChina, teamBabylonia, teamHarappa, teamGreece, teamIndia, teamCarthage, teamPolynesia, teamPersia, teamRome, 
-teamTamils, teamEthiopia, teamKorea, teamMaya, teamByzantium, teamJapan, teamVikings, teamTurks, teamArabia, teamTibet, 
+(teamEgypt, teamBabylonia, teamHarappa, teamChina, teamGreece, teamIndia, teamCarthage, teamPolynesia, teamPersia, teamRome, 
+teamMaya, teamTamils, teamEthiopia, teamKorea, teamByzantium, teamJapan, teamVikings, teamTurks, teamArabia, teamTibet, 
 teamIndonesia, teamMoors, teamSpain, teamFrance, teamKhmer, teamEngland, teamHolyRome, teamRussia, teamMali, teamPoland, 
 teamPortugal, teamInca, teamItaly, teamMongolia, teamAztecs, teamMughals, teamOttomans, teamThailand, teamCongo, teamNetherlands, 
 teamGermany, teamAmerica, teamArgentina, teamBrazil, teamCanada) = [gc.getTeam(i) for i in range(iNumPlayers)]
@@ -148,9 +148,9 @@ iNumConquests = 13
 #neighbours
 lNeighbours = [
 [iBabylonia, iGreece, iPersia, iCarthage, iRome, iEthiopia, iByzantium, iArabia, iMoors, iOttomans], #Egypt
-[iIndia, iJapan, iKorea, iTurks, iTibet, iKhmer, iMongolia, iThailand], #China
 [iEgypt, iGreece, iPersia, iTurks, iOttomans, iMongolia, iCarthage, iByzantium], #Babylonia
 [iIndia, iPersia, iTamils, iTibet, iMughals], #Harappa
+[iIndia, iJapan, iKorea, iTurks, iTibet, iKhmer, iMongolia, iThailand], #China
 [iPersia, iCarthage, iRome, iByzantium, iHolyRome, iRussia, iOttomans, iItaly], #Greece
 [iChina, iHarappa, iPersia, iTamils, iTibet, iKhmer, iMongolia, iMughals, iThailand], #India
 [iEgypt, iGreece, iRome, iSpain, iMali, iPortugal, iBabylonia, iPersia, iArabia, iMoors, iOttomans, iItaly], #Carthage
@@ -197,9 +197,9 @@ lNeighbours = [
 #for stability hit on spawn
 lOlderNeighbours = [
 [], #Egypt
-[], #China
 [], #Babylonia
 [], #Harappa
+[], #China
 [iEgypt, iBabylonia], #Greece
 [iHarappa], #India
 [iEgypt, iBabylonia], #Carthage
@@ -248,19 +248,19 @@ lOlderNeighbours = [
 # converted to years - edead
 tBirth = (
 -3000, # 0, #3000BC			# Egypt
--3000, # 0, #3000BC			# China
 -3000, # 0, #3000BC			# Babylonia
 -3000,					# Harappa
+-2070,					# China
 -1600, # 50, #1600BC			# Greece
 -1500, # 0, #3000BC			# India
 -1200, # 66, #814BC # Leoreth: 1200 BC	# Carthage
 -1000,					# Polynesia
 -844, # 84, #844BC			# Persia
 -753, # 90, #753BC			# Rome
+-400, 					# Maya
 -300,					# Tamils
 -290, # 121, #300BC			# Ethiopia
 -50,					# Korea
-65, # 145, #60AD			# Maya
 330,					# Byzantium
 525, # 97, #660BC			# Japan
 551, # 177, #551AD			# Vikings
@@ -304,19 +304,19 @@ tBirth = (
 # Leoreth: stability penalty from this date on
 tFall = (
 -343,					# Egypt
-1127,					# China
 -539,					# Babylonia
 -1700,					# Harappa
+1127,					# China
 -146,					# Greece
 600, # end of Gupta Empire		# India
 -146,					# Phoenicia
 1200,					# Polynesia
 651,					# Persia
 235, # crisis of the third century	# Rome
+900,					# Maya
 1000,					# Tamils
 960,					# Ethiopia
 1255, #Mongol invasion			# Korea
-900,					# Maya
 1204, #fourth crusade			# Byzantium
 2020,					# Japan
 1300,					# Vikings
@@ -351,19 +351,19 @@ tFall = (
 
 dVictoryYears = {
 iCivEgypt : (-850, -100, 170),
-iCivChina : (1000, -1, 1800),
 iCivBabylonia : (-1, -850, -700),
 iCivHarappa : (-1600, -1500, -800),
+iCivChina : (1000, -1, 1800),
 iCivGreece : (-1, -330, -250),
 iCivIndia : (-100, 700, 1200),
 iCivCarthage : (-300, -100, 200),
 iCivPolynesia : (800, 1000, 1200),
 iCivPersia : (140, 350, 350),
 iCivRome : (100, 320, -1),
+iCivMaya : (600, 900, -1),
 iCivTamils : (800, 1000, 1200),
 iCivEthiopia : (-1, 600, 1910),
 iCivKorea : (1200, -1, -1),
-iCivMaya : (600, 900, -1),
 iCivByzantium : (1000, 1200, 1450),
 iCivJapan : (1600, 1940, -1),
 iCivVikings : (1050, 1100, 1500),
@@ -415,19 +415,19 @@ iAztecs : iCivMexico,
 
 tResurrectionIntervals = (
 [(900, 1300), (1800, 2020)], #Egypt
-[(600, 2020)], #China
 [(-3000, -500)], #Babylonia
 [],		# Harappa
+[(600, 2020)], #China
 [(1800, 2020)], #Greece
 [(1600, 1800), (1900, 2020)], #India
 [(-1000, -150)], #Carthage
 [],		# Polynesia
 [(220, 650), (1500, 2020)], #Persia
 [(-750, 450)], #Rome
+[(0, 800)], #Maya
 [(-300, 600), (1300, 1650)], #Tamils
 [(1270, 1520), (1850, 2020)], #Ethiopia
 [(1390, 2020)], #Korea
-[(0, 800)], #Maya
 [(1100, 1280)], #Byzantium
 [(1800, 2020)], #Japan
 [(1520, 2020)], #Vikings
@@ -464,20 +464,19 @@ tResurrectionIntervals = (
 #rnf. Some civs have a double entry, for a higher chance
 lEnemyCivsOnSpawn = [
 [], #Egypt
-[iIndependent,iIndependent2,iIndependent2], #China
 [iIndependent,iIndependent2], #Babylonia
 [], #Harappa
+[iIndependent,iIndependent2,iIndependent2], #China
 [iIndependent,iIndependent2,iBabylonia], #Greece
 [], #India
 [], #Carthage
 [], #Polynesia
 [iBabylonia,iBabylonia,iGreece,iCarthage,iCarthage], #Persia
-#[iEgypt,iGreece,iGreece,iCarthage,iCarthage], #Rome
-[], # rome for testing
+[], #Rome
+[], #Maya
 [], #Tamils
 [], #Ethiopia
 [], #Korea
-[], #Maya
 [iGreece, iPersia], #Byzantium
 [], #Japan
 [iEngland,iEngland,iFrance,iIndependent,iIndependent2], #Vikings
@@ -514,19 +513,19 @@ lEnemyCivsOnSpawn = [
 # Leoreth
 lTotalWarOnSpawn = [
 [], #Egypt
-[], #China
 [], #Babylonia
 [], #Harappa
+[], #China
 [], #Greece
 [], #India
 [], #Phoenicia
 [], #Polynesia
 [iBabylonia, iCarthage], #Persia
 [iGreece], #Rome
+[], #Maya
 [], #Tamils
 [], #Ethiopia
 [], #Korea
-[], #Maya
 [iGreece], #Byzantium
 [], #Japan
 [], #Vikings
@@ -564,19 +563,19 @@ lTotalWarOnSpawn = [
 #AIWars
 tAggressionLevel = (
 0, #Egypt
-1, #China
 1, #Babylonia
 0, #Harappa
+1, #China
 2, #Greece
 0, #India
 0, #Carthage
 0, #Polynesia
 3, #Persia
 3, #Rome
+1, #Maya
 1, #Tamils
 0, #Ethiopia
 0, #Korea
-1, #Maya
 1, #Byzantium
 1, #Japan
 2, #Viking
@@ -614,19 +613,19 @@ tAggressionLevel = (
 #war during rise of new civs
 tAIStopBirthThreshold = (
     80, #Egypt
-    60, #China
     50, #Babylonia
     50, #Harappa
+    60, #China
     50, #Greece #would be 80 but with Turks must be lower
     80, #India
     80, #Carthage
     80, #Polynesia
     70, #Persia
     80, #Rome
+    80, #Maya
     80, #Tamils
     80, #Ethiopia
     80, #Korea
-    80, #Maya
     80, #Byzantium
     80, #Japan
     80, #Viking
@@ -668,19 +667,19 @@ tAIStopBirthThreshold = (
 #RiseAndFall
 tResurrectionProb = (
 100, #Egypt
-100, #China
 40, #Babylonia
 0, #Harappa
+100, #China
 60, #Greece
 70, #India
 30, #Carthage
 40, #Polynesia
 70, #Persia
 65, #Rome
-20, #Tamils
+30, #Maya
+10, #Tamils
 80, #Ethopia
 100, #Korea
-30, #Maya
 65, #Byzantium
 100, #Japan
 90, #Viking
@@ -720,19 +719,19 @@ tResurrectionProb = (
 #Congresses.
 tPatienceThreshold = (
 30, #Egypt
-30, #China
 30, #Babylonia
 30, #Harappa
+30, #China
 35, #Greece
 50, #India
 35, #Carthage
 50, #Polynesia
 30, #Persia
 25, #Rome
+35, #Maya
 45, #Tamils
 20, #Ethopia
 25, #Korea
-35, #Maya
 25, #Byzantium
 25, #Japan
 30, #Viking
@@ -845,7 +844,7 @@ iFarari, iPistolier, iCossack, iMountedBrave, iCamelGunner, iCuirassier, iGendar
 iLlanero, iDragoon, iGuard, iGrenadierCavalry, iCavalry, iRural, iWarElephant, iBallistaElephant, iTank, iPanzer, 
 iMainBattleTank, iGunship, iCatapult, iBallista, iTrebuchet, iBombard, iHwacha, iSiegeElephant, iGreatBombard, iCannon, 
 iArtillery, iMachineGun, iHowitzer, iMobileArtillery, iWorkboat, iGalley, iWaka, iBireme, iWarGalley, iHeavyGalley, 
-iDromon, iLongship, iDharani, iCog, iGalleass, iDjong, iKobukson, iLanternas, iCaravel, iCarrack, 
+iDromon, iLongship, iCog, iDharani, iGalleass, iDjong, iKobukson, iLanternas, iCaravel, iCarrack, 
 iGalleon, iEastIndiaman, iPrivateer, iCorsair, iFrigate, iShipOfTheLine, iManOfWar, iIronclad, iTorpedoBoat, iCruiser, 
 iTransport, iDestroyer, iCorvette, iBattleship, iMissileCruiser, iStealthDestroyer, iSubmarine, iNuclearSubmarine, iCarrier, iBiplane, 
 iFighter, iZero, iJetFighter, iBomber, iStealthBomber, iGuidedMissile, iDrone, iNuclearBomber, iICBM, iSatellite, 

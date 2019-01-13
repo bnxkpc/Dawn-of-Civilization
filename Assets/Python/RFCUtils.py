@@ -1643,9 +1643,10 @@ class RFCUtils:
 		if x < 0 or y < 0: unit.kill(False, -1)
 		else: unit.setXY(x, y, False, True, False)
 		
-	def evacuate(self, tPlot):
+	def evacuate(self, iPlayer, tPlot):
 		for tLoopPlot in self.surroundingPlots(tPlot):
 			for unit in self.getUnitList(tLoopPlot):
+				if unit.getOwner() == iPlayer: continue
 				lPossibleTiles = self.surroundingPlots(tLoopPlot, 2, lambda (x, y): not self.isFree(unit.getOwner(), (x, y), bNoEnemyUnit=True, bCanEnter=True) or tPlot == (x, y))
 				tTargetPlot = self.getRandomEntry(lPossibleTiles)
 				if tTargetPlot:
@@ -1844,6 +1845,7 @@ class RFCUtils:
 		return lUnits
 		
 	def variation(self, iVariation):
+		iVariation = self.getTurns(iVariation)
 		return gc.getGame().getSorenRandNum(2 * iVariation, 'Variation') - iVariation
 		
 	def relocateGarrisonToClosestCity(self, city):

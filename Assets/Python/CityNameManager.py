@@ -15,7 +15,7 @@ PyPlayer = PyHelpers.PyPlayer
 iNumLanguages = 41
 (iLangEgyptian, iLangEgyptianArabic, iLangIndian, iLangChinese, iLangTibetan, 
 iLangBabylonian, iLangPersian, iLangGreek, iLangPhoenician, iLangLatin, 
-iLangJapanese, iLangEthiopian, iLangKorean, iLangMayan, iLangByzantine, 
+ iLangMayan,iLangJapanese, iLangEthiopian, iLangKorean, iLangByzantine, 
 iLangViking, iLangArabian, iLangKhmer, iLangIndonesian, iLangSpanish, 
 iLangFrench, iLangEnglish, iLangGerman, iLangRussian, iLangDutch, 
 iLangMalian, iLangPolish, iLangPortuguese, iLangQuechua, iLangItalian, 
@@ -34,23 +34,23 @@ def getLanguages(iCiv):
 	if iCiv == iEgypt:
 		if pCiv.getStateReligion() == iIslam: return (iLangArabian,)
 		return (iLangEgyptian,)
-	elif iCiv == iChina: return (iLangChinese,)
 	elif iCiv == iBabylonia: return (iLangBabylonian,)
 	elif iCiv == iHarappa: return (iLangHarappan, iLangIndian)
-	elif iCiv == iIndia: return (iLangIndian,)
+	elif iCiv == iChina: return (iLangChinese,)
 	elif iCiv == iGreece: return (iLangGreek,)
+	elif iCiv == iIndia: return (iLangIndian,)
 	elif iCiv == iCarthage: return (iLangPhoenician,)
 	elif iCiv == iPolynesia: return (iLangPolynesian,)
 	elif iCiv == iPersia: 
 		if utils.isReborn(iCiv): return (iLangArabian, iLangPersian)
 		return (iLangPersian,)
 	elif iCiv == iRome: return (iLangLatin,)
-	elif iCiv == iTamils: return (iLangIndian,)
-	elif iCiv == iEthiopia: return (iLangEthiopian,)
-	elif iCiv == iKorea: return (iLangKorean, iLangChinese)
 	elif iCiv == iMaya: 
 		if utils.isReborn(iCiv): return (iLangSpanish,)
 		return (iLangMayan, iLangAztec)
+	elif iCiv == iTamils: return (iLangIndian,)
+	elif iCiv == iEthiopia: return (iLangEthiopian,)
+	elif iCiv == iKorea: return (iLangKorean, iLangChinese)
 	elif iCiv == iByzantium: return (iLangByzantine, iLangLatin)
 	elif iCiv == iJapan: return (iLangJapanese,)
 	elif iCiv == iVikings: return (iLangViking,)
@@ -3010,6 +3010,12 @@ tRenames = (
 	"Wien"			:	"Vindobona",
 	"Klagenfurt"		:	"Virunum",
 },
+#Language: Mayan
+{
+	"Danib&#225;an"		:	"Danib&#225;an",
+	"Teotihuacan"		:	"Puh",
+	"Q'umarkaj"		:	"Q'umarkaj",
+},
 #Language: Japanese
 {
 	"Akita"			:	"Akita",
@@ -3134,12 +3140,6 @@ tRenames = (
 	"P'yongyang"		:	"P'yongyang",
 	"Shenyang"		:	"Seonyang",
 	"Seoul"			:	"Seoul",
-},
-#Language: Mayan
-{
-	"Danib&#225;an"		:	"Danib&#225;an",
-	"Teotihuacan"		:	"Puh",
-	"Q'umarkaj"		:	"Q'umarkaj",
 },
 #Language: Byzantine
 {
