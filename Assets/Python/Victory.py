@@ -33,8 +33,8 @@ tEasterIslandTL = (19, 17)
 tEasterIslandBR = (21, 19)
 
 # second Roman goal: control Iberia, Gaul, Britain, Africa, Greece, Asia Minor and Egypt in 320 AD
-tFranceTL = (56, 56)
-tFranceBR = (63, 60)
+tFranceTL = (56, 55)
+tFranceBR = (63, 61)
 
 # second Roman goal: control Iberia, Gaul, Britain, Africa, Greece, Asia Minor and Egypt in 320 AD
 # second Arabian goal: control or vassalize Spain, the Maghreb, Egypt, Mesopotamia and Persia in 1300 AD
@@ -75,7 +75,6 @@ tIndonesiaTL = (98, 24)
 tIndonesiaBR = (109, 30)
 tPhilippinesTL = (108, 30)
 tPhilippinesBR = (110, 36)
-lJapanUHV2 = [rManchuria, rKorea, rChina, rIndochina, rIndonesia]
 
 # second Turkic goal: create an overland trade route from a city in China to a Mediterranean port by 1100 AD
 lMediterraneanPorts = [(66, 37), (66, 36), (67, 36), (68, 36), (69, 36), (70, 36), (71, 36), (72, 37), (73, 37), (73, 38), (73, 39), (73, 40), (73, 41), (73, 42), (71, 42), (70, 42), (70, 43), (69, 43), (69, 44), (68, 45)]
@@ -133,9 +132,9 @@ tBrazilTL = (32, 14)
 tBrazilBR = (43, 30)
 
 # third Italian goal: control 65% of the Mediterranean by 1930 AD
-tMediterraneanTL = (51, 36)
-tMediterraneanBR = (73, 47)
-tMediterraneanExceptions = ((51,36),(51,46),(52,46),(53,46),(53,47),(67,47),(67,46),(73,44),(73,45),(72,45),(71,45),(71,44),(70,44),(73,36))
+tMediterraneanTL = (57, 43)
+tMediterraneanBR = (85, 57)
+tMediterraneanExceptions = ((57, 44), (57, 45), (57, 54), (58, 54), (59, 55), (59, 56), (59, 57), (78, 56), (78, 57), (81, 43), (81, 54), (82, 55), (83, 55), (84, 43), (84, 55), (83, 42), (85, 54), (59, 54))
 
 # first Incan goal: build five Tambos and a road along the Andean coast by 1500 AD
 lAndeanCoast = [(25, 29), (24, 28), (24, 27), (24, 26), (24, 25), (25, 24), (25, 23), (26, 22), (27, 21), (28, 20), (29, 19), (30, 18), (30, 17), (30, 16), (30, 15), (30, 14)]
@@ -154,7 +153,7 @@ tVienna = (62, 49)
 tCairo = (69, 34)
 tMecca = (75, 33)
 tBaghdad = (77, 40)
-lEasternMediterranean = [(58, 39), (58, 38), (58, 37), (59, 37), (60, 37), (61, 37), (61, 36), (62, 36), (63, 36), (64, 36), (65, 36), (66, 36), (67, 36), (68, 36), (69, 36), (70, 36), (71, 36), (65, 37), (66, 37), (72, 37), (73, 37), (73, 38), (73, 39), (73, 40), (73, 41), (73, 42), (70, 42), (71, 42), (72, 42), (69, 43), (70, 43), (69, 44), (68, 45), (67, 44), (67, 45), (66, 44), (65, 43), (66, 43), (65, 42), (66, 42), (67, 42), (67, 41), (65, 40), (66, 40)]
+lEasternMediterranean = [(67, 48), (58, 38), (58, 37), (59, 37), (60, 37), (61, 37), (61, 36), (62, 36), (63, 36), (64, 36), (65, 36), (66, 36), (67, 36), (68, 36), (69, 36), (70, 36), (71, 36), (65, 37), (66, 37), (72, 37), (73, 37), (73, 38), (73, 39), (73, 40), (73, 41), (73, 42), (70, 42), (71, 42), (72, 42), (69, 43), (70, 43), (69, 44), (68, 45), (67, 44), (67, 45), (66, 44), (65, 43), (66, 43), (65, 42), (66, 42), (67, 42), (67, 41), (65, 40), (66, 40)]
 lBlackSea = [(69, 44), (70, 44), (71, 44), (71, 45), (72, 45), (73, 45), (73, 44), (74, 44), (75, 44), (76, 44), (76, 45), (76, 46), (76, 47), (75, 47), (74, 48), (75, 48), (72, 48), (74, 49), (73, 49), (71, 49), (69, 49), (69, 50), (70, 50), (71, 50), (72, 50), (73, 50), (68, 49), (68, 48), (67, 45), (67, 46), (67, 47), (67, 48), (68, 45)]
 
 # third Thai goal: allow no foreign powers in South Asia in 1900 AD
@@ -324,14 +323,14 @@ def checkTurn(iGameTurn, iPlayer):
 		
 		# second goal: make Babylon the most populous city in the world in 850 BC
 		if iGameTurn == getTurnForYear(-850):
-			if isBestCity(iBabylonia, (76, 40), cityPopulation):
+			if isBestCity(iBabylonia, (89, 47), cityPopulation):
 				win(iBabylonia, 1)
 			else:
 				lose(iBabylonia, 1)
 			
 		# third goal: make Babylon the most cultured city in the world in 700 BC
 		if iGameTurn == getTurnForYear(-700):
-			if isBestCity(iBabylonia, (76, 40), cityCulture):
+			if isBestCity(iBabylonia, (89, 47), cityCulture):
 				win(iBabylonia, 2)
 			else:
 				lose(iBabylonia, 2)
@@ -403,8 +402,8 @@ def checkTurn(iGameTurn, iPlayer):
 	
 		# first goal: build a Palace and the Great Cothon in Carthagee by 300 BC
 		if isPossible(iCarthage, 0):
-			bPalace = isBuildingInCity((58, 39), iPalace)
-			bGreatCothon = isBuildingInCity((58, 39), iGreatCothon)
+			bPalace = isBuildingInCity((67, 48), iPalace)
+			bGreatCothon = isBuildingInCity((67, 48), iGreatCothon)
 			if bPalace and bGreatCothon:
 				win(iCarthage, 0)
 		
@@ -3449,12 +3448,12 @@ def getUHVHelp(iPlayer, iGoal):
 			aHelp.append(getIcon(bConstruction) + localText.getText("TXT_KEY_TECH_CONSTRUCTION", ()) + ' ' + getIcon(bArithmetics) + localText.getText("TXT_KEY_TECH_ARITHMETICS", ()) + ' ' + getIcon(bWriting) + localText.getText("TXT_KEY_TECH_WRITING", ()))
 			aHelp.append(getIcon(bCalendar) + localText.getText("TXT_KEY_TECH_CALENDAR", ()) + ' ' + getIcon(bContract) + localText.getText("TXT_KEY_TECH_CONTRACT", ()))
 		elif iGoal == 1:
-			pBestCity = getBestCity(iBabylonia, (76, 40), cityPopulation)
-			bBestCity = isBestCity(iBabylonia, (76, 40), cityPopulation)
+			pBestCity = getBestCity(iBabylonia, (89, 47), cityPopulation)
+			bBestCity = isBestCity(iBabylonia, (89, 47), cityPopulation)
 			aHelp.append(getIcon(bBestCity) + localText.getText("TXT_KEY_VICTORY_MOST_POPULOUS_CITY", (pBestCity.getName(),)))
 		elif iGoal == 2:
-			pBestCity = getBestCity(iBabylonia, (76, 40), cityCulture)
-			bBestCity = isBestCity(iBabylonia, (76, 40), cityCulture)
+			pBestCity = getBestCity(iBabylonia, (89, 47), cityCulture)
+			bBestCity = isBestCity(iBabylonia, (89, 47), cityCulture)
 			aHelp.append(getIcon(bBestCity) + localText.getText("TXT_KEY_VICTORY_MOST_CULTURED_CITY", (pBestCity.getName(),)))
 
 	elif iPlayer == iGreece:
@@ -3496,8 +3495,8 @@ def getUHVHelp(iPlayer, iGoal):
 
 	elif iPlayer == iCarthage:
 		if iGoal == 0:
-			bPalace = isBuildingInCity((58, 39), iPalace)
-			bGreatCothon = isBuildingInCity((58, 39), iGreatCothon)
+			bPalace = isBuildingInCity((67, 48), iPalace)
+			bGreatCothon = isBuildingInCity((67, 48), iGreatCothon)
 			aHelp.append(getIcon(bPalace) + localText.getText("TXT_KEY_BUILDING_PALACE", ()) + ' ' + getIcon(bGreatCothon) + localText.getText("TXT_KEY_BUILDING_GREAT_COTHON", ()))
 		elif iGoal == 1:
 			bItaly = isControlled(iCarthage, utils.getPlotList(Areas.tNormalArea[iItaly][0], Areas.tNormalArea[iItaly][1], [(62, 47), (63, 47), (63, 46)]))
@@ -3638,14 +3637,15 @@ def getUHVHelp(iPlayer, iGoal):
 			iAverageCulture = getAverageCulture(iJapan)
 			aHelp.append(getIcon(iAverageCulture >= utils.getTurns(6000)) + localText.getText("TXT_KEY_VICTORY_AVERAGE_CULTURE", (iAverageCulture, utils.getTurns(6000))))
 		elif iGoal == 1:
-			bKorea = isControlledOrVassalized(iJapan, utils.getPlotList(tKoreaTL, tKoreaBR))
-			bManchuria = isControlledOrVassalized(iJapan, utils.getPlotList(tManchuriaTL, tManchuriaBR))
-			bChina = isControlledOrVassalized(iJapan, utils.getPlotList(tChinaTL, tChinaBR))
-			bIndochina = isControlledOrVassalized(iJapan, utils.getPlotList(tIndochinaTL, tIndochinaBR, tIndochinaExceptions))
-			bIndonesia = isControlledOrVassalized(iJapan, utils.getPlotList(tIndonesiaTL, tIndonesiaBR))
-			bPhilippines = isControlledOrVassalized(iJapan, utils.getPlotList(tPhilippinesTL, tPhilippinesBR))
+			bKorea = isControlledOrVassalized(iJapan, utils.getRegionPlotList(rKorea))
+			bManchuria = isControlledOrVassalized(iJapan, utils.getRegionPlotList(rManchuria))
+			bChina = isControlledOrVassalized(iJapan, utils.getRegionPlotList(rChina))
+			bIndochina = isControlledOrVassalized(iJapan, utils.getRegionPlotList(rIndochina))
+			bIndonesia = isControlledOrVassalized(iJapan, utils.getRegionPlotList(rIndonesia))
+			# bPhilippines = isControlledOrVassalized(iJapan, utils.getPlotList(tPhilippinesTL, tPhilippinesBR))
 			aHelp.append(getIcon(bKorea) + localText.getText("TXT_KEY_CIV_KOREA_SHORT_DESC", ()) + ' ' + getIcon(bManchuria) + localText.getText("TXT_KEY_VICTORY_MANCHURIA", ()) + ' ' + getIcon(bChina) + localText.getText("TXT_KEY_CIV_CHINA_SHORT_DESC", ()))
-			aHelp.append(getIcon(bIndochina) + localText.getText("TXT_KEY_VICTORY_INDOCHINA", ()) + ' ' + getIcon(bIndonesia) + localText.getText("TXT_KEY_CIV_INDONESIA_SHORT_DESC", ()) + ' ' + getIcon(bPhilippines) + localText.getText("TXT_KEY_VICTORY_PHILIPPINES", ()))
+			aHelp.append(getIcon(bIndochina) + localText.getText("TXT_KEY_VICTORY_INDOCHINA", ()) + ' ' + getIcon(bIndonesia) + localText.getText("TXT_KEY_CIV_INDONESIA_SHORT_DESC", ()))
+			# aHelp.append(getIcon(bIndochina) + localText.getText("TXT_KEY_VICTORY_INDOCHINA", ()) + ' ' + getIcon(bIndonesia) + localText.getText("TXT_KEY_CIV_INDONESIA_SHORT_DESC", ()) + ' ' + getIcon(bPhilippines) + localText.getText("TXT_KEY_VICTORY_PHILIPPINES", ()))
 		elif iGoal == 2:
 			iGlobalTechs = countFirstDiscovered(iJapan, iGlobal)
 			iDigitalTechs = countFirstDiscovered(iJapan, iDigital)
