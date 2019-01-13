@@ -1229,7 +1229,7 @@ class RiseAndFall:
 				
 				bBirthInCapital = False
 				
-				if iCiv in lConditionalCivs or bCapitalSettled:
+				if iCiv in lConditionalCivs or (bCapitalSettled and iCiv != iAztecs):
 					bBirthInCapital = True
 				
 				if iCiv == iOttomans:
