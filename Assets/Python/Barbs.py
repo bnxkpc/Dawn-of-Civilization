@@ -338,6 +338,11 @@ class Barbs:
 		if iGameTurn < getTurnForYear(tMinorCities[len(tMinorCities)-1][0])+10:
 			self.foundMinorCities(iGameTurn)
 
+		if iGameTurn == getTurnForYear(-1200):	
+			pJerusalem = gc.getGame().getHolyCity(iJudaism)
+			if pJerusalem and pJerusalem.getOwner() >= iNumMajorPlayers:
+				pJerusalem.setHasRealBuilding(iJewishShrine, True)
+
 		if iGameTurn == getTurnForYear(tBirth[iInca]):
 			if utils.getHumanID() == iInca:
 				utils.makeUnit(iAucac, iNative, (27, 28), 1)
