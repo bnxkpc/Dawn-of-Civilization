@@ -40125,7 +40125,8 @@ BeginPlot
 		CityName=Bakkah
 		CityPopulation=3
 		BuildingType=BUILDING_GRANARY
-		Player45Culture=10, (Independent Leader)
+		BuildingType=BUILDING_PAGAN_TEMPLE
+		Player45Culture=20, (Independent Leader)
 	EndCity
 EndPlot
 BeginPlot

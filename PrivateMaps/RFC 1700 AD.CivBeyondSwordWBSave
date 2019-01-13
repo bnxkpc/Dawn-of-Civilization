@@ -465,7 +465,7 @@ BeginPlayer
 EndPlayer
 BeginPlayer
 	Team=25
-	LeaderType=LEADER_VICTORIA
+	LeaderType=LEADER_ELIZABETH
 	CivType=CIVILIZATION_ENGLAND
 	PlayableCiv=1
 	StartingGold=600
@@ -6216,7 +6216,7 @@ BeginPlot
 	TerrainType=TERRAIN_PLAINS
 	PlotType=1
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=22, (Philip II)
+		UnitType=UNIT_SPANISH_TERCIO, UnitOwner=22, (Philip II)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -6227,7 +6227,6 @@ BeginPlot
 		BuildingType=BUILDING_SMOKEHOUSE
 		BuildingType=BUILDING_HARBOR
 		BuildingType=BUILDING_AQUEDUCT
-		BuildingType=BUILDING_LIGHTHOUSE
 		BuildingType=BUILDING_FORGE
 		BuildingType=BUILDING_CATHOLIC_TEMPLE
 		ReligionType=RELIGION_CATHOLICISM
@@ -7565,7 +7564,7 @@ BeginPlot
 	TerrainType=TERRAIN_PLAINS
 	PlotType=1
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=22, (Philip II)
+		UnitType=UNIT_SPANISH_TERCIO, UnitOwner=22, (Philip II)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -7577,7 +7576,6 @@ BeginPlot
 		BuildingType=BUILDING_LIBRARY
 		BuildingType=BUILDING_AQUEDUCT
 		BuildingType=BUILDING_MARKET
-		BuildingType=BUILDING_JAIL
 		BuildingType=BUILDING_FORGE
 		BuildingType=BUILDING_CATHOLIC_TEMPLE
 		BuildingType=BUILDING_CATHOLIC_MONASTERY
@@ -8466,11 +8464,11 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=1
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=22, (Philip II)
+		UnitType=UNIT_SPANISH_TERCIO, UnitOwner=22, (Philip II)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=22, (Philip II)
+		UnitType=UNIT_SPANISH_TERCIO, UnitOwner=22, (Philip II)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
@@ -8496,7 +8494,6 @@ BeginPlot
 		BuildingType=BUILDING_STABLE
 		BuildingType=BUILDING_LIBRARY
 		BuildingType=BUILDING_AQUEDUCT
-		BuildingType=BUILDING_WEAVER
 		BuildingType=BUILDING_MARKET
 		BuildingType=BUILDING_JAIL
 		BuildingType=BUILDING_FORGE
@@ -8532,7 +8529,7 @@ BeginPlot
 	TerrainType=TERRAIN_PLAINS
 	PlotType=1
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=22, (Philip II)
+		UnitType=UNIT_SPANISH_TERCIO, UnitOwner=22, (Philip II)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -8541,7 +8538,6 @@ BeginPlot
 		CityPopulation=4
 		BuildingType=BUILDING_GRANARY
 		BuildingType=BUILDING_SMOKEHOUSE
-		BuildingType=BUILDING_JAIL
 		BuildingType=BUILDING_FORGE
 		BuildingType=BUILDING_CATHOLIC_TEMPLE
 		ReligionType=RELIGION_CATHOLICISM
@@ -9408,7 +9404,7 @@ BeginPlot
 	TerrainType=TERRAIN_PLAINS
 	PlotType=1
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=22, (Philip II)
+		UnitType=UNIT_SPANISH_TERCIO, UnitOwner=22, (Philip II)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -9424,6 +9420,7 @@ BeginPlot
 		BuildingType=BUILDING_MARKET
 		BuildingType=BUILDING_FORGE
 		BuildingType=BUILDING_SPANISH_CITADEL
+		BuildingType=BUILDING_CUSTOMS_HOUSE
 		BuildingType=BUILDING_CATHOLIC_TEMPLE
 		ReligionType=RELIGION_CATHOLICISM
 		Player22Culture=100, (Philip II)
@@ -10785,13 +10782,11 @@ BeginPlot
 	BeginCity
 		CityOwner=25, (Elizabeth)
 		CityName=Belize Town
-		CityPopulation=5
+		CityPopulation=4
 		BuildingType=BUILDING_BARRACKS
 		BuildingType=BUILDING_GRANARY
 		BuildingType=BUILDING_HARBOR
 		BuildingType=BUILDING_AQUEDUCT
-		BuildingType=BUILDING_LIGHTHOUSE
-		BuildingType=BUILDING_MARKET
 		BuildingType=BUILDING_FORGE
 		BuildingType=BUILDING_CATHOLIC_TEMPLE
 		ReligionType=RELIGION_CATHOLICISM
@@ -10820,13 +10815,13 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=22, (Philip II)
+		UnitType=UNIT_SPANISH_TERCIO, UnitOwner=22, (Philip II)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
 		CityOwner=22, (Philip II)
 		CityName=M&#233;rida
-		CityPopulation=5
+		CityPopulation=4
 		BuildingType=BUILDING_GRANARY
 		BuildingType=BUILDING_SMOKEHOUSE
 		BuildingType=BUILDING_HARBOR
@@ -10870,7 +10865,7 @@ BeginPlot
 	BeginCity
 		CityOwner=23, (Louis XIV)
 		CityName=Nouvelle Orl&#233;ans
-		CityPopulation=5
+		CityPopulation=4
 		BuildingType=BUILDING_GRANARY
 		BuildingType=BUILDING_SMOKEHOUSE
 		BuildingType=BUILDING_LIBRARY
@@ -12683,11 +12678,11 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=22, (Philip II)
+		UnitType=UNIT_SPANISH_TERCIO, UnitOwner=22, (Philip II)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=22, (Philip II)
+		UnitType=UNIT_SPANISH_TERCIO, UnitOwner=22, (Philip II)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -12737,7 +12732,7 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=26,y=50
-	ImprovementType=IMPROVEMENT_HAMLET
+	ImprovementType=IMPROVEMENT_COTTAGE
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 EndPlot
@@ -13071,7 +13066,7 @@ BeginPlot
 	TerrainType=TERRAIN_PLAINS
 	PlotType=1
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=22, (Philip II)
+		UnitType=UNIT_SPANISH_TERCIO, UnitOwner=22, (Philip II)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -13108,7 +13103,7 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=1
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=22, (Philip II)
+		UnitType=UNIT_SPANISH_TERCIO, UnitOwner=22, (Philip II)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -13121,6 +13116,7 @@ BeginPlot
 		BuildingType=BUILDING_HARBOR
 		BuildingType=BUILDING_AQUEDUCT
 		BuildingType=BUILDING_LIGHTHOUSE
+		BuildingType=BUILDING_JAIL
 		BuildingType=BUILDING_FORGE
 		BuildingType=BUILDING_CATHOLIC_TEMPLE
 		BuildingType=BUILDING_CATHOLIC_MONASTERY
@@ -13137,7 +13133,7 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=27,y=33
-	ImprovementType=IMPROVEMENT_HAMLET
+	ImprovementType=IMPROVEMENT_COTTAGE
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 EndPlot
@@ -13162,13 +13158,13 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=22, (Philip II)
+		UnitType=UNIT_SPANISH_TERCIO, UnitOwner=22, (Philip II)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
 		CityOwner=22, (Philip II)
 		CityName=Panam&#225;
-		CityPopulation=6
+		CityPopulation=5
 		BuildingType=BUILDING_GRANARY
 		BuildingType=BUILDING_SMOKEHOUSE
 		BuildingType=BUILDING_LIBRARY
@@ -13349,8 +13345,6 @@ BeginPlot
 		BuildingType=BUILDING_LIBRARY
 		BuildingType=BUILDING_HARBOR
 		BuildingType=BUILDING_AQUEDUCT
-		BuildingType=BUILDING_LIGHTHOUSE
-		BuildingType=BUILDING_MARKET
 		BuildingType=BUILDING_FORGE
 		BuildingType=BUILDING_PROTESTANT_TEMPLE
 		ReligionType=RELIGION_PROTESTANTISM
@@ -13588,7 +13582,7 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=28,y=24
-	ImprovementType=IMPROVEMENT_TOWN
+	ImprovementType=IMPROVEMENT_VILLAGE
 	TerrainType=TERRAIN_PLAINS
 	PlotType=2
 EndPlot
@@ -13598,11 +13592,11 @@ BeginPlot
 	TerrainType=TERRAIN_PLAINS
 	PlotType=1
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=22, (Philip II)
+		UnitType=UNIT_SPANISH_TERCIO, UnitOwner=22, (Philip II)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=22, (Philip II)
+		UnitType=UNIT_SPANISH_TERCIO, UnitOwner=22, (Philip II)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
@@ -13710,7 +13704,7 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=28,y=36
-	ImprovementType=IMPROVEMENT_HAMLET
+	ImprovementType=IMPROVEMENT_COTTAGE
 	FeatureType=FEATURE_RAINFOREST, FeatureVariety=0
 	RouteType=ROUTE_ROAD
 	TerrainType=TERRAIN_GRASS
@@ -14182,11 +14176,11 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=1
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=22, (Philip II)
+		UnitType=UNIT_SPANISH_TERCIO, UnitOwner=22, (Philip II)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=22, (Philip II)
+		UnitType=UNIT_SPANISH_TERCIO, UnitOwner=22, (Philip II)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
@@ -15131,7 +15125,7 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=1
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=22, (Philip II)
+		UnitType=UNIT_SPANISH_TERCIO, UnitOwner=22, (Philip II)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -15142,7 +15136,6 @@ BeginPlot
 		BuildingType=BUILDING_GRANARY
 		BuildingType=BUILDING_SMOKEHOUSE
 		BuildingType=BUILDING_MONUMENT
-		BuildingType=BUILDING_HARBOR
 		BuildingType=BUILDING_AQUEDUCT
 		BuildingType=BUILDING_MARKET
 		BuildingType=BUILDING_FORGE
@@ -15814,7 +15807,6 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=32,y=37
-	ImprovementType=IMPROVEMENT_MINE
 	RouteType=ROUTE_ROAD
 	TerrainType=TERRAIN_PLAINS
 	PlotType=1
@@ -16145,7 +16137,7 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=1
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=22, (Philip II)
+		UnitType=UNIT_SPANISH_TERCIO, UnitOwner=22, (Philip II)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -16157,7 +16149,6 @@ BeginPlot
 		BuildingType=BUILDING_LIBRARY
 		BuildingType=BUILDING_HARBOR
 		BuildingType=BUILDING_AQUEDUCT
-		BuildingType=BUILDING_LIGHTHOUSE
 		BuildingType=BUILDING_FORGE
 		BuildingType=BUILDING_CATHOLIC_TEMPLE
 		ReligionType=RELIGION_CATHOLICISM
@@ -16201,14 +16192,13 @@ BeginPlot
 	TerrainType=TERRAIN_DESERT
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=22, (Philip II)
+		UnitType=UNIT_SPANISH_TERCIO, UnitOwner=22, (Philip II)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
 		CityOwner=22, (Philip II)
 		CityName=Antofagasta
 		CityPopulation=4
-		BuildingType=BUILDING_BARRACKS
 		BuildingType=BUILDING_GRANARY
 		BuildingType=BUILDING_SMOKEHOUSE
 		BuildingType=BUILDING_HARBOR
@@ -16487,7 +16477,6 @@ BeginPlot
 		BuildingType=BUILDING_LIBRARY
 		BuildingType=BUILDING_HARBOR
 		BuildingType=BUILDING_AQUEDUCT
-		BuildingType=BUILDING_LIGHTHOUSE
 		BuildingType=BUILDING_MARKET
 		BuildingType=BUILDING_FORGE
 		BuildingType=BUILDING_PROTESTANT_TEMPLE
@@ -16773,19 +16762,17 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=1
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=22, (Philip II)
+		UnitType=UNIT_SPANISH_TERCIO, UnitOwner=22, (Philip II)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
 		CityOwner=22, (Philip II)
 		CityName=La Paz
-		CityPopulation=5
+		CityPopulation=4
 		BuildingType=BUILDING_GRANARY
 		BuildingType=BUILDING_SMOKEHOUSE
 		BuildingType=BUILDING_HARBOR
 		BuildingType=BUILDING_AQUEDUCT
-		BuildingType=BUILDING_MARKET
-		BuildingType=BUILDING_JAIL
 		BuildingType=BUILDING_FORGE
 		BuildingType=BUILDING_CATHOLIC_TEMPLE
 		ReligionType=RELIGION_CATHOLICISM
@@ -16899,13 +16886,13 @@ BeginPlot
 	TerrainType=TERRAIN_PLAINS
 	PlotType=1
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=22, (Philip II)
+		UnitType=UNIT_SPANISH_TERCIO, UnitOwner=22, (Philip II)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
 		CityOwner=22, (Philip II)
 		CityName=Santiago de Le&243;n de Caracas
-		CityPopulation=7
+		CityPopulation=5
 		BuildingType=BUILDING_GRANARY
 		BuildingType=BUILDING_SMOKEHOUSE
 		BuildingType=BUILDING_LIBRARY
@@ -16914,7 +16901,6 @@ BeginPlot
 		BuildingType=BUILDING_LIGHTHOUSE
 		BuildingType=BUILDING_MARKET
 		BuildingType=BUILDING_FORGE
-		BuildingType=BUILDING_WHARF
 		BuildingType=BUILDING_CATHOLIC_TEMPLE
 		ReligionType=RELIGION_CATHOLICISM
 		Player22Culture=100, (Philip II)
@@ -17379,7 +17365,7 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=35,y=36
-	ImprovementType=IMPROVEMENT_VILLAGE
+	ImprovementType=IMPROVEMENT_HAMLET
 	TerrainType=TERRAIN_PLAINS
 	PlotType=2
 EndPlot
@@ -17427,7 +17413,7 @@ BeginPlot
 	TerrainType=TERRAIN_PLAINS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=22, (Philip II)
+		UnitType=UNIT_SPANISH_TERCIO, UnitOwner=22, (Philip II)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -17748,7 +17734,7 @@ BeginPlot
 	TerrainType=TERRAIN_PLAINS
 	PlotType=1
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=22, (Philip II)
+		UnitType=UNIT_SPANISH_TERCIO, UnitOwner=22, (Philip II)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -18047,7 +18033,7 @@ BeginPlot
 	BeginCity
 		CityOwner=25, (Elizabeth)
 		CityName=Halifax
-		CityPopulation=5
+		CityPopulation=4
 		BuildingType=BUILDING_GRANARY
 		BuildingType=BUILDING_SMOKEHOUSE
 		BuildingType=BUILDING_LIBRARY
@@ -18735,11 +18721,11 @@ BeginPlot
 	TerrainType=TERRAIN_PLAINS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=22, (Philip II)
+		UnitType=UNIT_SPANISH_TERCIO, UnitOwner=22, (Philip II)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=22, (Philip II)
+		UnitType=UNIT_SPANISH_TERCIO, UnitOwner=22, (Philip II)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
@@ -18953,13 +18939,12 @@ BeginPlot
 	BeginCity
 		CityOwner=25, (Elizabeth)
 		CityName=Georgetown
-		CityPopulation=5
+		CityPopulation=4
 		BuildingType=BUILDING_GRANARY
 		BuildingType=BUILDING_SMOKEHOUSE
 		BuildingType=BUILDING_LIBRARY
 		BuildingType=BUILDING_HARBOR
 		BuildingType=BUILDING_AQUEDUCT
-		BuildingType=BUILDING_LIGHTHOUSE
 		BuildingType=BUILDING_FORGE
 		BuildingType=BUILDING_PROTESTANT_TEMPLE
 		ReligionType=RELIGION_PROTESTANTISM
@@ -19306,7 +19291,7 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=22, (Philip II)
+		UnitType=UNIT_SPANISH_TERCIO, UnitOwner=22, (Philip II)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -19750,7 +19735,7 @@ BeginPlot
 	TerrainType=TERRAIN_PLAINS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=22, (Philip II)
+		UnitType=UNIT_SPANISH_TERCIO, UnitOwner=22, (Philip II)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -19765,7 +19750,6 @@ BeginPlot
 		BuildingType=BUILDING_AQUEDUCT
 		BuildingType=BUILDING_LIGHTHOUSE
 		BuildingType=BUILDING_MARKET
-		BuildingType=BUILDING_JAIL
 		BuildingType=BUILDING_FORGE
 		BuildingType=BUILDING_CATHOLIC_TEMPLE
 		ReligionType=RELIGION_CATHOLICISM
@@ -20076,7 +20060,7 @@ BeginPlot
 	BeginCity
 		CityOwner=25, (Elizabeth)
 		CityName=St. John's
-		CityPopulation=5
+		CityPopulation=4
 		BuildingType=BUILDING_GRANARY
 		BuildingType=BUILDING_SMOKEHOUSE
 		BuildingType=BUILDING_LIBRARY
@@ -21219,7 +21203,6 @@ BeginPlot
 		BuildingType=BUILDING_LIBRARY
 		BuildingType=BUILDING_HARBOR
 		BuildingType=BUILDING_AQUEDUCT
-		BuildingType=BUILDING_LIGHTHOUSE
 		BuildingType=BUILDING_MARKET
 		BuildingType=BUILDING_FORGE
 		BuildingType=BUILDING_CATHOLIC_TEMPLE
@@ -22574,7 +22557,6 @@ BeginPlot
 		BuildingType=BUILDING_BARRACKS
 		BuildingType=BUILDING_GRANARY
 		BuildingType=BUILDING_SMOKEHOUSE
-		BuildingType=BUILDING_MONUMENT
 		BuildingType=BUILDING_STABLE
 		BuildingType=BUILDING_LIBRARY
 		BuildingType=BUILDING_HARBOR
@@ -23064,7 +23046,7 @@ BeginPlot
 	BeginCity
 		CityOwner=30, (Joao II)
 		CityName=Salvador da Bahia
-		CityPopulation=5
+		CityPopulation=4
 		BuildingType=BUILDING_GRANARY
 		BuildingType=BUILDING_SMOKEHOUSE
 		BuildingType=BUILDING_LIBRARY
@@ -23949,13 +23931,12 @@ BeginPlot
 	BeginCity
 		CityOwner=30, (Joao II)
 		CityName=Recife
-		CityPopulation=6
+		CityPopulation=5
 		BuildingType=BUILDING_GRANARY
 		BuildingType=BUILDING_SMOKEHOUSE
 		BuildingType=BUILDING_LIBRARY
 		BuildingType=BUILDING_HARBOR
 		BuildingType=BUILDING_AQUEDUCT
-		BuildingType=BUILDING_LIGHTHOUSE
 		BuildingType=BUILDING_FORGE
 		BuildingType=BUILDING_CATHOLIC_TEMPLE
 		ReligionType=RELIGION_CATHOLICISM
@@ -25284,7 +25265,6 @@ BeginPlot
 		BuildingType=BUILDING_LIBRARY
 		BuildingType=BUILDING_HARBOR
 		BuildingType=BUILDING_AQUEDUCT
-		BuildingType=BUILDING_LIGHTHOUSE
 		BuildingType=BUILDING_MARKET
 		BuildingType=BUILDING_FORGE
 		BuildingType=BUILDING_CATHOLIC_TEMPLE
@@ -26106,7 +26086,6 @@ BeginPlot
 		BuildingType=BUILDING_SMOKEHOUSE
 		BuildingType=BUILDING_HARBOR
 		BuildingType=BUILDING_AQUEDUCT
-		BuildingType=BUILDING_LIGHTHOUSE
 		BuildingType=BUILDING_FORGE
 		BuildingType=BUILDING_CATHOLIC_TEMPLE
 		ReligionType=RELIGION_CATHOLICISM
@@ -26324,7 +26303,7 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=22, (Philip II)
+		UnitType=UNIT_SPANISH_TERCIO, UnitOwner=22, (Philip II)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -27808,7 +27787,7 @@ BeginPlot
 	TerrainType=TERRAIN_PLAINS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=22, (Philip II)
+		UnitType=UNIT_SPANISH_TERCIO, UnitOwner=22, (Philip II)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -27964,8 +27943,8 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=57,y=65
-	isWOfRiver
 	RiverNSDirection=0
+	isWOfRiver
 	ImprovementType=IMPROVEMENT_TOWN
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
@@ -28440,43 +28419,43 @@ BeginPlot
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=22, (Philip II)
+		UnitType=UNIT_SPANISH_TERCIO, UnitOwner=22, (Philip II)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=22, (Philip II)
+		UnitType=UNIT_SPANISH_TERCIO, UnitOwner=22, (Philip II)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=22, (Philip II)
+		UnitType=UNIT_SPANISH_TERCIO, UnitOwner=22, (Philip II)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=22, (Philip II)
+		UnitType=UNIT_SPANISH_TERCIO, UnitOwner=22, (Philip II)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=22, (Philip II)
+		UnitType=UNIT_SPANISH_TERCIO, UnitOwner=22, (Philip II)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=22, (Philip II)
+		UnitType=UNIT_SPANISH_TERCIO, UnitOwner=22, (Philip II)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=22, (Philip II)
+		UnitType=UNIT_SPANISH_TERCIO, UnitOwner=22, (Philip II)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=22, (Philip II)
+		UnitType=UNIT_SPANISH_TERCIO, UnitOwner=22, (Philip II)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=22, (Philip II)
+		UnitType=UNIT_SPANISH_TERCIO, UnitOwner=22, (Philip II)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=22, (Philip II)
+		UnitType=UNIT_SPANISH_TERCIO, UnitOwner=22, (Philip II)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
@@ -30216,7 +30195,7 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=22, (Philip II)
+		UnitType=UNIT_SPANISH_TERCIO, UnitOwner=22, (Philip II)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -30305,23 +30284,23 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_CUIRASSIER, UnitOwner=23, (Louis XIV)
+		UnitType=UNIT_FRENCH_GENDARME, UnitOwner=23, (Louis XIV)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_CUIRASSIER, UnitOwner=23, (Louis XIV)
+		UnitType=UNIT_FRENCH_GENDARME, UnitOwner=23, (Louis XIV)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_CUIRASSIER, UnitOwner=23, (Louis XIV)
+		UnitType=UNIT_FRENCH_GENDARME, UnitOwner=23, (Louis XIV)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_CUIRASSIER, UnitOwner=23, (Louis XIV)
+		UnitType=UNIT_FRENCH_GENDARME, UnitOwner=23, (Louis XIV)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_CUIRASSIER, UnitOwner=23, (Louis XIV)
+		UnitType=UNIT_FRENCH_GENDARME, UnitOwner=23, (Louis XIV)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
@@ -35222,7 +35201,6 @@ BeginPlot
 		BuildingType=BUILDING_LIBRARY
 		BuildingType=BUILDING_HARBOR
 		BuildingType=BUILDING_AQUEDUCT
-		BuildingType=BUILDING_LIGHTHOUSE
 		BuildingType=BUILDING_MARKET
 		BuildingType=BUILDING_JAIL
 		BuildingType=BUILDING_FORGE
@@ -35476,7 +35454,7 @@ BeginPlot
 	TerrainType=TERRAIN_PLAINS
 	PlotType=1
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=22, (Philip II)
+		UnitType=UNIT_SPANISH_TERCIO, UnitOwner=22, (Philip II)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -38043,7 +38021,7 @@ BeginPlot
 	EndUnit
 	BeginCity
 		CityOwner=16, (Gustav Adolph)
-		CityName=Lule&#229; 
+		CityName=Lule&#229;
 		CityPopulation=4
 		BuildingType=BUILDING_GRANARY
 		BuildingType=BUILDING_SMOKEHOUSE
@@ -40587,7 +40565,7 @@ BeginPlot
 	BeginCity
 		CityOwner=30, (Joao II)
 		CityName=Mo&#231;ambique
-		CityPopulation=7
+		CityPopulation=6
 		BuildingType=BUILDING_GRANARY
 		BuildingType=BUILDING_SMOKEHOUSE
 		BuildingType=BUILDING_LIBRARY
@@ -40986,23 +40964,23 @@ BeginPlot
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_BOMBARD, UnitOwner=36, (Suleiman)
+		UnitType=UNIT_OTTOMAN_GREAT_BOMBARD, UnitOwner=36, (Suleiman)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_BOMBARD, UnitOwner=36, (Suleiman)
+		UnitType=UNIT_OTTOMAN_GREAT_BOMBARD, UnitOwner=36, (Suleiman)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_BOMBARD, UnitOwner=36, (Suleiman)
+		UnitType=UNIT_OTTOMAN_GREAT_BOMBARD, UnitOwner=36, (Suleiman)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_BOMBARD, UnitOwner=36, (Suleiman)
+		UnitType=UNIT_OTTOMAN_GREAT_BOMBARD, UnitOwner=36, (Suleiman)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_BOMBARD, UnitOwner=36, (Suleiman)
+		UnitType=UNIT_OTTOMAN_GREAT_BOMBARD, UnitOwner=36, (Suleiman)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
@@ -41683,11 +41661,11 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=27, (Peter)
+		UnitType=UNIT_RUSSIAN_STRELETS, UnitOwner=27, (Peter)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=27, (Peter)
+		UnitType=UNIT_RUSSIAN_STRELETS, UnitOwner=27, (Peter)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -41914,7 +41892,6 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=81,y=17
-	ImprovementType=IMPROVEMENT_COTTAGE
 	FeatureType=FEATURE_RAINFOREST, FeatureVariety=0
 	TerrainType=TERRAIN_PLAINS
 	PlotType=2
@@ -41941,7 +41918,6 @@ BeginPlot
 		BuildingType=BUILDING_LIBRARY
 		BuildingType=BUILDING_HARBOR
 		BuildingType=BUILDING_AQUEDUCT
-		BuildingType=BUILDING_LIGHTHOUSE
 		BuildingType=BUILDING_MARKET
 		BuildingType=BUILDING_FORGE
 		BuildingType=BUILDING_CATHOLIC_TEMPLE
@@ -42300,7 +42276,7 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=27, (Peter)
+		UnitType=UNIT_RUSSIAN_STRELETS, UnitOwner=27, (Peter)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -42895,7 +42871,7 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=27, (Peter)
+		UnitType=UNIT_RUSSIAN_STRELETS, UnitOwner=27, (Peter)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -43100,14 +43076,12 @@ BeginPlot
 	BeginCity
 		CityOwner=30, (Joao II)
 		CityName=Quelimane
-		CityPopulation=6
+		CityPopulation=5
 		BuildingType=BUILDING_GRANARY
 		BuildingType=BUILDING_SMOKEHOUSE
 		BuildingType=BUILDING_LIBRARY
 		BuildingType=BUILDING_HARBOR
 		BuildingType=BUILDING_AQUEDUCT
-		BuildingType=BUILDING_LIGHTHOUSE
-		BuildingType=BUILDING_MARKET
 		BuildingType=BUILDING_FORGE
 		BuildingType=BUILDING_CATHOLIC_TEMPLE
 		ReligionType=RELIGION_CATHOLICISM
@@ -43501,7 +43475,7 @@ BeginPlot
 	TerrainType=TERRAIN_TUNDRA
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=27, (Peter)
+		UnitType=UNIT_RUSSIAN_STRELETS, UnitOwner=27, (Peter)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -43997,8 +43971,6 @@ BeginPlot
 		BuildingType=BUILDING_JEWISH_CATHEDRAL
 		BuildingType=BUILDING_JEWISH_MONASTERY
 		BuildingType=BUILDING_JEWISH_SHRINE
-		BuildingType=BUILDING_ORTHODOX_TEMPLE
-		BuildingType=BUILDING_ORTHODOX_MONASTERY
 		BuildingType=BUILDING_ORTHODOX_SHRINE
 		BuildingType=BUILDING_CATHOLIC_TEMPLE
 		BuildingType=BUILDING_CATHOLIC_MONASTERY
@@ -44113,7 +44085,7 @@ BeginPlot
 	TerrainType=TERRAIN_PLAINS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=27, (Peter)
+		UnitType=UNIT_RUSSIAN_STRELETS, UnitOwner=27, (Peter)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -44746,59 +44718,67 @@ BeginPlot
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_CUIRASSIER, UnitOwner=27, (Peter)
+		UnitType=UNIT_RUSSIAN_COSSACK, UnitOwner=27, (Peter)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_CUIRASSIER, UnitOwner=27, (Peter)
+		UnitType=UNIT_RUSSIAN_COSSACK, UnitOwner=27, (Peter)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=27, (Peter)
+		UnitType=UNIT_RUSSIAN_COSSACK, UnitOwner=27, (Peter)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=27, (Peter)
+		UnitType=UNIT_RUSSIAN_COSSACK, UnitOwner=27, (Peter)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=27, (Peter)
+		UnitType=UNIT_RUSSIAN_STRELETS, UnitOwner=27, (Peter)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=27, (Peter)
+		UnitType=UNIT_RUSSIAN_STRELETS, UnitOwner=27, (Peter)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=27, (Peter)
+		UnitType=UNIT_RUSSIAN_STRELETS, UnitOwner=27, (Peter)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=27, (Peter)
+		UnitType=UNIT_RUSSIAN_STRELETS, UnitOwner=27, (Peter)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=27, (Peter)
+		UnitType=UNIT_RUSSIAN_STRELETS, UnitOwner=27, (Peter)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=27, (Peter)
+		UnitType=UNIT_RUSSIAN_STRELETS, UnitOwner=27, (Peter)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=27, (Peter)
+		UnitType=UNIT_RUSSIAN_STRELETS, UnitOwner=27, (Peter)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=27, (Peter)
+		UnitType=UNIT_RUSSIAN_STRELETS, UnitOwner=27, (Peter)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=27, (Peter)
+		UnitType=UNIT_RUSSIAN_STRELETS, UnitOwner=27, (Peter)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=27, (Peter)
+		UnitType=UNIT_RUSSIAN_STRELETS, UnitOwner=27, (Peter)
+		Level=1, Experience=0
+	EndUnit
+	BeginUnit
+		UnitType=UNIT_RUSSIAN_STRELETS, UnitOwner=27, (Peter)
+		Level=1, Experience=0
+	EndUnit
+	BeginUnit
+		UnitType=UNIT_RUSSIAN_STRELETS, UnitOwner=27, (Peter)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
@@ -44903,7 +44883,7 @@ BeginPlot
 	TerrainType=TERRAIN_PLAINS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=27, (Peter)
+		UnitType=UNIT_RUSSIAN_STRELETS, UnitOwner=27, (Peter)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -45437,7 +45417,7 @@ BeginPlot
 	TerrainType=TERRAIN_PLAINS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=27, (Peter)
+		UnitType=UNIT_RUSSIAN_STRELETS, UnitOwner=27, (Peter)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -46056,7 +46036,7 @@ BeginPlot
 	TerrainType=TERRAIN_TUNDRA
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=27, (Peter)
+		UnitType=UNIT_RUSSIAN_STRELETS, UnitOwner=27, (Peter)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -47136,11 +47116,11 @@ BeginPlot
 	TerrainType=TERRAIN_PLAINS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=27, (Peter)
+		UnitType=UNIT_RUSSIAN_STRELETS, UnitOwner=27, (Peter)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=27, (Peter)
+		UnitType=UNIT_RUSSIAN_STRELETS, UnitOwner=27, (Peter)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
@@ -47209,7 +47189,7 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=27, (Peter)
+		UnitType=UNIT_RUSSIAN_STRELETS, UnitOwner=27, (Peter)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -47637,10 +47617,12 @@ BeginPlot
 	BeginUnit
 		UnitType=UNIT_IRANIAN_QIZILBASH, UnitOwner=8, (Abbas I)
 		Level=1, Experience=0
+		PromotionType=PROMOTION_GUERILLA1
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_IRANIAN_QIZILBASH, UnitOwner=8, (Abbas I)
 		Level=1, Experience=0
+		PromotionType=PROMOTION_GUERILLA1
 	EndUnit
 	BeginCity
 		CityOwner=8, (Abbas I)
@@ -48206,7 +48188,7 @@ BeginPlot
 	TerrainType=TERRAIN_DESERT
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=27, (Peter)
+		UnitType=UNIT_RUSSIAN_STRELETS, UnitOwner=27, (Peter)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -48733,7 +48715,7 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=27, (Peter)
+		UnitType=UNIT_RUSSIAN_STRELETS, UnitOwner=27, (Peter)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
@@ -48788,7 +48770,7 @@ BeginPlot
 	TerrainType=TERRAIN_TUNDRA
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=27, (Peter)
+		UnitType=UNIT_RUSSIAN_STRELETS, UnitOwner=27, (Peter)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -49151,46 +49133,57 @@ BeginPlot
 	BeginUnit
 		UnitType=UNIT_IRANIAN_QIZILBASH, UnitOwner=8, (Abbas I)
 		Level=1, Experience=0
+		PromotionType=PROMOTION_GUERILLA1
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_IRANIAN_QIZILBASH, UnitOwner=8, (Abbas I)
 		Level=1, Experience=0
+		PromotionType=PROMOTION_GUERILLA1
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_IRANIAN_QIZILBASH, UnitOwner=8, (Abbas I)
 		Level=1, Experience=0
+		PromotionType=PROMOTION_GUERILLA1
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_IRANIAN_QIZILBASH, UnitOwner=8, (Abbas I)
 		Level=1, Experience=0
+		PromotionType=PROMOTION_GUERILLA1
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_IRANIAN_QIZILBASH, UnitOwner=8, (Abbas I)
 		Level=1, Experience=0
+		PromotionType=PROMOTION_GUERILLA1
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_IRANIAN_QIZILBASH, UnitOwner=8, (Abbas I)
 		Level=1, Experience=0
+		PromotionType=PROMOTION_GUERILLA1
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_IRANIAN_QIZILBASH, UnitOwner=8, (Abbas I)
 		Level=1, Experience=0
+		PromotionType=PROMOTION_GUERILLA1
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_IRANIAN_QIZILBASH, UnitOwner=8, (Abbas I)
 		Level=1, Experience=0
+		PromotionType=PROMOTION_GUERILLA1
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_IRANIAN_QIZILBASH, UnitOwner=8, (Abbas I)
 		Level=1, Experience=0
+		PromotionType=PROMOTION_GUERILLA1
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_IRANIAN_QIZILBASH, UnitOwner=8, (Abbas I)
 		Level=1, Experience=0
+		PromotionType=PROMOTION_GUERILLA1
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_IRANIAN_QIZILBASH, UnitOwner=8, (Abbas I)
 		Level=1, Experience=0
+		PromotionType=PROMOTION_GUERILLA1
 	EndUnit
 	BeginUnit
 		UnitType=UNIT_BOMBARD, UnitOwner=8, (Abbas I)
@@ -49231,13 +49224,13 @@ BeginPlot
 		BuildingType=BUILDING_MONUMENT
 		BuildingType=BUILDING_WALLS
 		BuildingType=BUILDING_STABLE
-		BuildingType=BUILDING_AQUEDUCT
-		BuildingType=BUILDING_BATH
-		BuildingType=BUILDING_FORGE
 		BuildingType=BUILDING_LIBRARY
+		BuildingType=BUILDING_AQUEDUCT
 		BuildingType=BUILDING_WEAVER
 		BuildingType=BUILDING_MARKET
 		BuildingType=BUILDING_JAIL
+		BuildingType=BUILDING_BATH
+		BuildingType=BUILDING_FORGE
 		BuildingType=BUILDING_PHARMACY
 		BuildingType=BUILDING_IRANIAN_CARAVANSERAI
 		BuildingType=BUILDING_UNIVERSITY
@@ -49272,6 +49265,7 @@ BeginPlot
 	BeginUnit
 		UnitType=UNIT_IRANIAN_QIZILBASH, UnitOwner=8, (Abbas I)
 		Level=1, Experience=0
+		PromotionType=PROMOTION_GUERILLA1
 	EndUnit
 	BeginCity
 		CityOwner=8, (Abbas I)
@@ -49715,6 +49709,7 @@ BeginPlot
 	BeginUnit
 		UnitType=UNIT_IRANIAN_QIZILBASH, UnitOwner=8, (Abbas I)
 		Level=1, Experience=0
+		PromotionType=PROMOTION_GUERILLA1
 	EndUnit
 	BeginCity
 		CityOwner=8, (Abbas I)
@@ -49838,7 +49833,7 @@ BeginPlot
 	TerrainType=TERRAIN_PLAINS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=27, (Peter)
+		UnitType=UNIT_RUSSIAN_STRELETS, UnitOwner=27, (Peter)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -51192,6 +51187,7 @@ BeginPlot
 	BeginUnit
 		UnitType=UNIT_IRANIAN_QIZILBASH, UnitOwner=8, (Abbas I)
 		Level=1, Experience=0
+		PromotionType=PROMOTION_GUERILLA1
 	EndUnit
 	BeginCity
 		CityOwner=8, (Abbas I)
@@ -52360,11 +52356,11 @@ BeginPlot
 	TerrainType=TERRAIN_PLAINS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=27, (Peter)
+		UnitType=UNIT_RUSSIAN_STRELETS, UnitOwner=27, (Peter)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=27, (Peter)
+		UnitType=UNIT_RUSSIAN_STRELETS, UnitOwner=27, (Peter)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
@@ -53518,7 +53514,7 @@ BeginPlot
 	TerrainType=TERRAIN_TUNDRA
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=27, (Peter)
+		UnitType=UNIT_RUSSIAN_STRELETS, UnitOwner=27, (Peter)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -54601,7 +54597,7 @@ BeginPlot
 	TerrainType=TERRAIN_PLAINS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=27, (Peter)
+		UnitType=UNIT_RUSSIAN_STRELETS, UnitOwner=27, (Peter)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -55370,15 +55366,15 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=1
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=10, (Tipu Sultan)
+		UnitType=UNIT_ARQUEBUSIER, UnitOwner=10, (Rajendra Chola)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=10, (Tipu Sultan)
+		UnitType=UNIT_ARQUEBUSIER, UnitOwner=10, (Rajendra Chola)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
-		CityOwner=10, (Tipu Sultan)
+		CityOwner=10, (Rajendra Chola)
 		CityName=Vijayanagara
 		CityPopulation=7
 		BuildingType=BUILDING_BARRACKS
@@ -55398,7 +55394,7 @@ BeginPlot
 		BuildingType=BUILDING_HINDU_MONASTERY
 		ReligionType=RELIGION_ISLAM
 		ReligionType=RELIGION_HINDUISM
-		Player10Culture=700, (Tipu Sultan)
+		Player10Culture=700, (Rajendra Chola)
 	EndCity
 EndPlot
 BeginPlot
@@ -56094,7 +56090,7 @@ BeginPlot
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
-		CityOwner=10, (Tipu Sultan)
+		CityOwner=10, (Rajendra Chola)
 		CityName=Mahishuru
 		CityPopulation=7
 		BuildingType=BUILDING_PALACE
@@ -56114,7 +56110,7 @@ BeginPlot
 		BuildingType=BUILDING_HINDU_TEMPLE
 		BuildingType=BUILDING_HINDU_MONASTERY
 		ReligionType=RELIGION_HINDUISM
-		Player10Culture=500, (Tipu Sultan)
+		Player10Culture=500, (Rajendra Chola)
 	EndCity
 EndPlot
 BeginPlot
@@ -57455,7 +57451,7 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=27, (Peter)
+		UnitType=UNIT_RUSSIAN_STRELETS, UnitOwner=27, (Peter)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -59436,7 +59432,7 @@ BeginPlot
 	TerrainType=TERRAIN_PLAINS
 	PlotType=1
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -60015,7 +60011,7 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=27, (Peter)
+		UnitType=UNIT_RUSSIAN_STRELETS, UnitOwner=27, (Peter)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -60897,7 +60893,7 @@ BeginPlot
 	TerrainType=TERRAIN_DESERT
 	PlotType=1
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -61343,6 +61339,14 @@ BeginPlot
 	RouteType=ROUTE_ROAD
 	TerrainType=TERRAIN_PLAINS
 	PlotType=1
+	BeginUnit
+		UnitType=UNIT_ARQUEBUSIER, UnitOwner=19, (Lobsang Gyatso)
+		Level=1, Experience=0
+	EndUnit
+	BeginUnit
+		UnitType=UNIT_ARQUEBUSIER, UnitOwner=19, (Lobsang Gyatso)
+		Level=1, Experience=0
+	EndUnit
 EndPlot
 BeginPlot
 	x=116,y=50
@@ -62350,7 +62354,7 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=1
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -62429,7 +62433,7 @@ BeginPlot
 	TerrainType=TERRAIN_PLAINS
 	PlotType=1
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -62523,11 +62527,11 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=27, (Peter)
+		UnitType=UNIT_RUSSIAN_STRELETS, UnitOwner=27, (Peter)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=27, (Peter)
+		UnitType=UNIT_RUSSIAN_STRELETS, UnitOwner=27, (Peter)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
@@ -63053,7 +63057,7 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=1
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -63178,11 +63182,11 @@ BeginPlot
 	TerrainType=TERRAIN_PLAINS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -63474,8 +63478,6 @@ BeginPlot
 		BuildingType=BUILDING_LIBRARY
 		BuildingType=BUILDING_HARBOR
 		BuildingType=BUILDING_AQUEDUCT
-		BuildingType=BUILDING_LIGHTHOUSE
-		BuildingType=BUILDING_WEAVER
 		BuildingType=BUILDING_MARKET
 		BuildingType=BUILDING_FORGE
 		BuildingType=BUILDING_ISLAMIC_TEMPLE
@@ -64209,7 +64211,7 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=1
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -64251,7 +64253,7 @@ BeginPlot
 	TerrainType=TERRAIN_PLAINS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -64304,7 +64306,7 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=1
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -64380,7 +64382,7 @@ BeginPlot
 	TerrainType=TERRAIN_PLAINS
 	PlotType=1
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -65931,7 +65933,7 @@ BeginPlot
 	TerrainType=TERRAIN_PLAINS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -65989,7 +65991,7 @@ BeginPlot
 	TerrainType=TERRAIN_PLAINS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -66071,51 +66073,51 @@ BeginPlot
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
@@ -66181,8 +66183,8 @@ BeginPlot
 		ReligionType=RELIGION_CONFUCIANISM
 		ReligionType=RELIGION_TAOISM
 		HolyCityReligionType=RELIGION_TAOISM
-		FreeSpecialistType=SPECIALIST_GREAT_STATESMAN
 		FreeSpecialistType=SPECIALIST_GREAT_ARTIST
+		FreeSpecialistType=SPECIALIST_GREAT_STATESMAN
 		FreeSpecialistType=SPECIALIST_GREAT_GENERAL
 		Player1Culture=2000, (Kangxi)
 	EndCity
@@ -66230,7 +66232,7 @@ BeginPlot
 	TerrainType=TERRAIN_PLAINS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -66596,11 +66598,11 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -66723,14 +66725,6 @@ BeginPlot
 	RouteType=ROUTE_ROAD
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
-	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=19, (Lobsang Gyatso)
-		Level=1, Experience=0
-	EndUnit
-	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=19, (Lobsang Gyatso)
-		Level=1, Experience=0
-	EndUnit
 EndPlot
 BeginPlot
 	x=125,y=57
@@ -67020,27 +67014,27 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=20, (Dharmasetu)
+		UnitType=UNIT_ARQUEBUSIER, UnitOwner=20, (Hayam Wuruk)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=20, (Dharmasetu)
+		UnitType=UNIT_ARQUEBUSIER, UnitOwner=20, (Hayam Wuruk)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=20, (Dharmasetu)
+		UnitType=UNIT_ARQUEBUSIER, UnitOwner=20, (Hayam Wuruk)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=20, (Dharmasetu)
+		UnitType=UNIT_ARQUEBUSIER, UnitOwner=20, (Hayam Wuruk)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_WORKER, UnitOwner=20, (Dharmasetu)
+		UnitType=UNIT_WORKER, UnitOwner=20, (Hayam Wuruk)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_WORKER, UnitOwner=20, (Dharmasetu)
+		UnitType=UNIT_WORKER, UnitOwner=20, (Hayam Wuruk)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -67789,7 +67783,7 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -67810,7 +67804,6 @@ BeginPlot
 		BuildingType=BUILDING_CASTLE
 		BuildingType=BUILDING_PHARMACY
 		BuildingType=BUILDING_POST_OFFICE
-		BuildingType=BUILDING_BUDDHIST_TEMPLE
 		BuildingType=BUILDING_CONFUCIAN_TEMPLE
 		BuildingType=BUILDING_CONFUCIAN_MONASTERY
 		BuildingType=BUILDING_CONFUCIAN_SHRINE
@@ -67818,7 +67811,6 @@ BeginPlot
 		BuildingType=BUILDING_TAOIST_MONASTERY
 		BuildingType=BUILDING_ADMINISTRATIVE_CENTER
 		BuildingType=BUILDING_PORCELAIN_TOWER
-		ReligionType=RELIGION_BUDDHISM
 		ReligionType=RELIGION_CONFUCIANISM
 		HolyCityReligionType=RELIGION_CONFUCIANISM
 		ReligionType=RELIGION_TAOISM
@@ -67906,7 +67898,7 @@ BeginPlot
 	TerrainType=TERRAIN_PLAINS
 	PlotType=1
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -68268,7 +68260,7 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=1
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -68377,11 +68369,11 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -68709,12 +68701,11 @@ BeginPlot
 	BeginCity
 		CityOwner=39, (William III)
 		CityName=Makassar
-		CityPopulation=5
+		CityPopulation=4
 		BuildingType=BUILDING_GRANARY
 		BuildingType=BUILDING_LIBRARY
 		BuildingType=BUILDING_HARBOR
 		BuildingType=BUILDING_AQUEDUCT
-		BuildingType=BUILDING_LIGHTHOUSE
 		BuildingType=BUILDING_FORGE
 		ReligionType=RELIGION_ISLAM
 		Player39Culture=50, (William III)
@@ -68847,11 +68838,11 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -69301,11 +69292,11 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=22, (Philip II)
+		UnitType=UNIT_SPANISH_TERCIO, UnitOwner=22, (Philip II)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=22, (Philip II)
+		UnitType=UNIT_SPANISH_TERCIO, UnitOwner=22, (Philip II)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -69507,7 +69498,7 @@ BeginPlot
 	TerrainType=TERRAIN_PLAINS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=1, (Kangxi)
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -69596,7 +69587,7 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=27, (Peter)
+		UnitType=UNIT_RUSSIAN_STRELETS, UnitOwner=27, (Peter)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
@@ -69867,7 +69858,7 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=22, (Philip II)
+		UnitType=UNIT_SPANISH_TERCIO, UnitOwner=22, (Philip II)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -70050,15 +70041,15 @@ BeginPlot
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_BOMBARD, UnitOwner=12, (Sejong)
+		UnitType=UNIT_KOREAN_HWACHA, UnitOwner=12, (Sejong)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_BOMBARD, UnitOwner=12, (Sejong)
+		UnitType=UNIT_KOREAN_HWACHA, UnitOwner=12, (Sejong)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
-		UnitType=UNIT_BOMBARD, UnitOwner=12, (Sejong)
+		UnitType=UNIT_KOREAN_HWACHA, UnitOwner=12, (Sejong)
 		Level=1, Experience=0
 	EndUnit
 	BeginUnit
@@ -70418,13 +70409,12 @@ BeginPlot
 	BeginCity
 		CityOwner=30, (Joao II)
 		CityName=Timur
-		CityPopulation=5
+		CityPopulation=4
 		BuildingType=BUILDING_GRANARY
 		BuildingType=BUILDING_SMOKEHOUSE
 		BuildingType=BUILDING_LIBRARY
 		BuildingType=BUILDING_HARBOR
 		BuildingType=BUILDING_AQUEDUCT
-		BuildingType=BUILDING_LIGHTHOUSE
 		BuildingType=BUILDING_FORGE
 		BuildingType=BUILDING_CATHOLIC_TEMPLE
 		ReligionType=RELIGION_CATHOLICISM
@@ -70924,7 +70914,7 @@ BeginPlot
 	BeginCity
 		CityOwner=39, (William III)
 		CityName=Ambon
-		CityPopulation=5
+		CityPopulation=4
 		BuildingType=BUILDING_GRANARY
 		BuildingType=BUILDING_SMOKEHOUSE
 		BuildingType=BUILDING_HARBOR
@@ -71139,6 +71129,10 @@ BeginPlot
 	RouteType=ROUTE_ROAD
 	TerrainType=TERRAIN_GRASS
 	PlotType=1
+	BeginUnit
+		UnitType=UNIT_CHINESE_FIRELANCER, UnitOwner=1, (Kangxi)
+		Level=1, Experience=0
+	EndUnit
 	BeginCity
 		CityOwner=1, (Kangxi)
 		CityName=Haishenwai
@@ -72960,8 +72954,8 @@ BeginPlot
 		BuildingType=BUILDING_LIBRARY
 		BuildingType=BUILDING_HARBOR
 		BuildingType=BUILDING_AQUEDUCT
-		BuildingType=BUILDING_LIGHTHOUSE
 		BuildingType=BUILDING_THEATRE
+		BuildingType=BUILDING_LIGHTHOUSE
 		BuildingType=BUILDING_WEAVER
 		BuildingType=BUILDING_MARKET
 		BuildingType=BUILDING_BATH
@@ -73793,7 +73787,7 @@ BeginPlot
 	TerrainType=TERRAIN_GRASS
 	PlotType=2
 	BeginUnit
-		UnitType=UNIT_ARQUEBUSIER, UnitOwner=22, (Philip II)
+		UnitType=UNIT_SPANISH_TERCIO, UnitOwner=22, (Philip II)
 		Level=1, Experience=0
 	EndUnit
 	BeginCity
@@ -73802,12 +73796,12 @@ BeginPlot
 		CityPopulation=6
 		BuildingType=BUILDING_GRANARY
 		BuildingType=BUILDING_SMOKEHOUSE
+		BuildingType=BUILDING_HARBOR
 		BuildingType=BUILDING_AQUEDUCT
 		BuildingType=BUILDING_LIGHTHOUSE
-		BuildingType=BUILDING_HARBOR
-		BuildingType=BUILDING_FORGE
 		BuildingType=BUILDING_MARKET
 		BuildingType=BUILDING_JAIL
+		BuildingType=BUILDING_FORGE
 		BuildingType=BUILDING_CATHOLIC_TEMPLE
 		ReligionType=RELIGION_CATHOLICISM
 		Player22Culture=100, (Philip II)

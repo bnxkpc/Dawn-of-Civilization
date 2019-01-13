@@ -586,7 +586,7 @@ dStartingLeaders = [
 	iMoors : iYaqub,
 	iSpain : iPhilip,
 	iFrance : iLouis,
-	iEngland : iVictoria,
+	iEngland : iElizabeth,
 	iHolyRome : iFrancis,
 	iRussia : iPeter,
 	iNetherlands : iWilliam,
