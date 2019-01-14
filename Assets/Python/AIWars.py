@@ -51,11 +51,11 @@ tRomeEgyptTL = (75, 38)
 tRomeEgyptBR = (82, 45)
 
 # following setup: iPlayer, iPreferredTarget, TL, BR, iNumTargets, iStartYear, iTurnInterval
-tConquestRomeCarthage = (0, iRome, iCarthage, tRomeCarthageTL, tRomeCarthageBR, 2, iRomeCarthageYear, 10)
-tConquestRomeGreece = (1, iRome, iGreece, tRomeGreeceTL, tRomeGreeceBR, 2, iRomeGreeceYear, 10)
-tConquestRomeAnatolia = (2, iRome, iGreece, tRomeAnatoliaTL, tRomeAnatoliaBR, 2, iRomeAnatoliaYear, 10)
-tConquestRomeCelts = (3, iRome, iCeltia, tRomeCeltiaTL, tRomeCeltiaBR, 2, iRomeCeltiaYear, 10)
-tConquestRomeEgypt = (4, iRome, iEgypt, tRomeEgyptTL, tRomeEgyptBR, 2, iRomeEgyptYear, 10)
+tConquestRomeCarthage = (0, iRome, iCarthage, tRomeCarthageTL, tRomeCarthageBR, 3, iRomeCarthageYear, 10)
+tConquestRomeGreece = (1, iRome, iGreece, tRomeGreeceTL, tRomeGreeceBR, 3, iRomeGreeceYear, 10)
+tConquestRomeAnatolia = (2, iRome, iGreece, tRomeAnatoliaTL, tRomeAnatoliaBR, 5, iRomeAnatoliaYear, 10)
+tConquestRomeCelts = (3, iRome, iCeltia, tRomeCeltiaTL, tRomeCeltiaBR, 3, iRomeCeltiaYear, 10)
+tConquestRomeEgypt = (4, iRome, iEgypt, tRomeEgyptTL, tRomeEgyptBR, 4, iRomeEgyptYear, 10)
 
 iAlexanderYear = -340
 tGreeceMesopotamiaTL = (82, 44)
@@ -65,9 +65,9 @@ tGreeceEgyptBR = (82, 45)
 tGreecePersiaTL = (92, 43)
 tGreecePersiaBR = (98, 51)
 
-tConquestGreeceMesopotamia = (5, iGreece, iBabylonia, tGreeceMesopotamiaTL, tGreeceMesopotamiaBR, 2, iAlexanderYear, 20)
-tConquestGreeceEgypt = (6, iGreece, iEgypt, tGreeceEgyptTL, tGreeceEgyptBR, 2, iAlexanderYear, 20)
-tConquestGreecePersia = (7, iGreece, iPersia, tGreecePersiaTL, tGreecePersiaBR, 2, iAlexanderYear, 20)
+tConquestGreeceMesopotamia = (5, iGreece, iBabylonia, tGreeceMesopotamiaTL, tGreeceMesopotamiaBR, 6, iAlexanderYear, 20)
+tConquestGreeceEgypt = (6, iGreece, iEgypt, tGreeceEgyptTL, tGreeceEgyptBR, 4, iAlexanderYear, 20)
+tConquestGreecePersia = (7, iGreece, iPersia, tGreecePersiaTL, tGreecePersiaBR, 5, iAlexanderYear, 20)
 
 iCholaSumatraYear = 1030
 tCholaSumatraTL = (117, 26)
@@ -142,7 +142,7 @@ class AIWars:
 	def checkConquest(self, tConquest, tPrereqConquest = (), iWarPlan = WarPlanTypes.WARPLAN_TOTAL):
 		iID, iPlayer, iPreferredTarget, tTL, tBR, iNumTargets, iYear, iIntervalTurns = tConquest
 	
-		if utils.getHumanID() == iPlayer: return
+		#if utils.getHumanID() == iPlayer: return
 		if not gc.getPlayer(iPlayer).isAlive() and iPlayer != iTurks: return
 		if data.lConquest[iID]: return
 		if iPreferredTarget >= 0 and gc.getPlayer(iPreferredTarget).isAlive() and gc.getTeam(iPreferredTarget).isVassal(iPlayer): return
@@ -201,10 +201,10 @@ class AIWars:
 			
 		for city in lTargetCities:
 			iExtra = 0
-			if utils.getHumanID() not in [iPlayer, city.getOwner()]: 
+			if utils.getHumanID() != city.getOwner(): 
 				iExtra += 1 #max(1, gc.getPlayer(iPlayer).getCurrentEra())
 				
-			if iPlayer in [iTurks, iMongolia] and utils.getHumanID() != iPlayer:
+			if iPlayer in [iTurks, iMongolia] and city.getOwner() != utils.getHumanID():
 				iExtra += 1
 			
 			tPlot = utils.findNearestLandPlot((city.getX(), city.getY()), iPlayer)

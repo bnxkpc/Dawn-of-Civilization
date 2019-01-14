@@ -831,7 +831,7 @@ class RiseAndFall:
 			tTechs = ([iDoctrine], 7, [iAlchemy, iCivilService])
 			lCivics = [iDespotism, iVassalage, iSlavery, iMerchantTrade, iTheocracy, iSovereignty]
 			self.triggerRespawn(iEgypt, tCairo, tRespawnArea, lUnits, tTechs, lCivics, iIslam, 300)
-			startNewCivSwitchEvent(iCiv)
+			startNewCivSwitchEvent(iEgypt)
 					
 	def endTurn(self, iPlayer):
 		for tTimedConquest in data.lTimedConquests:
