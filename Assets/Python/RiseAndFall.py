@@ -818,6 +818,24 @@ class RiseAndFall:
 		
 		# other "scripted" falls and rebirths by h0spitall3rz
 		
+		# Parthia
+		if iGameTurn == getTurnForYear(-247) and not pPersia.isAlive():
+			tParthia = (89, 47)
+			if pBabylonia.isAlive():
+				tParthia = (92, 46)
+				if not gc.getMap().plot(tParthia[0], tParthia[1]).getPlotCity(): tParthia = (93, 51)
+			tRespawnArea = ((88, 43), (98, 52), [])
+			lUnits = [
+				(iSavaran, 3),
+				(iImmortal, 6),
+				(iArcher, 4),
+				(iCatapult, 3),
+			]
+			tTechs = ([iGeneralship, iCurrency, iLaw, iMedicine], 4, [iNavigation])
+			lCivics = [iMonarchy, iCitizenship, iSlavery, iRedistribution, iClergy, iConquest]
+			self.triggerRespawn(iPersia, tParthia, tRespawnArea, lUnits, tTechs, lCivics, iZoroastrianism, 100)
+			startNewCivSwitchEvent(iPersia)
+
 		# Fatimid Egypt
 		if iGameTurn == getTurnForYear(909):
 			tCairo = (80, 43)
@@ -1672,7 +1690,7 @@ class RiseAndFall:
 		pCiv = gc.getPlayer(iCiv)
 		teamCiv = gc.getTeam(iCiv)
 
-		utils.setReborn(iCiv, True)
+		if iCiv != iPersia or gc.getGame().getGameTurn() >= getTurnForYear(651): utils.setReborn(iCiv, True)
 		for iOtherCiv in range(iNumPlayers):
 				if teamCiv.isVassal(iOtherCiv):
 					gc.getTeam(iOtherCiv).freeVassal(iCiv)
