@@ -19,7 +19,7 @@ tMinorCities = (
 (-3000, (84, 45), iIndependent, 'Yerushalayim', 2, iArcher, 3),	# Jerusalem
 (-3000, (92, 46), iIndependent, 'Shushan', 1, iArcher, 1), 		# Susa
 (-3000, (88, 49), iIndependent2, 'Ashur', 2, iArcher, 2), 		# Assur
-#(-3000, (124, 52), iIndependent2, 'Chengzhou', 2, iArcher, 2), 		# Luoyang
+(-3000, (124, 52), iIndependent2, 'Chengzhou', 2, iArcher, 1), 		# Luoyang
 (-2500, (79, 37), iBarbarian, 'Kerma', 2, iArcher, 2), 			# Kerma
 (-2000, (100, 54), iIndependent, 'Afrasiyab', 1, iArcher, 1), 	# Samarkand
 (-2000, (108, 45), iIndependent, 'Varanasi', 1, iMilitia, 1), 	# Varanasi
@@ -52,7 +52,7 @@ tMinorCities = (
 (500, (86, 39), iIndependent, 'Bakkah', 3, iArcher, 1),		# Mecca
 (600, (86, 41), iIndependent, 'Yathrib', 2, iArcher, 1),		# Medina
 #(633, (113, 48), iBarbarian, 'Lhasa', 2, iKhampa, 1),			# Lhasa
-(680, (57, 44), iIndependent, 'Murrakush', 1, iCrossbowman, 1),	# Marrakesh
+(680, (57, 44), iIndependent, 'Murrakush', 3, iCrossbowman, 1),	# Marrakesh
 (700, (34, 22), iNative, 'Tiwanaku', 1, -1, -1),				# Tiahuanaco
 (700, (67, 48), iIndependent2, 'Tunis', 3, iCrossbowman, 2),	# Tunis
 (738, (118, 45), iIndependent2, 'Darllit', 2, iArcher, 1),		# Dali

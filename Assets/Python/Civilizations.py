@@ -140,10 +140,9 @@ lStartingTechs = [
 iCivNative : 	Techs([iTanning, iAgriculture, iMythology]),
 iCivEgypt :		Techs([iMining, iPottery, iAgriculture, iMythology]),
 iCivHarappa : 	Techs([iPottery, iPastoralism, iAgriculture, iMythology]),
-iCivChina :		Techs([iTanning, iMining, iAgriculture, iPastoralism, iPottery, iMythology, iSmelting, iAlloys, iLeverage, iProperty]),
 iCivBabylonia :	Techs([iPottery, iPastoralism, iAgriculture, iMythology]),
+iCivChina :		Techs([iAlloys], column=2, exceptions=[iDivination, iSeafaring]),
 iCivGreece :	Techs([iAlloys, iArithmetics, iWriting], column=2),
-#iCivChina :		Techs([iAlloys, iArithmetics, iWriting, iCalendar], column=2, exceptions=[iSeafaring]),
 iCivIndia :		Techs([iAlloys, iWriting, iCalendar], column=2, exceptions=[iSeafaring]),
 iCivCarthage :	Techs([iAlloys, iArithmetics, iWriting, iShipbuilding], column=2),
 iCivPolynesia :	Techs([iTanning, iPastoralism, iMythology, iSailing, iSeafaring]),
@@ -579,6 +578,10 @@ dTechPreferences = {
 	iCivThailand : {
 		iCartography: -50,
 		iExploration: -50,
+	},
+	iCivIran : {
+		iGeography: 30,
+		iFission: 20,
 	},
 	iCivNetherlands : {
 		iExploration: 20,
