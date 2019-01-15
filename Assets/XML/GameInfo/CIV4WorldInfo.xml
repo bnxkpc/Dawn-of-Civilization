@@ -137,18 +137,18 @@
 			<iNumFreeBuildingBonuses>7</iNumFreeBuildingBonuses>
 			<iBuildingClassPrereqModifier>100</iBuildingClassPrereqModifier>
 			<iMaxConscriptModifier>75</iMaxConscriptModifier>
-			<iWarWearinessModifier>-50</iWarWearinessModifier>
-			<iGridWidth>32</iGridWidth>
+			<iWarWearinessModifier>-60</iWarWearinessModifier>
+			<iGridWidth>38</iGridWidth>
 			<iGridHeight>20</iGridHeight>
 			<iTerrainGrainChange>1</iTerrainGrainChange>
 			<iFeatureGrainChange>1</iFeatureGrainChange>
 			<iResearchPercent>150</iResearchPercent>
-			<iTradeProfitPercent>30</iTradeProfitPercent>
+			<iTradeProfitPercent>25</iTradeProfitPercent>
 			<iDistanceMaintenancePercent>75</iDistanceMaintenancePercent>
 			<iNumCitiesMaintenancePercent>15</iNumCitiesMaintenancePercent>
-			<iColonyMaintenancePercent>30</iColonyMaintenancePercent>
+			<iColonyMaintenancePercent>25</iColonyMaintenancePercent>
 			<iCorporationMaintenancePercent>50</iCorporationMaintenancePercent>
-			<iNumCitiesAnarchyPercent>6</iNumCitiesAnarchyPercent>
+			<iNumCitiesAnarchyPercent>5</iNumCitiesAnarchyPercent>
 			<iAdvancedStartPointsMod>120</iAdvancedStartPointsMod>
 		</WorldInfo>
 	</WorldInfos>
