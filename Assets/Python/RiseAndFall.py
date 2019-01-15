@@ -1802,7 +1802,7 @@ class RiseAndFall:
 		pCiv = gc.getPlayer(iCiv)
 		teamCiv = gc.getTeam(pCiv.getTeam())
 		
-		if pCiv.isAlive() and iCiv in dMaxColonists:
+		if pCiv.isAlive() and utils.getHumanID() != iCiv and iCiv in dMaxColonists:
 			if teamCiv.isHasTech(iExploration) and data.players[iCiv].iColonistsAlreadyGiven < dMaxColonists[iCiv]:
 				lCities = utils.getAreaCitiesCiv(iCiv, Areas.getCoreArea(iCiv))
 				
