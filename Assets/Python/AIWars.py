@@ -142,7 +142,7 @@ class AIWars:
 	def checkConquest(self, tConquest, tPrereqConquest = (), iWarPlan = WarPlanTypes.WARPLAN_TOTAL):
 		iID, iPlayer, iPreferredTarget, tTL, tBR, iNumTargets, iYear, iIntervalTurns = tConquest
 	
-		#if utils.getHumanID() == iPlayer: return
+		if utils.getHumanID() == iPlayer: return
 		if not gc.getPlayer(iPlayer).isAlive() and iPlayer != iTurks: return
 		if data.lConquest[iID]: return
 		if iPreferredTarget >= 0 and gc.getPlayer(iPreferredTarget).isAlive() and gc.getTeam(iPreferredTarget).isVassal(iPlayer): return
@@ -201,7 +201,7 @@ class AIWars:
 			
 		for city in lTargetCities:
 			iExtra = 0
-			if utils.getHumanID() != city.getOwner(): 
+			if utils.getHumanID() not in [iPlayer, city.getOwner()]: 
 				iExtra += 1 #max(1, gc.getPlayer(iPlayer).getCurrentEra())
 				
 			if iPlayer in [iTurks, iMongolia] and city.getOwner() != utils.getHumanID():
