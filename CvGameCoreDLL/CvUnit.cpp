@@ -2739,6 +2739,12 @@ bool CvUnit::canMoveInto(const CvPlot* pPlot, bool bAttack, bool bDeclareWar, bo
 				}
 			}
 		}
+
+		// Leoreth: make sure that hidden nationality units that entered cities through open borders cannot attack from there
+		if (bAttack && m_pUnitInfo->isHiddenNationality() && plot()->isCity() && plot()->getPlotCity()->getOwner() != getOwner())
+		{
+			return false;
+		}
 		break;
 
 	case DOMAIN_IMMOBILE:
@@ -8521,12 +8527,6 @@ int CvUnit::maxCombatStr(const CvPlot* pPlot, const CvUnit* pAttacker, CombatDet
 	int iExtraModifier;
 
 	iExtraModifier = getExtraCombatPercent();
-
-	// Leoreth: Ethiopian UP: +10% strength for land units in own borders
-	if (getOwnerINLINE() == ETHIOPIA && getDomainType() == DOMAIN_LAND && plot()->getOwnerINLINE() == ETHIOPIA)
-	{
-		iExtraModifier += 10;
-	}
 
 	iModifier += iExtraModifier;
 	if (pCombatDetails != NULL)
@@ -14552,13 +14552,30 @@ bool CvUnit::persecute(ReligionTypes eReligion)
 
 bool CvUnit::canGreatMission(const CvPlot* pPlot) const
 {
-	if (!GC.getUnitInfo(getUnitType()).isGreatMission()) return false;
+	if (!GC.getUnitInfo(getUnitType()).isGreatMission()) 
+	{
+		return false;
+	}
 
-	if (GET_PLAYER(getOwner()).getStateReligion() == NO_RELIGION) return false;
+	if (!pPlot->isCity())
+	{
+		return false;
+	}
 
-	if (!pPlot->isCity()) return false;
+	if (GET_PLAYER(getOwner()).getStateReligion() != NO_RELIGION) 
+	{
+		return true;
+	}
 
-	return true;
+	for (int iI = 0; iI < NUM_RELIGIONS; iI++)
+	{
+		if (GC.getGame().isReligionFounded((ReligionTypes)iI) && plot()->getSpreadFactor((ReligionTypes)iI) == REGION_SPREAD_CORE && !GC.getReligionInfo((ReligionTypes)iI).isLocal())
+		{
+			return true;
+		}
+	}
+
+	return false;
 }
 
 bool CvUnit::greatMission()
@@ -14572,8 +14589,21 @@ bool CvUnit::greatMission()
 	iNumCities = std::max(iNumCities, GC.getMap().getArea(getArea())->getCitiesPerPlayer(getOwner()));
 	ReligionTypes eReligion = GET_PLAYER(getOwner()).getStateReligion();
 
+	if (eReligion == NO_RELIGION)
+	{
+		for (int iI = 0; iI < NUM_RELIGIONS; iI++)
+		{
+			if (!GC.getReligionInfo((ReligionTypes)iI).isLocal() && plot()->getSpreadFactor((ReligionTypes)iI) == REGION_SPREAD_CORE)
+			{
+				eReligion = (ReligionTypes)iI;
+				break;
+			}
+		}
+	}
+
 	CvPlot* pSpreadPlot;
 	CvCity* pSpreadCity;
+	ReligionTypes eRemovedReligion;
 	int iSpreads = 0;
 
 	// spread to eligible cities
@@ -14593,7 +14623,11 @@ bool CvUnit::greatMission()
 
 		if (pSpreadCity == NULL) break;
 
-		pSpreadCity->removeReligion(pSpreadCity->AI_getPersecutionReligion());
+		eRemovedReligion = pSpreadCity->AI_getPersecutionReligion(eReligion);
+
+		if (eRemovedReligion == NO_RELIGION) continue;
+
+		pSpreadCity->removeReligion(eRemovedReligion);
 	}
 
 	if (plot()->isActiveVisible(false))

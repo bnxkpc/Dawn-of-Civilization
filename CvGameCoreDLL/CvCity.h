@@ -968,6 +968,7 @@ public:
 	int getTradeRoutes() const;																										// Exposed to Python
 	void clearTradeRoutes();
 	void updateTradeRoutes();
+	bool canHaveTradeRouteWith(const CvCity* pCity) const; // Leoreth
 
 	void clearOrderQueue();																														// Exposed to Python
 	void pushOrder(OrderTypes eOrder, int iData1, int iData2, bool bSave, bool bPop, bool bAppend, bool bForce = false);		// Exposed to Python
@@ -1175,7 +1176,7 @@ public:
 	virtual int AI_playerCloseness(PlayerTypes eIndex, int iMaxDistance = 7) = 0;
 	virtual int AI_cityThreat(bool bDangerPercent = false) = 0;
 	virtual BuildingTypes AI_bestAdvancedStartBuilding(int iPass) = 0;
-	virtual ReligionTypes AI_getPersecutionReligion() = 0;
+	virtual ReligionTypes AI_getPersecutionReligion(ReligionTypes eIgnoredReligion = NO_RELIGION) = 0;
 	
 	virtual int AI_getWorkersHave() = 0;
 	virtual int AI_getWorkersNeeded() = 0;

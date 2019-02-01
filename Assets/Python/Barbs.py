@@ -47,6 +47,7 @@ tMinorCities = (
 (100, (17, 43), iBarbarian, 'Tolan', 2, iJaguar, 2),		# Teotihuacan
 (100, (88, 36), iIndependent, "Sana'a", 2, -1, -1),				# Sana'a
 (107, (117, 41), iIndependent2, 'Pugam', 2, -1, -1),			# Pagan
+(200, (87, 33), iIndependent2, 'Barbara', 2, iArcher, 2),	# Berbera
 (500, (123, 39), iIndependent, 'Indrapura', 2, iArcher, 1),		# Indrapura
 (500, (73, 54), iIndependent, "Ragusa", 3, iCrossbowman, 3), # Ragusa
 (500, (86, 39), iIndependent, 'Bakkah', 3, iArcher, 1),		# Mecca
@@ -66,6 +67,7 @@ tMinorCities = (
 (882, (80, 62), iIndependent, 'Kyiv', 2, iCrossbowman, 2),		# Kiev
 (900, (28, 25), iNative, 'Pachakamaq', 1, iArcher, 2),			# Pachacamac
 (900, (27, 28), iNative, 'Chan Chan', 2, iArcher, 2),			# Chan Chan
+(900, (87, 30), iIndependent, 'Muqdisho', 3, iCrossbowman, 2),	# Mogadishu
 (944, (63, 48), iIndependent, "Dzayer", 3, iCrossbowman, 2),	# Algiers
 (990, (54, 65), iCeltia, '&#193;th Cliath', 1, -1, -1),			# Dublin
 (990, (130, 38), iIndependent, 'Maynila', 2, iArcher, 2),		# Manila
@@ -270,10 +272,10 @@ class Barbs:
 
 		#barbarians in north africa
 		if utils.isYearIn(-210, 50):
-			self.checkSpawn(iBarbarian, iNumidianCavalry, 1, (60, 38), (78, 42), self.spawnNomads, iGameTurn, 9-iHandicap, 3, ["TXT_KEY_ADJECTIVE_BERBER"])
+			self.checkSpawn(iBarbarian, iCamelRider, 1, (60, 38), (78, 42), self.spawnNomads, iGameTurn, 9-iHandicap, 3, ["TXT_KEY_ADJECTIVE_BERBER"])
 		elif utils.isYearIn(50, 900):
 			if utils.getScenario() == i3000BC:  #late start condition
-				self.checkSpawn(iBarbarian, iNumidianCavalry, 1 + iHandicap, (60, 38), (78, 42), self.spawnNomads, iGameTurn, 10-iHandicap, 5, ["TXT_KEY_ADJECTIVE_BERBER"])
+				self.checkSpawn(iBarbarian, iCamelRider, 1 + iHandicap, (60, 38), (78, 42), self.spawnNomads, iGameTurn, 10-iHandicap, 5, ["TXT_KEY_ADJECTIVE_BERBER"])
 		elif utils.isYearIn(900, 1800):
 			self.checkSpawn(iBarbarian, iCamelArcher, 1, (60, 33), (78, 42), self.spawnNomads, iGameTurn, 10-iHandicap, 4, ["TXT_KEY_ADJECTIVE_BERBER"])
 			
@@ -333,6 +335,14 @@ class Barbs:
 		if iGameTurn == getTurnForYear(-500):
 			gc.getMap().plot(19, 41).setImprovementType(iHut)
 			utils.makeUnitAI(iHolkan, iNative, (19, 41), UnitAITypes.UNITAI_ATTACK, 2)
+			
+		# Oromos in the Horn of Africa
+		if utils.isYearIn(1500, 1700):
+			iNumUnits = 1
+			if pEthiopia.isAlive():
+				iNumUnits += 1
+				if utils.isYearIn(1600, 1700): iNumUnits += 1
+			self.checkSpawn(iBarbarian, iOromoWarrior, iNumUnits, (69, 25), (74, 28), self.spawnInvaders, iGameTurn, 8, 3)
 				
 		#pirates in the Caribbean
 		if utils.isYearIn(1600, 1800):
@@ -375,6 +385,7 @@ class Barbs:
 			if sName == 'Kyiv': lReligions = [iOrthodoxy]
 			if sName == 'Kilwa': lReligions = [iIslam]
 			if iPlayer == iCeltia and utils.getScenario() != i3000BC: iPlayer = iIndependent
+			if sName == 'Muqdisho': lReligions = [iIslam]
 			
 			if not self.isFreePlot(tPlot, bForceSpawn): continue
 			

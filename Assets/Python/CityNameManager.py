@@ -253,6 +253,7 @@ tEraNames = (
 	"Songping"		:	"Dailuo",
 	"Co Loa"		:	"Thang Long",
 	"Songping"		:	"Dailuo",
+	'Roha'			:	'Lalibela',
 },
 # renaissance
 {
@@ -287,6 +288,7 @@ tEraNames = (
 	'Dagou'			:	'Gaoxiong',
 	'Ayutthaya'		:	'Bangkok',
 	'York'			:	'Toronto',
+	'Barara'		:	'Addis Ababa',
 	"Jayakarta"		:	"Jakarta",
 	"Dong Kinh"		:	"Ha Noi",
 	"Tonkin"		:	"Hano&#239;"
@@ -2479,6 +2481,8 @@ dIdentifiers = {
 	"Aswan"		:	"Yebu",
 	"Elephantine"		:	"Yebu",
 	"Yebu"			:	"Yebu",
+	"Abw"			:	"Yebu",
+	"Gazirat il-Fantin"	:	"Yebu",
 	"Aarru-Hetep"		:	"Yerushalayim",
 	"Aelia Capitolina"	:	"Yerushalayim",
 	"Al-Quds"		:	"Yerushalayim",
@@ -2530,6 +2534,7 @@ tRenames = (
 	"Per-Wadjet"		:	"Per-Wadjet",
 	"Alexandreia"		:	"Ra-Kedet",
 	"Tamiat"		:	"Tamiat",
+	"Yebu"			:	"Abw",
 },
 #Language: Egyptian Arabic
 {
@@ -3402,7 +3407,7 @@ tRenames = (
 	"Elath"			:	"Umm Rashrash",
 	"Urganj"		:	"Urganj",
 	"Oran"			:	"Wahran",
-	
+	"Yebu"			:	"Gazirat il-Fantin",
 },
 #Language: Khmer
 {

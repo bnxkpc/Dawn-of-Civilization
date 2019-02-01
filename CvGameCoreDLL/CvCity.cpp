@@ -2883,9 +2883,12 @@ int CvCity::getProductionExperience(UnitTypes eUnit)
 	}
 	
 	// Leoreth: Chapultepec Castle
-	if (isHasBuildingEffect((BuildingTypes)CHAPULTEPEC_CASTLE))
+	if (eUnit != NO_UNIT)
 	{
-		iExperience += getCultureLevel();
+		if (GC.getUnitInfo(eUnit).getCombat() > 0 && isHasBuildingEffect((BuildingTypes)CHAPULTEPEC_CASTLE))
+		{
+			iExperience += getCultureLevel();
+		}
 	}
 	
 	//SuperSpies: TSHEEP - Only give spies spy specific xp
@@ -13325,10 +13328,7 @@ bool CvCity::isHasRealBuilding(BuildingTypes eIndex) const
 
 void CvCity::setHasRealBuilding(BuildingTypes eIndex, bool bNewValue)
 {
-    if (bNewValue == true)
-        setNumRealBuilding(eIndex, 1);
-    else
-        setNumRealBuilding(eIndex, 0);
+    setNumRealBuilding(eIndex, bNewValue ? 1 : 0);
 }
 //Rhye - end
 
@@ -13921,6 +13921,31 @@ void CvCity::clearTradeRoutes()
 }
 
 
+// Leoreth
+bool CvCity::canHaveTradeRouteWith(const CvCity* pCity) const
+{
+	if (GC.getDefineINT("IGNORE_PLOT_GROUP_FOR_TRADE_ROUTES"))
+	{
+		return true;
+	}
+
+	// Ethiopian UP: cities can trade with other cities of the same state religion
+	if (getOwnerINLINE() == ETHIOPIA)
+	{
+		ReligionTypes eStateReligion = GET_PLAYER(getOwnerINLINE()).getStateReligion();
+		if (eStateReligion != NO_RELIGION)
+		{
+			if (isHasReligion(eStateReligion) && pCity->isHasReligion(eStateReligion))
+			{
+				return true;
+			}
+		}
+	}
+
+	return pCity->plotGroup(getOwnerINLINE()) == plotGroup(getOwnerINLINE());
+}
+
+
 // XXX eventually, this needs to be done when roads are built/destroyed...
 void CvCity::updateTradeRoutes()
 {
@@ -13957,7 +13982,7 @@ void CvCity::updateTradeRoutes()
 					{
 						if (!(pLoopCity->isTradeRoute(getOwnerINLINE())) || (getTeam() == GET_PLAYER((PlayerTypes)iI).getTeam()))
 						{
-							if (pLoopCity->plotGroup(getOwnerINLINE()) == plotGroup(getOwnerINLINE()) || GC.getDefineINT("IGNORE_PLOT_GROUP_FOR_TRADE_ROUTES"))
+							if (canHaveTradeRouteWith(pLoopCity)) // Leoreth: includes Ethiopian UP
 							{
 // BUG - Fractional Trade Routes - start
 #ifdef _MOD_FRACTRADE

@@ -3091,15 +3091,6 @@ It is fine for a human player mouse-over (which is what it is used for).
 
                 iModifier = pAttacker->getExtraCombatPercent();
 
-				// Leoreth: Ethiopian UP: +10% strength for land units in own borders
-				if (pPlot != NULL)
-				{
-					if (pAttacker->getOwnerINLINE() == ETHIOPIA && pAttacker->getDomainType() == DOMAIN_LAND && pPlot->getOwnerINLINE() == ETHIOPIA)
-					{
-						iModifier += 10;
-					}
-				}
-
                 if (iModifier != 0)
                 {
                     szString.append(NEWLINE);
@@ -3193,16 +3184,7 @@ It is fine for a human player mouse-over (which is what it is used for).
 
                     iModifier = pDefender->getExtraCombatPercent();
 
-					// Leoreth: Ethiopian UP: +10% strength for land units in own borders
-					if (pPlot != NULL)
-					{
-						if (pDefender->getOwnerINLINE() == ETHIOPIA && pDefender->getDomainType() == DOMAIN_LAND && pPlot->getOwnerINLINE() == ETHIOPIA)
-						{
-							iModifier += 10;
-						}
-					}
-
-                    if (iModifier != 0)
+					if (iModifier != 0)
                     {
                         szString.append(NEWLINE);
                         szString.append(gDLL->getText("TXT_KEY_COMBAT_PLOT_EXTRA_STRENGTH", iModifier));
@@ -9438,6 +9420,18 @@ void CvGameTextMgr::setBasicUnitHelpWithCity(CvWStringBuffer &szBuffer, UnitType
 						szBuffer.append(gDLL->getText("TXT_KEY_NO_STATE_RELIGION_FREE_EXPERIENCE", iExperience));
 					}
 				}
+
+				if (pCity->isHasBuildingEffect((BuildingTypes)HARMANDIR_SAHIB))
+				{
+					szBuffer.append(NEWLINE);
+					szBuffer.append(gDLL->getText(pCity->isHasReligion(kPlayer.getStateReligion()) ? "TXT_KEY_BUILDING_FREE_EXPERIENCE" : "TXT_KEY_NO_BUILDING_FREE_EXPERIENCE", 2, GC.getBuildingInfo((BuildingTypes)HARMANDIR_SAHIB).getText()));
+				}
+			}
+
+			if (kUnit.getCombat() > 0 && pCity->isHasBuildingEffect((BuildingTypes)CHAPULTEPEC_CASTLE))
+			{
+				szBuffer.append(NEWLINE);
+				szBuffer.append(gDLL->getText("TXT_KEY_BUILDING_FREE_EXPERIENCE", pCity->getCultureLevel(), GC.getBuildingInfo((BuildingTypes)CHAPULTEPEC_CASTLE).getText()));
 			}
 		}
 	}
@@ -15975,12 +15969,14 @@ void CvGameTextMgr::setTerrainHelp(CvWStringBuffer &szBuffer, TerrainTypes eTerr
 			szBuffer.append(gDLL->getText("TXT_KEY_TERRAIN_COASTAL_CITIES"));
 			bFirst = false;
 		}
-		if (!bFirst)
-		{
-			szBuffer.append(gDLL->getText("TXT_KEY_OR"));
-		}
+
 		if (terrain.isFoundFreshWater())
 		{
+			if (!bFirst)
+			{
+				szBuffer.append(gDLL->getText("TXT_KEY_OR"));
+			}
+
 			szBuffer.append(gDLL->getText("TXT_KEY_TERRAIN_FRESH_WATER_CITIES"));
 			bFirst = false;
 		}

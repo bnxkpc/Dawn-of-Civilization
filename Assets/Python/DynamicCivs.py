@@ -532,7 +532,7 @@ dStartingLeaders = [
 	iMaya : iPacal,
 	iJapan : iKammu,
 	iTamils : iRajendra,
-	iEthiopia : iZaraYaqob,
+	iEthiopia : iEzana,
 	iKorea : iWangKon,
 	iByzantium : iJustinian,
 	iVikings : iRagnar,
@@ -895,6 +895,9 @@ def isEmpire(iPlayer):
 	
 def getEmpireThreshold(iPlayer):
 	if iPlayer in dEmpireThreshold: return dEmpireThreshold[iPlayer]
+	
+	if iPlayer == iEthiopia and not gc.getGame().isReligionFounded(iIslam):
+		return 4
 	
 	if gc.getPlayer(iPlayer).isReborn():
 		if iPlayer == iPersia: return 4
@@ -1398,6 +1401,9 @@ def specificAdjective(iPlayer):
 	elif iPlayer == iEthiopia:
 		if iReligion == iIslam:
 			return "TXT_KEY_CIV_ETHIOPIA_ADAL"
+			
+		if not gc.getGame().isReligionFounded(iIslam):
+			return "TXT_KEY_CIV_ETHIOPIA_AKSUMITE"
 			
 	elif iPlayer == iByzantium:
 		if pRome.getNumCities() > 0:
@@ -2199,7 +2205,9 @@ def leader(iPlayer):
 		if tPlayer.isHasTech(iFeudalism): return iOdaNobunaga
 		
 	elif iPlayer == iEthiopia:
-		if iEra >= iIndustrial: return iHaileSelassie
+		if iEra >= iIndustrial: return iMenelik
+		
+		if iEra >= iMedieval: return iZaraYaqob
 		
 	elif iPlayer == iTamils:
 		if iEra >= iRenaissance: return iKrishnaDevaRaya
