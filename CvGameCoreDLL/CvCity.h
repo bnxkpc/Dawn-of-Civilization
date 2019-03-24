@@ -575,8 +575,8 @@ public:
 
 	int getOccupationTimer() const;															// Exposed to Python
 	bool isOccupation() const;																	// Exposed to Python 
-	void setOccupationTimer(int iNewValue);													// Exposed to Python
-	void changeOccupationTimer(int iChange);												// Exposed to Python
+	void setOccupationTimer(int iNewValue, bool bEffects = true);													// Exposed to Python
+	void changeOccupationTimer(int iChange, bool bEffects = true);												// Exposed to Python
 
 	int getCultureUpdateTimer() const;															// Exposed to Python
 	void setCultureUpdateTimer(int iNewValue);
@@ -794,6 +794,7 @@ public:
 	int getCultureTimes100(PlayerTypes eIndex) const;													// Exposed to Python
 	//int countTotalCultureTimes100() const;			//Rhye																				// Exposed to Python
 	int countTotalCultureTimes100() const;		//Rhye																					// Exposed to Python
+	int getActualTotalCultureTimes100() const; // Leoreth
 	PlayerTypes findHighestCulture(bool bIgnoreMinors = false) const;																			// Exposed to Python
 	int calculateCulturePercent(PlayerTypes eIndex) const;											// Exposed to Python
 	int calculateOverallCulturePercent(PlayerTypes eIndex) const; // Leoreth
@@ -802,6 +803,9 @@ public:
 	void setCultureTimes100(PlayerTypes eIndex, int iNewValue, bool bPlots, bool bUpdatePlotGroups);			// Exposed to Python
 	void changeCulture(PlayerTypes eIndex, int iChange, bool bPlots, bool bUpdatePlotGroups);		// Exposed to Python
 	void changeCultureTimes100(PlayerTypes eIndex, int iChange, bool bPlots, bool bUpdatePlotGroups);		// Exposed to Python
+
+	// Leoreth
+	int getActualCultureTimes100(PlayerTypes ePlayer) const;
 
 	int getNumRevolts(PlayerTypes eIndex) const;
 	void changeNumRevolts(PlayerTypes eIndex, int iChange);
@@ -959,7 +963,7 @@ public:
 	void removeReligion(ReligionTypes eReligion);
 	void replaceReligion(ReligionTypes eOldReligion, ReligionTypes eNewReligion);
 
-	ReligionTypes disappearingReligion(ReligionTypes eNewReligion = NO_RELIGION) const;
+	ReligionTypes disappearingReligion(ReligionTypes eNewReligion = NO_RELIGION, bool bConquest = false) const;
 
 	bool isHasCorporation(CorporationTypes eIndex) const;
 	void setHasCorporation(CorporationTypes eIndex, bool bNewValue, bool bAnnounce, bool bArrows = true);
@@ -1123,6 +1127,34 @@ public:
 	bool canSatelliteJoin() const;
 
 	int getSpecialistGreatPeopleRateChange(SpecialistTypes eSpecialist) const;
+
+	int getBuildingDamage() const;
+	void setBuildingDamage(int iNewValue);
+	void changeBuildingDamage(int iChange);
+
+	int getBuildingDamageChange() const;
+	void setBuildingDamageChange(int iNewValue);
+	void changeBuildingDamageChange(int iChange);
+
+	void applyBuildingDamage(int iDamage);
+	void applyPopulationLoss(int iLoss);
+
+	int getTotalPopulationLoss() const;
+	void setTotalPopulationLoss(int iNewValue);
+	void changeTotalPopulationLoss(int iChange);
+
+	int getPopulationLoss() const;
+	void setPopulationLoss(int iNewValue);
+
+	void completeAcquisition(int iCaptureGold);
+
+	int getRebuildProduction() const;
+
+	void sack(PlayerTypes eHighestCulturePlayer, int iCaptureGold);
+	void spare(int iCaptureGold);
+	void raze(int iCaptureGold);
+
+	bool canLiberate() const;
 
 	DllExport int getMusicScriptId() const;
 	DllExport int getSoundscapeScriptId() const;
@@ -1308,6 +1340,14 @@ protected:
 
 	int m_iBuildingUnhealthModifier;
 	int m_iCorporationUnhealthModifier;
+
+	int m_iTotalCultureTimes100;
+
+	int m_iBuildingDamage;
+	int m_iBuildingDamageChange;
+
+	int m_iTotalPopulationLoss;
+	int m_iPopulationLoss;
 
 	bool m_bNeverLost;
 	bool m_bBombarded;

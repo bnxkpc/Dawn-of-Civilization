@@ -576,6 +576,7 @@ dStartingLeaders = [
 	iChina : iHongwu,
 	iIndia : iShahuji,
 	iPersia : iAbbas,
+	iTamils : iKrishnaDevaRaya,
 	iKorea : iSejong,
 	iJapan : iOdaNobunaga,
 	iTurks : iTamerlane,
@@ -618,7 +619,7 @@ def setup():
 		if gc.getPlayer(iPlayer).getNumCities() > 0:
 			checkName(iPlayer)
 		
-		if not gc.getPlayer(iPlayer).isHuman():
+		if (tBirth[iPlayer] >= gc.getGame().getGameTurnYear() or gc.getPlayer(iPlayer).getNumCities() > 0) and not gc.getPlayer(iPlayer).isHuman():
 			setLeader(iPlayer, startingLeader(iPlayer))
 		
 def onCivRespawn(iPlayer, tOriginalOwners):
@@ -1124,7 +1125,7 @@ def specificName(iPlayer):
 		if utils.isPlotInArea(tCapitalCoords, tAnatoliaTL, tAnatoliaBR):
 			return "TXT_KEY_CIV_TURKS_RUM"
 			
-		if iEra >= iRenaissance:
+		if iEra >= iRenaissance and not tPlayer.isAVassal():
 			if bEmpire:
 				return "TXT_KEY_CIV_TURKS_UZBEKISTAN"
 				
@@ -1226,7 +1227,7 @@ def specificName(iPlayer):
 			return "TXT_KEY_CIV_NETHERLANDS_BELGIUM"
 			
 	elif iPlayer == iGermany:
-		if getColumn(iGermany) <= 14 and pHolyRome.isAlive():
+		if getColumn(iGermany) <= 14 and pHolyRome.isAlive() and not teamHolyRome.isVassal(iGermany):
 			return "TXT_KEY_CIV_GERMANY_PRUSSIA"
 	
 def adjective(iPlayer, bIgnoreVassal = False):
@@ -1540,7 +1541,7 @@ def specificAdjective(iPlayer):
 			return "TXT_KEY_CIV_NETHERLANDS_BELGIAN"
 			
 	elif iPlayer == iGermany:
-		if getColumn(iGermany) <= 14 and pHolyRome.isAlive():
+		if getColumn(iGermany) <= 14 and pHolyRome.isAlive() and not teamHolyRome.isVassal(iGermany):
 			return "TXT_KEY_CIV_GERMANY_PRUSSIAN"
 	
 ### Title methods ###
@@ -1679,13 +1680,12 @@ def specificTitle(iPlayer, lPreviousOwners=[]):
 	bWar = isAtWar(iPlayer)
 
 	if iPlayer == iEgypt:
-		if bResurrected:
-			if data.players[iPlayer].iResurrections < 2:
-				if iReligion == iIslam:
-					if bTheocracy: return "TXT_KEY_CALIPHATE_ADJECTIVE"
-					return "TXT_KEY_SULTANATE_ADJECTIVE"
-				return "TXT_KEY_KINGDOM_ADJECTIVE"
-				
+		if bResurrected or utils.getScenario() >= i600AD:
+			if iReligion == iIslam:
+				if bTheocracy: return "TXT_KEY_CALIPHATE_ADJECTIVE"
+				return "TXT_KEY_SULTANATE_ADJECTIVE"
+			return "TXT_KEY_KINGDOM_ADJECTIVE"
+			
 		if iGreece in lPreviousOwners:
 			return "TXT_KEY_CIV_EGYPT_PTOLEMAIC"
 			
@@ -1826,8 +1826,8 @@ def specificTitle(iPlayer, lPreviousOwners=[]):
 		if iReligion == iIslam:
 			return "TXT_KEY_SULTANATE_OF"
 			
-		if not bEmpire:
-			if capital.getRegionID() == rAnatolia or tCapitalCoords == Areas.getCapital(iPlayer):
+		if tCapitalCoords != Areas.getCapital(iPlayer):
+			if capital.getRegionID() == rAnatolia:
 				return "TXT_KEY_EMPIRE_OF"
 				
 			return "TXT_KEY_CIV_BYZANTIUM_DESPOTATE"
@@ -1931,7 +1931,7 @@ def specificTitle(iPlayer, lPreviousOwners=[]):
 		if iEra >= iIndustrial and bEmpire:
 			return "TXT_KEY_EMPIRE_ADJECTIVE"
 			
-		if iCivicLegitimacy == iIdeology:
+		if iCivicLegitimacy == iRevolutionism:
 			return "TXT_KEY_EMPIRE_ADJECTIVE"
 			
 		if not pHolyRome.isAlive() and iEra == iMedieval:

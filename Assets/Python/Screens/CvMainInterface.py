@@ -320,10 +320,6 @@ class CvMainInterface:
 		WidgetUtil.createWidget("WIDGET_ESPIONAGE_SELECT_CITY")
 		WidgetUtil.createWidget("WIDGET_ESPIONAGE_SELECT_MISSION")
 		WidgetUtil.createWidget("WIDGET_GO_TO_CITY")
-		
-		WidgetUtil.createWidget("WIDGET_ESPIONAGE_SELECT_PLAYER")
-		WidgetUtil.createWidget("WIDGET_ESPIONAGE_SELECT_CITY")
-		WidgetUtil.createWidget("WIDGET_ESPIONAGE_SELECT_MISSION")
 
 		
 		
@@ -3755,7 +3751,7 @@ class CvMainInterface:
 					if (CityScreenOpt.isShowAngerCounter()
 					and pHeadSelectedCity.getTeam() == gc.getGame().getActiveTeam()):
 						iAngerTimer = max(pHeadSelectedCity.getHurryAngerTimer(), pHeadSelectedCity.getConscriptAngerTimer())
-						if iAngerTimer > 0:
+						if not gc.getPlayer(pHeadSelectedCity.getOwner()).isNoTemporaryUnhappiness() and iAngerTimer > 0:
 							szBuffer += u" (%i)" % iAngerTimer
 # BUG - Anger Display - end
 
@@ -3803,7 +3799,14 @@ class CvMainInterface:
 					eCommerce = (i + 1) % CommerceTypes.NUM_COMMERCE_TYPES
 
 					if ((gc.getPlayer(pHeadSelectedCity.getOwner()).isCommerceFlexible(eCommerce)) or (eCommerce == CommerceTypes.COMMERCE_GOLD)):
-						szBuffer = u"%d.%02d %c" %(pHeadSelectedCity.getCommerceRate(eCommerce), pHeadSelectedCity.getCommerceRateTimes100(eCommerce)%100, gc.getCommerceInfo(eCommerce).getChar())
+						if eCommerce == CommerceTypes.COMMERCE_CULTURE:
+							iCommerceRate = pHeadSelectedCity.getModifiedCultureRate()
+							iCommerceRateTimes100 = pHeadSelectedCity.getModifiedCultureRateTimes100()
+						else:
+							iCommerceRate = pHeadSelectedCity.getCommerceRate(eCommerce)
+							iCommerceRateTimes100 = pHeadSelectedCity.getCommerceRateTimes100(eCommerce)
+					
+						szBuffer = u"%d.%02d %c" %(iCommerceRate, iCommerceRateTimes100%100, gc.getCommerceInfo(eCommerce).getChar())
 
 						iHappiness = pHeadSelectedCity.getCommerceHappinessByType(eCommerce)
 
@@ -4534,7 +4537,7 @@ class CvMainInterface:
 					screen.show( "DefenseText" )
 
 				# National and Worldwonder limit indicator
-				iWorldWonders = pHeadSelectedCity.getNumWorldWonders()
+				iWorldWonders = pHeadSelectedCity.getNumActiveWorldWonders()
 				iWorldWondersLimit = gc.getCultureLevelInfo(pHeadSelectedCity.getCultureLevel()).getWonderLimit()
 				szBuffer = localText.getText("INTERFACE_CITY_WONDER_LIMIT", (iWorldWonders, iWorldWondersLimit, CyGame().getSymbolID(FontSymbols.STAR_CHAR)))
 				screen.setLabel( "WorldWonderLimitText", "Background", szBuffer, CvUtil.FONT_RIGHT_JUSTIFY, xResolution - 400, 40, -0.3, FontTypes.SMALL_FONT, WidgetTypes.WIDGET_HELP_WONDER_LIMIT, 1, -1 )

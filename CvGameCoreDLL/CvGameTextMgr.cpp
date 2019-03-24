@@ -4616,22 +4616,22 @@ void CvGameTextMgr::setPlotHelp(CvWStringBuffer& szString, CvPlot* pPlot)
 		}
 		
 		// Merijn: CNM in tooltip for settlers
-		CvWString szName;
-		CyArgsList argsList4;
-		argsList4.add(GC.getGameINLINE().getActivePlayer());
-		argsList4.add(pPlot->getX());
-		argsList4.add(pPlot->getY());
-		gDLL->getPythonIFace()->callFunction(PYScreensModule, "getCityName", argsList4.makeFunctionArgs(), &szName);
-		
 		CvUnit* pHeadSelectedUnit = gDLL->getInterfaceIFace()->getHeadSelectedUnit();
-		
-		if (!szName.empty())
+
+		if (pHeadSelectedUnit != NULL)
 		{
-			if (pHeadSelectedUnit != NULL)
+			if (pHeadSelectedUnit->isFound())
 			{
-				if (pHeadSelectedUnit->isFound())
+				if (!pPlot->isWater() && !pPlot->isPeak())
 				{
-					if (pPlot->getPlotType() == PLOT_LAND || pPlot->getPlotType() == PLOT_HILLS)
+					CvWString szName;
+					CyArgsList argsList4;
+					argsList4.add(GC.getGameINLINE().getActivePlayer());
+					argsList4.add(pPlot->getX());
+					argsList4.add(pPlot->getY());
+					gDLL->getPythonIFace()->callFunction(PYScreensModule, "getCityName", argsList4.makeFunctionArgs(), &szName);
+
+					if (!szName.empty())
 					{
 						szString.append(szName);
 						szString.append(NEWLINE);
@@ -7118,7 +7118,34 @@ void CvGameTextMgr::parseCivicInfo(CvWStringBuffer &szHelpText, CivicTypes eCivi
 	{
 		if (GC.getCivicInfo(eCivic).isSpecialistValid(iI))
 		{
-			szFirstBuffer.Format(L"%s%s", NEWLINE, gDLL->getText("TXT_KEY_CIVIC_UNLIMTED").c_str());
+			szFirstBuffer.Format(L"%s%s", NEWLINE, gDLL->getText("TXT_KEY_CIVIC_UNLIMITED").c_str());
+			CvWString szSpecialist;
+			szSpecialist.Format(L"<link=literal>%s</link>", GC.getSpecialistInfo((SpecialistTypes)iI).getDescription());
+			setListHelp(szHelpText, szFirstBuffer, szSpecialist, L", ", bFirst);
+			bFirst = false;
+		}
+	}
+
+	// Minimal specialists
+	bFirst = true;
+	int iMinimalSpecialistCount;
+	for (iI = 0; iI < GC.getNumSpecialistInfos(); ++iI)
+	{
+		if (GC.getCivicInfo(eCivic).getMinimalSpecialistCount(iI) > 0)
+		{
+			if (bFirst) 
+			{
+				iMinimalSpecialistCount = GC.getCivicInfo(eCivic).getMinimalSpecialistCount(iI);
+				if (iMinimalSpecialistCount == 1)
+				{
+					szFirstBuffer.Format(L"%s%s", NEWLINE, gDLL->getText("TXT_KEY_CIVIC_AT_LEAST_ONE_SPECIALIST").c_str());
+				} 
+				else 
+				{
+					szFirstBuffer.Format(L"%s%s", NEWLINE, gDLL->getText("TXT_KEY_CIVIC_MINIMAL_SPECIALISTS", iMinimalSpecialistCount).c_str());
+				}
+			}
+
 			CvWString szSpecialist;
 			szSpecialist.Format(L"<link=literal>%s</link>", GC.getSpecialistInfo((SpecialistTypes)iI).getDescription());
 			setListHelp(szHelpText, szFirstBuffer, szSpecialist, L", ", bFirst);
@@ -7386,11 +7413,18 @@ void CvGameTextMgr::parseCivicInfo(CvWStringBuffer &szHelpText, CivicTypes eCivi
 		szHelpText.append(gDLL->getText("TXT_KEY_CIVIC_NO_BUILDING_UNHEALTHY"));
 	}
 
-	//	Population Unhealthiness
+	//	Experience in borders modifier
 	if (0 != GC.getCivicInfo(eCivic).getExpInBorderModifier())
 	{
 		szHelpText.append(NEWLINE);
 		szHelpText.append(gDLL->getText("TXT_KEY_CIVIC_EXPERIENCE_IN_BORDERS", GC.getCivicInfo(eCivic).getExpInBorderModifier()));
+	}
+
+	//  Leoreth: Level experience modifier
+	if (GC.getCivicInfo(eCivic).getLevelExperienceModifier() != 0)
+	{
+		szHelpText.append(NEWLINE);
+		szHelpText.append(gDLL->getText("TXT_KEY_CIVIC_LEVEL_MODIFIER", GC.getCivicInfo(eCivic).getLevelExperienceModifier()));
 	}
 
 	//	War Weariness
@@ -7674,6 +7708,20 @@ void CvGameTextMgr::parseCivicInfo(CvWStringBuffer &szHelpText, CivicTypes eCivi
 	{
 		szHelpText.append(NEWLINE);
 		szHelpText.append(gDLL->getText("TXT_KEY_CIVIC_CAPTURE_GOLD_MODIFIER", GC.getCivicInfo(eCivic).getCaptureGoldModifier()));
+	}
+
+	// No resistance
+	if (GC.getCivicInfo(eCivic).isNoResistance())
+	{
+		szHelpText.append(NEWLINE);
+		szHelpText.append(gDLL->getText("TXT_KEY_CIVIC_NO_RESISTANCE"));
+	}
+
+	// No temporary unhappiness
+	if (GC.getCivicInfo(eCivic).isNoTemporaryUnhappiness())
+	{
+		szHelpText.append(NEWLINE);
+		szHelpText.append(gDLL->getText("TXT_KEY_CIVIC_NO_TEMPORARY_UNHAPPINESS"));
 	}
 
 	//	Improvement Yields
@@ -8855,6 +8903,9 @@ void CvGameTextMgr::setBasicUnitHelpWithCity(CvWStringBuffer &szBuffer, UnitType
 	{
 		szBuffer.append(NEWLINE);
 		szBuffer.append(gDLL->getText("TXT_KEY_UNIT_FOUND_CITY"));
+
+		szBuffer.append(NEWLINE);
+		szBuffer.append(gDLL->getText("TXT_KEY_UNIT_REBUILD"));
 	}
 
 	iCount = 0;
@@ -10405,6 +10456,13 @@ void CvGameTextMgr::setBuildingHelpActual(CvWStringBuffer &szBuffer, BuildingTyp
 	{
 		szBuffer.append(NEWLINE);
 		szBuffer.append(gDLL->getText("TXT_KEY_BUILDING_NO_UNHEALTHY_BUILDINGS"));
+	}
+
+	// Leoreth
+	if (kBuilding.isNoResistance())
+	{
+		szBuffer.append(NEWLINE);
+		szBuffer.append(gDLL->getText("TXT_KEY_BUILDING_NO_RESISTANCE"));
 	}
 
 	// Leoreth
@@ -18255,7 +18313,7 @@ void CvGameTextMgr::parseGreatPeopleHelp(CvWStringBuffer &szBuffer, CvCity& city
 
 	szBuffer.append(SEPARATOR);
 	szBuffer.append(NEWLINE);
-	szBuffer.append(gDLL->getText("TXT_KEY_MISC_HELP_GREATPEOPLE_BASE_RATE", city.getBaseGreatPeopleRate() + city.calculateCultureSpecialistGreatPeopleRate()));
+	szBuffer.append(gDLL->getText("TXT_KEY_MISC_HELP_GREATPEOPLE_BASE_RATE", city.getBaseGreatPeopleRate()));
 	szBuffer.append(NEWLINE);
 
 	int iModifier = 100;

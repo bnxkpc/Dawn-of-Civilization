@@ -1236,10 +1236,12 @@ void CvPlayerAI::AI_makeProductionDirty()
 }
 
 
-void CvPlayerAI::AI_conquerCity(CvCity* pCity)
+void CvPlayerAI::AI_conquerCity(CvCity* pCity, PlayerTypes ePreviousOwner, PlayerTypes eHighestCulturePlayer, int iCaptureGold)
 {
 	CvCity* pNearestCity;
 	bool bRaze = false;
+	bool bSack = false;
+	bool bSpare = false;
 	int iRazeValue;
 	int iI;
 
@@ -1293,8 +1295,8 @@ void CvPlayerAI::AI_conquerCity(CvCity* pCity)
                         {
 							if (GET_TEAM(getTeam()).hasShrine(getStateReligion()))
 							{
-	                        iRazeValue -= 50;
-						}
+								iRazeValue -= 50;
+							}
 							else
 							{
 								iRazeValue -= 10;
@@ -1418,17 +1420,92 @@ void CvPlayerAI::AI_conquerCity(CvCity* pCity)
             if (GC.getGameINLINE().getSorenRandNum(100, "AI Raze City") < iRazeValue)
 			{
 				bRaze = true;
-				pCity->doTask(TASK_RAZE);
+				log(CvWString::format(L"AI chose raze: %s", pCity->getNameKey()));
+				pCity->raze(iCaptureGold);
+				return;
 			}
 		}
 		//Rhye - end moved part
-
 	}
 
-	if (!bRaze)
+	if (!bRaze && canSack(pCity))
 	{
-		CvEventReporter::getInstance().cityAcquiredAndKept(getID(), pCity);
+		if (ePreviousOwner != getID() && eHighestCulturePlayer != getID())
+		{
+			int iSackValue = GC.getLeaderHeadInfo(getPersonalityType()).getRazeCityProb();	
+
+			if (AI_isFinancialTrouble())
+			{
+				iSackValue += 15;
+			}
+
+			int iCloseness = pCity->AI_playerCloseness(getID(), 5);
+			if (iCloseness > 0)
+			{
+				iSackValue -= 5;
+			}
+			else if (iCloseness < 0)
+			{
+				iSackValue += 5;
+			}
+
+			if (GC.getGameINLINE().getSorenRandNum(100, "AI sack city") < iSackValue)
+			{
+				bSack = true;
+			}
+		}
 	}
+
+	if (!bRaze && !bSack && canSpare(pCity, eHighestCulturePlayer, iCaptureGold))
+	{
+		if (!AI_isFinancialTrouble() && pCity->getPreviousOwner() != getWorstEnemy())
+		{
+			int iSpareValue = GC.getLeaderHeadInfo(getPersonalityType()).getBasePeaceWeight() + GC.getLeaderHeadInfo(getPersonalityType()).getPeaceWeightRand();
+			int iGold = getGold();
+
+			if (iGold > 0)
+			{
+				int iSpareCost = 2 * pCity->getBuildingDamage() + iCaptureGold;
+				int iCostRatio = 100 * iSpareCost / iGold;
+				
+				if (iCostRatio >= 50)
+				{
+					iSpareValue -= iCostRatio / 10;
+				}
+				else if (iCostRatio <= 20)
+				{
+					iSpareValue += 5;
+				}
+			}
+			else
+			{
+				iSpareValue = 0;
+			}
+
+			if (GC.getGameINLINE().getSorenRandNum(100, "AI spare city") < iSpareValue)
+			{
+				bSpare = true;
+			}
+		}
+	}
+
+	if (bSack)
+	{
+		log(CvWString::format(L"AI chose sack: %s", pCity->getNameKey()));
+		pCity->sack(eHighestCulturePlayer, iCaptureGold);
+	}
+	else if (bSpare)
+	{
+		log(CvWString::format(L"AI chose spare: %s", pCity->getNameKey()));
+		pCity->spare(iCaptureGold);
+	}
+	else
+	{
+		log(CvWString::format(L"AI chose conquest: %s", pCity->getNameKey()));
+		pCity->completeAcquisition(iCaptureGold);
+	}
+
+	CvEventReporter::getInstance().cityAcquiredAndKept(getID(), pCity);
 }
 
 
@@ -2899,7 +2976,7 @@ int CvPlayerAI::AI_targetCityValue(CvCity* pCity, bool bRandomize, bool bIgnoreA
 		iValue += 2;
 	}
 
-	//Leoreth: even more emphasis on city of own state religion, for more wars about Rome especially
+	// Leoreth: even more emphasis on city of own state religion, for more wars about Rome especially
 	if (getStateReligion() != NO_RELIGION && pCity->isHolyCity(getStateReligion()))
 	{
 	    iValue += 3;
@@ -2912,6 +2989,12 @@ int CvPlayerAI::AI_targetCityValue(CvCity* pCity, bool bRandomize, bool bIgnoreA
 
 	//Rhye - start
 	int iSettlerMapValue = pCity->plot()->getSettlerValue(getID());
+
+	// Leoreth: discourage vassals from excessive independent conquests
+	if (GET_TEAM(getTeam()).isAVassal() && GET_PLAYER(pCity->getOwnerINLINE()).isMinorCiv() && iSettlerMapValue < 90)
+	{
+		return 0;
+	}
 
 	if (iSettlerMapValue <= 3)
 		iValue -= 2;
@@ -7820,7 +7903,7 @@ DenialTypes CvPlayerAI::AI_cityTrade(CvCity* pCity, PlayerTypes ePlayer) const
 					return DENIAL_UNKNOWN;
 				}
 
-				if (!pCity->getPreviousOwner() != getID())
+				if (pCity->getPreviousOwner() != getID())
 				{
 					if (pCity->plot()->getSettlerValue(getID()) < 90 && pCity->plot()->getWarValue(getID()) == 0)
 					{
@@ -8273,12 +8356,15 @@ int CvPlayerAI::AI_unitValue(UnitTypes eUnit, UnitAITypes eUnitAI, CvArea* pArea
 			break;
 
 		case UNITAI_WORKER:
-			for (iI = 0; iI < GC.getNumBuildInfos(); iI++)
+			if (GC.getUnitInfo(eUnit).isWorker())
 			{
-				if (GC.getUnitInfo(eUnit).getBuilds(iI))
+				for (iI = 0; iI < GC.getNumBuildInfos(); iI++)
 				{
-					bValid = true;
-					break;
+					if (GC.getUnitInfo(eUnit).getBuilds(iI))
+					{
+						bValid = true;
+						break;
+					}
 				}
 			}
 			break;
@@ -10155,6 +10241,9 @@ int CvPlayerAI::AI_civicValue(CivicTypes eCivic) const
 	iValue += -(kCivic.getGoldPerMilitaryUnit() * getNumMilitaryUnits() * iWarmongerPercent) / 200;
 	iValue += (kCivic.getCaptureGoldModifier() * iWarmongerPercent / (bWarPlan ? 100 : 500)); // Leoreth
 
+	// Leoreth: experience cost reduction
+	iValue += -kCivic.getLevelExperienceModifier() * getNumMilitaryUnits() * iWarmongerPercent / 2500;
+
 	//iValue += ((kCivic.isMilitaryFoodProduction()) ? 0 : 0);
 	iValue += (getWorldSizeMaxConscript(eCivic) * ((bWarPlan) ? (20 + getNumCities()) : ((8 + getNumCities()) / 2)));
 	iValue += ((kCivic.isNoUnhealthyPopulation()) ? (getTotalPopulation() / 3) : 0);
@@ -10195,16 +10284,6 @@ int CvPlayerAI::AI_civicValue(CivicTypes eCivic) const
 				iValue += kCivic.getCoreFreeSpecialist() * 12;
 			}
 		}
-
-		/*if (getID() == MALI || getID() == EGYPT)
-		{
-			iValue -= 40;
-		}
-
-		if (getID() == GREECE || getID() == PHOENICIA || getID() == KOREA || getID() == ITALY)
-		{
-			iValue += 40;
-		}*/
 	}
 
 	iValue += ((kCivic.getTradeRoutes() * std::max(0, iConnectedForeignCities - getNumCities() * 3) * 8) + (getNumCities() * 2));
@@ -10619,6 +10698,26 @@ int CvPlayerAI::AI_civicValue(CivicTypes eCivic) const
 		iValue += AI_neededWorkers() * iWarmongerPercent / 15;
 	}
 
+	// Leoreth: no resistance on city conquest
+	if (kCivic.isNoResistance())
+	{
+		iValue += (bWarPlan ? 200 : 120) * iWarmongerPercent / 100;
+	}
+
+	// Leoreth: no temporary unhappiness
+	if (kCivic.isNoTemporaryUnhappiness())
+	{
+		for (iI = 0; iI < GC.getNumHurryInfos(); iI++)
+		{
+			if (GC.getHurryInfo((HurryTypes)iI).isAnger() && canHurry((HurryTypes)iI))
+			{
+				iValue += AI_getHappinessWeight(3, 1) * getNumCities();
+			}
+		}
+
+		iValue += getMaxConscript() * AI_getHappinessWeight(5, 1);
+	}
+
 	// Leoreth: enabled wonders with civic prereq
 	for (iI = 0; iI < GC.getNumBuildingInfos(); iI++)
 	{
@@ -10672,6 +10771,13 @@ int CvPlayerAI::AI_civicValue(CivicTypes eCivic) const
 			iValue += 200;
 		}
 	}
+	else if (eCivic == CIVIC_ISOLATIONISM)
+	{
+		if (getStabilityParameter(PARAMETER_RELATIONS) < -10)
+		{
+			iValue += -20 * getStabilityParameter(PARAMETER_RELATIONS);
+		}
+	}
 	else if (eCivic == CIVIC_PUBLIC_WELFARE)
 	{
 		if (getStabilityParameter(PARAMETER_ECONOMIC_GROWTH) < 0)
@@ -10705,7 +10811,7 @@ int CvPlayerAI::AI_civicValue(CivicTypes eCivic) const
 	// Leoreth: boost some modern civics as soon as available
 	switch (eCivic)
 	{
-	case CIVIC_IDEOLOGY:
+	case CIVIC_REVOLUTIONISM:
 	case CIVIC_CONSTITUTION:
 	case CIVIC_INDIVIDUALISM:
 	case CIVIC_TOTALITARIANISM:

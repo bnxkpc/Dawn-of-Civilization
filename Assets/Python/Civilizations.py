@@ -3,6 +3,7 @@ from RFCUtils import utils
 from sets import Set
 from StoredData import data
 import Victory as vic
+from Religions import rel
 
 ### Class for easier tech specification ###
 
@@ -57,6 +58,7 @@ def initTechs(iPlayer, lTechs):
 def initTech(iPlayer, iTech):
 	gc.getTeam(gc.getPlayer(iPlayer).getTeam()).setHasTech(iTech, True, iPlayer, False, False)
 	vic.onTechAcquired(iPlayer, iTech)
+	rel.onTechAcquired(iPlayer, iTech)
 
 ### Tech preference functions ###
 
@@ -182,10 +184,10 @@ iCivIran : 		Techs([iHeritage, iFirearms], column=9),
 iCivNetherlands:Techs([iGeography], column=10),
 iCivGermany :	Techs(column=11, exceptions=[iGeography, iCivilLiberties, iHorticulture, iUrbanPlanning]),
 iCivAmerica :	Techs([iRepresentation, iChemistry], column=12),
-iCivArgentina :	Techs(column=13, exceptions=[iMachineTools]),
-iCivMexico :	Techs(column=13, exceptions=[iMachineTools]),
-iCivColombia :	Techs(column=13, exceptions=[iMachineTools]),
-iCivBrazil :	Techs(column=13),
+iCivArgentina :	Techs([iRepresentation, iNationalism], column=12),
+iCivMexico :	Techs([iRepresentation, iNationalism], column=12),
+iCivColombia :	Techs([iRepresentation, iNationalism], column=12),
+iCivBrazil :	Techs([iRepresentation, iNationalism, iBiology], column=12),
 iCivCanada :	Techs([iBallistics, iEngine, iRailroad, iJournalism], column=13),
 },
 {

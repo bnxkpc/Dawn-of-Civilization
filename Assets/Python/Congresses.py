@@ -38,7 +38,7 @@ def checkTurn(iGameTurn):
 		if data.iCongressTurns > 0:
 			data.iCongressTurns -= 1
 	
-		if not data.currentCongress and data.iCongressTurns == 0:
+		if data.iCongressTurns == 0:
 			data.iCongressTurns = getCongressInterval()
 			currentCongress = Congress()
 			data.currentCongress = currentCongress
@@ -134,15 +134,12 @@ def endGlobalWar(iAttacker, iDefender):
 		lLosers = lAttackers
 	
 	currentCongress = Congress(lWinners, lLosers)
+	data.iCongressTurns = getCongressInterval()
 	data.currentCongress = currentCongress
 	currentCongress.startCongress()
 	
 def getNumInvitations():
 	return min(10, gc.getGame().countCivPlayersAlive())
-	
-def start():
-	currentCongress = Congress()
-	currentCongress.startCongress()
 			
 class Congress:
 	
@@ -532,7 +529,7 @@ class Congress:
 		if self.bPostWar:
 			iHostPlayer = [iWinner for iWinner in self.lWinners if gc.getPlayer(iWinner).isAlive()][0]
 		else:
-			iHostPlayer = utils.getRandomEntry(self.lInvites)
+			iHostPlayer = utils.getRandomEntry([iInvitee for iInvitee in self.lInvites if gc.getPlayer(iInvitee).getNumCities() > 0])
 			
 		# establish contact between all participants
 		for iThisPlayer in self.lInvites:
@@ -1108,9 +1105,8 @@ class Congress:
 					if plot.getRegionID() in [rWestAfrica, rSouthAfrica, rEthiopia, rAustralia, rOceania]:
 						iSettlerMapValue = plot.getSettlerValue(iPlayer)
 						if iSettlerMapValue >= 90 and cnm.getFoundName(iPlayer, (x, y)):
-							closestCity = gc.getMap().findCity(x, y, PlayerTypes.NO_PLAYER, TeamTypes.NO_TEAM, False, False, TeamTypes.NO_TEAM, DirectionTypes.NO_DIRECTION, CyCity())
-							if stepDistance(x, y, closestCity.getX(), closestCity.getY()) > 2:
-								lPlots.append((x, y, max(1, iSettlerMapValue / 100 - 1)))
+							iFoundValue = gc.getPlayer(iPlayer).AI_foundValue(x, y, -1, False)
+							lPlots.append((x, y, max(1, min(5, iFoundValue / 2500 - 1))))
 						
 		lPlots = utils.getSortedList(lPlots, lambda x: x[2] + gc.getGame().getSorenRandNum(3, 'Randomize city value'), True)
 		return lPlots[:10]

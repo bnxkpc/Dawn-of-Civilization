@@ -144,7 +144,7 @@ public:
 	bool isWithinCultureRange(PlayerTypes ePlayer) const;																						// Exposed to Python
 	int getNumCultureRangeCities(PlayerTypes ePlayer) const;																				// Exposed to Python
 
-	PlayerTypes calculateCulturalOwner() const;
+	PlayerTypes calculateCulturalOwner(bool bActual = false) const;
 
 	void plotAction(PlotUnitFunc func, int iData1 = -1, int iData2 = -1, PlayerTypes eOwner = NO_PLAYER, TeamTypes eTeam = NO_TEAM);
 	int plotCount(ConstPlotUnitFunc funcA, int iData1A = -1, int iData2A = -1, PlayerTypes eOwner = NO_PLAYER, TeamTypes eTeam = NO_TEAM, ConstPlotUnitFunc funcB = NULL, int iData1B = -1, int iData2B = -1) const;
@@ -358,6 +358,8 @@ public:
 	int getYieldWithBuild(BuildTypes eBuild, YieldTypes eYield, bool bWithUpgrade) const;
 
 	int getCulture(PlayerTypes eIndex) const;																									// Exposed to Python
+	int getActualCulture(PlayerTypes ePlayer) const; // Leoreth
+	int getActualTotalCulture() const; // Leoreth
 	int countTotalCulture(bool bIncludeDeadPlayers = false) const;																														// Exposed to Python
 	int countFriendlyCulture(TeamTypes eTeam) const;
 	TeamTypes findHighestCultureTeam() const;																														// Exposed to Python
@@ -367,6 +369,12 @@ public:
 	int calculateTeamCulturePercent(TeamTypes eIndex) const;																						// Exposed to Python
 	void setCulture(PlayerTypes eIndex, int iNewValue, bool bUpdate, bool bUpdatePlotGroups);																		// Exposed to Python
 	void changeCulture(PlayerTypes eIndex, int iChange, bool bUpdate);																	// Exposed to Python
+
+	PlayerTypes getCultureConversionPlayer() const;
+	int getCultureConversionRate() const;
+	void changeCultureConversionRate(int iChange);
+	void setCultureConversion(PlayerTypes ePlayer, int iRate);
+	void resetCultureConversion();
 
 	int countNumAirUnits(TeamTypes eTeam) const;																					// Exposed to Python
 	int airUnitSpaceAvailable(TeamTypes eTeam) const;
@@ -559,6 +567,10 @@ protected:
 	short m_iReconCount;
 	short m_iRiverCrossingCount;
 
+	// Leoreth
+	short m_iCultureConversionRate;
+	int m_iTotalCulture;
+
 	bool m_bStartingPlot:1;
 	bool m_bHills:1;
 	bool m_bNOfRiver:1;
@@ -571,6 +583,7 @@ protected:
 	bool m_bLayoutStateWorked:1;
 
 	char /*PlayerTypes*/ m_eOwner;
+	PlayerTypes m_eCultureConversionPlayer;
 	short /*PlotTypes*/ m_ePlotType;
 	short /*TerrainTypes*/ m_eTerrainType;
 	short /*FeatureTypes*/ m_eFeatureType;

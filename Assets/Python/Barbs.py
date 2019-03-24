@@ -249,14 +249,16 @@ class Barbs:
 		#barbarians in central asia
 		if utils.isYearIn(-1600, -850):
 			self.checkLimitedSpawn(iBarbarian, iVulture, 1, 3, (74, 34), (78, 44), self.spawnNomads, iGameTurn, 8-iHandicap, 2, ["TXT_KEY_ADJECTIVE_ASSYRIAN"])
-		elif utils.isYearIn(-850, 600):
+		elif utils.isYearIn(-850, -200):
+			self.checkSpawn(iBarbarian, iHorseman, 1 + iHandicap, (79, 41), (84, 49), self.spawnInvaders, iGameTurn, 10-2*iHandicap, 3, ["TXT_KEY_ADJECTIVE_SCYTHIAN"])
+		elif utils.isYearIn(-200, 600):
 			self.checkSpawn(iBarbarian, iHorseman, 2 + iHandicap, (92, 49), (98, 59), self.spawnInvaders, iGameTurn, 7-iHandicap, 2, ["TXT_KEY_ADJECTIVE_PARTHIAN"])
 		elif utils.isYearIn(600, 900):
 			#if utils.getScenario() == i3000BC:  #late start condition
-			self.checkSpawn(iBarbarian, iOghuz, 2 + iHandicap, (91, 50), (103, 58), self.spawnNomads, iGameTurn, 8-iHandicap, 2, ["TXT_KEY_ADJECTIVE_TURKIC"])
+			self.checkSpawn(iBarbarian, iOghuz, 2 + iHandicap, (91, 50), (103, 58), self.spawnNomads, iGameTurn, 8-iHandicap, 2)
 		elif utils.isYearIn(900, 1040):
 			#if utils.getScenario() == i3000BC:  #late start condition
-			self.checkSpawn(iBarbarian, iOghuz, 2 + iHandicap, (91, 50), (106, 62), self.spawnNomads, iGameTurn, 6-iHandicap, 2, ["TXT_KEY_ADJECTIVE_TURKIC"])
+			self.checkSpawn(iBarbarian, iOghuz, 2 + iHandicap, (91, 50), (106, 62), self.spawnNomads, iGameTurn, 6-iHandicap, 2)
 
 		# late Central Asian barbarians
 		if utils.isYearIn(1200, 1600):

@@ -1406,6 +1406,7 @@ public:
 	int getStateReligionBuildingProductionModifier() const;				// Exposed to Python
 	int getStateReligionFreeExperience() const;								// Exposed to Python
 	int getExpInBorderModifier() const;				// Exposed to Python
+	int getLevelExperienceModifier() const; // Leoreth
 
 	bool isMilitaryFoodProduction() const;				// Exposed to Python
 	bool isNoUnhealthyPopulation() const;				// Exposed to Python
@@ -1419,6 +1420,8 @@ public:
 	bool isSlavery() const; // Leoreth
 	bool isNoSlavery() const; // Leoreth
 	bool isColonialSlavery() const; // Leoreth
+	bool isNoResistance() const; // Leoreth
+	bool isNoTemporaryUnhappiness() const; // Leoreth
 
 	std::wstring pyGetWeLoveTheKing() { return getWeLoveTheKing(); }			// Exposed to Python
 	const wchar* getWeLoveTheKing();
@@ -1453,6 +1456,9 @@ public:
 
 	int getDomainProductionModifier(int i) const; // Leoreth
 	int getDomainExperienceModifier(int i) const; // Leoreth
+
+	int* getMinimalSpecialistCountsArray() const; // Leoreth
+	int getMinimalSpecialistCount(int i) const; // Leoreth
 
 	bool isHurry(int i) const;													// Exposed to Python
 	bool isSpecialBuildingNotRequired(int i) const;			// Exposed to Python
@@ -1517,6 +1523,7 @@ protected:
 	int m_iStateReligionBuildingProductionModifier;
 	int m_iStateReligionFreeExperience;
 	int m_iExpInBorderModifier;
+	int m_iLevelExperienceModifier; // Leoreth
 
 	bool m_bMilitaryFoodProduction;
 	bool m_bNoUnhealthyPopulation;
@@ -1530,6 +1537,8 @@ protected:
 	bool m_bSlavery; // Leoreth
 	bool m_bNoSlavery; // Leoreth
 	bool m_bColonialSlavery; // Leoreth
+	bool m_bNoResistance; // Leoreth
+	bool m_bNoTemporaryUnhappiness; // Leoreth
 
 	CvWString m_szWeLoveTheKingKey;
 
@@ -1549,6 +1558,7 @@ protected:
 	int* m_paiBuildingHealthChanges;
 	int* m_paiBuildingProductionModifiers; // Leoreth
 	int* m_paiFeatureHappinessChanges;
+	int* m_paiMinimalSpecialistCounts; // Leoreth
 
 	int* m_paiDomainProductionModifiers; // Leoreth
 	int* m_paiDomainExperienceModifiers; // Leoreth
@@ -1781,6 +1791,7 @@ public:
 	bool isCenterInCity() const;				// Exposed to Python
 	bool isStateReligion() const;				// Exposed to Python
 	bool isAllowsNukes() const;				// Exposed to Python
+	bool isNoResistance() const; // Leoreth
 
 	const TCHAR* getConstructSound() const;				// Exposed to Python
 	void setConstructSound(const TCHAR* szVal);
@@ -2009,6 +2020,7 @@ protected:
 	bool m_bCenterInCity;
 	bool m_bStateReligion;
 	bool m_bAllowsNukes;
+	bool m_bNoResistance; // Leoreth
 
 	CvString m_szConstructSound;
 	CvString m_szArtDefineTag;
@@ -2523,7 +2535,6 @@ public:
 	int getUnitCostPercent() const;				// Exposed to Python
 	int getUnitCostPercentByID(PlayerTypes pl) const;	//Rhye		// Exposed to Python
 	int getResearchPercent() const;				// Exposed to Python
-	int getResearchPercentByIDdebug(int pl) const;	//Rhye			// Exposed to Python
 	int getResearchPercentByID(PlayerTypes pl) const;	//Rhye			// Exposed to Python
 	int getDistanceMaintenancePercent() const;				// Exposed to Python
 	int getDistanceMaintenancePercentByID(PlayerTypes pl) const;	//Rhye			// Exposed to Python

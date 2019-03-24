@@ -5768,6 +5768,7 @@ m_iStateReligionUnitProductionModifier(0),
 m_iStateReligionBuildingProductionModifier(0),
 m_iStateReligionFreeExperience(0),
 m_iExpInBorderModifier(0),
+m_iLevelExperienceModifier(0), // Leoreth
 m_bMilitaryFoodProduction(false),
 m_bNoUnhealthyPopulation(false),
 m_bBuildingOnlyHealthy(false),
@@ -5780,6 +5781,8 @@ m_bNoNonStateReligionSpread(false),
 m_bSlavery(false), // Leoreth
 m_bNoSlavery(false), // Leoreth
 m_bColonialSlavery(false), // Leoreth
+m_bNoResistance(false), // Leoreth
+m_bNoTemporaryUnhappiness(false), // Leoreth
 m_piYieldModifier(NULL),
 m_piCapitalYieldModifier(NULL),
 m_piTradeYieldModifier(NULL),
@@ -5796,6 +5799,7 @@ m_paiBuildingProductionModifiers(NULL), //Leoreth
 m_paiFeatureHappinessChanges(NULL),
 m_paiDomainProductionModifiers(NULL), // Leoreth
 m_paiDomainExperienceModifiers(NULL), // Leoreth
+m_paiMinimalSpecialistCounts(NULL), // Leoreth
 m_pabHurry(NULL),
 m_pabSpecialBuildingNotRequired(NULL),
 m_pabSpecialistValid(NULL),
@@ -5830,6 +5834,7 @@ CvCivicInfo::~CvCivicInfo()
 	SAFE_DELETE_ARRAY(m_paiFeatureHappinessChanges);
 	SAFE_DELETE_ARRAY(m_paiDomainProductionModifiers); // Leoreth
 	SAFE_DELETE_ARRAY(m_paiDomainExperienceModifiers); // Leoreth
+	SAFE_DELETE_ARRAY(m_paiMinimalSpecialistCounts); // Leoreth
 	SAFE_DELETE_ARRAY(m_pabHurry);
 	SAFE_DELETE_ARRAY(m_pabSpecialBuildingNotRequired);
 	SAFE_DELETE_ARRAY(m_pabSpecialistValid);
@@ -5898,7 +5903,7 @@ int CvCivicInfo::getCorporationMaintenanceModifier() const
 	return m_iCorporationMaintenanceModifier;
 }
 
-//Leoreth
+// Leoreth
 int CvCivicInfo::getCorporationCommerceModifier() const
 {
 	return m_iCorporationCommerceModifier;
@@ -6099,6 +6104,11 @@ int CvCivicInfo::getStateReligionFreeExperience() const
 int CvCivicInfo::getExpInBorderModifier() const
 {
 	return m_iExpInBorderModifier;
+}
+
+int CvCivicInfo::getLevelExperienceModifier() const
+{
+	return m_iLevelExperienceModifier;
 }
 
 bool CvCivicInfo::isMilitaryFoodProduction() const
@@ -6379,11 +6389,33 @@ int CvCivicInfo::getImprovementYieldChanges(int i, int j) const
 	return m_ppiImprovementYieldChanges[i][j];
 }
 
+int* CvCivicInfo::getMinimalSpecialistCountsArray() const
+{
+	return m_paiMinimalSpecialistCounts;
+}
+
+int CvCivicInfo::getMinimalSpecialistCount(int i) const
+{
+	FAssertMsg(i < GC.getNumSpecialistInfos(), "Index out of bounds");
+	FAssertMsg(i > -1, "Index out of bounds");
+	return m_paiMinimalSpecialistCounts ? m_paiMinimalSpecialistCounts[i] : -1;
+}
+
+bool CvCivicInfo::isNoResistance() const
+{
+	return m_bNoResistance;
+}
+
+bool CvCivicInfo::isNoTemporaryUnhappiness() const
+{
+	return m_bNoTemporaryUnhappiness;
+}
+
 void CvCivicInfo::read(FDataStreamBase* stream)
 {
 	CvInfoBase::read(stream);
 
-	uint uiFlag=0;
+	uint uiFlag=0; // Leoreth: 1 for level experience modifier and minimal specialist counts, 2 for no resistance and no temporary unhappiness
 	stream->Read(&uiFlag);		// flag for expansion
 
 	stream->Read(&m_iCivicOptionType);
@@ -6435,6 +6467,7 @@ void CvCivicInfo::read(FDataStreamBase* stream)
 	stream->Read(&m_iStateReligionBuildingProductionModifier);
 	stream->Read(&m_iStateReligionFreeExperience);
 	stream->Read(&m_iExpInBorderModifier);
+	if (uiFlag >= 1) stream->Read(&m_iLevelExperienceModifier); // Leoreth
 
 	stream->Read(&m_bMilitaryFoodProduction);
 	stream->Read(&m_bNoUnhealthyPopulation);
@@ -6448,6 +6481,8 @@ void CvCivicInfo::read(FDataStreamBase* stream)
 	stream->Read(&m_bSlavery); // Leoreth
 	stream->Read(&m_bNoSlavery); // Leoreth
 	stream->Read(&m_bColonialSlavery); // Leoreth
+	if (uiFlag >= 2) stream->Read(&m_bNoResistance); // Leoreth
+	if (uiFlag >= 2) stream->Read(&m_bNoTemporaryUnhappiness); // Leoreth
 
 	// Arrays
 
@@ -6475,7 +6510,7 @@ void CvCivicInfo::read(FDataStreamBase* stream)
 	m_piSpecialistExtraCommerce = new int[NUM_COMMERCE_TYPES];
 	stream->Read(NUM_COMMERCE_TYPES, m_piSpecialistExtraCommerce);
 
-	//Leoreth
+	// Leoreth
 	SAFE_DELETE_ARRAY(m_piSpecialistExtraYield);
 	m_piSpecialistExtraYield = new int[NUM_YIELD_TYPES];
 	stream->Read(NUM_YIELD_TYPES, m_piSpecialistExtraYield);
@@ -6515,12 +6550,20 @@ void CvCivicInfo::read(FDataStreamBase* stream)
 	// Leoreth
 	SAFE_DELETE_ARRAY(m_paiDomainProductionModifiers);
 	m_paiDomainProductionModifiers = new int[NUM_DOMAIN_TYPES];
-	stream->Read(4, m_paiDomainProductionModifiers);
+	stream->Read(NUM_DOMAIN_TYPES, m_paiDomainProductionModifiers);
 
 	// Leoreth
 	SAFE_DELETE_ARRAY(m_paiDomainExperienceModifiers);
 	m_paiDomainExperienceModifiers = new int[NUM_DOMAIN_TYPES];
-	stream->Read(4, m_paiDomainExperienceModifiers);
+	stream->Read(NUM_DOMAIN_TYPES, m_paiDomainExperienceModifiers);
+
+	// Leoreth
+	if (uiFlag >= 1)
+	{
+		SAFE_DELETE_ARRAY(m_paiMinimalSpecialistCounts);
+		m_paiMinimalSpecialistCounts = new int[GC.getNumSpecialistInfos()];
+		stream->Read(GC.getNumSpecialistInfos(), m_paiMinimalSpecialistCounts);
+	}
 
 	SAFE_DELETE_ARRAY(m_pabHurry);
 	m_pabHurry = new bool[GC.getNumHurryInfos()];
@@ -6557,7 +6600,7 @@ void CvCivicInfo::write(FDataStreamBase* stream)
 {
 	CvInfoBase::write(stream);
 
-	uint uiFlag=0;
+	uint uiFlag=2; // Leoreth: 1 for level experience modifier and minimal specialist count, 2 for no resistance
 	stream->Write(uiFlag);		// flag for expansion
 
 	stream->Write(m_iCivicOptionType);
@@ -6609,6 +6652,7 @@ void CvCivicInfo::write(FDataStreamBase* stream)
 	stream->Write(m_iStateReligionBuildingProductionModifier);
 	stream->Write(m_iStateReligionFreeExperience);
 	stream->Write(m_iExpInBorderModifier);
+	stream->Write(m_iLevelExperienceModifier); // Leoreth
 
 	stream->Write(m_bMilitaryFoodProduction);
 	stream->Write(m_bNoUnhealthyPopulation);
@@ -6622,6 +6666,8 @@ void CvCivicInfo::write(FDataStreamBase* stream)
 	stream->Write(m_bSlavery); // Leoreth
 	stream->Write(m_bNoSlavery); // Leoreth
 	stream->Write(m_bColonialSlavery); // Leoreth
+	stream->Write(m_bNoResistance); // Leoreth
+	stream->Write(m_bNoTemporaryUnhappiness); // Leoreth
 
 	// Arrays
 
@@ -6641,6 +6687,7 @@ void CvCivicInfo::write(FDataStreamBase* stream)
 	stream->Write(GC.getNumFeatureInfos(), m_paiFeatureHappinessChanges);
 	stream->Write(NUM_DOMAIN_TYPES, m_paiDomainProductionModifiers); // Leoreth
 	stream->Write(NUM_DOMAIN_TYPES, m_paiDomainExperienceModifiers); // Leoreth
+	stream->Write(GC.getNumSpecialistInfos(), m_paiMinimalSpecialistCounts); // Leoreth
 	stream->Write(GC.getNumHurryInfos(), m_pabHurry);
 	stream->Write(GC.getNumSpecialBuildingInfos(), m_pabSpecialBuildingNotRequired);
 	stream->Write(GC.getNumSpecialistInfos(), m_pabSpecialistValid);
@@ -6728,12 +6775,15 @@ bool CvCivicInfo::read(CvXMLLoadUtility* pXML)
 	pXML->GetChildXmlValByName(&m_bSlavery, "bSlavery"); // Leoreth
 	pXML->GetChildXmlValByName(&m_bNoSlavery, "bNoSlavery"); // Leoreth
 	pXML->GetChildXmlValByName(&m_bColonialSlavery, "bColonialSlavery"); // Leoreth
+	pXML->GetChildXmlValByName(&m_bNoResistance, "bNoResistance"); // Leoreth
+	pXML->GetChildXmlValByName(&m_bNoTemporaryUnhappiness, "bNoTemporaryUnhappiness"); // Leoreth
 	pXML->GetChildXmlValByName(&m_iStateReligionHappiness, "iStateReligionHappiness");
 	pXML->GetChildXmlValByName(&m_iNonStateReligionHappiness, "iNonStateReligionHappiness");
 	pXML->GetChildXmlValByName(&m_iStateReligionUnitProductionModifier, "iStateReligionUnitProductionModifier");
 	pXML->GetChildXmlValByName(&m_iStateReligionBuildingProductionModifier, "iStateReligionBuildingProductionModifier");
 	pXML->GetChildXmlValByName(&m_iStateReligionFreeExperience, "iStateReligionFreeExperience");
 	pXML->GetChildXmlValByName(&m_iExpInBorderModifier, "iExpInBorderModifier");
+	pXML->GetChildXmlValByName(&m_iLevelExperienceModifier, "iLevelExperienceModifier"); // Leoreth
 
 	if (gDLL->getXMLIFace()->SetToChildByTagName(pXML->GetXML(),"YieldModifiers"))
 	{
@@ -6845,6 +6895,9 @@ bool CvCivicInfo::read(CvXMLLoadUtility* pXML)
 
 	pXML->SetVariableListTagPair(&m_paiBuildingHappinessChanges, "BuildingHappinessChanges", sizeof(GC.getBuildingClassInfo((BuildingClassTypes)0)), GC.getNumBuildingClassInfos());
 	pXML->SetVariableListTagPair(&m_paiBuildingHealthChanges, "BuildingHealthChanges", sizeof(GC.getBuildingClassInfo((BuildingClassTypes)0)), GC.getNumBuildingClassInfos());
+
+	// Leoreth
+	pXML->SetVariableListTagPair(&m_paiMinimalSpecialistCounts, "MinimalSpecialists", sizeof(GC.getSpecialistInfo((SpecialistTypes)0)), GC.getNumSpecialistInfos());
 
 	// Leoreth
 	pXML->SetVariableListTagPair(&m_paiBuildingProductionModifiers, "BuildingProductionModifiers", sizeof(GC.getBuildingClassInfo((BuildingClassTypes)0)), GC.getNumBuildingClassInfos());
@@ -7309,6 +7362,7 @@ m_bPagan(false), // Leoreth
 m_bCenterInCity(false),
 m_bStateReligion(false),
 m_bAllowsNukes(false),
+m_bNoResistance(false), // Leoreth
 m_piPrereqAndTechs(NULL),
 m_piPrereqOrBonuses(NULL),
 m_piProductionTraits(NULL),
@@ -8553,6 +8607,12 @@ int CvBuildingInfo::getPrereqBuildingClassPercent(int i) const
 	return m_piPrereqBuildingClassPercent[i];
 }
 
+// Leoreth
+bool CvBuildingInfo::isNoResistance() const
+{
+	return m_bNoResistance;
+}
+
 const TCHAR* CvBuildingInfo::getButton() const
 {
 	const CvArtInfoBuilding * pBuildingArtInfo;
@@ -8607,7 +8667,7 @@ void CvBuildingInfo::read(FDataStreamBase* stream)
 {
 	CvHotkeyInfo::read(stream);
 
-	uint uiFlag=0;
+	uint uiFlag=0; // Leoreth: 1 for corporation happiness/health modifiers, 2 for no resistance
 	stream->Read(&uiFlag);	// flags for expansion
 
 	stream->Read(&m_iBuildingClassType);
@@ -8733,6 +8793,7 @@ void CvBuildingInfo::read(FDataStreamBase* stream)
 	stream->Read(&m_bCenterInCity);
 	stream->Read(&m_bStateReligion);
 	stream->Read(&m_bAllowsNukes);
+	if (uiFlag >= 2) stream->Read(&m_bNoResistance); // Leoreth
 
 	stream->ReadString(m_szConstructSound);
 	stream->ReadString(m_szArtDefineTag);
@@ -8983,7 +9044,7 @@ void CvBuildingInfo::write(FDataStreamBase* stream)
 {
 	CvHotkeyInfo::write(stream);
 
-	uint uiFlag=1; // Leoreth: 1 for building/corporation health modifiers
+	uint uiFlag=2; // Leoreth: 1 for building/corporation health modifiers, 2 for no resistance
 	stream->Write(uiFlag);		// flag for expansion
 
 	stream->Write(m_iBuildingClassType);
@@ -9109,6 +9170,7 @@ void CvBuildingInfo::write(FDataStreamBase* stream)
 	stream->Write(m_bCenterInCity);
 	stream->Write(m_bStateReligion);
 	stream->Write(m_bAllowsNukes);
+	stream->Write(m_bNoResistance); // Leoreth
 
 	stream->WriteString(m_szConstructSound);
 	stream->WriteString(m_szArtDefineTag);
@@ -9389,6 +9451,7 @@ bool CvBuildingInfo::read(CvXMLLoadUtility* pXML)
 	pXML->GetChildXmlValByName(&m_bPagan, "bPagan"); // Leoreth
 	pXML->GetChildXmlValByName(&m_bCenterInCity, "bCenterInCity");
 	pXML->GetChildXmlValByName(&m_bStateReligion, "bStateReligion");
+	pXML->GetChildXmlValByName(&m_bNoResistance, "bNoResistance"); // Leoreth
 	pXML->GetChildXmlValByName(&m_iAIWeight, "iAIWeight");
 	pXML->GetChildXmlValByName(&m_iProductionCost, "iCost");
 	pXML->GetChildXmlValByName(&m_iHurryCostModifier, "iHurryCostModifier");
@@ -11387,12 +11450,6 @@ int CvHandicapInfo::getUnitCostPercentByID(PlayerTypes ePlayer) const
 int CvHandicapInfo::getResearchPercent() const
 {
 	return m_iResearchPercent;
-}
-
-//Rhye - start switch
-int CvHandicapInfo::getResearchPercentByIDdebug(int pl) const
-{
-	return getResearchPercentByID((PlayerTypes) pl);
 }
 
 int CvHandicapInfo::getResearchPercentByID(PlayerTypes ePlayer) const

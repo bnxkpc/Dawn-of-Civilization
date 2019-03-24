@@ -288,10 +288,13 @@ class RiseAndFall:
 			self.adjust1700ADWonders()
 			self.adjust1700ADGreatPeople()
 			
-			for iPlayer in [iIndia, iPersia, iTurks, iSpain, iHolyRome, iOttomans]:
+			for iPlayer in [iIndia, iPersia, iSpain, iHolyRome, iOttomans]:
 				utils.setReborn(iPlayer, True)
 			
 			pChina.updateTradeRoutes()
+			
+		for iPlayer in [iPlayer for iPlayer in range(iNumPlayers) if tBirth[iPlayer] < utils.getScenarioStartYear()]:
+			data.players[iPlayer].bSpawned = True
 		
 		self.invalidateUHVs()
 		
@@ -566,6 +569,7 @@ class RiseAndFall:
 			iKorea: 3,
 			iJapan: 3,
 			iVikings: 3,
+			iTurks: 3,
 			iSpain: 4,
 			iFrance: 3,
 			iEngland: 3,
@@ -1265,7 +1269,7 @@ class RiseAndFall:
 						bDeleteEverything = True
 						for (i, j) in utils.surroundingPlots(tCapital):
 							pPlot=gc.getMap().plot(i, j)
-							if pPlot.isCity() and (pPlot.getPlotCity().getOwner() == iHuman or pPlot.getPlotCity().isHolyCity()):
+							if (pPlot.isCity() and (pPlot.getPlotCity().getOwner() == iHuman or pPlot.getPlotCity().isHolyCity())) or iCiv == iOttomans:
 								bDeleteEverything = False
 								print ("bDeleteEverything 2")
 								break
@@ -1984,7 +1988,7 @@ class RiseAndFall:
 
 					for tPlot in lTargetList:
 						utils.makeUnitAI(iKeshik, iMongolia, tPlot, UnitAITypes.UNITAI_ATTACK_CITY, 2 + iHandicap)
-						utils.makeUnitAI(iHorseArcher, iMongolia, tPlot, UnitAITypes.UNITAI_ATTACK_CITY, 1 + 2 * iHandicap)
+						utils.makeUnitAI(iMangudai, iMongolia, tPlot, UnitAITypes.UNITAI_ATTACK_CITY, 1 + 2 * iHandicap)
 						utils.makeUnitAI(iTrebuchet, iMongolia, tPlot, UnitAITypes.UNITAI_ATTACK_CITY, 1 + iHandicap)
 
 					if utils.getHumanID() == iTeamX:
@@ -2511,7 +2515,7 @@ class RiseAndFall:
 			tSeaPlot = self.findSeaPlots(tPlot, 1, iCiv)
 			if tSeaPlot:
 				utils.makeUnit(iWorkboat, iCiv, tSeaPlot, 1)
-				pVikings.initUnit(iLongship, tSeaPlot[0], tSeaPlot[1], UnitAITypes.UNITAI_SETTLER_SEA, DirectionTypes.DIRECTION_SOUTH)
+				pVikings.initUnit(iGalley, tSeaPlot[0], tSeaPlot[1], UnitAITypes.UNITAI_SETTLER_SEA, DirectionTypes.DIRECTION_SOUTH)
 				utils.makeUnit(iSettler, iCiv, tSeaPlot, 1)
 				utils.makeUnit(iArcher, iCiv, tSeaPlot, 1)
 				pVikings.initUnit(iLongship, tSeaPlot[0], tSeaPlot[1], UnitAITypes.UNITAI_EXPLORE_SEA, DirectionTypes.DIRECTION_SOUTH)
@@ -2790,6 +2794,11 @@ class RiseAndFall:
 			utils.createSettlers(iCiv, 5)
 			utils.makeUnit(iDragoon, iCiv, tPlot, 3)
 			utils.makeUnit(iRifleman, iCiv, tPlot, 5)
+			tSeaPlot = self.findSeaPlots(tPlot, 2, iCiv)
+			if tSeaPlot:
+				utils.makeUnit(iSteamship, iCiv, tSeaPlot, 2)
+				utils.makeUnit(iIronclad, iCiv, tSeaPlot, 1)
+				utils.makeUnit(iTorpedoBoat, iCiv, tSeaPlot, 1)
 				
 		# Leoreth: start wars on spawn when the spawn actually happens
 		self.startWarsOnSpawn(iCiv)

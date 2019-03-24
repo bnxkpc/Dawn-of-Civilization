@@ -6,7 +6,7 @@ import Popup as PyPopup
 from StoredData import data # edead
 import RiseAndFall
 import Barbs
-import Religions
+from Religions import rel
 import Resources
 import CityNameManager as cnm
 import UniquePowers     
@@ -85,7 +85,6 @@ class CvRFCEventHandler:
 
 		self.rnf = RiseAndFall.RiseAndFall()
 		self.barb = Barbs.Barbs()
-		self.rel = Religions.Religions()
 		self.res = Resources.Resources()
 		self.up = UniquePowers.UniquePowers()
 		self.aiw = AIWars.AIWars()
@@ -246,18 +245,13 @@ class CvRFCEventHandler:
 				if utils.isPlotInArea(tCity, tSouthCentralAmericaTL, tSouthCentralAmericaBR):
 					city.setOccupationTimer(0)
 					
-			# Statue of Zeus effect: no city resistance on conquest
-			if gc.getPlayer(iPlayer).isHasBuildingEffect(iStatueOfZeus):
-				city.setOccupationTimer(0)
-				
 			# Byzantium reduced to four cities: core shrinks to Constantinople
 			if iOwner == iByzantium and gc.getPlayer(iByzantium).getNumCities <= 4:
 				utils.setReborn(iByzantium, True)
 					
 		if bTrade:
-			for i in range(iNumBuildings):
-				iNationalWonder = i
-				if isNationalWonderClass(gc.getBuildingInfo(iNationalWonder).getBuildingClassType()) and city.hasBuilding(iNationalWonder):
+			for iNationalWonder in range(iNumBuildings):
+				if iNationalWonder != iPalace and isNationalWonderClass(gc.getBuildingInfo(iNationalWonder).getBuildingClassType()) and city.hasBuilding(iNationalWonder):
 					city.setHasRealBuilding(iNationalWonder, False)
 		
 		if city.isHasRealBuilding(iPalace) and city.isHasRealBuilding(iAdministrativeCenter):
@@ -297,7 +291,7 @@ class CvRFCEventHandler:
 	def onCityRazed(self, argsList):
 		city, iPlayer = argsList
 
-		dc.onCityRazed(city.getOwner())
+		dc.onCityRazed(city.getPreviousOwner())
 		self.pla.onCityRazed(city, iPlayer) #Plague
 			
 		vic.onCityRazed(iPlayer, city)	
@@ -417,7 +411,7 @@ class CvRFCEventHandler:
 		if iOwner == iArabia:
 			if not gc.getGame().isReligionFounded(iIslam):
 				if tCity == (86, 39):
-					self.rel.foundReligion(tCity, iIslam)
+					rel.foundReligion(tCity, iIslam)
 				
 		# Leoreth: free defender and worker for AI colonies
 		if iOwner in lCivGroups[0]:
@@ -443,7 +437,7 @@ class CvRFCEventHandler:
 		if iOwner == iAmerica:
 			if city.getRegionID() in [rUnitedStates, rCanada, rAlaska]:
 				utils.createGarrisons(tCity, iOwner, 1)
-				utils.makeUnit(iWorker, iOwner, tCity, 1)
+				utils.makeUnit(utils.getBestWorker(iOwner), iOwner, tCity, 1)
 
 	def onPlayerChangeStateReligion(self, argsList):
 		'Player changes his state religion'
@@ -521,7 +515,7 @@ class CvRFCEventHandler:
 			return
 	
 		vic.onReligionFounded(iFounder, iReligion)
-		self.rel.onReligionFounded(iReligion, iFounder)
+		rel.onReligionFounded(iReligion, iFounder)
 		dc.onReligionFounded(iFounder)
 
 	def onVassalState(self, argsList):
@@ -637,7 +631,7 @@ class CvRFCEventHandler:
 		tCity = (city.getX(), city.getY())
 		
 		vic.onBuildingBuilt(iOwner, iBuildingType)
-		self.rel.onBuildingBuilt(city, iOwner, iBuildingType)
+		rel.onBuildingBuilt(city, iOwner, iBuildingType)
 		self.up.onBuildingBuilt(city, iOwner, iBuildingType)
 		
 		if iOwner < iNumPlayers:
@@ -719,7 +713,7 @@ class CvRFCEventHandler:
 		
 		self.rnf.checkTurn(iGameTurn)
 		self.barb.checkTurn(iGameTurn)
-		self.rel.checkTurn(iGameTurn)
+		rel.checkTurn(iGameTurn)
 		self.res.checkTurn(iGameTurn)
 		self.up.checkTurn(iGameTurn)
 		self.aiw.checkTurn(iGameTurn)
@@ -829,8 +823,8 @@ class CvRFCEventHandler:
 			cnm.onTechAcquired(iPlayer)
 			dc.onTechAcquired(iPlayer, iTech)
 
-		if gc.getPlayer(iPlayer).isAlive() and iGameTurn > getTurnForYear(tBirth[iPlayer]) and iPlayer < iNumPlayers:
-			self.rel.onTechAcquired(iTech, iPlayer)
+		if gc.getPlayer(iPlayer).isAlive() and iGameTurn >= getTurnForYear(tBirth[iPlayer]) and iPlayer < iNumPlayers:
+			rel.onTechAcquired(iTech, iPlayer)
 			if iGameTurn > getTurnForYear(1700):
 				self.aiw.forgetMemory(iTech, iPlayer)
 

@@ -1988,6 +1988,7 @@ dIdentifiers = {
 	"Rom"			:	"Roma",
 	"Roma"			:	"Roma",
 	"Rome"			:	"Roma",
+	"Rumi"			:	"Roma",
 	"Rumiya"		:	"Roma",
 	"Rzym"			:	"Roma",
 	"Roskilde"		:	"Roskilde",
@@ -2869,6 +2870,7 @@ tRenames = (
 	"Sydwn"			:	"Sydwn",
 	"Tanja"			:	"Tingi",
 	"Palermo"		:	"Ziz",
+	"Roma"			:	"Rumi",
 },
 #Language: Latin
 {

@@ -114,7 +114,7 @@ def onCityAcquired(city, iOwner, iPlayer):
 		checkBarbarianCollapse(iOwner)
 		
 def onCityRazed(iPlayer, city):
-	iOwner = city.getOwner()
+	iOwner = city.getPreviousOwner()
 	
 	if iOwner == iBarbarian: return
 
@@ -401,7 +401,6 @@ def secedeCities(iPlayer, lCities, bRazeMinorCities = False):
 		plot.setCulture(iPlayer, 0, True)
 	
 	for city in lCededCities:
-	
 		tCityPlot = (city.getX(), city.getY())
 		cityPlot = gc.getMap().plot(city.getX(), city.getY())
 		iGameTurnYear = gc.getGame().getGameTurnYear()
@@ -460,8 +459,7 @@ def secedeCities(iPlayer, lCities, bRazeMinorCities = False):
 						break
 						
 		if iClaim != -1:
-			lUnits = secedeCity(city, iClaim)
-			lRelocatedUnits.extend(lUnits)
+			secedeCity(city, iClaim, iPlayer < iNumPlayers and not bComplete)
 			continue
 
 		# if part of the core / resurrection area of a dead civ -> possible resurrection
@@ -500,13 +498,7 @@ def secedeCities(iPlayer, lCities, bRazeMinorCities = False):
 		if bResurrectionFound: continue
 
 		# assign randomly to possible minors
-		lUnits = secedeCity(city, lPossibleMinors[city.getID() % len(lPossibleMinors)])
-		lRelocatedUnits.extend(lUnits)
-
-	if iPlayer < iNumPlayers and gc.getPlayer(iPlayer).getNumCities() > 0:
-		utils.relocateUnitsToCore(iPlayer, lRelocatedUnits)
-	else:
-		utils.killUnits(lRelocatedUnits)
+		secedeCity(city, lPossibleMinors[city.getID() % len(lPossibleMinors)], iPlayer < iNumPlayers and not bComplete)
 		
 	# notify for partial secessions
 	if not bComplete:
@@ -522,13 +514,18 @@ def secedeCities(iPlayer, lCities, bRazeMinorCities = False):
 	if len(lCities) > 1:
 		balanceStability(iPlayer, iStabilityUnstable)
 		
-def secedeCity(city, iNewOwner):
+def secedeCity(city, iNewOwner, bRelocate):
 	if not city: return
 
 	sName = city.getName()
 	
 	iNumDefenders = max(2, gc.getPlayer(iNewOwner).getCurrentEra()-1)
 	lFlippedUnits, lRelocatedUnits = utils.flipOrRelocateGarrison(city, iNumDefenders)
+	
+	if bRelocate:
+		utils.relocateUnitsToCore(city.getOwner(), lRelocatedUnits)
+	else:
+		utils.killUnits(lRelocatedUnits)
 	
 	utils.completeCityFlip(city.getX(), city.getY(), iNewOwner, city.getOwner(), 50, False, True, True)
 	utils.flipOrCreateDefenders(iNewOwner, lFlippedUnits, (city.getX(), city.getY()), iNumDefenders)
@@ -545,8 +542,6 @@ def secedeCity(city, iNewOwner):
 	if utils.getHumanID() == iNewOwner:
 		sText = localText.getText("TXT_KEY_STABILITY_CITY_CHANGED_OWNER_US", (sName,))
 		CyInterface().addMessage(iNewOwner, False, iDuration, sText, "", 0, "", ColorTypes(iRed), -1, -1, True, True)
-		
-	return lRelocatedUnits
 	
 def completeCollapse(iPlayer):
 	lCities = utils.getCityList(iPlayer)
@@ -730,7 +725,7 @@ def calculateStability(iPlayer):
 				if city.getOriginalOwner() != iPlayer and iGameTurn - city.getGameTurnAcquired() < utils.getTurns(25): iModifier += 1
 			
 			# not majority culture (includes foreign core and Persian UP)
-			if iPlayer != iPersia:
+			if iPlayer != iPersia or pPersia.isReborn():
 				if iCulturePercent < 50: iModifier += 1
 				if iCulturePercent < 20: iModifier += 1
 			
@@ -822,7 +817,7 @@ def calculateStability(iPlayer):
 	# recent expansion stability
 	iConquestModifier = 1
 	if bConquest: iConquestModifier += 1
-	if iPlayer == iPersia: iConquestModifier += 1 # Persian UP
+	if iPlayer == iPersia and not pPersia.isReborn(): iConquestModifier += 1 # Persian UP
 	
 	iRecentExpansionStability += iRecentlyFounded
 	iRecentExpansionStability += iConquestModifier * iRecentlyConquered
@@ -908,7 +903,7 @@ def calculateStability(iPlayer):
 		if iCurrentEra >= iIndustrial: iCivicEraTechStability -= (iCurrentEra - iRenaissance) * 3
 		
 	if tPlayer.isHasTech(iRepresentation):
-		if iCivicGovernment not in [iRepublic, iDemocracy] and iCivicLegitimacy not in [iIdeology, iConstitution]: iCivicEraTechStability -= 5
+		if iCivicGovernment not in [iRepublic, iDemocracy] and iCivicLegitimacy not in [iRevolutionism, iConstitution]: iCivicEraTechStability -= 5
 		
 	if tPlayer.isHasTech(iCivilRights):
 		if iCivicSociety in [iSlavery, iManorialism, iCasteSystem]: iCivicEraTechStability -= 5
@@ -1137,7 +1132,7 @@ def getCivicStability(iPlayer, lCivics):
 	if iTotalitarianism in civics:
 		if iStateParty in civics: iStability += 5
 		if iDespotism in civics: iStability += 3
-		if iIdeology in civics: iStability += 3
+		if iRevolutionism in civics: iStability += 3
 		if iCentralPlanning in civics: iStability += 3
 		if iDemocracy in civics: iStability -= 3
 		if iConstitution in civics: iStability -= 5
@@ -1217,7 +1212,7 @@ def getCivicStability(iPlayer, lCivics):
 	if iConstitution in civics:
 		if iDemocracy in civics: iStability += 2
 		
-	if iIdeology in civics:
+	if iRevolutionism in civics:
 		if civics.no(iSecularism) and civics.no(iTolerance): iStability -= 3
 		
 	if iRegulatedTrade in civics:

@@ -210,6 +210,10 @@ void CvPlot::reset(int iX, int iY, bool bConstructorCall)
 	// Leoreth: graphics paging
 	m_iGraphicsPageIndex = -1;
 
+	// Leoreth
+	m_iCultureConversionRate = 0;
+	m_iTotalCulture = 0;
+
 	m_bStartingPlot = false;
 	m_bHills = false;
 	m_bNOfRiver = false;
@@ -223,6 +227,7 @@ void CvPlot::reset(int iX, int iY, bool bConstructorCall)
 	m_bWithinGreatWall = false;
 
 	m_eOwner = NO_PLAYER;
+	m_eCultureConversionPlayer = NO_PLAYER; // Leoreth
 	m_ePlotType = PLOT_OCEAN;
 	m_eTerrainType = NO_TERRAIN;
 	m_eFeatureType = NO_FEATURE;
@@ -3429,7 +3434,7 @@ int CvPlot::getNumCultureRangeCities(PlayerTypes ePlayer) const
 }
 
 
-PlayerTypes CvPlot::calculateCulturalOwner() const
+PlayerTypes CvPlot::calculateCulturalOwner(bool bActual) const
 {
 	PROFILE("CvPlot::calculateCulturalOwner()")
 
@@ -3456,12 +3461,18 @@ PlayerTypes CvPlot::calculateCulturalOwner() const
 	{
 		if (GET_PLAYER((PlayerTypes)iI).isAlive())
 		{
-			iCulture = getCulture((PlayerTypes)iI);
+			iCulture = bActual ? getActualCulture((PlayerTypes)iI) : getCulture((PlayerTypes)iI);
 
 			if (iCulture > 0)
 			{
 				// All major civilizations have easier control over their own core (80% rule)
-				if (iI < NUM_MAJOR_PLAYERS) if (isCore((PlayerTypes)iI)) iCulture *= 4;
+				if (iI < NUM_MAJOR_PLAYERS) 
+				{
+					if (isCore((PlayerTypes)iI)) 
+					{
+						iCulture *= 4;
+					}
+				}
 
 				// Independents get the same advantage over a civ's core if that civ is dead
 				if (iI == INDEPENDENT || iI == INDEPENDENT2)
@@ -3528,12 +3539,13 @@ PlayerTypes CvPlot::calculateCulturalOwner() const
 									{
 									    if (pBestCity != NULL)
 									    {
-										if (abs(pLoopCity->getX() - getX()) > 1 || abs(pLoopCity->getY() - getY()) > 1 || abs(pBestCity->getX() - getX()) == 1 || abs(pBestCity->getY() - getY()) == 1) // Leoreth: spare the first ring around the city to help small civs (except if it's the first ring of a master's city
-											iPriority += 5; // priority ranges from 0 to 4 -> give priority to Masters of a Vassal
+											if (abs(pLoopCity->getX() - getX()) > 1 || abs(pLoopCity->getY() - getY()) > 1 || abs(pBestCity->getX() - getX()) == 1 || abs(pBestCity->getY() - getY()) == 1) // Leoreth: spare the first ring around the city to help small civs (except if it's the first ring of a master's city
+											{
+												iPriority += 5; // priority ranges from 0 to 4 -> give priority to Masters of a Vassal
+											}
 									    }
-										else
-									    {
-										if (abs(pLoopCity->getX() - getX()) > 1 || abs(pLoopCity->getY() - getY()) > 1)
+										else if (abs(pLoopCity->getX() - getX()) > 1 || abs(pLoopCity->getY() - getY()) > 1)
+										{
 											iPriority += 5;
 									    }
 									}
@@ -6724,7 +6736,7 @@ int CvPlot::calculateNatureYield(YieldTypes eYield, TeamTypes eTeam, bool bIgnor
 	//Rhye - start UP
 	if (isPeak())
 	{
-		if (eTeam == INCA)
+		if (eTeam == INCA && !GET_PLAYER(GET_TEAM(eTeam).getLeaderID()).isReborn())
 		{
 			if (eYield == YIELD_FOOD) 
 			{
@@ -7288,7 +7300,7 @@ void CvPlot::updateYield()
 }
 
 
-int CvPlot::getCulture(PlayerTypes eIndex) const
+int CvPlot::getActualCulture(PlayerTypes eIndex) const
 {
 	FAssertMsg(eIndex >= 0, "iIndex is expected to be non-negative (invalid Index)");
 	FAssertMsg(eIndex < MAX_PLAYERS, "iIndex is expected to be within maximum bounds (invalid Index)");
@@ -7298,15 +7310,26 @@ int CvPlot::getCulture(PlayerTypes eIndex) const
 		return 0;
 	}
 
-	if (eIndex == VIKINGS && GC.getGameINLINE().getGameTurnYear() < 1000)
+	return m_aiCulture[eIndex];
+}
+
+
+// Leoreth
+int CvPlot::getCulture(PlayerTypes ePlayer) const
+{
+	if (getCultureConversionPlayer() == ePlayer)
 	{
-		if (getY_INLINE() == 54 && (getX_INLINE() == 59 || getX_INLINE() == 60 || getX_INLINE() == 61))
-		{
-			return 0;
-		}
+		return (getActualTotalCulture() - getActualCulture(ePlayer)) * getCultureConversionRate() / 100 + getActualCulture(ePlayer);
 	}
 
-	return m_aiCulture[eIndex];
+	return getActualCulture(ePlayer) * (100 - getCultureConversionRate()) / 100;
+}
+
+
+// Leoreth
+int CvPlot::getActualTotalCulture() const
+{
+	return m_iTotalCulture;
 }
 
 
@@ -7425,7 +7448,9 @@ void CvPlot::setCulture(PlayerTypes eIndex, int iNewValue, bool bUpdate, bool bU
 	FAssertMsg(eIndex >= 0, "iIndex is expected to be non-negative (invalid Index)");
 	FAssertMsg(eIndex < MAX_PLAYERS, "iIndex is expected to be within maximum bounds (invalid Index)");
 
-	if (getCulture(eIndex) != iNewValue)
+	int iOldValue = getActualCulture(eIndex);
+
+	if (iOldValue != iNewValue)
 	{
 		if(NULL == m_aiCulture)
 		{
@@ -7437,7 +7462,10 @@ void CvPlot::setCulture(PlayerTypes eIndex, int iNewValue, bool bUpdate, bool bU
 		}
 
 		m_aiCulture[eIndex] = iNewValue;
-		FAssert(getCulture(eIndex) >= 0);
+		m_iTotalCulture += (iNewValue - iOldValue);
+		FAssert(getActualCulture(eIndex) >= 0, "expected actual culture to be positive");
+		FAssert(getCulture(eIndex) >= 0, "expected culture to be positive");
+		FAssert(getActualTotalCulture() >= 0, "expected actual total culture to be positive");
 
 		if (bUpdate)
 		{
@@ -9783,7 +9811,7 @@ void CvPlot::read(FDataStreamBase* pStream)
 	// Init saved data
 	reset();
 
-	uint uiFlag=0;
+	uint uiFlag=0; // Leoreth: 1 for culture conversion
 	pStream->Read(&uiFlag);	// flags for expansion
 
 	pStream->Read(&m_iX);
@@ -9800,6 +9828,8 @@ void CvPlot::read(FDataStreamBase* pStream)
 	pStream->Read(&m_iMinOriginalStartDist);
 	pStream->Read(&m_iReconCount);
 	pStream->Read(&m_iRiverCrossingCount);
+	if (uiFlag >= 1) pStream->Read(&m_iCultureConversionRate);
+	if (uiFlag >= 1) pStream->Read(&m_iTotalCulture);
 
 	pStream->Read(&bVal);
 	m_bStartingPlot = bVal;
@@ -9820,6 +9850,7 @@ void CvPlot::read(FDataStreamBase* pStream)
 	pStream->Read(&m_bWithinGreatWall); // Leoreth
 
 	pStream->Read(&m_eOwner);
+	if (uiFlag >= 1) pStream->Read((int*)&m_eCultureConversionPlayer); // Leoreth
 	pStream->Read(&m_ePlotType);
 	pStream->Read(&m_eTerrainType);
 	pStream->Read(&m_eFeatureType);
@@ -10046,7 +10077,7 @@ void CvPlot::write(FDataStreamBase* pStream)
 {
 	uint iI;
 
-	uint uiFlag=0;
+	uint uiFlag=1; // Leoreth: 1 for culture conversion
 	pStream->Write(uiFlag);		// flag for expansion
 
 	pStream->Write(m_iX);
@@ -10063,6 +10094,8 @@ void CvPlot::write(FDataStreamBase* pStream)
 	pStream->Write(m_iMinOriginalStartDist);
 	pStream->Write(m_iReconCount);
 	pStream->Write(m_iRiverCrossingCount);
+	pStream->Write(m_iCultureConversionRate); // Leoreth
+	pStream->Write(m_iTotalCulture); // Leoreth
 
 	pStream->Write(m_bStartingPlot);
 	pStream->Write(m_bHills);
@@ -10077,6 +10110,7 @@ void CvPlot::write(FDataStreamBase* pStream)
 	pStream->Write(m_bWithinGreatWall);
 
 	pStream->Write(m_eOwner);
+	pStream->Write(m_eCultureConversionPlayer); // Leoreth
 	pStream->Write(m_ePlotType);
 	pStream->Write(m_eTerrainType);
 	pStream->Write(m_eFeatureType);
@@ -11198,6 +11232,12 @@ int CvPlot::get3DAudioScriptFootstepIndex(int iFootstepTag) const
 float CvPlot::getAqueductSourceWeight() const
 {
 	float fWeight = 0.0f;
+
+	if (at(97, 38))
+	{
+		return fWeight;
+	}
+
 	if (isLake() || isPeak() || (getFeatureType() != NO_FEATURE && GC.getFeatureInfo(getFeatureType()).isAddsFreshWater()))
 	{
 		fWeight = 1.0f;
@@ -11533,4 +11573,37 @@ bool CvPlot::canSpread(ReligionTypes eReligion) const
 bool CvPlot::isPlains() const
 {
 	return isFlatlands() && (getFeatureType() == NO_FEATURE || GC.getFeatureInfo(getFeatureType()).getDefenseModifier() <= 0) && !isCity(true);
+}
+
+PlayerTypes CvPlot::getCultureConversionPlayer() const
+{
+	return m_eCultureConversionPlayer;
+}
+
+int CvPlot::getCultureConversionRate() const
+{
+	return m_iCultureConversionRate;
+}
+
+void CvPlot::setCultureConversion(PlayerTypes ePlayer, int iRate)
+{
+	m_eCultureConversionPlayer = iRate <= 0 ? NO_PLAYER : ePlayer;
+	m_iCultureConversionRate = std::max(0, iRate);
+
+	updateCulture(true, true);
+
+	if (getPlotCity() != NULL)
+	{
+		getPlotCity()->AI_setAssignWorkDirty(true);
+	}
+}
+
+void CvPlot::resetCultureConversion()
+{
+	setCultureConversion(NO_PLAYER, 0);
+}
+
+void CvPlot::changeCultureConversionRate(int iChange)
+{
+	setCultureConversion(getCultureConversionPlayer(), getCultureConversionRate() + iChange);
 }

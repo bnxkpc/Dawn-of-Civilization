@@ -282,7 +282,23 @@
 		<Spanish>[ICON_BULLET]+4 puntos de estabilidad por cada punto de inicio de civilizaci&#243;n controlado</Spanish>
 	</TEXT>
 	<TEXT>
-		<Tag>TXT_KEY_CIVIC_UNLIMTED</Tag>
+		<Tag>TXT_KEY_CIVIC_MINIMAL_SPECIALISTS</Tag>
+		<English>[ICON_BULLET]At least %D1 slots for[SPACE]</English>
+		<French>[ICON_BULLET]At least %D1 slots for[SPACE]</French>
+		<German>[ICON_BULLET]Erlaubt mindestens %D1[SPACE]</German>
+		<Italian>[ICON_BULLET]At least %D1 for[SPACE]</Italian>
+		<Spanish>[ICON_BULLET]At least %D1 for[SPACE]</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_CIVIC_AT_LEAST_ONE_SPECIALIST</Tag>
+		<English>[ICON_BULLET]At least one slot for[SPACE]</English>
+		<French>[ICON_BULLET]At least one slot for[SPACE]</French>
+		<German>[ICON_BULLET]Erlaubt mindestens einen[SPACE]</German>
+		<Italian>[ICON_BULLET]At least one slot for[SPACE]</Italian>
+		<Spanish>[ICON_BULLET]At least one slot for[SPACE]</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_CIVIC_UNLIMITED</Tag>
 		<English>[ICON_BULLET]Double slots for[SPACE]</English>
 		<French>[ICON_BULLET]Permet deux fois plus de[SPACE]</French>
 		<German>[ICON_BULLET]Erlaubt doppelt soviele[SPACE]</German>
@@ -1724,11 +1740,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_REFORMATION_MESSAGE</Tag>
-		<English>The invention of the Printing Press has unleashed a wave of new doctrines. Protestant churches are opposing the power of the Pope over Christian affairs. Shall we embrace the Reformation? All our Catholic cities and buildings will be converted to the new religion. If we convert now, we will receive a bonus of 500 gold for rapidly taking control of Church assets.</English>
-		<French>L'invention de l'imprimerie a permis la diffusion de nouvelles id&#233;ologies, et des &#233;glises dites protestantes commencent &#224; s'opposer au pouvoir du pape sur la chr&#233;tient&#233;. Adh&#233;rerons-nous &#224; la R&#233;forme ? Nos villes et b&#226;timents catholiques se convertiront alors &#224; la nouvelle religion. Si nous nous convertissons maintenant, nous recevrons un bonus de 500 or pour avoir rapidement pris le contr&#244;le des biens de l'&#201;glise.</French>
-		<German>The invention of the Printing Press has unleashed a wave of new doctrines. Protestant churches are opposing the power of the Pope over Christian affairs. Shall we embrace the Reformation? All our Catholic cities and buildings will be converted to the new religion. If we convert now, we will receive a bonus of 500 gold for rapidly taking control of Church assets.</German>
-		<Italian>The invention of the Printing Press has unleashed a wave of new doctrines. Protestant churches are opposing the power of the Pope over Christian affairs. Shall we embrace the Reformation? All our Catholic cities and buildings will be converted to the new religion. If we convert now, we will receive a bonus of 500 gold for rapidly taking control of Church assets.</Italian>
-		<Spanish>The invention of the Printing Press has unleashed a wave of new doctrines. Protestant churches are opposing the power of the Pope over Christian affairs. Shall we embrace the Reformation? All our Catholic cities and buildings will be converted to the new religion. If we convert now, we will receive a bonus of 500 gold for rapidly taking control of Church assets.</Spanish>
+		<English>The establishment of Academia has unleashed a wave of new doctrines. Protestant churches are opposing the power of the Pope over Christian affairs. Shall we embrace the Reformation? All our Catholic cities and buildings will be converted to the new religion. If we convert now, we will receive a bonus of 500 gold for rapidly taking control of Church assets.</English>
+		<French>L'invention de l'universit&#233; a permis la diffusion de nouvelles id&#233;ologies, et des &#233;glises dites protestantes commencent &#224; s'opposer au pouvoir du pape sur la chr&#233;tient&#233;. Adh&#233;rerons-nous &#224; la R&#233;forme ? Nos villes et b&#226;timents catholiques se convertiront alors &#224; la nouvelle religion. Si nous nous convertissons maintenant, nous recevrons un bonus de 500 or pour avoir rapidement pris le contr&#244;le des biens de l'&#201;glise.</French>
+		<German>The establishment of Academia has unleashed a wave of new doctrines. Protestant churches are opposing the power of the Pope over Christian affairs. Shall we embrace the Reformation? All our Catholic cities and buildings will be converted to the new religion. If we convert now, we will receive a bonus of 500 gold for rapidly taking control of Church assets.</German>
+		<Italian>The establishment of Academia has unleashed a wave of new doctrines. Protestant churches are opposing the power of the Pope over Christian affairs. Shall we embrace the Reformation? All our Catholic cities and buildings will be converted to the new religion. If we convert now, we will receive a bonus of 500 gold for rapidly taking control of Church assets.</Italian>
+		<Spanish>The establishment of Academia has unleashed a wave of new doctrines. Protestant churches are opposing the power of the Pope over Christian affairs. Shall we embrace the Reformation? All our Catholic cities and buildings will be converted to the new religion. If we convert now, we will receive a bonus of 500 gold for rapidly taking control of Church assets.</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_REFORMATION_TITLE</Tag>
@@ -2844,6 +2860,14 @@
 		<Spanish>It's been a huge shock to our civilization to learn that %s1 has managed to complete the %s2 before we could!</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_MISC_PROJECT_ANARCHY_CAUSED</Tag>
+		<English>Our success in completing the %s1 has caused great shock in the %s2 civilization, who were working on the same project!</English>
+		<French>Our success in completing the %s1 has caused great shock in the %s2 civilization, who were working on the same project!</French>
+		<German>Unsere erfolgreiche Fertigstellung von %s1 hat einen gro&#223;en Schock in der %s2 Zivilisation ausgel&#246;st, die an demselben Projekt gearbeitet haben!</German>
+		<Italian>Our success in completing the %s1 has caused great shock in the %s2 civilization, who were working on the same project!</Italian>
+		<Spanish>Our success in completing the %s1 has caused great shock in the %s2 civilization, who were working on the same project!</Spanish>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_PROJECT_FIRST_AIR_EXPERIENCE</Tag>
 		<English>[ICON_BULLET]First to complete receives %s1 experience for Air units</English>
 		<French>[ICON_BULLET]First to complete receives %s1 experience for Air units</French>
@@ -2990,11 +3014,11 @@
 	</TEXT>
 	<TEXT>
 		<Tag>INTERFACE_CITY_WORLD_WONDER_LIMIT_HELP</Tag>
-		<English>%d1 out of %d2 World Wonders at %s3 culture</English>
-		<French>%d1 out of %d2 World Wonders at %s3 culture</French>
-		<German>%d1 out of %d2 World Wonders at %s3 culture</German>
-		<Italian>%d1 out of %d2 World Wonders at %s3 culture</Italian>
-		<Spanish>%d1 out of %d2 World Wonders at %s3 culture</Spanish>
+		<English>%d1 out of %d2 non-obsolete World Wonders at %s3 culture</English>
+		<French>%d1 out of %d2 non-obsolete World Wonders at %s3 culture</French>
+		<German>%d1 out of %d2 non-obsolete World Wonders at %s3 culture</German>
+		<Italian>%d1 out of %d2 non-obsolete World Wonders at %s3 culture</Italian>
+		<Spanish>%d1 out of %d2 non-obsolete World Wonders at %s3 culture</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UNIT_ATTACK_AND_DEFENSE</Tag>
@@ -3011,6 +3035,102 @@
 		<German>After the discovery of %s1, your cities have received %d2 [ICON_FOOD]</German>
 		<Italian>After the discovery of %s1, your cities have received %d2 [ICON_FOOD]</Italian>
 		<Spanish>After the discovery of %s1, your cities have received %d2 [ICON_FOOD]</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_POPUP_GOLD_CITY_CAPTURE</Tag>
+		<English>You have pillaged %d1_Num [ICON_GOLD] from the capture of %s2_CityName!!! What are your next orders for our troops?</English>
+		<French>Vous avez pill&#233; %d1_Num [ICON_GOLD] en capturant %s2_CityName ! Voulez-vous le garder ?</French>
+		<German>Ihr habt durch die Eroberung von %s2_CityName %d1_Num [ICON_GOLD] erbeutet!!! Was sind Ihre n&#228;chsten Befehle an die Truppen?</German>
+		<Italian>Hai saccheggiato %d1_Num [ICON_GOLD] dalla conquista di %s2_CityName!!! Vuoi mantenerla?</Italian>
+		<Spanish>Hab&#233;is saqueado %d1_Num [ICON_GOLD] con la captura de %s2_CityName. &#191;Dese&#225;is conservarla?</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_POPUP_CITY_CAPTURE_KEEP</Tag>
+		<English>You have captured %s1_CityName!!! What are your next orders for our troops?</English>
+		<French>Vous avez captur&#233; %s1_CityName ! Voulez-vous garder cette ville ?</French>
+		<German>Ihr habt die Stadt %s1_CityName eingenommen!!! Was sind Ihre n&#228;chsten Befehle an die Truppen?</German>
+		<Italian>Hai conquistato %s1_CityName! Vuoi tenerla?</Italian>
+		<Spanish>Hab&#233;is capturado %s1_CityName. &#191;Dese&#225;is conservarla?</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_POPUP_KEEP_CAPTURED_CITY</Tag>
+		<English>Establish control and install a new governor.</English>
+		<French>Oui ! Qu'on installe un nouveau gouverneur...</French>
+		<German>&#220;bernehmt die Kontrolle und setzt einen neuen Statthalter ein.</German>
+		<Italian>S&#236;! Instaura un nuovo governatore...</Italian>
+		<Spanish>S&#237;. Que tome posesi&#243;n un nuevo gobernante.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_POPUP_RAZE_CAPTURED_CITY</Tag>
+		<English>Destroy the city! Burn it all down!</English>
+		<French>NON ! REDUISEZ-LA EN CENDRES !</French>
+		<German>Zerst&#246;rt die Stadt und brennt sie nieder!</German>
+		<Italian>No! BRUCIAMO TUTTO!</Italian>
+		<Spanish>&#161;No! &#161;REDUCIDLA A CENIZAS!</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_POPUP_RETURN_ALLIED_CITY</Tag>
+		<English>Return control to the %s1_CivName</English>
+		<French>Non, rendez-la aux %s1_CivName.</French>
+		<German>&#250;bergebt sie wieder an das %s1:2_CivName</German>
+		<Italian>No, restituisci il controllo all'%s1_CivName</Italian>
+		<Spanish>No, devolvedle el control al %s1_CivName</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_POPUP_SACK_CITY</Tag>
+		<English>Sack the city! Take as much as you can!</English>
+		<French>Sack the city! Take as much as you can!</French>
+		<German>Pl&#252;ndert die Stadt! Nehmt euch soviel ihr k&#246;nnt!</German>
+		<Italian>Sack the city! Take as much as you can!</Italian>
+		<Spanish>Sack the city! Take as much as you can!</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_POPUP_SPARE_CITY</Tag>
+		<English>Distribute %d1 gold and see that the city is spared.</English>
+		<French>Distribute %d1 gold and see that the city is spared.</French>
+		<German>Verteilt %d1 Gold, und sorgt daf&#252;r dass die Stadt verschont bleibt.</German>
+		<Italian>Distribute %d1 gold and see that the city is spared.</Italian>
+		<Spanish>Distribute %d1 gold and see that the city is spared.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_POPUP_CREATED_WORK_ON_NEXT_SPACESHIP</Tag>
+		<English>%s2_CityName has added [COLOR_HIGHLIGHT_TEXT]%s1_PrjtName[COLOR_REVERT] to the Mars colony. What would you like to work on next?</English>
+		<French>Ajout de : [COLOR_HIGHLIGHT_TEXT]%s1_PrjtName[COLOR_REVERT] au colonie de Mars par %s2_CityName. Que souhaitez-vous construire ensuite ?</French>
+		<German>%s2_CityName hat das Projekt [COLOR_HIGHLIGHT_TEXT]%s1_PrjtName[COLOR_REVERT] zur Marskolonie hinzugef&#252;gt. Woran m&#246;chtet Ihr als N&#228;chstes arbeiten?</German>
+		<Italian>%s2_CityName ha aggiunto [COLOR_HIGHLIGHT_TEXT]%s1_PrjtName[COLOR_REVERT] a la colonia Marziana. Qual &#232; il prossimo compito?</Italian>
+		<Spanish>%s2_CityName ha a&#241;adido [COLOR_HIGHLIGHT_TEXT]%s1_PrjtName[COLOR_REVERT] a la colonia de marte. &#191;Qu&#233; quer&#233;is hacer a continuaci&#243;n?</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_CIVIC_LEVEL_MODIFIER</Tag>
+		<English>[ICON_BULLET]%D1%% experience needed for unit promotions</English>
+		<French>[ICON_BULLET]%D1%% EXP pour la promotion des unit&#233;s</French>
+		<German>[ICON_BULLET]%D1%% EP f&#252;r Einheitenbef&#246;rderungen erforderlich</German>
+		<Italian>[ICON_BULLET]%D1%% PE richiesti per la promozione</Italian>
+		<Spanish>[ICON_BULLET]%D1%% PX necesarios para ascender unidades.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_CIVIC_NO_RESISTANCE</Tag>
+		<English>[ICON_BULLET]No [ICON_OCCUPATION] on City Conquest</English>
+		<French>[ICON_BULLET]No [ICON_OCCUPATION] on City Conquest</French> <!-- to translate -->
+		<German>[ICON_BULLET]Kein [ICON_OCCUPATION] nach Stadteroberung</German>
+		<Italian>[ICON_BULLET]No [ICON_OCCUPATION] on City Conquest</Italian>
+		<Spanish>[ICON_BULLET]No [ICON_OCCUPATION] on City Conquest</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_BUILDING_NO_RESISTANCE</Tag>
+		<English>[ICON_BULLET]No [ICON_OCCUPATION] on City Conquest</English>
+		<French>[ICON_BULLET]No [ICON_OCCUPATION] on City Conquest</French> <!-- to translate -->
+		<German>[ICON_BULLET]Kein [ICON_OCCUPATION] nach Stadteroberung</German>
+		<Italian>[ICON_BULLET]No [ICON_OCCUPATION] on City Conquest</Italian>
+		<Spanish>[ICON_BULLET]No [ICON_OCCUPATION] on City Conquest</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_CIVIC_NO_TEMPORARY_UNHAPPINESS</Tag>
+		<English>[ICON_BULLET]No temporary [ICON_UNHAPPY]</English>
+		<French>[ICON_BULLET]No temporary [ICON_UNHAPPY]</French> <!-- to translate -->
+		<German>[ICON_BULLET]Keine tempor&#228;re [ICON_UNHAPPY]</German>
+		<Italian>[ICON_BULLET]No temporary [ICON_UNHAPPY]</Italian>
+		<Spanish>[ICON_BULLET]No temporary [ICON_UNHAPPY]</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_</Tag>

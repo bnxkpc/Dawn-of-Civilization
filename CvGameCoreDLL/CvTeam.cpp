@@ -1539,7 +1539,7 @@ void CvTeam::declareWar(TeamTypes eTeam, bool bNewDiplo, WarPlanTypes eWarPlan)
 
 		for (iI = 0; iI < MAX_TEAMS; iI++)
 		{
-			if (GET_TEAM((TeamTypes)iI).isAlive())
+			if (GET_TEAM((TeamTypes)iI).isAlive() && !isMinorCiv() && !GET_TEAM((TeamTypes)iI).isMinorCiv())
 			{
 				if (GET_TEAM((TeamTypes)iI).isDefensivePact(eTeam))
 				{
@@ -2923,7 +2923,7 @@ int CvTeam::getModernizationResearchModifier(TechTypes eTech) const
 	for (int iI = 0; iI < NUM_MAJOR_PLAYERS; iI++)
 	{
 		TeamTypes eTeam = GET_PLAYER((PlayerTypes)iI).getTeam();
-		if (!GET_TEAM(eTeam).isHuman() && canContact(eTeam) && GET_TEAM(eTeam).isHasTech(eTech) && GET_TEAM(eTeam).AI_techTrade(eTech, getID(), true) == NO_DENIAL)
+		if (GET_TEAM(eTeam).isHasTech(eTech) && (!isHuman() || canContact(eTeam)) && (GET_TEAM(eTeam).isHuman() || GET_TEAM(eTeam).AI_techTrade(eTech, getID(), true) == NO_DENIAL))
 		{
 			if (!isAtWar(eTeam))
 			{
@@ -2944,6 +2944,11 @@ int CvTeam::getModernizationResearchModifier(TechTypes eTech) const
 	if (iCount >= 3)
 	{
 		return -50;
+	}
+
+	if (GET_PLAYER(getLeaderID()).getCurrentEra() >= ERA_GLOBAL)
+	{
+		return isHuman() ? -20 : -40;
 	}
 
 	return 0;
@@ -4821,16 +4826,19 @@ void CvTeam::changeProjectCount(ProjectTypes eIndex, int iChange)
 					{
 						if (GET_TEAM((TeamTypes)iI).getProjectMaking(eIndex) > 0)
 						{
-							for (iJ = 0; iJ > MAX_PLAYERS; iJ++)
+							for (iJ = 0; iJ < MAX_PLAYERS; iJ++)
 							{
 								if (GET_PLAYER((PlayerTypes)iJ).isAlive() && GET_PLAYER((PlayerTypes)iJ).getTeam() == iI)
 								{
 									GET_PLAYER((PlayerTypes)iJ).changeAnarchyTurns(getTurns(1));
 
-									if (GC.getGame().isFinalInitialized() && GET_PLAYER((PlayerTypes)iJ).isHuman())
+									if (GC.getGame().isFinalInitialized())
 									{
-										szBuffer = gDLL->getText("TXT_KEY_MISC_PROJECT_ANARCHY", GET_PLAYER((PlayerTypes)getID()).getCivilizationShortDescription(), GC.getProjectInfo(eIndex).getTextKeyWide()); //Rhye
-										gDLL->getInterfaceIFace()->addMessage(((PlayerTypes)iJ), false, GC.getEVENT_MESSAGE_TIME(), szBuffer, "AS2D_REVOLTSTART", MESSAGE_TYPE_MAJOR_EVENT, NULL, (ColorTypes)GC.getInfoTypeForString("COLOR_HIGHLIGHT_TEXT"));
+										szBuffer = gDLL->getText("TXT_KEY_MISC_PROJECT_ANARCHY", GET_PLAYER(getLeaderID()).getCivilizationShortDescription(), GC.getProjectInfo(eIndex).getTextKeyWide());
+										gDLL->getInterfaceIFace()->addMessage((PlayerTypes)iJ, false, GC.getEVENT_MESSAGE_TIME(), szBuffer, "AS2D_REVOLTSTART", MESSAGE_TYPE_MAJOR_EVENT, NULL, (ColorTypes)GC.getInfoTypeForString("COLOR_RED"));
+
+										szBuffer = gDLL->getText("TXT_KEY_MISC_PROJECT_ANARCHY_CAUSED", GC.getProjectInfo(eIndex).getTextKeyWide(), GET_PLAYER((PlayerTypes)iJ).getCivilizationAdjective());
+										gDLL->getInterfaceIFace()->addMessage(getLeaderID(), false, GC.getEVENT_MESSAGE_TIME(), szBuffer, "AS2D_REVOLTSTART", MESSAGE_TYPE_MAJOR_EVENT, NULL, (ColorTypes)GC.getInfoTypeForString("COLOR_HIGHLIGHT_TEXT"));
 									}
 								}
 							}
@@ -5504,6 +5512,7 @@ void CvTeam::setHasTech(TechTypes eIndex, bool bNewValue, PlayerTypes ePlayer, b
 	CivicTypes eCivicType;
 	BonusTypes eBonus;
 	UnitTypes eFreeUnit;
+	bool bFreeTech = false;
 	bool bReligionFounded;
 	bool bFirstBonus;
 	int iI, iJ, iK;
@@ -5838,12 +5847,14 @@ void CvTeam::setHasTech(TechTypes eIndex, bool bNewValue, PlayerTypes ePlayer, b
 				}
 			}
 
-			if (iFreeTechs == 0 && GET_PLAYER(ePlayer).getFreeTechsOnDiscovery() > 0 && !GET_PLAYER(ePlayer).isFreeTechReceived())
+			if (bNewValue && GET_PLAYER(ePlayer).getFreeTechsOnDiscovery() > 0)
 			{
-				iFreeTechs++;
-				szBuffer = gDLL->getText("TXT_KEY_BABYLONIAN_UP");
-				GET_PLAYER(ePlayer).changeFreeTechsOnDiscovery(-1);
-				GET_PLAYER(ePlayer).setFreeTechReceived(true);
+				if (GET_PLAYER(ePlayer).getFreeTechChosen() != eIndex)
+				{
+					iFreeTechs += 1;
+					szBuffer = gDLL->getText("TXT_KEY_BABYLONIAN_UP");
+					GET_PLAYER(ePlayer).changeFreeTechsOnDiscovery(-1);
+				}
 			}
 			
 			if (iFreeTechs > 0)
@@ -6408,6 +6419,18 @@ void CvTeam::processTech(TechTypes eTech, int iChange)
 			GET_PLAYER((PlayerTypes)iI).changeAssets(GC.getTechInfo(eTech).getAssetValue() * iChange);
 			GET_PLAYER((PlayerTypes)iI).changePower(GC.getTechInfo(eTech).getPowerValue() * iChange);
 			GET_PLAYER((PlayerTypes)iI).changeTechScore(getTechScore(eTech) * iChange);
+
+			for (iJ = 0; iJ < GC.getNumBuildingClassInfos(); iJ++)
+			{
+				BuildingTypes eBuilding = (BuildingTypes)GC.getCivilizationInfo(GET_PLAYER((PlayerTypes)iI).getCivilizationType()).getCivilizationBuildings(iJ);
+				if (GC.getBuildingInfo(eBuilding).getPrereqAndTech() == eTech && !isWorldWonderClass((BuildingClassTypes)iJ))
+				{
+					for (int iK = 0; iK < GC.getNumSpecialistInfos(); iK++)
+					{
+						GET_PLAYER((PlayerTypes)iI).changePotentialSpecialistCount((SpecialistTypes)iK, GC.getBuildingInfo(eBuilding).getSpecialistCount((SpecialistTypes)iK) * iChange);
+					}
+				}
+			}
 		}
 	}
 
