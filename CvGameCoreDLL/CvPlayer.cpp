@@ -534,6 +534,7 @@ void CvPlayer::reset(PlayerTypes eID, bool bConstructorCall)
 	m_iColonialSlaveryCount = 0; // Leoreth
 	m_iNoResistanceCount = 0; // Leoreth
 	m_iNoTemporaryUnhappinessCount = 0; // Leoreth
+	m_iUnhappinessDecayModifier = 0; // Leoreth
 	m_iRevolutionTimer = 0;
 	m_iConversionTimer = 0;
 	m_iStateReligionCount = 0;
@@ -1454,7 +1455,7 @@ void CvPlayer::acquireCity(CvCity* pOldCity, bool bConquest, bool bTrade, bool b
 	PlayerTypes eHighestCulturePlayer;
 	BuildingTypes eBuilding;
 	bool bRecapture;
-	bool bRaze;
+	bool bDecide;
 	bool bGift;
 	int iOldCultureLevel;
 	int iCaptureGold;
@@ -2063,14 +2064,14 @@ void CvPlayer::acquireCity(CvCity* pOldCity, bool bConquest, bool bTrade, bool b
 			{
 				//popup raze option
 				eHighestCulturePlayer = pNewCity->getLiberationPlayer(true);
-				bRaze = canRaze(pNewCity);
+				bDecide = canRaze(pNewCity) || canSack(pNewCity) || canSpare(pNewCity, eHighestCulturePlayer, iCaptureGold);
 				bGift = ((eHighestCulturePlayer != NO_PLAYER)
 						&& (eHighestCulturePlayer != getID())
 						&& ((getTeam() == GET_PLAYER(eHighestCulturePlayer).getTeam())
 							|| GET_TEAM(getTeam()).isOpenBorders(GET_PLAYER(eHighestCulturePlayer).getTeam())
 							|| GET_TEAM(GET_PLAYER(eHighestCulturePlayer).getTeam()).isVassal(getTeam())));
 
-				if (bRaze || bGift)
+				if (bDecide || bGift)
 				{
 					CvPopupInfo* pInfo = new CvPopupInfo(BUTTONPOPUP_RAZECITY);
 					pInfo->setData1(pNewCity->getID());
@@ -2100,6 +2101,10 @@ void CvPlayer::acquireCity(CvCity* pOldCity, bool bConquest, bool bTrade, bool b
 			pNewCity->completeAcquisition(iCaptureGold);
 			CvEventReporter::getInstance().cityAcquiredAndKept(getID(), pNewCity);
 		}
+	}
+	else
+	{
+		CvEventReporter::getInstance().cityAcquiredAndKept(getID(), pNewCity);
 	}
 
 	// Leoreth: make sure flip at the beginning creates a capital
@@ -18090,6 +18095,7 @@ void CvPlayer::processCivics(CivicTypes eCivic, int iChange)
 	changeStateReligionFreeExperience(GC.getCivicInfo(eCivic).getStateReligionFreeExperience() * iChange);
 	changeExpInBorderModifier(GC.getCivicInfo(eCivic).getExpInBorderModifier() * iChange);
 	changeLevelExperienceModifier(GC.getCivicInfo(eCivic).getLevelExperienceModifier() * iChange); // Leoreth
+	changeUnhappinessDecayModifier(GC.getCivicInfo(eCivic).getUnhappinessDecayModifier() * iChange); // Leoreth
 
 	for (iI = 0; iI < NUM_YIELD_TYPES; iI++)
 	{
@@ -18384,7 +18390,7 @@ void CvPlayer::read(FDataStreamBase* pStream)
 	// Init data before load
 	reset();
 
-	// Leoreth: using flag = 5
+	// Leoreth: using flag = 6
 
 	uint uiFlag=0;
 	pStream->Read(&uiFlag);	// flags for expansion
@@ -18484,6 +18490,7 @@ void CvPlayer::read(FDataStreamBase* pStream)
 	pStream->Read(&m_iColonialSlaveryCount); // Leoreth
 	if (uiFlag >= 5) pStream->Read(&m_iNoResistanceCount); // Leoreth
 	if (uiFlag >= 5) pStream->Read(&m_iNoTemporaryUnhappinessCount); // Leoreth
+	if (uiFlag >= 6) pStream->Read(&m_iUnhappinessDecayModifier); // Leoreth
 	pStream->Read(&m_iRevolutionTimer);
 	pStream->Read(&m_iConversionTimer);
 	pStream->Read(&m_iStateReligionCount);
@@ -18929,7 +18936,7 @@ void CvPlayer::write(FDataStreamBase* pStream)
 {
 	int iI;
 
-	uint uiFlag = 5; // Leoreth: 5 for no resistance and no temporary unhappiness
+	uint uiFlag = 6; // Leoreth: 5 for no resistance and no temporary unhappiness, 6 for unhappiness decay modifier
 	pStream->Write(uiFlag);		// flag for expansion
 
 	pStream->Write(m_iStartingX);
@@ -19027,6 +19034,7 @@ void CvPlayer::write(FDataStreamBase* pStream)
 	pStream->Write(m_iColonialSlaveryCount); // Leoreth
 	pStream->Write(m_iNoResistanceCount); // Leoreth
 	pStream->Write(m_iNoTemporaryUnhappinessCount); // Leoreth
+	pStream->Write(m_iUnhappinessDecayModifier); // Leoreth
 	pStream->Write(m_iRevolutionTimer);
 	pStream->Write(m_iConversionTimer);
 	pStream->Write(m_iStateReligionCount);
@@ -26125,4 +26133,14 @@ void CvPlayer::changeNoTemporaryUnhappinessCount(int iChange)
 bool CvPlayer::isNoTemporaryUnhappiness() const
 {
 	return getNoTemporaryUnhappinessCount() > 0;
+}
+
+void CvPlayer::changeUnhappinessDecayModifier(int iChange)
+{
+	m_iUnhappinessDecayModifier += iChange;
+}
+
+int CvPlayer::getUnhappinessDecayModifier() const
+{
+	return m_iUnhappinessDecayModifier;
 }

@@ -2154,7 +2154,6 @@ class RiseAndFall:
 							gc.getPlayer(iTargetCiv).changeGold(200)
 						else:
 							data.timedConquest(iPlayer, tPlot)
-						targetList.remove(tPlot)
 
 		pPlayer.setGold(max(0, pPlayer.getGold()-iGold))
 

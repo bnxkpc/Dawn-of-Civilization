@@ -948,6 +948,8 @@ void CvCity::kill(bool bUpdatePlotGroups)
 
 	setPopulation(0);
 
+	updateHappinessYield();
+
 	AI_assignWorkingPlots();
 
 	clearOrderQueue();
@@ -984,6 +986,17 @@ void CvCity::kill(bool bUpdatePlotGroups)
 	FAssertMsg(getNumGreatPeople() == 0, "getNumGreatPeople is expected to be 0");
 	FAssertMsg(getBaseYieldRate(YIELD_FOOD) == 0, "getBaseYieldRate(YIELD_FOOD) is expected to be 0");
 	FAssertMsg(getBaseYieldRate(YIELD_PRODUCTION) == 0, "getBaseYieldRate(YIELD_PRODUCTION) is expected to be 0");
+
+#ifdef _DEBUG
+	if (getBaseYieldRate(YIELD_COMMERCE) != 0)
+	{
+		FAssert(getTradeYield(YIELD_COMMERCE) == 0);
+		FAssert(getExtraSpecialistYield(YIELD_COMMERCE) == 0);
+		FAssert(getHappinessYield(YIELD_COMMERCE) == 0);
+		FAssert(getCorporationYield(YIELD_COMMERCE) == 0);
+	}
+#endif
+
 	FAssertMsg(getBaseYieldRate(YIELD_COMMERCE) == 0, "getBaseYieldRate(YIELD_COMMERCE) is expected to be 0");
 	FAssertMsg(!isProduction(), "isProduction is expected to be false");
 
@@ -1150,24 +1163,26 @@ void CvCity::doTurn()
 		return;
 	}
 
+	int iUnhappinessDecay = -1 * (100 + GET_PLAYER(getOwnerINLINE()).getUnhappinessDecayModifier()) / 100;
+
 	if (getHurryAngerTimer() > 0)
 	{
-		changeHurryAngerTimer(-1);
+		changeHurryAngerTimer(iUnhappinessDecay);
 	}
 
 	if (getConscriptAngerTimer() > 0)
 	{
-		changeConscriptAngerTimer(-1);
+		changeConscriptAngerTimer(iUnhappinessDecay);
 	}
 
 	if (getDefyResolutionAngerTimer() > 0)
 	{
-		changeDefyResolutionAngerTimer(-1);
+		changeDefyResolutionAngerTimer(iUnhappinessDecay);
 	}
 
 	if (getHappinessTimer() > 0)
 	{
-		changeHappinessTimer(-1);
+		changeHappinessTimer(iUnhappinessDecay);
 	}
 
 	if (getEspionageHealthCounter() > 0)
@@ -1177,7 +1192,7 @@ void CvCity::doTurn()
 
 	if (getEspionageHappinessCounter() > 0)
 	{
-		changeEspionageHappinessCounter(-1);
+		changeEspionageHappinessCounter(iUnhappinessDecay);
 	}
 
 	if (isOccupation() || (angryPopulation() > 0) || (healthRate() < 0))
@@ -1213,47 +1228,17 @@ void CvCity::doTurn()
 	// XXX
 #ifdef _DEBUG
 	{
-		CvPlot* pPlot;
-		int iCount;
-		int iI, iJ;
+		int iI;
 
 		for (iI = 0; iI < NUM_YIELD_TYPES; iI++)
 		{
 			FAssert(getBaseYieldRate((YieldTypes)iI) >= 0);
 			FAssert(getYieldRate((YieldTypes)iI) >= 0);
 
-			iCount = 0;
-
-			for (iJ = 0; iJ < NUM_CITY_PLOTS; iJ++)
-			{
-				if (isWorkingPlot(iJ))
-				{
-					pPlot = getCityIndexPlot(iJ);
-
-					if (pPlot != NULL)
-					{
-						iCount += pPlot->getYield((YieldTypes)iI);
-					}
-				}
-			}
-
-			for (iJ = 0; iJ < GC.getNumSpecialistInfos(); iJ++)
-			{
-				iCount += (GET_PLAYER(getOwnerINLINE()).specialistYield(((SpecialistTypes)iJ), ((YieldTypes)iI)) * (getSpecialistCount((SpecialistTypes)iJ) + getFreeSpecialistCount((SpecialistTypes)iJ)));
-			}
-
-			for (iJ = 0; iJ < GC.getNumBuildingInfos(); iJ++)
-			{
-				iCount += getNumActiveBuilding((BuildingTypes)iJ) * (GC.getBuildingInfo((BuildingTypes) iJ).getYieldChange(iI) + getBuildingYieldChange((BuildingClassTypes)GC.getBuildingInfo((BuildingTypes) iJ).getBuildingClassType(), (YieldTypes)iI));
-			}
-
-			iCount += getTradeYield((YieldTypes)iI);
-			iCount += getCorporationYield((YieldTypes)iI);
-			iCount += getHappinessYield((YieldTypes)iI);
-
 			int iBaseYieldRate = getBaseYieldRate((YieldTypes)iI);
+			int iCalculatedYieldRate = calculateBaseYieldRate((YieldTypes)iI);
 
-			FAssert(iCount == getBaseYieldRate((YieldTypes)iI));
+			FAssert(iCalculatedYieldRate == getBaseYieldRate((YieldTypes)iI));
 		}
 
 		for (iI = 0; iI < NUM_COMMERCE_TYPES; iI++)
@@ -4559,6 +4544,7 @@ void CvCity::processBuilding(BuildingTypes eBuilding, int iChange, bool bObsolet
 			changeRiverPlotYield(((YieldTypes)iI), (GC.getBuildingInfo(eBuilding).getRiverPlotYieldChange(iI) * iChange));
 			changeBaseYieldRate(((YieldTypes)iI), ((GC.getBuildingInfo(eBuilding).getYieldChange(iI) + getBuildingYieldChange((BuildingClassTypes)GC.getBuildingInfo(eBuilding).getBuildingClassType(), (YieldTypes)iI)) * iChange));
 			// Leoreth: catch the overflow bug
+			FAssert(getBaseYieldRate((YieldTypes)iI) >= 0 && getBaseYieldRate((YieldTypes)iI) <= 1000);
 			if (getBaseYieldRate((YieldTypes)iI) < 0 || getBaseYieldRate((YieldTypes)iI) > 1000) {
 				logMajorError(CvWString::format(L"Overflow %s in (%d, %d) for processBuilding %s", GC.getYieldInfo((YieldTypes)iI).getText(), getX(), getY(), GC.getBuildingInfo(eBuilding).getText()), getX(), getY());
 				gDLL->getEngineIFace()->AutoSave();
@@ -4968,6 +4954,7 @@ void CvCity::processSpecialist(SpecialistTypes eSpecialist, int iChange)
 	{
 		changeBaseYieldRate(((YieldTypes)iI), (GC.getSpecialistInfo(eSpecialist).getYieldChange(iI) * iChange));
 		// Leoreth: catch the overflow bug
+		FAssert(getBaseYieldRate((YieldTypes)iI) >= 0 && getBaseYieldRate((YieldTypes)iI) <= 1000);
 		if (getBaseYieldRate((YieldTypes)iI) < 0 || getBaseYieldRate((YieldTypes)iI) > 1000) {
 				GC.getGame().logMsg("Overflow in (%d, %d) for processSpecialist", getX(), getY());
 			gDLL->getInterfaceIFace()->addMessage(GC.getGame().getActivePlayer(), true, GC.getEVENT_MESSAGE_TIME(), gDLL->getText("TXT_KEY_OVERFLOW", getX(), getY(), "processSpecialist()"), "", MESSAGE_TYPE_MAJOR_EVENT, ARTFILEMGR.getInterfaceArtInfo("WORLDBUILDER_CITY_EDIT")->getPath(), (ColorTypes)GC.getInfoTypeForString("COLOR_RED"), getX_INLINE(), getY_INLINE(), true, true);
@@ -7426,7 +7413,7 @@ void CvCity::changeEspionageHappinessCounter(int iChange)
 {
 	if (iChange != 0)
 	{
-		m_iEspionageHappinessCounter += iChange;
+		m_iEspionageHappinessCounter = std::max(0, m_iEspionageHappinessCounter + iChange);
 	}
 }
 
@@ -8448,7 +8435,7 @@ void CvCity::changeHurryAngerTimer(int iChange)
 {
 	if (iChange != 0)
 	{
-		m_iHurryAngerTimer = (m_iHurryAngerTimer + iChange);
+		m_iHurryAngerTimer = std::max(0, m_iHurryAngerTimer + iChange);
 		FAssert(getHurryAngerTimer() >= 0);
 
 		AI_setAssignWorkDirty(true);
@@ -8466,7 +8453,7 @@ void CvCity::changeConscriptAngerTimer(int iChange)
 {
 	if (iChange != 0)
 	{
-		m_iConscriptAngerTimer = (m_iConscriptAngerTimer + iChange);
+		m_iConscriptAngerTimer = std::max(0, m_iConscriptAngerTimer + iChange);
 		FAssert(getConscriptAngerTimer() >= 0);
 
 		AI_setAssignWorkDirty(true);
@@ -8483,7 +8470,7 @@ void CvCity::changeDefyResolutionAngerTimer(int iChange)
 {
 	if (iChange != 0)
 	{
-		m_iDefyResolutionAngerTimer += iChange;
+		m_iDefyResolutionAngerTimer = std::max(0, m_iDefyResolutionAngerTimer + iChange);
 		FAssert(getDefyResolutionAngerTimer() >= 0);
 
 		AI_setAssignWorkDirty(true);
@@ -8513,7 +8500,7 @@ void CvCity::changeHappinessTimer(int iChange)
 {
 	if (iChange != 0)
 	{
-		m_iHappinessTimer += iChange;
+		m_iHappinessTimer = std::max(0, m_iHappinessTimer + iChange);
 		FAssert(getHappinessTimer() >= 0);
 
 		AI_setAssignWorkDirty(true);
@@ -9477,16 +9464,21 @@ TeamTypes CvCity::getTeam() const
 
 CultureLevelTypes CvCity::getCultureLevel() const
 {
-	//Leoreth: cap at two for minors
-	if (getOwnerINLINE() == INDEPENDENT || getOwnerINLINE() == INDEPENDENT2)
-		return std::min(m_eCultureLevel, (CultureLevelTypes)2);
-
 	return m_eCultureLevel;
 }
 
 
 int CvCity::getCultureThreshold() const
 {
+	// Leoreth: cap at two for minors
+	if (GET_PLAYER(getOwnerINLINE()).isMinorCiv())
+	{
+		if (getCultureLevel() >= 2)
+		{
+			return MAX_INT;
+		}
+	}
+
 	return getCultureThreshold(getCultureLevel());
 }
 
@@ -9503,11 +9495,8 @@ int CvCity::getCultureThreshold(CultureLevelTypes eLevel)
 
 void CvCity::setCultureLevel(CultureLevelTypes eNewValue, bool bUpdatePlotGroups)
 {
-	//CvPlot* pLoopPlot;
 	CvWString szBuffer;
 	CultureLevelTypes eOldValue;
-	//int iCultureRange;
-	//int iDX, iDY;
 	int iI, iSpecialistCount;
 
 	eOldValue = getCultureLevel();
@@ -10444,6 +10433,7 @@ void CvCity::setTradeYield(YieldTypes eIndex, int iNewValue)
 
 		changeBaseYieldRate(eIndex, (iNewValue - iOldValue));
 		// Leoreth: catch the overflow bug
+		FAssert(getBaseYieldRate(eIndex) >= 0 && getBaseYieldRate(eIndex) <= 1000);
 		if (getBaseYieldRate(eIndex) < 0 || getBaseYieldRate(eIndex) > 1000) {
 				GC.getGame().logMsg("Overflow in (%d, %d) for setTradeYield", getX(), getY());
 			gDLL->getInterfaceIFace()->addMessage(GC.getGame().getActivePlayer(), true, GC.getEVENT_MESSAGE_TIME(), gDLL->getText("TXT_KEY_OVERFLOW", getX(), getY(), L"setTradeYield()"), "", MESSAGE_TYPE_MAJOR_EVENT, ARTFILEMGR.getInterfaceArtInfo("WORLDBUILDER_CITY_EDIT")->getPath(), (ColorTypes)GC.getInfoTypeForString("COLOR_RED"), getX_INLINE(), getY_INLINE(), true, true);
@@ -10469,7 +10459,8 @@ int CvCity::getExtraSpecialistYield(YieldTypes eIndex, SpecialistTypes eSpeciali
 	FAssertMsg(eIndex < NUM_YIELD_TYPES, "eIndex expected to be < NUM_YIELD_TYPES");
 	FAssertMsg(eSpecialist >= 0, "eSpecialist expected to be >= 0");
 	FAssertMsg(eSpecialist < GC.getNumSpecialistInfos(), "GC.getNumSpecialistInfos expected to be >= 0");
-    return ((getSpecialistCount(eSpecialist) + getFreeSpecialistCount(eSpecialist)) * (GET_PLAYER(getOwnerINLINE()).getSpecialistExtraYield(eSpecialist, eIndex)));
+	// Leoreth: includes culture level yield change
+    return ((getSpecialistCount(eSpecialist) + getFreeSpecialistCount(eSpecialist)) * (GET_PLAYER(getOwnerINLINE()).getSpecialistExtraYield(eSpecialist, eIndex) + GC.getSpecialistInfo(eSpecialist).getCultureLevelYieldChange(getCultureLevel(), eIndex)));
 }
 
 void CvCity::updateExtraSpecialistYield(YieldTypes eYield)
@@ -10488,7 +10479,6 @@ void CvCity::updateExtraSpecialistYield(YieldTypes eYield)
 	for (iI = 0; iI < GC.getNumSpecialistInfos(); iI++)
 	{
 		iNewYield += getExtraSpecialistYield(eYield, ((SpecialistTypes)iI));
-		iNewYield += getSpecialistCount((SpecialistTypes)iI) * GC.getSpecialistInfo((SpecialistTypes)iI).getCultureLevelYieldChange(getCultureLevel(), eYield); // Leoreth
 	}
 
 	if (iOldYield != iNewYield)
@@ -10498,6 +10488,7 @@ void CvCity::updateExtraSpecialistYield(YieldTypes eYield)
 
 		changeBaseYieldRate(eYield, (iNewYield - iOldYield));
 		// Leoreth: catch the overflow bug
+		FAssert(getBaseYieldRate(eYield) >= 0 && getBaseYieldRate(eYield) <= 1000);
 		if (getBaseYieldRate(eYield) < 0 || getBaseYieldRate(eYield) > 1000) {
 				GC.getGame().logMsg("Overflow in (%d, %d) for updateExtraSpecialistYield", getX(), getY());
 			gDLL->getInterfaceIFace()->addMessage(GC.getGame().getActivePlayer(), true, GC.getEVENT_MESSAGE_TIME(), gDLL->getText("TXT_KEY_OVERFLOW", getX(), getY(), L"updateExtraSpecialistYield()"), "", MESSAGE_TYPE_MAJOR_EVENT, ARTFILEMGR.getInterfaceArtInfo("WORLDBUILDER_CITY_EDIT")->getPath(), (ColorTypes)GC.getInfoTypeForString("COLOR_RED"), getX_INLINE(), getY_INLINE(), true, true);
@@ -11225,6 +11216,7 @@ void CvCity::setCorporationYield(YieldTypes eIndex, int iNewValue)
 
 		changeBaseYieldRate(eIndex, (iNewValue - iOldValue));
 		// Leoreth: catch the overflow bug
+		FAssert(getBaseYieldRate(eIndex) >= 0 && getBaseYieldRate(eIndex) <= 1000);
 		if (getBaseYieldRate(eIndex) < 0 || getBaseYieldRate(eIndex) > 1000) {
 				GC.getGame().logMsg("Overflow in (%d, %d) for setCorporationYield", getX(), getY());
 			gDLL->getInterfaceIFace()->addMessage(GC.getGame().getActivePlayer(), true, GC.getEVENT_MESSAGE_TIME(), gDLL->getText("TXT_KEY_OVERFLOW", getX(), getY(), L"setCorporationYield()"), "", MESSAGE_TYPE_MAJOR_EVENT, ARTFILEMGR.getInterfaceArtInfo("WORLDBUILDER_CITY_EDIT")->getPath(), (ColorTypes)GC.getInfoTypeForString("COLOR_RED"), getX_INLINE(), getY_INLINE(), true, true);
@@ -11358,6 +11350,7 @@ void CvCity::updateCorporationYield(YieldTypes eIndex)
 		iNewYield += std::min(25, getCorporationYieldByCorporation(eIndex, (CorporationTypes)iI)); //Rhye - corporation cap (headquarters)
 	}
 
+	FAssert(iNewYield >= 0 && iNewYield <= 1000);
 	if (iNewYield > 1000 || iNewYield < -1000)
 	{
 		GC.getGameINLINE().logMsg("OVERFLOW: x=%d, y=%d", getX(), getY());
@@ -11371,6 +11364,7 @@ void CvCity::updateCorporationYield(YieldTypes eIndex)
 
 		changeBaseYieldRate(eIndex, (iNewYield - iOldYield));
 		// Leoreth: catch the overflow bug
+		FAssert(getBaseYieldRate(eIndex) >= 0 && getBaseYieldRate(eIndex) <= 1000);
 		if (getBaseYieldRate(eIndex) < 0 || getBaseYieldRate(eIndex) > 1000) {
 				GC.getGame().logMsg("Overflow in (%d, %d) for updateCorporationYield", getX(), getY());
 			gDLL->getInterfaceIFace()->addMessage(GC.getGame().getActivePlayer(), true, GC.getEVENT_MESSAGE_TIME(), gDLL->getText("TXT_KEY_OVERFLOW", getX(), getY(), L"updateCorporationYield()"), "", MESSAGE_TYPE_MAJOR_EVENT, ARTFILEMGR.getInterfaceArtInfo("WORLDBUILDER_CITY_EDIT")->getPath(), (ColorTypes)GC.getInfoTypeForString("COLOR_RED"), getX_INLINE(), getY_INLINE(), true, true);
@@ -13192,6 +13186,7 @@ void CvCity::setWorkingPlot(int iIndex, bool bNewValue)
 				{
 					changeBaseYieldRate(((YieldTypes)iI), pPlot->getYield((YieldTypes)iI));
 					// Leoreth: catch the overflow bug
+					FAssert(getBaseYieldRate((YieldTypes)iI) >= 0 && getBaseYieldRate((YieldTypes)iI) <= 1000);
 					if (getBaseYieldRate((YieldTypes)iI) < 0 || getBaseYieldRate((YieldTypes)iI) > 1000) {
 						GC.getGame().logMsg("Overflow in (%d, %d) for setWorkingPlot", getX(), getY());
 						gDLL->getInterfaceIFace()->addMessage(GC.getGame().getActivePlayer(), true, GC.getEVENT_MESSAGE_TIME(), gDLL->getText("TXT_KEY_OVERFLOW", getX(), getY(), L"setWorkingPlot()"), "", MESSAGE_TYPE_MAJOR_EVENT, ARTFILEMGR.getInterfaceArtInfo("WORLDBUILDER_CITY_EDIT")->getPath(), (ColorTypes)GC.getInfoTypeForString("COLOR_RED"), getX_INLINE(), getY_INLINE(), true, true);
@@ -13216,6 +13211,7 @@ void CvCity::setWorkingPlot(int iIndex, bool bNewValue)
 				{
 					changeBaseYieldRate(((YieldTypes)iI), -(pPlot->getYield((YieldTypes)iI)));
 					// Leoreth: catch the overflow bug
+					FAssert(getBaseYieldRate((YieldTypes)iI) >= 0 && getBaseYieldRate((YieldTypes)iI) <= 1000);
 					if (getBaseYieldRate((YieldTypes)iI) < 0 || getBaseYieldRate((YieldTypes)iI) > 1000) {
 						GC.getGame().logMsg("Overflow in (%d, %d) for setWorkingPlot2", getX(), getY());
 						gDLL->getInterfaceIFace()->addMessage(GC.getGame().getActivePlayer(), true, GC.getEVENT_MESSAGE_TIME(), gDLL->getText("TXT_KEY_OVERFLOW", getX(), getY(), L"setWorkingPlot2()"), "", MESSAGE_TYPE_MAJOR_EVENT, ARTFILEMGR.getInterfaceArtInfo("WORLDBUILDER_CITY_EDIT")->getPath(), (ColorTypes)GC.getInfoTypeForString("COLOR_RED"), getX_INLINE(), getY_INLINE(), true, true);
@@ -17292,6 +17288,7 @@ void CvCity::updateBuildingYieldChange(BuildingClassTypes eBuildingClass, YieldT
 		if (getNumActiveBuilding(eBuilding) > 0)
 		{
 			changeBaseYieldRate(eYield, iChange * getNumActiveBuilding(eBuilding));
+			FAssert(getBaseYieldRate(eYield) >= 0 && getBaseYieldRate(eYield) <= 1000);
 			// Leoreth: catch the overflow bug
 			if (getBaseYieldRate(eYield) < 0 || getBaseYieldRate(eYield) > 1000) {
 				logMajorError(CvWString::format(L"Overflow in (%d, %d) for updateBuildingYieldChange()", getX(), getY()), getX(), getY());
@@ -18956,7 +18953,7 @@ int CvCity::calculateCultureSpecialistCommerce(CommerceTypes eCommerce) const
 
 	for (int iI = 0; iI < GC.getNumSpecialistInfos(); iI++)
 	{
-		iCommerce += getSpecialistCount((SpecialistTypes)iI) * GC.getSpecialistInfo((SpecialistTypes)iI).getCultureLevelCommerceChange(getCultureLevel(), eCommerce);
+		iCommerce += (getSpecialistCount((SpecialistTypes)iI) + getFreeSpecialistCount((SpecialistTypes)iI)) * GC.getSpecialistInfo((SpecialistTypes)iI).getCultureLevelCommerceChange(getCultureLevel(), eCommerce);
 	}
 
 	return iCommerce;
@@ -19366,7 +19363,7 @@ void CvCity::spare(int iCaptureGold)
 
 	int iSpareGold = 2 * getBuildingDamage() + iCaptureGold;
 
-	if (!GET_PLAYER(getOwnerINLINE()).isNoResistance())
+	if (getOccupationTimer() > 0)
 	{
 		changeOccupationTimer(-(1 + getOccupationTimer() / 2), false);
 	}
@@ -19405,4 +19402,85 @@ bool CvCity::canLiberate() const
 	}
 
 	return true;
+}
+
+int CvCity::calculateBaseYieldRate(YieldTypes eYield) const
+{
+	int iNumSpecialists;
+
+	int iYield = 0;
+
+	for (int iI = 0; iI < NUM_CITY_PLOTS; iI++)
+	{
+		if (isWorkingPlot(iI))
+		{
+			iYield += getCityIndexPlot(iI)->getYield(eYield);
+		}
+	}
+
+	for (int iI = 0; iI < GC.getNumBuildingInfos(); iI++)
+	{
+		if (isHasRealBuilding((BuildingTypes)iI))
+		{
+			if (!GET_TEAM(getTeam()).isObsoleteBuilding((BuildingTypes)iI))
+			{
+				iYield += GC.getBuildingInfo((BuildingTypes)iI).getYieldChange(eYield);
+				iYield += getBuildingYieldChange((BuildingClassTypes)GC.getBuildingInfo((BuildingTypes)iI).getBuildingClassType(), eYield);
+			}
+		}
+	}
+
+	for (int iI = 0; iI < GC.getNumSpecialistInfos(); iI++)
+	{
+		iNumSpecialists = getSpecialistCount((SpecialistTypes)iI) + getFreeSpecialistCount((SpecialistTypes)iI);
+
+		iYield += iNumSpecialists * GC.getSpecialistInfo((SpecialistTypes)iI).getYieldChange(eYield);
+
+		iYield += iNumSpecialists * GET_PLAYER(getOwnerINLINE()).getSpecialistExtraYield((SpecialistTypes)iI, eYield);
+		
+		if (!GC.getSpecialistInfo((SpecialistTypes)iI).isNoGlobalEffects())
+		{
+			iYield += iNumSpecialists * GC.getSpecialistInfo((SpecialistTypes)iI).getCultureLevelYieldChange(getCultureLevel(), eYield);
+		}
+	}
+
+	iYield += getTradeYield(eYield);
+
+	iYield += getHappinessYield(eYield);
+
+	iYield += getCorporationYield(eYield);
+
+	return iYield;
+}
+
+int CvCity::calculateBaseGreatPeopleRate() const
+{
+	int iRate = 0;
+
+	for (int iI = 0; iI < GC.getNumBuildingInfos(); iI++)
+	{
+		if (isHasRealBuilding((BuildingTypes)iI))
+		{
+			iRate += GC.getBuildingInfo((BuildingTypes)iI).getGreatPeopleRateChange();
+		}
+	}
+
+	for (int iI = 0; iI < GC.getNumBuildingInfos(); iI++)
+	{
+		if (isHasRealBuilding((BuildingTypes)iI))
+		{
+			if (!GET_TEAM(getTeam()).isObsoleteBuilding((BuildingTypes)iI))
+			{
+				iRate += getBuildingGreatPeopleRateChange((BuildingClassTypes)GC.getBuildingInfo((BuildingTypes)iI).getBuildingClassType());
+			}
+		}
+	}
+
+	for (int iI = 0; iI < GC.getNumSpecialistInfos(); iI++)
+	{
+		int iChange = (getSpecialistCount((SpecialistTypes)iI) + getFreeSpecialistCount((SpecialistTypes)iI)) * getSpecialistGreatPeopleRateChange((SpecialistTypes)iI);
+		iRate += iChange;
+	}
+
+	return iRate;
 }
